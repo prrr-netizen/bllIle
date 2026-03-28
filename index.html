@@ -27,7 +27,6 @@
             padding: 0 24px;
         }
 
-        /* 헤더 */
         .header {
             border-bottom: 1px solid rgba(255,255,255,0.05);
             padding: 20px 0;
@@ -77,7 +76,6 @@
             color: #F5B042;
         }
 
-        /* 히어로 */
         .hero {
             padding: 80px 0 60px;
             text-align: center;
@@ -123,7 +121,6 @@
             border: 1px solid rgba(245,176,66,0.2);
         }
 
-        /* 보증업체 카드 섹션 */
         .section-title {
             font-size: 1.8rem;
             font-weight: 600;
@@ -150,6 +147,18 @@
             border: 1px solid #1e2a3a;
             transition: all 0.25s;
             box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+            animation: fadeInUp 0.4s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .guarantee-card:hover {
@@ -171,12 +180,25 @@
         }
 
         .verify {
-            background: #1f3a2c;
-            color: #8bd96b;
             padding: 4px 12px;
             border-radius: 40px;
             font-size: 0.7rem;
             font-weight: 600;
+        }
+
+        .verify.gold {
+            background: #2a2a1f;
+            color: #F5B042;
+        }
+
+        .verify.green {
+            background: #1f3a2c;
+            color: #8bd96b;
+        }
+
+        .verify.blue {
+            background: #1a2f3a;
+            color: #6bc9ff;
         }
 
         .limit {
@@ -202,7 +224,6 @@
             background: #e08e2a;
         }
 
-        /* 안내 테이블 */
         .info-box {
             background: #0c1120;
             border-radius: 32px;
@@ -229,7 +250,6 @@
             margin-top: 20px;
         }
 
-        /* CTA */
         .cta-block {
             background: linear-gradient(145deg, #121a2c, #0a0f1c);
             border-radius: 48px;
@@ -253,6 +273,12 @@
             font-size: 1rem;
             margin-top: 20px;
             cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .btn-cta:hover {
+            background: #e08e2a;
+            transform: scale(0.98);
         }
 
         .footer {
@@ -261,6 +287,10 @@
             text-align: center;
             color: #6a7c9e;
             font-size: 0.8rem;
+        }
+
+        .hidden-card {
+            display: none;
         }
 
         @media (max-width: 720px) {
@@ -280,7 +310,7 @@
 
 <header class="header">
     <div class="container header-inner">
-        <div class="logo">BELL-GUIDE</div>
+        <div class="logo">BET-GUIDE</div>
         <div class="nav">
             <a href="#">보증업체</a>
             <a href="#">안내사항</a>
@@ -306,36 +336,37 @@
         <div>
             <h2 class="section-title">🏆 추천 보증업체</h2>
             <div class="section-sub">24시간 자동검증 + 안전놀이터 인증 완료</div>
-            <div class="card-grid">
+            <div class="card-grid" id="cardGrid">
+                <!-- 초기 3개 카드 -->
                 <div class="guarantee-card">
                     <div class="card-header">
-                        <span class="company">배너 준비중</span>
-                        <span class="verify">인증완료</span>
+                        <span class="company">ACE 토토</span>
+                        <span class="verify green">인증완료</span>
                     </div>
                     <div>✅ 보증금: 3억원</div>
                     <div>⚡ 입출금 속도: 3분 이내</div>
                     <div class="limit">한도: 무제한 / 롤링 100%</div>
-                    <button class="btn-detail" data-name="배너 준비중">바로가기 안내</button>
+                    <button class="btn-detail" data-name="ACE 토토">바로가기 안내</button>
                 </div>
                 <div class="guarantee-card">
                     <div class="card-header">
-                        <span class="company">배너 준비중</span>
-                        <span class="verify">특별보증</span>
+                        <span class="company">BET365 코리아</span>
+                        <span class="verify gold">특별보증</span>
                     </div>
                     <div>✅ 보증금: 5억원</div>
                     <div>⚡ 가입즉시 첫충 30%</div>
                     <div class="limit">한도: 1억 / 이벤트 진행중</div>
-                    <button class="btn-detail" data-name="배너 준비중">바로가기 안내</button>
+                    <button class="btn-detail" data-name="BET365 코리아">바로가기 안내</button>
                 </div>
                 <div class="guarantee-card">
                     <div class="card-header">
-                        <span class="company">배너 준비중</span>
-                        <span class="verify">VIP 인증</span>
+                        <span class="company">킹덤 토토</span>
+                        <span class="verify blue">VIP 인증</span>
                     </div>
                     <div>✅ 보증금: 2억원</div>
                     <div>⚡ 매주 10% 캐시백</div>
                     <div class="limit">한도: 5천만원 / 스포츠전용</div>
-                    <button class="btn-detail" data-name="배너 준비중">바로가기 안내</button>
+                    <button class="btn-detail" data-name="킹덤 토토">바로가기 안내</button>
                 </div>
             </div>
         </div>
@@ -360,30 +391,86 @@
         </div>
 
         <div class="cta-block">
-            <h3>📢 안전한 이용 가이드</h3>
+            <h3>📢 안전한 토토 이용 가이드</h3>
             <p>보증업체를 통한 이용 시 먹튀 피해 0% 책임 안내</p>
-            <button class="btn-cta" id="ctaBtn">보증업체 전체보기</button>
+            <button class="btn-cta" id="ctaBtn">보증업체 전체보기 (9개)</button>
         </div>
     </div>
 </main>
 
 <footer class="footer">
     <div class="container">
-        <p>본 사이트는 안내 및 검증 정보를 제공합니다. 도박은 중독에 위험이 있으며, 책임감 있게 이용하세요.</p>
-        <p style="margin-top: 12px;">© 안전 가이드 — 믿을 수 있는 보증업체만 소개합니다.</p>
+        <p>본 사이트는 성인 토토 안내 및 검증 정보를 제공합니다. 도박은 중독에 위험이 있으며, 책임감 있게 이용하세요.</p>
+        <p style="margin-top: 12px;">© 안전토토가이드 — 믿을 수 있는 보증업체만 소개합니다.</p>
     </div>
 </footer>
 
 <script>
-    const buttons = document.querySelectorAll('.btn-detail');
-    buttons.forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            const name = btn.getAttribute('data-name');
-            alert(`🔐 [${name}] 공식 보증업체 안내\n해당 업체는 검증 완료된 안전놀이터입니다.\n자세한 링크는 관리자 문의 후 제공됩니다.`);
-        });
+    // 추가될 6개 카드 데이터
+    const additionalCards = [
+        { name: "배너 준비중", verify: "인증완료", verifyType: "green", deposit: "3.5억원", speed: "즉시출금", limit: "한도: 2억 / 신규 20%", desc: "✅ 보증금: 3.5억원", speedText: "⚡ 즉시출금 시스템" },
+        { name: "배너 준비중", verify: "특별보증", verifyType: "gold", deposit: "4억원", speed: "첫충 50%", limit: "한도: 3억 / 무제한 롤링", desc: "✅ 보증금: 4억원", speedText: "⚡ 첫충 50% 이벤트" },
+        { name: "배너 준비중", verify: "VIP 인증", verifyType: "blue", deposit: "5억원", speed: "입출금 1분", limit: "한도: 5억 / 프리미엄", desc: "✅ 보증금: 5억원", speedText: "⚡ 입출금 1분 처리" },
+        { name: "배너 준비중", verify: "인증완료", verifyType: "green", deposit: "2.5억원", speed: "매일 5% 캐시백", limit: "한도: 1억 / 스포츠전문", desc: "✅ 보증금: 2.5억원", speedText: "⚡ 매일 5% 캐시백" },
+        { name: "배너 준비중", verify: "특별보증", verifyType: "gold", deposit: "3억원", speed: "3분 이내", limit: "한도: 무제한 / 이벤트중", desc: "✅ 보증금: 3억원", speedText: "⚡ 입출금 3분 이내" },
+        { name: "배너 준비중", verify: "VIP 인증", verifyType: "blue", deposit: "4.5억원", speed: "주간 10%", limit: "한도: 2억 / 미니게임", desc: "✅ 보증금: 4.5억원", speedText: "⚡ 주간 10% 지급" }
+    ];
+
+    let isExpanded = false;
+    const cardGrid = document.getElementById('cardGrid');
+    const ctaBtn = document.getElementById('ctaBtn');
+
+    function createCard(cardData) {
+        const card = document.createElement('div');
+        card.className = 'guarantee-card';
+        card.innerHTML = `
+            <div class="card-header">
+                <span class="company">${cardData.name}</span>
+                <span class="verify ${cardData.verifyType}">${cardData.verify}</span>
+            </div>
+            <div>${cardData.desc}</div>
+            <div>${cardData.speedText}</div>
+            <div class="limit">${cardData.limit}</div>
+            <button class="btn-detail" data-name="${cardData.name}">바로가기 안내</button>
+        `;
+        return card;
+    }
+
+    ctaBtn.addEventListener('click', () => {
+        if (!isExpanded) {
+            // 추가 카드 6개 생성 및 추가
+            additionalCards.forEach(cardData => {
+                const newCard = createCard(cardData);
+                cardGrid.appendChild(newCard);
+            });
+            
+            isExpanded = true;
+            ctaBtn.textContent = '보증업체 전체보기 (9개) ✅';
+            ctaBtn.style.background = '#2a5f3a';
+            
+            // 새로 추가된 버튼들에도 이벤트 리스너 추가
+            document.querySelectorAll('.btn-detail').forEach(btn => {
+                btn.removeEventListener('click', handleDetailClick);
+                btn.addEventListener('click', handleDetailClick);
+            });
+            
+            // 부드럽게 스크롤 이동
+            setTimeout(() => {
+                document.querySelector('.section-title').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 100);
+        } else {
+            alert('✅ 이미 9개의 모든 보증업체가 표시되고 있습니다.');
+        }
     });
-    document.getElementById('ctaBtn')?.addEventListener('click', () => {
-        alert('📋 현재 등록된 보증업체 총 0개 (실시간 업데이트 중)\n가입 문의는 고객센터로 남겨주세요.');
+
+    function handleDetailClick(e) {
+        const name = e.currentTarget.getAttribute('data-name');
+        alert(`🔐 [${name}] 공식 보증업체 안내\n해당 업체는 검증 완료된 안전놀이터입니다.\n자세한 링크는 관리자 문의 후 제공됩니다.`);
+    }
+
+    // 초기 버튼들에 이벤트 리스너 등록
+    document.querySelectorAll('.btn-detail').forEach(btn => {
+        btn.addEventListener('click', handleDetailClick);
     });
 </script>
 </body>
