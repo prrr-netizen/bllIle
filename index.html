@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>디스코드 배너 입점 | 검증된 파트너</title>
+    <title>배너 광고 플랫폼 | 프리미엄 파트너</title>
     <style>
         * {
             margin: 0;
@@ -45,7 +45,7 @@
 
         .logo {
             font-weight: 800;
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             background: linear-gradient(135deg, #5865F2, #a88bff);
             -webkit-background-clip: text;
             background-clip: text;
@@ -54,7 +54,7 @@
 
         .nav {
             display: flex;
-            gap: 28px;
+            gap: 32px;
             align-items: center;
         }
 
@@ -71,60 +71,44 @@
             color: #5865F2;
         }
 
-        .header-btn {
-            background: #5865F2;
-            border: none;
-            padding: 8px 20px;
-            border-radius: 40px;
-            font-weight: 600;
-            font-size: 0.85rem;
-            cursor: pointer;
-            color: white;
-            transition: 0.2s;
-        }
-
-        .header-btn:hover {
-            background: #4752c4;
-            transform: scale(0.97);
-        }
-
         /* 실시간 시계 */
         .clock-container {
             text-align: center;
-            padding: 18px 0 8px;
+            padding: 20px 0 12px;
         }
 
         .live-clock {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
             background: rgba(88,101,242,0.1);
             backdrop-filter: blur(8px);
-            padding: 5px 22px;
+            padding: 6px 24px;
             border-radius: 60px;
             border: 1px solid rgba(88,101,242,0.3);
         }
 
         .clock-time {
             font-family: monospace;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             font-weight: 500;
+            letter-spacing: 1px;
         }
 
-        /* 히어로 - 한 줄 + 애니메이션 */
+        /* 히어로 */
         .hero {
             text-align: center;
-            padding: 28px 0 20px;
+            padding: 40px 0 30px;
         }
 
         .animated-title {
-            font-size: 1.9rem;
+            font-size: 2.2rem;
             font-weight: 700;
             background: linear-gradient(135deg, #FFFFFF, #b9a9ff, #8b74ff);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            letter-spacing: -0.3px;
+            letter-spacing: -0.5px;
             animation: fadeInUp 0.8s ease-out, glowPulse 2.5s infinite ease-in-out;
         }
 
@@ -144,7 +128,7 @@
                 text-shadow: 0 0 0px rgba(88,101,242,0);
             }
             50% {
-                text-shadow: 0 0 12px rgba(88,101,242,0.6);
+                text-shadow: 0 0 12px rgba(88,101,242,0.5);
             }
             100% {
                 text-shadow: 0 0 0px rgba(88,101,242,0);
@@ -152,9 +136,9 @@
         }
 
         .hero .sub {
-            font-size: 0.85rem;
+            font-size: 1rem;
             color: #aab4d0;
-            margin-top: 8px;
+            margin-top: 12px;
             opacity: 0.9;
         }
 
@@ -162,74 +146,66 @@
         .stats {
             display: flex;
             justify-content: center;
-            gap: 36px;
-            margin-top: 20px;
+            gap: 48px;
+            margin-top: 32px;
             flex-wrap: wrap;
         }
 
         .stat-item {
             text-align: center;
             background: rgba(255,255,255,0.03);
-            padding: 6px 20px;
-            border-radius: 50px;
+            padding: 10px 28px;
+            border-radius: 60px;
+            backdrop-filter: blur(4px);
         }
 
         .stat-number {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             font-weight: 700;
             color: #5865F2;
         }
 
         .stat-label {
-            font-size: 0.7rem;
+            font-size: 0.75rem;
             color: #8a9bb5;
+            letter-spacing: 0.5px;
         }
 
         /* 배너 섹션 */
         .section-title {
-            font-size: 1.3rem;
+            font-size: 1.5rem;
             font-weight: 600;
             text-align: center;
-            margin: 20px 0 20px;
+            margin: 40px 0 24px;
+            letter-spacing: -0.3px;
         }
 
         .banner-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 24px;
-            margin-bottom: 50px;
-            transition: all 0.3s ease;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 28px;
+            margin-bottom: 60px;
         }
 
         .banner-card {
-            background: #0f1424;
-            border-radius: 20px;
+            background: rgba(15, 20, 36, 0.8);
+            backdrop-filter: blur(8px);
+            border-radius: 24px;
             overflow: hidden;
-            border: 1px solid #1e2a3a;
-            transition: all 0.25s ease;
+            border: 1px solid rgba(88,101,242,0.2);
+            transition: all 0.3s ease;
             cursor: pointer;
-            animation: fadeIn 0.4s ease-out;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: scale(0.96);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
         }
 
         .banner-card:hover {
-            transform: translateY(-4px);
+            transform: translateY(-6px);
             border-color: #5865F2;
+            box-shadow: 0 20px 30px -12px rgba(88,101,242,0.3);
         }
 
         .banner-image {
             width: 100%;
-            height: 150px;
+            height: 160px;
             background: linear-gradient(135deg, #1a1f35, #0f1424);
             display: flex;
             align-items: center;
@@ -241,77 +217,134 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .banner-card:hover .banner-image img {
+            transform: scale(1.02);
         }
 
         .banner-image .placeholder {
-            font-size: 2.2rem;
+            font-size: 2.5rem;
             color: #5865F2;
         }
 
         .banner-info {
-            padding: 16px;
+            padding: 20px;
         }
 
         .banner-name {
-            font-size: 1.2rem;
+            font-size: 1.25rem;
             font-weight: 700;
-            margin-bottom: 6px;
+            margin-bottom: 8px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
         }
 
         .verify-badge {
-            background: #1f3a2c;
-            color: #8bd96b;
-            padding: 3px 10px;
+            background: rgba(88,101,242,0.2);
+            color: #a88bff;
+            padding: 4px 12px;
             border-radius: 30px;
-            font-size: 0.65rem;
+            font-size: 0.7rem;
             font-weight: 600;
+            border: 1px solid rgba(88,101,242,0.3);
         }
 
         .banner-desc {
             color: #9aaec5;
-            font-size: 0.8rem;
-            margin: 8px 0;
+            font-size: 0.85rem;
+            margin: 12px 0;
+            line-height: 1.4;
         }
 
         .btn-banner {
-            background: #5865F2;
+            background: linear-gradient(135deg, #5865F2, #4752c4);
             border: none;
             width: 100%;
-            padding: 10px;
+            padding: 12px;
             border-radius: 40px;
             font-weight: 600;
             font-size: 0.85rem;
-            margin-top: 10px;
+            margin-top: 12px;
+            cursor: pointer;
+            color: white;
+            transition: all 0.2s;
+        }
+
+        .btn-banner:hover {
+            background: linear-gradient(135deg, #4752c4, #3a45b0);
+            transform: scale(0.98);
+        }
+
+        /* 입점 안내 박스 */
+        .info-box {
+            background: rgba(12, 17, 32, 0.6);
+            backdrop-filter: blur(12px);
+            border-radius: 32px;
+            padding: 40px 32px;
+            margin: 40px 0 50px;
+            text-align: center;
+            border: 1px solid rgba(88,101,242,0.2);
+        }
+
+        .info-box h3 {
+            font-size: 1.4rem;
+            margin-bottom: 16px;
+            color: #eef2ff;
+        }
+
+        .info-box p {
+            color: #9aaec5;
+            margin-bottom: 24px;
+        }
+
+        .btn-apply {
+            background: linear-gradient(135deg, #2a5f3a, #1e8449);
+            border: none;
+            padding: 14px 42px;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 1rem;
             cursor: pointer;
             color: white;
             transition: 0.2s;
         }
 
-        .btn-banner:hover {
-            background: #4752c4;
+        .btn-apply:hover {
+            transform: scale(0.98);
+            background: linear-gradient(135deg, #1e8449, #166b3a);
         }
 
         .footer {
             border-top: 1px solid #1a1f2e;
-            padding: 24px 0;
+            padding: 32px 0;
             text-align: center;
             color: #6a7c9e;
-            font-size: 0.7rem;
+            font-size: 0.75rem;
         }
 
         @media (max-width: 720px) {
             .animated-title {
-                font-size: 1.3rem;
+                font-size: 1.5rem;
+            }
+            .hero .sub {
+                font-size: 0.85rem;
             }
             .nav {
-                gap: 16px;
+                gap: 18px;
             }
-            .header-btn {
-                padding: 6px 14px;
-                font-size: 0.75rem;
+            .stats {
+                gap: 20px;
+            }
+            .stat-number {
+                font-size: 1.3rem;
+            }
+            .banner-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -324,7 +357,7 @@
         <div class="nav">
             <a id="allBannerNavBtn">🏷️ 전체 배너 (3/9)</a>
             <a id="applyNavBtn">📝 입점신청</a>
-            <a href="#">검증기준</a>
+            <a href="#">광고문의</a>
         </div>
     </div>
 </header>
@@ -340,23 +373,29 @@
         </div>
 
         <div class="hero">
-            <div class="animated-title">검증된 디스코드 업체 · 배너 광고 플랫폼</div>
+            <div class="animated-title">프리미엄 배너 광고 플랫폼</div>
             <div class="sub">신뢰할 수 있는 파트너사만 엄선합니다</div>
             <div class="stats">
-                <div class="stat-item"><div class="stat-number">12+</div><div class="stat-label">입점 업체</div></div>
-                <div class="stat-item"><div class="stat-number">99%</div><div class="stat-label">검증 통과율</div></div>
-                <div class="stat-item"><div class="stat-number">24/7</div><div class="stat-label">모니터링</div></div>
+                <div class="stat-item"><div class="stat-number">50+</div><div class="stat-label">입점 업체</div></div>
+                <div class="stat-item"><div class="stat-number">99%</div><div class="stat-label">만족도</div></div>
+                <div class="stat-item"><div class="stat-number">24/7</div><div class="stat-label">실시간 운영</div></div>
             </div>
         </div>
 
-        <h2 class="section-title">🏆 검증된 배너 파트너</h2>
+        <h2 class="section-title">✨ 검증된 배너 파트너</h2>
         <div class="banner-grid" id="bannerGrid"></div>
+
+        <div class="info-box">
+            <h3>📢 배너 광고 입점 안내</h3>
+            <p>검증된 업체만 입점 가능 | 월 10만 이상 노출 | 이미지/GIF 배너 지원</p>
+            <button class="btn-apply" id="applyBtn">📝 배너 입점 신청하기</button>
+        </div>
     </div>
 </main>
 
 <footer class="footer">
     <div class="container">
-        <p>© BANNER MARKET — 검증된 디스코드 파트너사만 입점합니다</p>
+        <p>© BANNER MARKET — 프리미엄 배너 광고 플랫폼</p>
     </div>
 </footer>
 
@@ -375,18 +414,18 @@
     // 👇 관리자 배너 설정 (imgUrl에 GIF/이미지 URL 입력)
     // ============================================================
     const coreBanners = [
-        { imgUrl: "", name: "배너 준비중", desc: "", link: "https://discord.gg/example1" },
-        { imgUrl: "", name: "배너 준비중", desc: "", link: "https://discord.gg/example2" },
-        { imgUrl: "", name: "배너 준비중", desc: "", link: "https://discord.gg/example3" }
+        { imgUrl: "", name: "배너 준비중", desc: "이미지 또는 GIF 배너를 등록하세요", link: "#" },
+        { imgUrl: "", name: "배너 준비중", desc: "이미지 또는 GIF 배너를 등록하세요", link: "#" },
+        { imgUrl: "", name: "배너 준비중", desc: "이미지 또는 GIF 배너를 등록하세요", link: "#" }
     ];
 
     const additionalBanners = [
-        { imgUrl: "", name: "배너 준비중", desc: "", link: "https://discord.gg/example4" },
-        { imgUrl: "", name: "배너 준비중", desc: "", link: "https://discord.gg/example5" },
-        { imgUrl: "", name: "배너 준비중", desc: "", link: "https://discord.gg/example6" },
-        { imgUrl: "", name: "배너 준비중", desc: "", link: "https://discord.gg/example7" },
-        { imgUrl: "", name: "배너 준비중", desc: "", link: "https://discord.gg/example8" },
-        { imgUrl: "", name: "배너 준비중", desc: "", link: "https://discord.gg/example9" }
+        { imgUrl: "", name: "배너 준비중", desc: "이미지 또는 GIF 배너를 등록하세요", link: "#" },
+        { imgUrl: "", name: "배너 준비중", desc: "이미지 또는 GIF 배너를 등록하세요", link: "#" },
+        { imgUrl: "", name: "배너 준비중", desc: "이미지 또는 GIF 배너를 등록하세요", link: "#" },
+        { imgUrl: "", name: "배너 준비중", desc: "이미지 또는 GIF 배너를 등록하세요", link: "#" },
+        { imgUrl: "", name: "배너 준비중", desc: "이미지 또는 GIF 배너를 등록하세요", link: "#" },
+        { imgUrl: "", name: "배너 준비중", desc: "이미지 또는 GIF 배너를 등록하세요", link: "#" }
     ];
 
     let isExpanded = false;
@@ -402,7 +441,7 @@
             
             const imageHtml = banner.imgUrl && banner.imgUrl.trim() !== ""
                 ? `<img src="${banner.imgUrl}" alt="${banner.name} 배너" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'placeholder\'>🎯</div>';">`
-                : `<div class="placeholder">${['🎯', '🎮', '💎'][idx % 3]}</div>`;
+                : `<div class="placeholder">${['🎯', '📢', '✨', '⭐', '💎', '🔥'][idx % 6]}</div>`;
             
             card.innerHTML = `
                 <div class="banner-image">${imageHtml}</div>
@@ -418,7 +457,7 @@
             
             card.addEventListener('click', (e) => {
                 if (e.target.classList.contains('btn-banner')) return;
-                if (banner.link && !banner.link.includes('example')) {
+                if (banner.link && banner.link !== '#') {
                     window.open(banner.link, '_blank');
                 } else {
                     alert('🔜 준비 중인 배너입니다.');
@@ -428,7 +467,7 @@
             const btn = card.querySelector('.btn-banner');
             btn.addEventListener('click', (e) => {
                 e.stopPropagation();
-                if (banner.link && !banner.link.includes('example')) {
+                if (banner.link && banner.link !== '#') {
                     window.open(banner.link, '_blank');
                 } else {
                     alert('🔜 준비 중인 배너입니다.');
@@ -457,12 +496,13 @@
 
     // 입점신청 알림
     function showApplyAlert() {
-        alert('📢 배너 입점 문의\n\n검증된 디스코드 업체만 입점 가능합니다.\n자세한 문의는 관리자에게 연락해주세요.');
+        alert('📢 배너 입점 문의\n\n검증된 업체만 입점 가능합니다.\n자세한 문의는 관리자에게 연락해주세요.');
     }
 
     // 헤더 버튼 연결
     document.getElementById('allBannerNavBtn').addEventListener('click', toggleAllBanners);
     document.getElementById('applyNavBtn').addEventListener('click', showApplyAlert);
+    document.getElementById('applyBtn').addEventListener('click', showApplyAlert);
 
     renderBanners();
 </script>
