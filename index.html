@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>디스코드 커뮤니티 | 함께하는 공간</title>
+    <title>디스코드 배너 입점 | 검증된 파트너</title>
     <style>
         * {
             margin: 0;
@@ -12,7 +12,7 @@
         }
 
         body {
-            background: linear-gradient(135deg, #0a0c1a 0%, #11162a 100%);
+            background: linear-gradient(135deg, #0a0c1a 0%, #0e1122 100%);
             font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
             color: #eef2ff;
             line-height: 1.5;
@@ -27,12 +27,11 @@
             padding: 0 24px;
         }
 
-        /* 헤더 */
         .header {
             border-bottom: 1px solid rgba(255,255,255,0.08);
-            padding: 20px 0;
+            padding: 18px 0;
             backdrop-filter: blur(12px);
-            background: rgba(10,12,26,0.7);
+            background: rgba(10,12,26,0.8);
             position: sticky;
             top: 0;
             z-index: 100;
@@ -47,23 +46,22 @@
         }
 
         .logo {
-            font-weight: 700;
-            font-size: 1.6rem;
+            font-weight: 800;
+            font-size: 1.5rem;
             background: linear-gradient(135deg, #5865F2, #9b87f5);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            letter-spacing: -0.3px;
         }
 
         .badge {
             background: #1e243f;
-            padding: 6px 14px;
+            padding: 6px 16px;
             border-radius: 100px;
             font-size: 0.8rem;
             font-weight: 500;
             color: #9b87f5;
-            border: 1px solid rgba(88,101,242,0.3);
+            border: 1px solid rgba(88,101,242,0.4);
         }
 
         .nav a {
@@ -81,195 +79,176 @@
         /* 실시간 시계 */
         .clock-container {
             text-align: center;
-            padding: 20px 0 10px;
+            padding: 24px 0 16px;
         }
 
         .live-clock {
             display: inline-flex;
             align-items: center;
             gap: 12px;
-            background: rgba(88,101,242,0.15);
+            background: rgba(88,101,242,0.12);
             backdrop-filter: blur(8px);
-            padding: 8px 24px;
+            padding: 8px 28px;
             border-radius: 60px;
             border: 1px solid rgba(88,101,242,0.3);
-            animation: pulseGlow 2s infinite;
+            animation: softPulse 2s infinite;
         }
 
-        @keyframes pulseGlow {
-            0% { box-shadow: 0 0 0 0 rgba(88,101,242,0.2); border-color: rgba(88,101,242,0.3); }
-            50% { box-shadow: 0 0 0 4px rgba(88,101,242,0.3); border-color: rgba(88,101,242,0.6); }
-            100% { box-shadow: 0 0 0 0 rgba(88,101,242,0.2); border-color: rgba(88,101,242,0.3); }
-        }
-
-        .clock-icon {
-            font-size: 1.2rem;
+        @keyframes softPulse {
+            0% { box-shadow: 0 0 0 0 rgba(88,101,242,0.1); }
+            50% { box-shadow: 0 0 0 6px rgba(88,101,242,0.2); }
+            100% { box-shadow: 0 0 0 0 rgba(88,101,242,0.1); }
         }
 
         .clock-time {
-            font-family: 'Inter', monospace;
+            font-family: monospace;
             font-size: 1.3rem;
             font-weight: 600;
             letter-spacing: 1px;
         }
 
-        .clock-label {
-            font-size: 0.75rem;
-            color: #9aaec5;
-        }
-
-        /* 히어로 */
+        /* 히어로 - 배너 입점 안내 */
         .hero {
-            padding: 60px 0 40px;
+            padding: 50px 0 40px;
             text-align: center;
         }
 
-        .discord-icon {
-            font-size: 4rem;
-            margin-bottom: 20px;
-            animation: float 3s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+        .hero-icon {
+            font-size: 3.5rem;
+            margin-bottom: 16px;
         }
 
         .hero h1 {
-            font-size: 2.8rem;
+            font-size: 2.5rem;
             font-weight: 700;
             background: linear-gradient(135deg, #FFFFFF, #9b87f5);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            margin-bottom: 20px;
+            margin-bottom: 16px;
         }
 
         .hero p {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             color: #9aaec5;
-            max-width: 700px;
-            margin: 0 auto 32px;
+            max-width: 650px;
+            margin: 0 auto;
         }
 
-        .trust-list {
+        .stats {
             display: flex;
             justify-content: center;
-            gap: 28px;
+            gap: 40px;
+            margin-top: 40px;
             flex-wrap: wrap;
-            margin-top: 30px;
         }
 
-        .trust-item {
+        .stat-item {
+            text-align: center;
             background: rgba(255,255,255,0.03);
-            backdrop-filter: blur(8px);
-            padding: 8px 24px;
+            padding: 12px 24px;
             border-radius: 60px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            border: 1px solid rgba(88,101,242,0.3);
+            min-width: 140px;
         }
 
-        .section-title {
+        .stat-number {
             font-size: 1.8rem;
+            font-weight: 700;
+            color: #5865F2;
+        }
+
+        /* 배너 섹션 */
+        .section-title {
+            font-size: 1.6rem;
             font-weight: 600;
-            margin: 48px 0 24px;
-            letter-spacing: -0.2px;
+            margin: 48px 0 12px;
         }
 
         .section-sub {
             color: #8a9bb5;
-            margin-bottom: 40px;
+            margin-bottom: 32px;
+            font-size: 0.9rem;
         }
 
-        .card-grid {
+        .banner-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 28px;
             margin-bottom: 60px;
         }
 
-        .guarantee-card {
-            background: rgba(18, 22, 45, 0.7);
-            backdrop-filter: blur(10px);
-            border-radius: 28px;
-            padding: 28px;
-            border: 1px solid rgba(88,101,242,0.2);
-            transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-            animation: fadeInUp 0.5s ease-out;
+        .banner-card {
+            background: #0f1424;
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid #1e2a3a;
+            transition: all 0.3s ease;
+            cursor: pointer;
         }
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .guarantee-card:hover {
+        .banner-card:hover {
+            transform: translateY(-6px);
             border-color: #5865F2;
-            transform: translateY(-6px) scale(1.01);
-            background: rgba(30, 36, 70, 0.8);
-            box-shadow: 0 20px 35px -12px rgba(88,101,242,0.2);
+            box-shadow: 0 20px 30px -12px rgba(88,101,242,0.25);
         }
 
-        .card-header {
+        .banner-image {
+            width: 100%;
+            height: 160px;
+            background: linear-gradient(135deg, #1a1f35, #0f1424);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            border-bottom: 1px solid #2a2f45;
+        }
+
+        .banner-info {
+            padding: 20px;
+        }
+
+        .banner-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 8px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 16px;
         }
 
-        .company {
-            font-size: 1.5rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, #fff, #b9a9ff);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        .verify {
-            padding: 4px 12px;
+        .verify-badge {
+            background: #1f3a2c;
+            color: #8bd96b;
+            padding: 4px 10px;
             border-radius: 40px;
             font-size: 0.7rem;
             font-weight: 600;
         }
 
-        .verify.discord {
-            background: #2c2f48;
-            color: #9b87f5;
-        }
-
-        .limit {
+        .banner-desc {
+            color: #9aaec5;
             font-size: 0.85rem;
-            color: #cbd5e6;
             margin: 12px 0;
         }
 
-        .btn-detail {
+        .btn-banner {
             background: #5865F2;
             border: none;
             width: 100%;
             padding: 12px;
             border-radius: 40px;
             font-weight: 600;
-            margin-top: 20px;
+            margin-top: 12px;
             cursor: pointer;
             transition: 0.2s;
             color: white;
         }
 
-        .btn-detail:hover {
+        .btn-banner:hover {
             background: #4752c4;
-            transform: scale(0.98);
         }
 
+        /* 입점 안내 박스 */
         .info-box {
             background: rgba(12, 17, 32, 0.6);
             backdrop-filter: blur(12px);
@@ -277,22 +256,29 @@
             padding: 32px;
             margin: 40px 0;
             border: 1px solid rgba(88,101,242,0.2);
+            text-align: center;
         }
 
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 28px;
-            margin-top: 24px;
+        .info-box h3 {
+            font-size: 1.4rem;
+            margin-bottom: 20px;
         }
 
-        .info-item h4 {
-            color: #9b87f5;
-            margin-bottom: 12px;
+        .btn-apply {
+            background: #2a5f3a;
+            border: none;
+            padding: 14px 40px;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 1rem;
+            margin-top: 20px;
+            cursor: pointer;
+            color: white;
+            transition: 0.2s;
         }
 
-        .info-item p {
-            color: #b9c7d9;
+        .btn-apply:hover {
+            background: #1e8449;
         }
 
         .cta-block {
@@ -300,13 +286,8 @@
             border-radius: 48px;
             padding: 48px 32px;
             text-align: center;
-            margin: 60px 0;
+            margin: 40px 0 60px;
             border: 1px solid #2a3448;
-        }
-
-        .cta-block h3 {
-            font-size: 1.8rem;
-            margin-bottom: 12px;
         }
 
         .btn-cta {
@@ -318,31 +299,24 @@
             font-size: 1rem;
             margin-top: 20px;
             cursor: pointer;
-            transition: 0.2s;
-            color: white;
-        }
-
-        .btn-cta:hover {
-            background: #4752c4;
-            transform: scale(0.98);
         }
 
         .footer {
             border-top: 1px solid #1a1f2e;
-            padding: 40px 0;
+            padding: 32px 0;
             text-align: center;
             color: #6a7c9e;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
         }
 
         @media (max-width: 720px) {
             .hero h1 {
-                font-size: 2rem;
+                font-size: 1.8rem;
             }
             .nav {
                 display: none;
             }
-            .card-grid {
+            .banner-grid {
                 grid-template-columns: 1fr;
             }
         }
@@ -352,13 +326,13 @@
 
 <header class="header">
     <div class="container header-inner">
-        <div class="logo">🎧 DISCORD HUB</div>
+        <div class="logo">🎯 BANNER MARKET</div>
         <div class="nav">
-            <a href="#">서버 탐색</a>
-            <a href="#">파트너</a>
-            <a href="#">디스코드</a>
+            <a href="#">배너광고</a>
+            <a href="#">입점문의</a>
+            <a href="#">검증기준</a>
         </div>
-        <div class="badge">💬 활성 멤버 2,300+</div>
+        <div class="badge">✅ 검증된 파트너만 입점</div>
     </div>
 </header>
 
@@ -367,101 +341,90 @@
         <!-- 실시간 시계 -->
         <div class="clock-container">
             <div class="live-clock">
-                <span class="clock-icon">🕒</span>
+                <span>🕒</span>
                 <span class="clock-time" id="kstTime">--:--:--</span>
-                <span class="clock-label">KST (UTC+9)</span>
-                <span class="clock-icon" style="animation: pulse 1s infinite;">●</span>
+                <span>KST</span>
+                <span style="animation: pulse 1s infinite;">●</span>
             </div>
         </div>
 
         <div class="hero">
-            <div class="discord-icon">💬🎮</div>
-            <h1>함께하는 디스코드<br>커뮤니티에 오신 걸 환영합니다</h1>
-            <p>다양한 관심사, 게임, 소통 공간에서 새로운 인연을 만나보세요.</p>
-            <div class="trust-list">
-                <span class="trust-item">✅ 24시간 활발한 소통</span>
-                <span class="trust-item">🎮 게임 & 취미 채널</span>
-                <span class="trust-item">🎤 보이스 채팅</span>
+            <div class="hero-icon">📢</div>
+            <h1>검증된 디스코드 업체<br>배너 광고 플랫폼</h1>
+            <p>신뢰할 수 있는 파트너사만 엄선하여 배너를 게재합니다.<br>입점 문의는 하단 배너 신청을 통해 가능합니다.</p>
+            <div class="stats">
+                <div class="stat-item"><div class="stat-number">12+</div><div>입점 업체</div></div>
+                <div class="stat-item"><div class="stat-number">99%</div><div>검증 통과율</div></div>
+                <div class="stat-item"><div class="stat-number">24/7</div><div>모니터링</div></div>
             </div>
         </div>
 
         <div>
-            <h2 class="section-title">🌟 추천 디스코드 서버</h2>
-            <div class="section-sub">검증된 파트너 서버 · 실시간 인기 커뮤니티</div>
-            <div class="card-grid" id="cardGrid">
-                <!-- 초기 3개 카드 (배너 준비중) -->
-                <div class="guarantee-card">
-                    <div class="card-header">
-                        <span class="company">📢 배너 준비중</span>
-                        <span class="verify discord">대기중</span>
+            <h2 class="section-title">🏆 검증된 배너 파트너</h2>
+            <div class="section-sub">실시간 검증 시스템 · 안전한 광고 운영</div>
+            <div class="banner-grid" id="bannerGrid">
+                <!-- 초기 3개 배너 -->
+                <div class="banner-card" data-url="https://discord.gg/example">
+                    <div class="banner-image">🎯</div>
+                    <div class="banner-info">
+                        <div class="banner-name">
+                            배너 준비중
+                            <span class="verify-badge">검증완료</span>
+                        </div>
+                        <div class="banner-desc">디스코드 파트너사 입점 대기중입니다. 곧 새로운 배너가 등록됩니다.</div>
+                        <button class="btn-banner">배너 바로가기</button>
                     </div>
-                    <div>✨ 디스코드 서버 자리입니다</div>
-                    <div>🎯 곧 새로운 커뮤니티가 입점합니다</div>
-                    <div class="limit">💜 관심 있으시면 문의해주세요</div>
-                    <button class="btn-detail" data-name="배너 준비중">서버 정보 보기</button>
                 </div>
-                <div class="guarantee-card">
-                    <div class="card-header">
-                        <span class="company">📢 배너 준비중</span>
-                        <span class="verify discord">대기중</span>
+                <div class="banner-card" data-url="https://discord.gg/example">
+                    <div class="banner-image">🎮</div>
+                    <div class="banner-info">
+                        <div class="banner-name">
+                            배너 준비중
+                            <span class="verify-badge">검증완료</span>
+                        </div>
+                        <div class="banner-desc">디스코드 파트너사 입점 대기중입니다. 곧 새로운 배너가 등록됩니다.</div>
+                        <button class="btn-banner">배너 바로가기</button>
                     </div>
-                    <div>✨ 디스코드 서버 자리입니다</div>
-                    <div>🎯 곧 새로운 커뮤니티가 입점합니다</div>
-                    <div class="limit">💜 관심 있으시면 문의해주세요</div>
-                    <button class="btn-detail" data-name="배너 준비중">서버 정보 보기</button>
                 </div>
-                <div class="guarantee-card">
-                    <div class="card-header">
-                        <span class="company">📢 배너 준비중</span>
-                        <span class="verify discord">대기중</span>
+                <div class="banner-card" data-url="https://discord.gg/example">
+                    <div class="banner-image">💎</div>
+                    <div class="banner-info">
+                        <div class="banner-name">
+                            배너 준비중
+                            <span class="verify-badge">검증완료</span>
+                        </div>
+                        <div class="banner-desc">디스코드 파트너사 입점 대기중입니다. 곧 새로운 배너가 등록됩니다.</div>
+                        <button class="btn-banner">배너 바로가기</button>
                     </div>
-                    <div>✨ 디스코드 서버 자리입니다</div>
-                    <div>🎯 곧 새로운 커뮤니티가 입점합니다</div>
-                    <div class="limit">💜 관심 있으시면 문의해주세요</div>
-                    <button class="btn-detail" data-name="배너 준비중">서버 정보 보기</button>
                 </div>
             </div>
         </div>
 
         <div class="info-box">
-            <h3>🎯 디스코드 커뮤니티 가이드</h3>
-            <div class="info-grid">
-                <div class="info-item">
-                    <h4>🤝 활발한 소통</h4>
-                    <p>일상, 게임, 음악 등 다양한 주제로 자유롭게 대화해요</p>
-                </div>
-                <div class="info-item">
-                    <h4>🛡️ 안전한 환경</h4>
-                    <p>운영진 24시간 모니터링, 클린한 커뮤니티를 지켜요</p>
-                </div>
-                <div class="info-item">
-                    <h4>🎁 다양한 이벤트</h4>
-                    <p>정기적인 게임 나이트, 친목 이벤트가 진행됩니다</p>
-                </div>
-            </div>
-            <div class="caution">※ 모든 서버는 파트너 정책에 따라 검증되었습니다.</div>
+            <h3>📢 디스코드 업체 배너 입점 안내</h3>
+            <p>✅ 검증된 업체만 입점 가능 | 🚀 월 10만 이상 노출 | 🔒 보증금 시스템 운영</p>
+            <button class="btn-apply" id="applyBtn">📝 배너 입점 신청하기</button>
         </div>
 
         <div class="cta-block">
-            <h3>📢 함께하고 싶다면?</h3>
-            <p>지금 바로 디스코드 커뮤니티에 참여하고 새로운 친구들을 만나보세요</p>
-            <button class="btn-cta" id="ctaBtn">전체 서버 보기 (9개)</button>
+            <h3>🏷️ 전체 배너 보기</h3>
+            <p>현재 등록된 검증 배너를 확인하세요 (총 9개 배너 운영)</p>
+            <button class="btn-cta" id="ctaBtn">전체 배너 보기 (9개)</button>
         </div>
     </div>
 </main>
 
 <footer class="footer">
     <div class="container">
-        <p>본 사이트는 디스코드 커뮤니티 홍보 및 안내를 제공합니다. 함께하는 공간, 즐거운 소통을 지향합니다.</p>
-        <p style="margin-top: 12px;">© DISCORD HUB — 당신의 새로운 커뮤니티를 소개합니다.</p>
+        <p>본 사이트는 검증된 디스코드 업체 배너 광고 플랫폼입니다. 무단 배너 게재 시 법적 제재를 받을 수 있습니다.</p>
+        <p style="margin-top: 8px;">© BANNER MARKET — 신뢰할 수 있는 디스코드 파트너사만 입점합니다.</p>
     </div>
 </footer>
 
 <script>
-    // 실시간 UTC -> KST 시계 (애니메이션 포함)
+    // 실시간 KST 시계
     function updateClock() {
         const now = new Date();
-        // KST = UTC+9
         const kstNow = new Date(now.getTime() + (9 * 60 * 60 * 1000));
         const hours = String(kstNow.getUTCHours()).padStart(2, '0');
         const minutes = String(kstNow.getUTCMinutes()).padStart(2, '0');
@@ -471,68 +434,85 @@
     updateClock();
     setInterval(updateClock, 1000);
 
-    // 추가될 6개 카드 데이터 (모두 배너 준비중)
-    const additionalCards = [
-        { name: "📢 배너 준비중", verify: "대기중", verifyType: "discord", desc: "✨ 디스코드 서버 자리입니다", speedText: "🎯 곧 새로운 커뮤니티가 입점합니다", limit: "💜 관심 있으시면 문의해주세요" },
-        { name: "📢 배너 준비중", verify: "대기중", verifyType: "discord", desc: "✨ 디스코드 서버 자리입니다", speedText: "🎯 곧 새로운 커뮤니티가 입점합니다", limit: "💜 관심 있으시면 문의해주세요" },
-        { name: "📢 배너 준비중", verify: "대기중", verifyType: "discord", desc: "✨ 디스코드 서버 자리입니다", speedText: "🎯 곧 새로운 커뮤니티가 입점합니다", limit: "💜 관심 있으시면 문의해주세요" },
-        { name: "📢 배너 준비중", verify: "대기중", verifyType: "discord", desc: "✨ 디스코드 서버 자리입니다", speedText: "🎯 곧 새로운 커뮤니티가 입점합니다", limit: "💜 관심 있으시면 문의해주세요" },
-        { name: "📢 배너 준비중", verify: "대기중", verifyType: "discord", desc: "✨ 디스코드 서버 자리입니다", speedText: "🎯 곧 새로운 커뮤니티가 입점합니다", limit: "💜 관심 있으시면 문의해주세요" },
-        { name: "📢 배너 준비중", verify: "대기중", verifyType: "discord", desc: "✨ 디스코드 서버 자리입니다", speedText: "🎯 곧 새로운 커뮤니티가 입점합니다", limit: "💜 관심 있으시면 문의해주세요" }
-    ];
+    // 추가될 6개 배너 데이터 (모두 배너 준비중)
+    const additionalBanners = Array(6).fill().map((_, i) => ({
+        icon: ['🚀', '⚡', '🌟', '🎨', '💼', '🔔'][i],
+        name: "배너 준비중",
+        desc: "디스코드 파트너사 입점 대기중입니다. 곧 새로운 배너가 등록됩니다."
+    }));
 
     let isExpanded = false;
-    const cardGrid = document.getElementById('cardGrid');
+    const bannerGrid = document.getElementById('bannerGrid');
     const ctaBtn = document.getElementById('ctaBtn');
 
-    function createCard(cardData) {
+    function createBannerCard(data, index) {
         const card = document.createElement('div');
-        card.className = 'guarantee-card';
+        card.className = 'banner-card';
+        card.setAttribute('data-url', 'https://discord.gg/example');
         card.innerHTML = `
-            <div class="card-header">
-                <span class="company">${cardData.name}</span>
-                <span class="verify ${cardData.verifyType}">${cardData.verify}</span>
+            <div class="banner-image">${data.icon}</div>
+            <div class="banner-info">
+                <div class="banner-name">
+                    ${data.name}
+                    <span class="verify-badge">검증완료</span>
+                </div>
+                <div class="banner-desc">${data.desc}</div>
+                <button class="btn-banner">배너 바로가기</button>
             </div>
-            <div>${cardData.desc}</div>
-            <div>${cardData.speedText}</div>
-            <div class="limit">${cardData.limit}</div>
-            <button class="btn-detail" data-name="${cardData.name}">서버 정보 보기</button>
         `;
         return card;
     }
 
+    // 배너 클릭 이벤트 (링크 이동 처리)
+    function attachBannerEvents() {
+        document.querySelectorAll('.banner-card').forEach(card => {
+            const btn = card.querySelector('.btn-banner');
+            const url = card.getAttribute('data-url');
+            
+            // 카드 전체 클릭 시 이동 (선택사항)
+            card.style.cursor = 'pointer';
+            card.addEventListener('click', (e) => {
+                if (e.target.classList.contains('btn-banner')) return;
+                window.open(url, '_blank');
+            });
+            
+            if (btn) {
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    window.open(url, '_blank');
+                });
+            }
+        });
+    }
+
     ctaBtn.addEventListener('click', () => {
         if (!isExpanded) {
-            additionalCards.forEach(cardData => {
-                const newCard = createCard(cardData);
-                cardGrid.appendChild(newCard);
+            additionalBanners.forEach((data, idx) => {
+                const newCard = createBannerCard(data, idx);
+                bannerGrid.appendChild(newCard);
             });
             
             isExpanded = true;
-            ctaBtn.textContent = '전체 서버 보기 (9개) ✅';
+            ctaBtn.textContent = '전체 배너 보기 (9개) ✅';
             ctaBtn.style.background = '#2a5f3a';
             
-            document.querySelectorAll('.btn-detail').forEach(btn => {
-                btn.removeEventListener('click', handleDetailClick);
-                btn.addEventListener('click', handleDetailClick);
-            });
+            attachBannerEvents();
             
             setTimeout(() => {
                 document.querySelector('.section-title').scrollIntoView({ behavior: 'smooth', block: 'start' });
             }, 100);
         } else {
-            alert('✅ 이미 9개의 모든 서버가 표시되고 있습니다.');
+            alert('✅ 이미 9개의 모든 배너가 표시되고 있습니다.');
         }
     });
 
-    function handleDetailClick(e) {
-        const name = e.currentTarget.getAttribute('data-name');
-        alert(`💜 [${name}] 디스코드 서버 안내\n해당 서버는 검증된 커뮤니티입니다.\n자세한 링크는 관리자 문의 후 제공됩니다.`);
-    }
-
-    document.querySelectorAll('.btn-detail').forEach(btn => {
-        btn.addEventListener('click', handleDetailClick);
+    // 배너 입점 신청 버튼
+    document.getElementById('applyBtn').addEventListener('click', () => {
+        alert('📢 배너 입점 문의\n\n검증된 디스코드 업체만 입점 가능합니다.\n자세한 문의는 관리자에게 연락해주세요.\n\n📧 contact@bannermarket.com');
     });
+
+    // 초기 배너 이벤트 연결
+    attachBannerEvents();
 </script>
 </body>
 </html>
