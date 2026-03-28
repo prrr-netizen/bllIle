@@ -16,10 +16,7 @@
             font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
             color: #eef2ff;
             line-height: 1.5;
-            scroll-behavior: smooth;
         }
-
-        @import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap');
 
         .container {
             max-width: 1280px;
@@ -76,7 +73,6 @@
             color: #5865F2;
         }
 
-        /* 실시간 시계 */
         .clock-container {
             text-align: center;
             padding: 24px 0 16px;
@@ -107,15 +103,9 @@
             letter-spacing: 1px;
         }
 
-        /* 히어로 - 배너 입점 안내 */
         .hero {
             padding: 50px 0 40px;
             text-align: center;
-        }
-
-        .hero-icon {
-            font-size: 3.5rem;
-            margin-bottom: 16px;
         }
 
         .hero h1 {
@@ -157,7 +147,6 @@
             color: #5865F2;
         }
 
-        /* 배너 섹션 */
         .section-title {
             font-size: 1.6rem;
             font-weight: 600;
@@ -168,6 +157,63 @@
             color: #8a9bb5;
             margin-bottom: 32px;
             font-size: 0.9rem;
+        }
+
+        /* 배너 관리 패널 */
+        .admin-panel {
+            background: rgba(0,0,0,0.4);
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 30px;
+            border: 1px solid #2a2f45;
+        }
+
+        .admin-panel h3 {
+            font-size: 1rem;
+            margin-bottom: 15px;
+            color: #9b87f5;
+        }
+
+        .banner-input-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 12px;
+            align-items: center;
+            background: #0a0e1a;
+            padding: 12px;
+            border-radius: 16px;
+        }
+
+        .banner-input-row input {
+            background: #1a1f35;
+            border: 1px solid #2a2f45;
+            padding: 8px 12px;
+            border-radius: 12px;
+            color: white;
+            font-size: 0.8rem;
+            flex: 1;
+            min-width: 120px;
+        }
+
+        .banner-input-row input:focus {
+            outline: none;
+            border-color: #5865F2;
+        }
+
+        .banner-input-row button {
+            background: #5865F2;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            color: white;
+            font-size: 0.8rem;
+        }
+
+        .banner-input-row button:hover {
+            background: #4752c4;
         }
 
         .banner-grid {
@@ -199,8 +245,18 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            overflow: hidden;
+        }
+
+        .banner-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .banner-image .placeholder {
             font-size: 2.5rem;
-            border-bottom: 1px solid #2a2f45;
+            color: #5865F2;
         }
 
         .banner-info {
@@ -214,6 +270,8 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
         }
 
         .verify-badge {
@@ -240,28 +298,15 @@
             font-weight: 600;
             margin-top: 12px;
             cursor: pointer;
-            transition: 0.2s;
             color: white;
         }
 
-        .btn-banner:hover {
-            background: #4752c4;
-        }
-
-        /* 입점 안내 박스 */
         .info-box {
             background: rgba(12, 17, 32, 0.6);
-            backdrop-filter: blur(12px);
             border-radius: 32px;
             padding: 32px;
             margin: 40px 0;
-            border: 1px solid rgba(88,101,242,0.2);
             text-align: center;
-        }
-
-        .info-box h3 {
-            font-size: 1.4rem;
-            margin-bottom: 20px;
         }
 
         .btn-apply {
@@ -274,11 +319,6 @@
             margin-top: 20px;
             cursor: pointer;
             color: white;
-            transition: 0.2s;
-        }
-
-        .btn-apply:hover {
-            background: #1e8449;
         }
 
         .cta-block {
@@ -287,7 +327,6 @@
             padding: 48px 32px;
             text-align: center;
             margin: 40px 0 60px;
-            border: 1px solid #2a3448;
         }
 
         .btn-cta {
@@ -310,15 +349,10 @@
         }
 
         @media (max-width: 720px) {
-            .hero h1 {
-                font-size: 1.8rem;
-            }
-            .nav {
-                display: none;
-            }
-            .banner-grid {
-                grid-template-columns: 1fr;
-            }
+            .hero h1 { font-size: 1.8rem; }
+            .nav { display: none; }
+            .banner-input-row { flex-direction: column; }
+            .banner-input-row input { width: 100%; }
         }
     </style>
 </head>
@@ -338,20 +372,17 @@
 
 <main>
     <div class="container">
-        <!-- 실시간 시계 -->
         <div class="clock-container">
             <div class="live-clock">
                 <span>🕒</span>
                 <span class="clock-time" id="kstTime">--:--:--</span>
                 <span>KST</span>
-                <span style="animation: pulse 1s infinite;">●</span>
             </div>
         </div>
 
         <div class="hero">
-            <div class="hero-icon">📢</div>
             <h1>검증된 디스코드 업체<br>배너 광고 플랫폼</h1>
-            <p>신뢰할 수 있는 파트너사만 엄선하여 배너를 게재합니다.<br>입점 문의는 하단 배너 신청을 통해 가능합니다.</p>
+            <p>아래 입력창에 URL만 넣으면 바로 배너가 적용됩니다!</p>
             <div class="stats">
                 <div class="stat-item"><div class="stat-number">12+</div><div>입점 업체</div></div>
                 <div class="stat-item"><div class="stat-number">99%</div><div>검증 통과율</div></div>
@@ -359,56 +390,27 @@
             </div>
         </div>
 
+        <!-- 배너 입력 패널 -->
+        <div class="admin-panel">
+            <h3>📝 배너 설정 (URL만 넣으면 자동 적용)</h3>
+            <div id="bannerInputs"></div>
+        </div>
+
         <div>
             <h2 class="section-title">🏆 검증된 배너 파트너</h2>
-            <div class="section-sub">실시간 검증 시스템 · 안전한 광고 운영</div>
-            <div class="banner-grid" id="bannerGrid">
-                <!-- 초기 3개 배너 -->
-                <div class="banner-card" data-url="https://discord.gg/example">
-                    <div class="banner-image">🎯</div>
-                    <div class="banner-info">
-                        <div class="banner-name">
-                            배너 준비중
-                            <span class="verify-badge">검증완료</span>
-                        </div>
-                        <div class="banner-desc">디스코드 파트너사 입점 대기중입니다. 곧 새로운 배너가 등록됩니다.</div>
-                        <button class="btn-banner">배너 바로가기</button>
-                    </div>
-                </div>
-                <div class="banner-card" data-url="https://discord.gg/example">
-                    <div class="banner-image">🎮</div>
-                    <div class="banner-info">
-                        <div class="banner-name">
-                            배너 준비중
-                            <span class="verify-badge">검증완료</span>
-                        </div>
-                        <div class="banner-desc">디스코드 파트너사 입점 대기중입니다. 곧 새로운 배너가 등록됩니다.</div>
-                        <button class="btn-banner">배너 바로가기</button>
-                    </div>
-                </div>
-                <div class="banner-card" data-url="https://discord.gg/example">
-                    <div class="banner-image">💎</div>
-                    <div class="banner-info">
-                        <div class="banner-name">
-                            배너 준비중
-                            <span class="verify-badge">검증완료</span>
-                        </div>
-                        <div class="banner-desc">디스코드 파트너사 입점 대기중입니다. 곧 새로운 배너가 등록됩니다.</div>
-                        <button class="btn-banner">배너 바로가기</button>
-                    </div>
-                </div>
-            </div>
+            <div class="section-sub">JPG, PNG, GIF 모두 지원 | 아래 입력창에서 직접 수정 가능</div>
+            <div class="banner-grid" id="bannerGrid"></div>
         </div>
 
         <div class="info-box">
             <h3>📢 디스코드 업체 배너 입점 안내</h3>
-            <p>✅ 검증된 업체만 입점 가능 | 🚀 월 10만 이상 노출 | 🔒 보증금 시스템 운영</p>
+            <p>✅ 검증된 업체만 입점 가능 | 🚀 월 10만 이상 노출 | 🎬 GIF 배너 지원</p>
             <button class="btn-apply" id="applyBtn">📝 배너 입점 신청하기</button>
         </div>
 
         <div class="cta-block">
             <h3>🏷️ 전체 배너 보기</h3>
-            <p>현재 등록된 검증 배너를 확인하세요 (총 9개 배너 운영)</p>
+            <p>현재 등록된 검증 배너를 확인하세요 (총 9개 배너)</p>
             <button class="btn-cta" id="ctaBtn">전체 배너 보기 (9개)</button>
         </div>
     </div>
@@ -416,103 +418,139 @@
 
 <footer class="footer">
     <div class="container">
-        <p>본 사이트는 검증된 디스코드 업체 배너 광고 플랫폼입니다. 무단 배너 게재 시 법적 제재를 받을 수 있습니다.</p>
-        <p style="margin-top: 8px;">© BANNER MARKET — 신뢰할 수 있는 디스코드 파트너사만 입점합니다.</p>
+        <p>본 사이트는 검증된 디스코드 업체 배너 광고 플랫폼입니다. JPG, PNG, GIF 모두 지원.</p>
+        <p>© BANNER MARKET — 신뢰할 수 있는 디스코드 파트너사만 입점합니다.</p>
     </div>
 </footer>
 
 <script>
-    // 실시간 KST 시계
+    // 실시간 시계
     function updateClock() {
         const now = new Date();
         const kstNow = new Date(now.getTime() + (9 * 60 * 60 * 1000));
-        const hours = String(kstNow.getUTCHours()).padStart(2, '0');
-        const minutes = String(kstNow.getUTCMinutes()).padStart(2, '0');
-        const seconds = String(kstNow.getUTCSeconds()).padStart(2, '0');
-        document.getElementById('kstTime').textContent = `${hours}:${minutes}:${seconds}`;
+        document.getElementById('kstTime').textContent = 
+            `${String(kstNow.getUTCHours()).padStart(2,'0')}:${String(kstNow.getUTCMinutes()).padStart(2,'0')}:${String(kstNow.getUTCSeconds()).padStart(2,'0')}`;
     }
     updateClock();
     setInterval(updateClock, 1000);
 
-    // 추가될 6개 배너 데이터 (모두 배너 준비중)
-    const additionalBanners = Array(6).fill().map((_, i) => ({
-        icon: ['🚀', '⚡', '🌟', '🎨', '💼', '🔔'][i],
-        name: "배너 준비중",
-        desc: "디스코드 파트너사 입점 대기중입니다. 곧 새로운 배너가 등록됩니다."
-    }));
+    // 배너 데이터 (초기 3개)
+    let banners = [
+        { imgUrl: null, name: "배너 준비중", desc: "GIF/이미지 배너 등록 가능", link: "https://discord.gg/example1" },
+        { imgUrl: null, name: "배너 준비중", desc: "GIF/이미지 배너 등록 가능", link: "https://discord.gg/example2" },
+        { imgUrl: null, name: "배너 준비중", desc: "GIF/이미지 배너 등록 가능", link: "https://discord.gg/example3" }
+    ];
 
     let isExpanded = false;
-    const bannerGrid = document.getElementById('bannerGrid');
-    const ctaBtn = document.getElementById('ctaBtn');
 
-    function createBannerCard(data, index) {
-        const card = document.createElement('div');
-        card.className = 'banner-card';
-        card.setAttribute('data-url', 'https://discord.gg/example');
-        card.innerHTML = `
-            <div class="banner-image">${data.icon}</div>
-            <div class="banner-info">
-                <div class="banner-name">
-                    ${data.name}
-                    <span class="verify-badge">검증완료</span>
-                </div>
-                <div class="banner-desc">${data.desc}</div>
-                <button class="btn-banner">배너 바로가기</button>
-            </div>
-        `;
-        return card;
-    }
-
-    // 배너 클릭 이벤트 (링크 이동 처리)
-    function attachBannerEvents() {
-        document.querySelectorAll('.banner-card').forEach(card => {
-            const btn = card.querySelector('.btn-banner');
-            const url = card.getAttribute('data-url');
+    // 배너 렌더링 함수
+    function renderBanners() {
+        const grid = document.getElementById('bannerGrid');
+        grid.innerHTML = '';
+        banners.forEach((banner, idx) => {
+            const card = document.createElement('div');
+            card.className = 'banner-card';
+            card.setAttribute('data-url', banner.link);
             
-            // 카드 전체 클릭 시 이동 (선택사항)
-            card.style.cursor = 'pointer';
+            const imageHtml = banner.imgUrl 
+                ? `<img src="${banner.imgUrl}" alt="${banner.name} 배너">`
+                : `<div class="placeholder">${['🎯', '🎮', '💎'][idx % 3]}</div>`;
+            
+            card.innerHTML = `
+                <div class="banner-image">${imageHtml}</div>
+                <div class="banner-info">
+                    <div class="banner-name">
+                        ${banner.name}
+                        <span class="verify-badge">검증완료</span>
+                    </div>
+                    <div class="banner-desc">${banner.desc}</div>
+                    <button class="btn-banner">배너 바로가기</button>
+                </div>
+            `;
+            
             card.addEventListener('click', (e) => {
                 if (e.target.classList.contains('btn-banner')) return;
-                window.open(url, '_blank');
+                if (banner.link && !banner.link.includes('example')) {
+                    window.open(banner.link, '_blank');
+                } else {
+                    alert('🔜 준비 중인 배너입니다.');
+                }
             });
             
-            if (btn) {
-                btn.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    window.open(url, '_blank');
-                });
-            }
+            const btn = card.querySelector('.btn-banner');
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                if (banner.link && !banner.link.includes('example')) {
+                    window.open(banner.link, '_blank');
+                } else {
+                    alert('🔜 준비 중인 배너입니다.');
+                }
+            });
+            
+            grid.appendChild(card);
         });
     }
 
-    ctaBtn.addEventListener('click', () => {
+    // 입력창 생성
+    function renderInputs() {
+        const container = document.getElementById('bannerInputs');
+        container.innerHTML = '';
+        banners.forEach((banner, idx) => {
+            const row = document.createElement('div');
+            row.className = 'banner-input-row';
+            row.innerHTML = `
+                <span style="min-width:40px;">#${idx+1}</span>
+                <input type="text" placeholder="이미지/GIF URL (JPG, PNG, GIF)" id="imgUrl_${idx}" value="${banner.imgUrl || ''}">
+                <input type="text" placeholder="업체명" id="name_${idx}" value="${banner.name}">
+                <input type="text" placeholder="설명" id="desc_${idx}" value="${banner.desc}">
+                <input type="text" placeholder="링크 (discord.gg/...)" id="link_${idx}" value="${banner.link}">
+                <button onclick="updateBanner(${idx})">적용</button>
+            `;
+            container.appendChild(row);
+        });
+    }
+
+    // 배너 업데이트 함수 (전역)
+    window.updateBanner = function(idx) {
+        const imgUrl = document.getElementById(`imgUrl_${idx}`).value;
+        const name = document.getElementById(`name_${idx}`).value;
+        const desc = document.getElementById(`desc_${idx}`).value;
+        const link = document.getElementById(`link_${idx}`).value;
+        
+        banners[idx] = { imgUrl: imgUrl || null, name, desc, link };
+        renderBanners();
+        alert(`✅ 배너 #${idx+1}가 업데이트되었습니다!`);
+    };
+
+    // 전체보기 버튼
+    document.getElementById('ctaBtn').addEventListener('click', () => {
         if (!isExpanded) {
-            additionalBanners.forEach((data, idx) => {
-                const newCard = createBannerCard(data, idx);
-                bannerGrid.appendChild(newCard);
-            });
-            
+            const additional = [
+                { imgUrl: null, name: "배너 준비중", desc: "GIF/이미지 배너 등록 가능", link: "https://discord.gg/example4" },
+                { imgUrl: null, name: "배너 준비중", desc: "GIF/이미지 배너 등록 가능", link: "https://discord.gg/example5" },
+                { imgUrl: null, name: "배너 준비중", desc: "GIF/이미지 배너 등록 가능", link: "https://discord.gg/example6" },
+                { imgUrl: null, name: "배너 준비중", desc: "GIF/이미지 배너 등록 가능", link: "https://discord.gg/example7" },
+                { imgUrl: null, name: "배너 준비중", desc: "GIF/이미지 배너 등록 가능", link: "https://discord.gg/example8" },
+                { imgUrl: null, name: "배너 준비중", desc: "GIF/이미지 배너 등록 가능", link: "https://discord.gg/example9" }
+            ];
+            banners = [...banners, ...additional];
             isExpanded = true;
-            ctaBtn.textContent = '전체 배너 보기 (9개) ✅';
-            ctaBtn.style.background = '#2a5f3a';
-            
-            attachBannerEvents();
-            
-            setTimeout(() => {
-                document.querySelector('.section-title').scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }, 100);
+            renderBanners();
+            renderInputs();
+            document.getElementById('ctaBtn').textContent = '전체 배너 보기 (9개) ✅';
+            document.getElementById('ctaBtn').style.background = '#2a5f3a';
         } else {
             alert('✅ 이미 9개의 모든 배너가 표시되고 있습니다.');
         }
     });
 
-    // 배너 입점 신청 버튼
     document.getElementById('applyBtn').addEventListener('click', () => {
-        alert('📢 배너 입점 문의\n\n검증된 디스코드 업체만 입점 가능합니다.\n자세한 문의는 관리자에게 연락해주세요.\n\n📧 contact@bannermarket.com');
+        alert('📢 배너 입점 문의\n\n✅ 검증된 디스코드 업체만 입점 가능\n🎬 JPG, PNG, GIF 배너 모두 지원\n\n문의: contact@bannermarket.com');
     });
 
-    // 초기 배너 이벤트 연결
-    attachBannerEvents();
+    // 초기 렌더링
+    renderBanners();
+    renderInputs();
 </script>
 </body>
 </html>
