@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>배너 광고 플랫폼 | 프리미엄 파트너</title>
+    <title>프리미엄 배너 광고 | TOP 파트너</title>
     <style>
         * {
             margin: 0;
@@ -12,9 +12,9 @@
         }
 
         body {
-            background: linear-gradient(135deg, #0a0c1a 0%, #0e1122 100%);
+            background: linear-gradient(135deg, #0a0c1a 0%, #0c0f1f 100%);
             font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-            color: #eef2ff;
+            color: #ffffff;
             line-height: 1.4;
         }
 
@@ -24,12 +24,12 @@
             padding: 0 28px;
         }
 
-        /* 헤더 */
+        /* 헤더 - 황금 포인트 */
         .header {
-            border-bottom: 1px solid rgba(255,255,255,0.08);
+            border-bottom: 2px solid rgba(255, 200, 50, 0.3);
             padding: 14px 0;
             backdrop-filter: blur(12px);
-            background: rgba(10,12,26,0.8);
+            background: rgba(8, 10, 20, 0.9);
             position: sticky;
             top: 0;
             z-index: 100;
@@ -46,10 +46,11 @@
         .logo {
             font-weight: 800;
             font-size: 1.5rem;
-            background: linear-gradient(135deg, #5865F2, #a88bff);
+            background: linear-gradient(135deg, #FFD966, #FFA500, #FF8C00);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
+            text-shadow: 0 0 15px rgba(255, 165, 0, 0.3);
         }
 
         .nav {
@@ -59,16 +60,16 @@
         }
 
         .nav a {
-            color: #b9c7d9;
+            color: #e0e0e0;
             text-decoration: none;
-            font-weight: 500;
+            font-weight: 600;
             font-size: 0.9rem;
             transition: 0.2s;
             cursor: pointer;
         }
 
         .nav a:hover {
-            color: #5865F2;
+            color: #FFA500;
         }
 
         /* 실시간 시계 */
@@ -81,35 +82,50 @@
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            background: rgba(88,101,242,0.1);
+            background: rgba(0,0,0,0.5);
             backdrop-filter: blur(8px);
-            padding: 6px 24px;
+            padding: 8px 28px;
             border-radius: 60px;
-            border: 1px solid rgba(88,101,242,0.3);
+            border: 1px solid rgba(255, 165, 0, 0.5);
+            box-shadow: 0 0 10px rgba(255, 165, 0, 0.2);
         }
 
         .clock-time {
             font-family: monospace;
-            font-size: 1.2rem;
-            font-weight: 500;
-            letter-spacing: 1px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: #FFD966;
         }
 
-        /* 히어로 */
+        /* 히어로 - 토토 스타일 */
         .hero {
             text-align: center;
-            padding: 40px 0 30px;
+            padding: 35px 0 25px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #FFA500, #FF4500);
+            padding: 6px 20px;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #fff;
+            box-shadow: 0 0 15px rgba(255, 69, 0, 0.5);
         }
 
         .animated-title {
             font-size: 2.2rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, #FFFFFF, #b9a9ff, #8b74ff);
+            font-weight: 800;
+            background: linear-gradient(135deg, #FFD966, #FFA500, #FF8C00);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
             letter-spacing: -0.5px;
-            animation: fadeInUp 0.8s ease-out, glowPulse 2.5s infinite ease-in-out;
+            animation: fadeInUp 0.8s ease-out;
+            text-shadow: 0 0 20px rgba(255, 165, 0, 0.3);
         }
 
         @keyframes fadeInUp {
@@ -123,61 +139,61 @@
             }
         }
 
-        @keyframes glowPulse {
-            0% {
-                text-shadow: 0 0 0px rgba(88,101,242,0);
-            }
-            50% {
-                text-shadow: 0 0 12px rgba(88,101,242,0.5);
-            }
-            100% {
-                text-shadow: 0 0 0px rgba(88,101,242,0);
-            }
-        }
-
         .hero .sub {
-            font-size: 1rem;
-            color: #aab4d0;
+            font-size: 0.95rem;
+            color: #cccccc;
             margin-top: 12px;
             opacity: 0.9;
         }
 
-        /* 통계 */
+        /* 통계 - 강조 */
         .stats {
             display: flex;
             justify-content: center;
-            gap: 48px;
-            margin-top: 32px;
+            gap: 40px;
+            margin-top: 30px;
             flex-wrap: wrap;
         }
 
         .stat-item {
             text-align: center;
-            background: rgba(255,255,255,0.03);
-            padding: 10px 28px;
+            background: rgba(0,0,0,0.5);
+            padding: 12px 28px;
             border-radius: 60px;
-            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 165, 0, 0.3);
+            min-width: 130px;
         }
 
         .stat-number {
             font-size: 1.8rem;
-            font-weight: 700;
-            color: #5865F2;
+            font-weight: 800;
+            color: #FFA500;
         }
 
         .stat-label {
-            font-size: 0.75rem;
-            color: #8a9bb5;
+            font-size: 0.7rem;
+            color: #aaa;
             letter-spacing: 0.5px;
         }
 
         /* 배너 섹션 */
         .section-title {
             font-size: 1.5rem;
-            font-weight: 600;
+            font-weight: 700;
             text-align: center;
             margin: 40px 0 24px;
+            color: #FFD966;
             letter-spacing: -0.3px;
+            position: relative;
+        }
+
+        .section-title:before,
+        .section-title:after {
+            content: "◆";
+            font-size: 0.8rem;
+            color: #FFA500;
+            margin: 0 12px;
+            opacity: 0.6;
         }
 
         .banner-grid {
@@ -188,19 +204,19 @@
         }
 
         .banner-card {
-            background: rgba(15, 20, 36, 0.8);
-            backdrop-filter: blur(8px);
-            border-radius: 24px;
+            background: linear-gradient(145deg, #11162a, #0c1022);
+            border-radius: 20px;
             overflow: hidden;
-            border: 1px solid rgba(88,101,242,0.2);
+            border: 1px solid rgba(255, 165, 0, 0.3);
             transition: all 0.3s ease;
             cursor: pointer;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.5);
         }
 
         .banner-card:hover {
             transform: translateY(-6px);
-            border-color: #5865F2;
-            box-shadow: 0 20px 30px -12px rgba(88,101,242,0.3);
+            border-color: #FFA500;
+            box-shadow: 0 15px 30px rgba(255, 165, 0, 0.2);
         }
 
         .banner-image {
@@ -217,16 +233,11 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.3s ease;
-        }
-
-        .banner-card:hover .banner-image img {
-            transform: scale(1.02);
         }
 
         .banner-image .placeholder {
             font-size: 2.5rem;
-            color: #5865F2;
+            color: #FFA500;
         }
 
         .banner-info {
@@ -242,89 +253,92 @@
             align-items: center;
             flex-wrap: wrap;
             gap: 8px;
+            color: #FFD966;
         }
 
         .verify-badge {
-            background: rgba(88,101,242,0.2);
-            color: #a88bff;
+            background: linear-gradient(135deg, #FFA500, #FF4500);
+            color: #fff;
             padding: 4px 12px;
             border-radius: 30px;
-            font-size: 0.7rem;
-            font-weight: 600;
-            border: 1px solid rgba(88,101,242,0.3);
+            font-size: 0.65rem;
+            font-weight: 700;
+            box-shadow: 0 0 8px rgba(255, 69, 0, 0.5);
         }
 
         .banner-desc {
-            color: #9aaec5;
+            color: #aaa;
             font-size: 0.85rem;
             margin: 12px 0;
             line-height: 1.4;
         }
 
         .btn-banner {
-            background: linear-gradient(135deg, #5865F2, #4752c4);
+            background: linear-gradient(135deg, #FFA500, #FF4500);
             border: none;
             width: 100%;
             padding: 12px;
             border-radius: 40px;
-            font-weight: 600;
-            font-size: 0.85rem;
+            font-weight: 700;
+            font-size: 0.9rem;
             margin-top: 12px;
             cursor: pointer;
             color: white;
             transition: all 0.2s;
+            box-shadow: 0 4px 12px rgba(255, 69, 0, 0.3);
         }
 
         .btn-banner:hover {
-            background: linear-gradient(135deg, #4752c4, #3a45b0);
+            background: linear-gradient(135deg, #FF8C00, #FF2A00);
             transform: scale(0.98);
         }
 
-        /* 입점 안내 박스 */
+        /* 입점 안내 박스 - 황금 테두리 */
         .info-box {
-            background: rgba(12, 17, 32, 0.6);
-            backdrop-filter: blur(12px);
+            background: linear-gradient(145deg, #11162a, #0c1022);
             border-radius: 32px;
             padding: 40px 32px;
             margin: 40px 0 50px;
             text-align: center;
-            border: 1px solid rgba(88,101,242,0.2);
+            border: 2px solid rgba(255, 165, 0, 0.5);
+            box-shadow: 0 0 20px rgba(255, 165, 0, 0.1);
         }
 
         .info-box h3 {
             font-size: 1.4rem;
             margin-bottom: 16px;
-            color: #eef2ff;
+            color: #FFD966;
         }
 
         .info-box p {
-            color: #9aaec5;
+            color: #aaa;
             margin-bottom: 24px;
         }
 
         .btn-apply {
-            background: linear-gradient(135deg, #2a5f3a, #1e8449);
+            background: linear-gradient(135deg, #FFA500, #FF4500);
             border: none;
             padding: 14px 42px;
             border-radius: 60px;
-            font-weight: 600;
+            font-weight: 700;
             font-size: 1rem;
             cursor: pointer;
             color: white;
             transition: 0.2s;
+            box-shadow: 0 4px 15px rgba(255, 69, 0, 0.4);
         }
 
         .btn-apply:hover {
             transform: scale(0.98);
-            background: linear-gradient(135deg, #1e8449, #166b3a);
+            background: linear-gradient(135deg, #FF8C00, #FF2A00);
         }
 
         .footer {
-            border-top: 1px solid #1a1f2e;
+            border-top: 1px solid rgba(255, 165, 0, 0.2);
             padding: 32px 0;
             text-align: center;
-            color: #6a7c9e;
-            font-size: 0.75rem;
+            color: #777;
+            font-size: 0.7rem;
         }
 
         @media (max-width: 720px) {
@@ -332,13 +346,17 @@
                 font-size: 1.5rem;
             }
             .hero .sub {
-                font-size: 0.85rem;
+                font-size: 0.8rem;
             }
             .nav {
-                gap: 18px;
+                gap: 16px;
             }
             .stats {
-                gap: 20px;
+                gap: 16px;
+            }
+            .stat-item {
+                padding: 8px 18px;
+                min-width: 100px;
             }
             .stat-number {
                 font-size: 1.3rem;
@@ -353,10 +371,10 @@
 
 <header class="header">
     <div class="container header-inner">
-        <div class="logo">🎯 BANNER MARKET</div>
+        <div class="logo">⭐ TOP BANNER</div>
         <div class="nav">
-            <a id="allBannerNavBtn">🏷️ 전체 배너 (3/9)</a>
-            <a id="applyNavBtn">📝 입점신청</a>
+            <a id="allBannerNavBtn">🏆 전체 배너 (3/9)</a>
+            <a id="applyNavBtn">📢 입점신청</a>
             <a href="#">광고문의</a>
         </div>
     </div>
@@ -369,33 +387,35 @@
                 <span>🕒</span>
                 <span class="clock-time" id="kstTime">--:--:--</span>
                 <span>KST</span>
+                <span style="color:#FFA500;">●</span>
             </div>
         </div>
 
         <div class="hero">
+            <div class="hero-badge">⭐ PRIME PARTNER ⭐</div>
             <div class="animated-title">프리미엄 배너 광고 플랫폼</div>
-            <div class="sub">신뢰할 수 있는 파트너사만 엄선합니다</div>
+            <div class="sub">검증된 업체 · 최고의 수익률 · 24시간 안전 운영</div>
             <div class="stats">
                 <div class="stat-item"><div class="stat-number">50+</div><div class="stat-label">입점 업체</div></div>
                 <div class="stat-item"><div class="stat-number">99%</div><div class="stat-label">만족도</div></div>
-                <div class="stat-item"><div class="stat-number">24/7</div><div class="stat-label">실시간 운영</div></div>
+                <div class="stat-item"><div class="stat-number">24/7</div><div class="stat-label">실시간 모니터링</div></div>
             </div>
         </div>
 
-        <h2 class="section-title">✨ 검증된 배너 파트너</h2>
+        <h2 class="section-title">🔥 검증된 TOP 파트너 🔥</h2>
         <div class="banner-grid" id="bannerGrid"></div>
 
         <div class="info-box">
             <h3>📢 배너 광고 입점 안내</h3>
-            <p>검증된 업체만 입점 가능 | 월 10만 이상 노출 | 이미지/GIF 배너 지원</p>
-            <button class="btn-apply" id="applyBtn">📝 배너 입점 신청하기</button>
+            <p>✅ 검증된 업체만 입점 가능 | 🚀 월 10만 이상 노출 | 🎬 GIF/이미지 배너 지원 | 💰 최고 수익 보장</p>
+            <button class="btn-apply" id="applyBtn">📝 지금 바로 입점 신청하기</button>
         </div>
     </div>
 </main>
 
 <footer class="footer">
     <div class="container">
-        <p>© BANNER MARKET — 프리미엄 배너 광고 플랫폼</p>
+        <p>© TOP BANNER — 프리미엄 배너 광고 플랫폼 | 책임감 있는 광고 운영</p>
     </div>
 </footer>
 
@@ -414,18 +434,18 @@
     // 👇 관리자 배너 설정 (imgUrl에 GIF/이미지 URL 입력)
     // ============================================================
     const coreBanners = [
-        { imgUrl: "", name: "배너 준비중", desc: "이미지 또는 GIF 배너를 등록하세요", link: "#" },
-        { imgUrl: "", name: "배너 준비중", desc: "이미지 또는 GIF 배너를 등록하세요", link: "#" },
-        { imgUrl: "", name: "배너 준비중", desc: "이미지 또는 GIF 배너를 등록하세요", link: "#" }
+        { imgUrl: "", name: "TOP 배너 준비중", desc: "GIF/이미지 배너 등록 가능 | 최고 수익률 보장", link: "#" },
+        { imgUrl: "", name: "TOP 배너 준비중", desc: "GIF/이미지 배너 등록 가능 | 최고 수익률 보장", link: "#" },
+        { imgUrl: "", name: "TOP 배너 준비중", desc: "GIF/이미지 배너 등록 가능 | 최고 수익률 보장", link: "#" }
     ];
 
     const additionalBanners = [
-        { imgUrl: "", name: "배너 준비중", desc: "이미지 또는 GIF 배너를 등록하세요", link: "#" },
-        { imgUrl: "", name: "배너 준비중", desc: "이미지 또는 GIF 배너를 등록하세요", link: "#" },
-        { imgUrl: "", name: "배너 준비중", desc: "이미지 또는 GIF 배너를 등록하세요", link: "#" },
-        { imgUrl: "", name: "배너 준비중", desc: "이미지 또는 GIF 배너를 등록하세요", link: "#" },
-        { imgUrl: "", name: "배너 준비중", desc: "이미지 또는 GIF 배너를 등록하세요", link: "#" },
-        { imgUrl: "", name: "배너 준비중", desc: "이미지 또는 GIF 배너를 등록하세요", link: "#" }
+        { imgUrl: "", name: "TOP 배너 준비중", desc: "GIF/이미지 배너 등록 가능 | 최고 수익률 보장", link: "#" },
+        { imgUrl: "", name: "TOP 배너 준비중", desc: "GIF/이미지 배너 등록 가능 | 최고 수익률 보장", link: "#" },
+        { imgUrl: "", name: "TOP 배너 준비중", desc: "GIF/이미지 배너 등록 가능 | 최고 수익률 보장", link: "#" },
+        { imgUrl: "", name: "TOP 배너 준비중", desc: "GIF/이미지 배너 등록 가능 | 최고 수익률 보장", link: "#" },
+        { imgUrl: "", name: "TOP 배너 준비중", desc: "GIF/이미지 배너 등록 가능 | 최고 수익률 보장", link: "#" },
+        { imgUrl: "", name: "TOP 배너 준비중", desc: "GIF/이미지 배너 등록 가능 | 최고 수익률 보장", link: "#" }
     ];
 
     let isExpanded = false;
@@ -439,19 +459,20 @@
             card.className = 'banner-card';
             card.setAttribute('data-url', banner.link);
             
+            const icons = ['⭐', '🔥', '💎', '🏆', '👑', '💰'];
             const imageHtml = banner.imgUrl && banner.imgUrl.trim() !== ""
-                ? `<img src="${banner.imgUrl}" alt="${banner.name} 배너" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'placeholder\'>🎯</div>';">`
-                : `<div class="placeholder">${['🎯', '📢', '✨', '⭐', '💎', '🔥'][idx % 6]}</div>`;
+                ? `<img src="${banner.imgUrl}" alt="${banner.name} 배너" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'placeholder\'>${icons[idx % 6]}</div>';">`
+                : `<div class="placeholder">${icons[idx % 6]}</div>`;
             
             card.innerHTML = `
                 <div class="banner-image">${imageHtml}</div>
                 <div class="banner-info">
                     <div class="banner-name">
                         ${banner.name}
-                        <span class="verify-badge">검증완료</span>
+                        <span class="verify-badge">VIP 검증</span>
                     </div>
                     <div class="banner-desc">${banner.desc}</div>
-                    <button class="btn-banner">배너 바로가기</button>
+                    <button class="btn-banner">바로가기 ▶</button>
                 </div>
             `;
             
@@ -460,7 +481,7 @@
                 if (banner.link && banner.link !== '#') {
                     window.open(banner.link, '_blank');
                 } else {
-                    alert('🔜 준비 중인 배너입니다.');
+                    alert('🔜 준비 중인 배너입니다. 곧 입점 예정!');
                 }
             });
             
@@ -470,7 +491,7 @@
                 if (banner.link && banner.link !== '#') {
                     window.open(banner.link, '_blank');
                 } else {
-                    alert('🔜 준비 중인 배너입니다.');
+                    alert('🔜 준비 중인 배너입니다. 곧 입점 예정!');
                 }
             });
             
@@ -484,19 +505,19 @@
         if (!isExpanded) {
             currentBanners = [...coreBanners, ...additionalBanners];
             isExpanded = true;
-            btn.textContent = '🏷️ 접기 (3개)';
+            btn.textContent = '🏆 접기 (3개)';
             renderBanners();
         } else {
             currentBanners = [...coreBanners];
             isExpanded = false;
-            btn.textContent = '🏷️ 전체 배너 (9개)';
+            btn.textContent = '🏆 전체 배너 (9개)';
             renderBanners();
         }
     }
 
     // 입점신청 알림
     function showApplyAlert() {
-        alert('📢 배너 입점 문의\n\n검증된 업체만 입점 가능합니다.\n자세한 문의는 관리자에게 연락해주세요.');
+        alert('⭐ TOP BANNER 입점 문의\n\n✅ 검증된 업체만 입점 가능\n🚀 월 10만 이상 노출\n💰 최고 수익률 보장\n\n자세한 문의는 관리자에게 연락해주세요.');
     }
 
     // 헤더 버튼 연결
