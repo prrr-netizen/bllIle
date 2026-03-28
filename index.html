@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>보증업체 가이드 | 안전한 토토 플레이</title>
+    <title>디스코드 커뮤니티 | 함께하는 공간</title>
     <style>
         * {
             margin: 0;
@@ -12,7 +12,7 @@
         }
 
         body {
-            background: #0b0f1c;
+            background: linear-gradient(135deg, #0a0c1a 0%, #11162a 100%);
             font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
             color: #eef2ff;
             line-height: 1.5;
@@ -27,11 +27,12 @@
             padding: 0 24px;
         }
 
+        /* 헤더 */
         .header {
-            border-bottom: 1px solid rgba(255,255,255,0.05);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
             padding: 20px 0;
             backdrop-filter: blur(12px);
-            background: rgba(11,15,28,0.7);
+            background: rgba(10,12,26,0.7);
             position: sticky;
             top: 0;
             z-index: 100;
@@ -42,12 +43,13 @@
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
+            gap: 16px;
         }
 
         .logo {
             font-weight: 700;
             font-size: 1.6rem;
-            background: linear-gradient(135deg, #F5B042, #E88D2E);
+            background: linear-gradient(135deg, #5865F2, #9b87f5);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -55,13 +57,13 @@
         }
 
         .badge {
-            background: #1f2a3e;
+            background: #1e243f;
             padding: 6px 14px;
             border-radius: 100px;
             font-size: 0.8rem;
             font-weight: 500;
-            color: #F5B042;
-            border: 1px solid rgba(245,176,66,0.3);
+            color: #9b87f5;
+            border: 1px solid rgba(88,101,242,0.3);
         }
 
         .nav a {
@@ -73,23 +75,70 @@
         }
 
         .nav a:hover {
-            color: #F5B042;
+            color: #5865F2;
         }
 
+        /* 실시간 시계 */
+        .clock-container {
+            text-align: center;
+            padding: 20px 0 10px;
+        }
+
+        .live-clock {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(88,101,242,0.15);
+            backdrop-filter: blur(8px);
+            padding: 8px 24px;
+            border-radius: 60px;
+            border: 1px solid rgba(88,101,242,0.3);
+            animation: pulseGlow 2s infinite;
+        }
+
+        @keyframes pulseGlow {
+            0% { box-shadow: 0 0 0 0 rgba(88,101,242,0.2); border-color: rgba(88,101,242,0.3); }
+            50% { box-shadow: 0 0 0 4px rgba(88,101,242,0.3); border-color: rgba(88,101,242,0.6); }
+            100% { box-shadow: 0 0 0 0 rgba(88,101,242,0.2); border-color: rgba(88,101,242,0.3); }
+        }
+
+        .clock-icon {
+            font-size: 1.2rem;
+        }
+
+        .clock-time {
+            font-family: 'Inter', monospace;
+            font-size: 1.3rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .clock-label {
+            font-size: 0.75rem;
+            color: #9aaec5;
+        }
+
+        /* 히어로 */
         .hero {
-            padding: 80px 0 60px;
+            padding: 60px 0 40px;
             text-align: center;
         }
 
-        .shield-icon {
-            font-size: 3rem;
+        .discord-icon {
+            font-size: 4rem;
             margin-bottom: 20px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
         }
 
         .hero h1 {
             font-size: 2.8rem;
             font-weight: 700;
-            background: linear-gradient(135deg, #FFFFFF, #E0E7FF);
+            background: linear-gradient(135deg, #FFFFFF, #9b87f5);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -114,11 +163,11 @@
         .trust-item {
             background: rgba(255,255,255,0.03);
             backdrop-filter: blur(8px);
-            padding: 6px 20px;
+            padding: 8px 24px;
             border-radius: 60px;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             font-weight: 500;
-            border: 1px solid rgba(245,176,66,0.2);
+            border: 1px solid rgba(88,101,242,0.3);
         }
 
         .section-title {
@@ -141,19 +190,20 @@
         }
 
         .guarantee-card {
-            background: #0f1424;
+            background: rgba(18, 22, 45, 0.7);
+            backdrop-filter: blur(10px);
             border-radius: 28px;
             padding: 28px;
-            border: 1px solid #1e2a3a;
-            transition: all 0.25s;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-            animation: fadeInUp 0.4s ease-out;
+            border: 1px solid rgba(88,101,242,0.2);
+            transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            animation: fadeInUp 0.5s ease-out;
         }
 
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(20px);
+                transform: translateY(30px);
             }
             to {
                 opacity: 1;
@@ -162,9 +212,10 @@
         }
 
         .guarantee-card:hover {
-            border-color: #F5B042;
-            transform: translateY(-5px);
-            background: #11182b;
+            border-color: #5865F2;
+            transform: translateY(-6px) scale(1.01);
+            background: rgba(30, 36, 70, 0.8);
+            box-shadow: 0 20px 35px -12px rgba(88,101,242,0.2);
         }
 
         .card-header {
@@ -177,6 +228,10 @@
         .company {
             font-size: 1.5rem;
             font-weight: 700;
+            background: linear-gradient(135deg, #fff, #b9a9ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
 
         .verify {
@@ -186,19 +241,9 @@
             font-weight: 600;
         }
 
-        .verify.gold {
-            background: #2a2a1f;
-            color: #F5B042;
-        }
-
-        .verify.green {
-            background: #1f3a2c;
-            color: #8bd96b;
-        }
-
-        .verify.blue {
-            background: #1a2f3a;
-            color: #6bc9ff;
+        .verify.discord {
+            background: #2c2f48;
+            color: #9b87f5;
         }
 
         .limit {
@@ -208,28 +253,30 @@
         }
 
         .btn-detail {
-            background: #F5B042;
+            background: #5865F2;
             border: none;
             width: 100%;
             padding: 12px;
             border-radius: 40px;
-            font-weight: 700;
+            font-weight: 600;
             margin-top: 20px;
             cursor: pointer;
             transition: 0.2s;
-            color: #0b0f1c;
+            color: white;
         }
 
         .btn-detail:hover {
-            background: #e08e2a;
+            background: #4752c4;
+            transform: scale(0.98);
         }
 
         .info-box {
-            background: #0c1120;
+            background: rgba(12, 17, 32, 0.6);
+            backdrop-filter: blur(12px);
             border-radius: 32px;
             padding: 32px;
             margin: 40px 0;
-            border: 1px solid #1f2a3e;
+            border: 1px solid rgba(88,101,242,0.2);
         }
 
         .info-grid {
@@ -240,14 +287,12 @@
         }
 
         .info-item h4 {
-            color: #F5B042;
+            color: #9b87f5;
             margin-bottom: 12px;
         }
 
-        .caution {
-            color: #f5a97f;
-            font-weight: 500;
-            margin-top: 20px;
+        .info-item p {
+            color: #b9c7d9;
         }
 
         .cta-block {
@@ -265,7 +310,7 @@
         }
 
         .btn-cta {
-            background: #F5B042;
+            background: #5865F2;
             border: none;
             padding: 14px 36px;
             border-radius: 60px;
@@ -274,10 +319,11 @@
             margin-top: 20px;
             cursor: pointer;
             transition: 0.2s;
+            color: white;
         }
 
         .btn-cta:hover {
-            background: #e08e2a;
+            background: #4752c4;
             transform: scale(0.98);
         }
 
@@ -287,10 +333,6 @@
             text-align: center;
             color: #6a7c9e;
             font-size: 0.8rem;
-        }
-
-        .hidden-card {
-            display: none;
         }
 
         @media (max-width: 720px) {
@@ -310,110 +352,133 @@
 
 <header class="header">
     <div class="container header-inner">
-        <div class="logo">BET-GUIDE</div>
+        <div class="logo">🎧 DISCORD HUB</div>
         <div class="nav">
-            <a href="#">보증업체</a>
-            <a href="#">안내사항</a>
-            <a href="#">검증기준</a>
+            <a href="#">서버 탐색</a>
+            <a href="#">파트너</a>
+            <a href="#">디스코드</a>
         </div>
-        <div class="badge">🔒 실시간 검증 운영</div>
+        <div class="badge">💬 활성 멤버 2,300+</div>
     </div>
 </header>
 
 <main>
     <div class="container">
+        <!-- 실시간 시계 -->
+        <div class="clock-container">
+            <div class="live-clock">
+                <span class="clock-icon">🕒</span>
+                <span class="clock-time" id="kstTime">--:--:--</span>
+                <span class="clock-label">KST (UTC+9)</span>
+                <span class="clock-icon" style="animation: pulse 1s infinite;">●</span>
+            </div>
+        </div>
+
         <div class="hero">
-            <div class="shield-icon">🛡️</div>
-            <h1>믿을 수 있는 토토 안내<br>공식 보증업체 리스트</h1>
-            <p>먹튀 없는 환경, 철저한 검증 절차를 거친 안전한 업체만 소개합니다.</p>
+            <div class="discord-icon">💬🎮</div>
+            <h1>함께하는 디스코드<br>커뮤니티에 오신 걸 환영합니다</h1>
+            <p>다양한 관심사, 게임, 소통 공간에서 새로운 인연을 만나보세요.</p>
             <div class="trust-list">
-                <span class="trust-item">✅ 먹튀이력 0건</span>
-                <span class="trust-item">💰 최대 보증금 5억</span>
-                <span class="trust-item">⚡ 실시간 모니터링</span>
+                <span class="trust-item">✅ 24시간 활발한 소통</span>
+                <span class="trust-item">🎮 게임 & 취미 채널</span>
+                <span class="trust-item">🎤 보이스 채팅</span>
             </div>
         </div>
 
         <div>
-            <h2 class="section-title">🏆 추천 보증업체</h2>
-            <div class="section-sub">24시간 자동검증 + 안전놀이터 인증 완료</div>
+            <h2 class="section-title">🌟 추천 디스코드 서버</h2>
+            <div class="section-sub">검증된 파트너 서버 · 실시간 인기 커뮤니티</div>
             <div class="card-grid" id="cardGrid">
-                <!-- 초기 3개 카드 -->
+                <!-- 초기 3개 카드 (배너 준비중) -->
                 <div class="guarantee-card">
                     <div class="card-header">
-                        <span class="company">ACE 토토</span>
-                        <span class="verify green">인증완료</span>
+                        <span class="company">📢 배너 준비중</span>
+                        <span class="verify discord">대기중</span>
                     </div>
-                    <div>✅ 보증금: 3억원</div>
-                    <div>⚡ 입출금 속도: 3분 이내</div>
-                    <div class="limit">한도: 무제한 / 롤링 100%</div>
-                    <button class="btn-detail" data-name="ACE 토토">바로가기 안내</button>
+                    <div>✨ 디스코드 서버 자리입니다</div>
+                    <div>🎯 곧 새로운 커뮤니티가 입점합니다</div>
+                    <div class="limit">💜 관심 있으시면 문의해주세요</div>
+                    <button class="btn-detail" data-name="배너 준비중">서버 정보 보기</button>
                 </div>
                 <div class="guarantee-card">
                     <div class="card-header">
-                        <span class="company">BET365 코리아</span>
-                        <span class="verify gold">특별보증</span>
+                        <span class="company">📢 배너 준비중</span>
+                        <span class="verify discord">대기중</span>
                     </div>
-                    <div>✅ 보증금: 5억원</div>
-                    <div>⚡ 가입즉시 첫충 30%</div>
-                    <div class="limit">한도: 1억 / 이벤트 진행중</div>
-                    <button class="btn-detail" data-name="BET365 코리아">바로가기 안내</button>
+                    <div>✨ 디스코드 서버 자리입니다</div>
+                    <div>🎯 곧 새로운 커뮤니티가 입점합니다</div>
+                    <div class="limit">💜 관심 있으시면 문의해주세요</div>
+                    <button class="btn-detail" data-name="배너 준비중">서버 정보 보기</button>
                 </div>
                 <div class="guarantee-card">
                     <div class="card-header">
-                        <span class="company">킹덤 토토</span>
-                        <span class="verify blue">VIP 인증</span>
+                        <span class="company">📢 배너 준비중</span>
+                        <span class="verify discord">대기중</span>
                     </div>
-                    <div>✅ 보증금: 2억원</div>
-                    <div>⚡ 매주 10% 캐시백</div>
-                    <div class="limit">한도: 5천만원 / 스포츠전용</div>
-                    <button class="btn-detail" data-name="킹덤 토토">바로가기 안내</button>
+                    <div>✨ 디스코드 서버 자리입니다</div>
+                    <div>🎯 곧 새로운 커뮤니티가 입점합니다</div>
+                    <div class="limit">💜 관심 있으시면 문의해주세요</div>
+                    <button class="btn-detail" data-name="배너 준비중">서버 정보 보기</button>
                 </div>
             </div>
         </div>
 
         <div class="info-box">
-            <h3>🔍 보증업체 선정 기준</h3>
+            <h3>🎯 디스코드 커뮤니티 가이드</h3>
             <div class="info-grid">
                 <div class="info-item">
-                    <h4>자본금 검증</h4>
-                    <p>운영 자본금 1억 이상 + 출금내역 투명성 확인</p>
+                    <h4>🤝 활발한 소통</h4>
+                    <p>일상, 게임, 음악 등 다양한 주제로 자유롭게 대화해요</p>
                 </div>
                 <div class="info-item">
-                    <h4>운영기간</h4>
-                    <p>최소 2년 이상 운영, 주요 커뮤니티 평판 반영</p>
+                    <h4>🛡️ 안전한 환경</h4>
+                    <p>운영진 24시간 모니터링, 클린한 커뮤니티를 지켜요</p>
                 </div>
                 <div class="info-item">
-                    <h4>보증제도</h4>
-                    <p>자체 보증금 예치 및 배상 체계 구축</p>
+                    <h4>🎁 다양한 이벤트</h4>
+                    <p>정기적인 게임 나이트, 친목 이벤트가 진행됩니다</p>
                 </div>
             </div>
-            <div class="caution">※ 모든 보증업체는 수시 모니터링 되며, 문제 발생 시 즉시 블랙리스트 처리됩니다.</div>
+            <div class="caution">※ 모든 서버는 파트너 정책에 따라 검증되었습니다.</div>
         </div>
 
         <div class="cta-block">
-            <h3>📢 안전한 토토 이용 가이드</h3>
-            <p>보증업체를 통한 이용 시 먹튀 피해 0% 책임 안내</p>
-            <button class="btn-cta" id="ctaBtn">보증업체 전체보기 (9개)</button>
+            <h3>📢 함께하고 싶다면?</h3>
+            <p>지금 바로 디스코드 커뮤니티에 참여하고 새로운 친구들을 만나보세요</p>
+            <button class="btn-cta" id="ctaBtn">전체 서버 보기 (9개)</button>
         </div>
     </div>
 </main>
 
 <footer class="footer">
     <div class="container">
-        <p>본 사이트는 성인 토토 안내 및 검증 정보를 제공합니다. 도박은 중독에 위험이 있으며, 책임감 있게 이용하세요.</p>
-        <p style="margin-top: 12px;">© 안전토토가이드 — 믿을 수 있는 보증업체만 소개합니다.</p>
+        <p>본 사이트는 디스코드 커뮤니티 홍보 및 안내를 제공합니다. 함께하는 공간, 즐거운 소통을 지향합니다.</p>
+        <p style="margin-top: 12px;">© DISCORD HUB — 당신의 새로운 커뮤니티를 소개합니다.</p>
     </div>
 </footer>
 
 <script>
-    // 추가될 6개 카드 데이터
+    // 실시간 UTC -> KST 시계 (애니메이션 포함)
+    function updateClock() {
+        const now = new Date();
+        // KST = UTC+9
+        const kstNow = new Date(now.getTime() + (9 * 60 * 60 * 1000));
+        const hours = String(kstNow.getUTCHours()).padStart(2, '0');
+        const minutes = String(kstNow.getUTCMinutes()).padStart(2, '0');
+        const seconds = String(kstNow.getUTCSeconds()).padStart(2, '0');
+        document.getElementById('kstTime').textContent = `${hours}:${minutes}:${seconds}`;
+    }
+    updateClock();
+    setInterval(updateClock, 1000);
+
+    // 추가될 6개 카드 데이터 (모두 배너 준비중)
     const additionalCards = [
-        { name: "배너 준비중", verify: "인증완료", verifyType: "green", deposit: "3.5억원", speed: "즉시출금", limit: "한도: 2억 / 신규 20%", desc: "✅ 보증금: 3.5억원", speedText: "⚡ 즉시출금 시스템" },
-        { name: "배너 준비중", verify: "특별보증", verifyType: "gold", deposit: "4억원", speed: "첫충 50%", limit: "한도: 3억 / 무제한 롤링", desc: "✅ 보증금: 4억원", speedText: "⚡ 첫충 50% 이벤트" },
-        { name: "배너 준비중", verify: "VIP 인증", verifyType: "blue", deposit: "5억원", speed: "입출금 1분", limit: "한도: 5억 / 프리미엄", desc: "✅ 보증금: 5억원", speedText: "⚡ 입출금 1분 처리" },
-        { name: "배너 준비중", verify: "인증완료", verifyType: "green", deposit: "2.5억원", speed: "매일 5% 캐시백", limit: "한도: 1억 / 스포츠전문", desc: "✅ 보증금: 2.5억원", speedText: "⚡ 매일 5% 캐시백" },
-        { name: "배너 준비중", verify: "특별보증", verifyType: "gold", deposit: "3억원", speed: "3분 이내", limit: "한도: 무제한 / 이벤트중", desc: "✅ 보증금: 3억원", speedText: "⚡ 입출금 3분 이내" },
-        { name: "배너 준비중", verify: "VIP 인증", verifyType: "blue", deposit: "4.5억원", speed: "주간 10%", limit: "한도: 2억 / 미니게임", desc: "✅ 보증금: 4.5억원", speedText: "⚡ 주간 10% 지급" }
+        { name: "📢 배너 준비중", verify: "대기중", verifyType: "discord", desc: "✨ 디스코드 서버 자리입니다", speedText: "🎯 곧 새로운 커뮤니티가 입점합니다", limit: "💜 관심 있으시면 문의해주세요" },
+        { name: "📢 배너 준비중", verify: "대기중", verifyType: "discord", desc: "✨ 디스코드 서버 자리입니다", speedText: "🎯 곧 새로운 커뮤니티가 입점합니다", limit: "💜 관심 있으시면 문의해주세요" },
+        { name: "📢 배너 준비중", verify: "대기중", verifyType: "discord", desc: "✨ 디스코드 서버 자리입니다", speedText: "🎯 곧 새로운 커뮤니티가 입점합니다", limit: "💜 관심 있으시면 문의해주세요" },
+        { name: "📢 배너 준비중", verify: "대기중", verifyType: "discord", desc: "✨ 디스코드 서버 자리입니다", speedText: "🎯 곧 새로운 커뮤니티가 입점합니다", limit: "💜 관심 있으시면 문의해주세요" },
+        { name: "📢 배너 준비중", verify: "대기중", verifyType: "discord", desc: "✨ 디스코드 서버 자리입니다", speedText: "🎯 곧 새로운 커뮤니티가 입점합니다", limit: "💜 관심 있으시면 문의해주세요" },
+        { name: "📢 배너 준비중", verify: "대기중", verifyType: "discord", desc: "✨ 디스코드 서버 자리입니다", speedText: "🎯 곧 새로운 커뮤니티가 입점합니다", limit: "💜 관심 있으시면 문의해주세요" }
     ];
 
     let isExpanded = false;
@@ -431,44 +496,40 @@
             <div>${cardData.desc}</div>
             <div>${cardData.speedText}</div>
             <div class="limit">${cardData.limit}</div>
-            <button class="btn-detail" data-name="${cardData.name}">바로가기 안내</button>
+            <button class="btn-detail" data-name="${cardData.name}">서버 정보 보기</button>
         `;
         return card;
     }
 
     ctaBtn.addEventListener('click', () => {
         if (!isExpanded) {
-            // 추가 카드 6개 생성 및 추가
             additionalCards.forEach(cardData => {
                 const newCard = createCard(cardData);
                 cardGrid.appendChild(newCard);
             });
             
             isExpanded = true;
-            ctaBtn.textContent = '보증업체 전체보기 (9개) ✅';
+            ctaBtn.textContent = '전체 서버 보기 (9개) ✅';
             ctaBtn.style.background = '#2a5f3a';
             
-            // 새로 추가된 버튼들에도 이벤트 리스너 추가
             document.querySelectorAll('.btn-detail').forEach(btn => {
                 btn.removeEventListener('click', handleDetailClick);
                 btn.addEventListener('click', handleDetailClick);
             });
             
-            // 부드럽게 스크롤 이동
             setTimeout(() => {
                 document.querySelector('.section-title').scrollIntoView({ behavior: 'smooth', block: 'start' });
             }, 100);
         } else {
-            alert('✅ 이미 9개의 모든 보증업체가 표시되고 있습니다.');
+            alert('✅ 이미 9개의 모든 서버가 표시되고 있습니다.');
         }
     });
 
     function handleDetailClick(e) {
         const name = e.currentTarget.getAttribute('data-name');
-        alert(`🔐 [${name}] 공식 보증업체 안내\n해당 업체는 검증 완료된 안전놀이터입니다.\n자세한 링크는 관리자 문의 후 제공됩니다.`);
+        alert(`💜 [${name}] 디스코드 서버 안내\n해당 서버는 검증된 커뮤니티입니다.\n자세한 링크는 관리자 문의 후 제공됩니다.`);
     }
 
-    // 초기 버튼들에 이벤트 리스너 등록
     document.querySelectorAll('.btn-detail').forEach(btn => {
         btn.addEventListener('click', handleDetailClick);
     });
