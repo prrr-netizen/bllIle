@@ -111,35 +111,59 @@
             font-weight: 500;
         }
 
-        /* 히어로 - 텍스트 줄이고 돋보이게 */
+        /* 히어로 - 한 줄 + 애니메이션 */
         .hero {
             text-align: center;
-            padding: 28px 0 24px;
+            padding: 28px 0 20px;
         }
 
-        .hero h1 {
-            font-size: 1.8rem;
+        .animated-title {
+            font-size: 1.9rem;
             font-weight: 700;
             background: linear-gradient(135deg, #FFFFFF, #b9a9ff, #8b74ff);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
             letter-spacing: -0.3px;
-            margin-bottom: 6px;
+            animation: fadeInUp 0.8s ease-out, glowPulse 2.5s infinite ease-in-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes glowPulse {
+            0% {
+                text-shadow: 0 0 0px rgba(88,101,242,0);
+            }
+            50% {
+                text-shadow: 0 0 12px rgba(88,101,242,0.6);
+            }
+            100% {
+                text-shadow: 0 0 0px rgba(88,101,242,0);
+            }
         }
 
         .hero .sub {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: #aab4d0;
-            letter-spacing: -0.2px;
+            margin-top: 8px;
+            opacity: 0.9;
         }
 
-        /* 통계 - 컴팩트하게 */
+        /* 통계 */
         .stats {
             display: flex;
             justify-content: center;
             gap: 36px;
-            margin-top: 22px;
+            margin-top: 20px;
             flex-wrap: wrap;
         }
 
@@ -174,6 +198,7 @@
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 24px;
             margin-bottom: 50px;
+            transition: all 0.3s ease;
         }
 
         .banner-card {
@@ -183,6 +208,18 @@
             border: 1px solid #1e2a3a;
             transition: all 0.25s ease;
             cursor: pointer;
+            animation: fadeIn 0.4s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.96);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
         }
 
         .banner-card:hover {
@@ -266,8 +303,8 @@
         }
 
         @media (max-width: 720px) {
-            .hero h1 {
-                font-size: 1.4rem;
+            .animated-title {
+                font-size: 1.3rem;
             }
             .nav {
                 gap: 16px;
@@ -285,7 +322,7 @@
     <div class="container header-inner">
         <div class="logo">🎯 BANNER MARKET</div>
         <div class="nav">
-            <a id="allBannerNavBtn">🏷️ 전체 배너 (9개)</a>
+            <a id="allBannerNavBtn">🏷️ 전체 배너 (3/9)</a>
             <a id="applyNavBtn">📝 입점신청</a>
             <a href="#">검증기준</a>
         </div>
@@ -303,7 +340,7 @@
         </div>
 
         <div class="hero">
-            <h1>검증된 디스코드 업체<br>배너 광고 플랫폼</h1>
+            <div class="animated-title">검증된 디스코드 업체 · 배너 광고 플랫폼</div>
             <div class="sub">신뢰할 수 있는 파트너사만 엄선합니다</div>
             <div class="stats">
                 <div class="stat-item"><div class="stat-number">12+</div><div class="stat-label">입점 업체</div></div>
@@ -337,18 +374,28 @@
     // ============================================================
     // 👇 관리자 배너 설정 (imgUrl에 GIF/이미지 URL 입력)
     // ============================================================
-    let banners = [
+    const coreBanners = [
         { imgUrl: "", name: "배너 준비중", desc: "", link: "https://discord.gg/example1" },
         { imgUrl: "", name: "배너 준비중", desc: "", link: "https://discord.gg/example2" },
         { imgUrl: "", name: "배너 준비중", desc: "", link: "https://discord.gg/example3" }
     ];
 
+    const additionalBanners = [
+        { imgUrl: "", name: "배너 준비중", desc: "", link: "https://discord.gg/example4" },
+        { imgUrl: "", name: "배너 준비중", desc: "", link: "https://discord.gg/example5" },
+        { imgUrl: "", name: "배너 준비중", desc: "", link: "https://discord.gg/example6" },
+        { imgUrl: "", name: "배너 준비중", desc: "", link: "https://discord.gg/example7" },
+        { imgUrl: "", name: "배너 준비중", desc: "", link: "https://discord.gg/example8" },
+        { imgUrl: "", name: "배너 준비중", desc: "", link: "https://discord.gg/example9" }
+    ];
+
     let isExpanded = false;
+    let currentBanners = [...coreBanners];
 
     function renderBanners() {
         const grid = document.getElementById('bannerGrid');
         grid.innerHTML = '';
-        banners.forEach((banner, idx) => {
+        currentBanners.forEach((banner, idx) => {
             const card = document.createElement('div');
             card.className = 'banner-card';
             card.setAttribute('data-url', banner.link);
@@ -392,26 +439,19 @@
         });
     }
 
-    // 전체보기 기능 (헤더 버튼 & 기존 기능 통합)
-    function expandAllBanners() {
+    // 전체보기 토글 기능
+    function toggleAllBanners() {
+        const btn = document.getElementById('allBannerNavBtn');
         if (!isExpanded) {
-            const additional = [
-                { imgUrl: "", name: "배너 준비중", desc: "", link: "https://discord.gg/example4" },
-                { imgUrl: "", name: "배너 준비중", desc: "", link: "https://discord.gg/example5" },
-                { imgUrl: "", name: "배너 준비중", desc: "", link: "https://discord.gg/example6" },
-                { imgUrl: "", name: "배너 준비중", desc: "", link: "https://discord.gg/example7" },
-                { imgUrl: "", name: "배너 준비중", desc: "", link: "https://discord.gg/example8" },
-                { imgUrl: "", name: "배너 준비중", desc: "", link: "https://discord.gg/example9" }
-            ];
-            banners = [...banners, ...additional];
+            currentBanners = [...coreBanners, ...additionalBanners];
             isExpanded = true;
+            btn.textContent = '🏷️ 접기 (3개)';
             renderBanners();
-            
-            // 버튼 텍스트 업데이트
-            const allBtn = document.getElementById('allBannerNavBtn');
-            if (allBtn) allBtn.textContent = '🏷️ 전체 배너 (9개) ✅';
         } else {
-            alert('✅ 이미 9개의 모든 배너가 표시되고 있습니다.');
+            currentBanners = [...coreBanners];
+            isExpanded = false;
+            btn.textContent = '🏷️ 전체 배너 (9개)';
+            renderBanners();
         }
     }
 
@@ -421,7 +461,7 @@
     }
 
     // 헤더 버튼 연결
-    document.getElementById('allBannerNavBtn').addEventListener('click', expandAllBanners);
+    document.getElementById('allBannerNavBtn').addEventListener('click', toggleAllBanners);
     document.getElementById('applyNavBtn').addEventListener('click', showApplyAlert);
 
     renderBanners();
