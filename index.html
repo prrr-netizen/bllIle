@@ -8,66 +8,92 @@
         :root { --n: #00ffcc; --b: #020408; --p: rgba(10,15,25,0.98); --r: #ff0033; }
         * { margin:0; padding:0; box-sizing:border-box; -webkit-user-select:none; user-select:none; font-family:'Noto Sans KR', sans-serif; }
         body { background:var(--b); color:#fff; min-height:100vh; overflow-x:hidden; }
-        header { width:100%; background:rgba(2,4,8,0.98); border-bottom:3px solid var(--n); padding:15px 40px; display:flex; justify-content:space-between; align-items:center; position:sticky; top:0; z-index:1000; }
-        .LOGO { font-size:32px; font-weight:900; cursor:pointer; } .LOGO span { color:var(--n); }
+        
+        /* 🛡️ 보안 감지 시 화면 초기화 */
+        #S_LOCK { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:#000; z-index:999999; }
+
+        header { width:100%; background:rgba(2,4,8,0.98); border-bottom:3px solid var(--n); padding:15px 40px; display:flex; justify-content:space-between; align-items:center; position:sticky; top:0; z-index:1000; box-shadow: 0 0 20px rgba(0,255,204,0.3); }
+        .LOGO { font-size:32px; font-weight:900; cursor:pointer; } .LOGO span { color:var(--n); text-shadow:0 0 10px var(--n); }
+        .CS_BTN { text-decoration:none; color:#000; background:var(--n); padding:10px 20px; border-radius:8px; font-weight:900; font-size:14px; }
+
         .M_C { max-width:1650px; margin:40px auto; padding:0 20px; display:grid; grid-template-columns: 1fr 340px; gap:30px; }
         .G_B { display:grid; grid-template-columns:repeat(2, 1fr); gap:25px; } 
+        
+        /* 💎 배너 카드 디자인 */
         .CARD { background:linear-gradient(145deg, #0d121d, #020408); border:2px solid #1a2233; border-radius:12px; overflow:hidden; position:relative; transition:0.3s; }
-        .B_NAME { background: rgba(0,255,204,0.05); color: #fff; padding: 12px 20px; font-weight: 900; font-size: 19px; border-bottom: 1px solid #1a2233; }
+        .CARD:hover { border-color:var(--n); transform:translateY(-5px); }
+        .B_TAG { position:absolute; top:10px; left:10px; background:var(--r); color:#fff; font-size:11px; padding:3px 8px; border-radius:4px; font-weight:900; z-index:10; }
+        .B_NAME { background: rgba(0,255,204,0.05); color: #fff; padding: 12px 20px; font-weight: 900; font-size: 18px; border-bottom: 1px solid #1a2233; }
         .IMG_BOX { width:100%; height:200px; background:#000; overflow:hidden; }
         .IMG_BOX img { width:100%; height:100%; object-fit:cover; }
         .GO_BTN { display:block; width:92%; margin:15px auto; padding:14px; background:linear-gradient(to right, #00ffcc, #00ccaa); color:#000; text-align:center; text-decoration:none; font-weight:900; border-radius:8px; box-shadow: 0 4px 0 #008877; }
-        .SIDE { background:rgba(10,15,25,0.9); border:2px solid #1a2233; border-radius:12px; padding:25px; height:680px; position:sticky; top:120px; }
+
+        .SIDE { background:rgba(10,15,25,0.9); border:2px solid #1a2233; border-radius:12px; padding:20px; height:700px; position:sticky; top:120px; }
+        .LOG_TITLE { color:var(--n); font-weight:900; margin-bottom:15px; border-bottom:1px solid #222; padding-bottom:10px; }
+        #L_BOX { height:600px; overflow:hidden; font-size:12px; color:#666; line-height:2.2; }
+
         @media (max-width:1100px) { .G_B { grid-template-columns:1fr; } .M_C { grid-template-columns:1fr; } }
     </style>
 </head>
 <body oncontextmenu="return false">
 
-<div id="SECURE_WRAP">
-    <header><div class="LOGO">RLNL<span>PLATFORM</span></div><div style="background:var(--n); color:#000; padding:10px 20px; border-radius:8px; font-weight:900;">1:1 고객센터</div></header>
+<div id="S_LOCK"></div>
+
+<div id="CONTENT_ROOT">
+    <header>
+        <div class="LOGO" onclick="location.reload()">RLNL<span>PLATFORM</span></div>
+        <a href="#" class="CS_BTN">24시 고객센터</a>
+    </header>
+
     <main class="M_C">
         <section class="G_B">
-            <div class="CARD"><div class="B_NAME">메이저 01</div><div class="IMG_BOX"><img src="662034559_e82a01f0_257296.gif"></div><a href="#" target="_blank" class="GO_BTN">사이트 입장</a></div>
-            <div class="CARD"><div class="B_NAME">메이저 02</div><div class="IMG_BOX"><img src="662034559_e82a01f0_257296.gif"></div><a href="#" target="_blank" class="GO_BTN">사이트 입장</a></div>
-            <div class="CARD"><div class="B_NAME">메이저 03</div><div class="IMG_BOX"><img src="662034559_e82a01f0_257296.gif"></div><a href="#" target="_blank" class="GO_BTN">사이트 입장</a></div>
-            <div class="CARD"><div class="B_NAME">메이저 04</div><div class="IMG_BOX"><img src="662034559_e82a01f0_257296.gif"></div><a href="#" target="_blank" class="GO_BTN">사이트 입장</a></div>
-            <div class="CARD"><div class="B_NAME">메이저 05</div><div class="IMG_BOX"><img src="662034559_e82a01f0_257296.gif"></div><a href="#" target="_blank" class="GO_BTN">사이트 입장</a></div>
-            <div class="CARD"><div class="B_NAME">메이저 06</div><div class="IMG_BOX"><img src="662034559_e82a01f0_257296.gif"></div><a href="#" target="_blank" class="GO_BTN">사이트 입장</a></div>
-            <div class="CARD"><div class="B_NAME">메이저 07</div><div class="IMG_BOX"><img src="662034559_e82a01f0_257296.gif"></div><a href="#" target="_blank" class="GO_BTN">사이트 입장</a></div>
-            <div class="CARD"><div class="B_NAME">메이저 08</div><div class="IMG_BOX"><img src="662034559_e82a01f0_257296.gif"></div><a href="#" target="_blank" class="GO_BTN">사이트 입장</a></div>
-            <div class="CARD"><div class="B_NAME">메이저 09</div><div class="IMG_BOX"><img src="662034559_e82a01f0_257296.gif"></div><a href="#" target="_blank" class="GO_BTN">사이트 입장</a></div>
-            <div class="CARD"><div class="B_NAME">메이저 10</div><div class="IMG_BOX"><img src="662034559_e82a01f0_257296.gif"></div><a href="#" target="_blank" class="GO_BTN">사이트 입장</a></div>
+            <div class="CARD"><div class="B_TAG">HOT</div><div class="B_NAME">메이저 사이트 01</div><div class="IMG_BOX"><img src="662034559_e82a01f0_257296.gif"></div><a href="주소01" target="_blank" class="GO_BTN">사이트 입장하기</a></div>
+            <div class="CARD"><div class="B_TAG">추천</div><div class="B_NAME">메이저 사이트 02</div><div class="IMG_BOX"><img src="662034559_e82a01f0_257296.gif"></div><a href="주소02" target="_blank" class="GO_BTN">사이트 입장하기</a></div>
+            <div class="CARD"><div class="B_TAG">보증</div><div class="B_NAME">메이저 사이트 03</div><div class="IMG_BOX"><img src="662034559_e82a01f0_257296.gif"></div><a href="주소03" target="_blank" class="GO_BTN">사이트 입장하기</a></div>
+            <div class="CARD"><div class="B_TAG">NEW</div><div class="B_NAME">메이저 사이트 04</div><div class="IMG_BOX"><img src="662034559_e82a01f0_257296.gif"></div><a href="주소04" target="_blank" class="GO_BTN">사이트 입장하기</a></div>
+            <div class="CARD"><div class="B_TAG">HOT</div><div class="B_NAME">메이저 사이트 05</div><div class="IMG_BOX"><img src="662034559_e82a01f0_257296.gif"></div><a href="주소05" target="_blank" class="GO_BTN">사이트 입장하기</a></div>
+            <div class="CARD"><div class="B_TAG">추천</div><div class="B_NAME">메이저 사이트 06</div><div class="IMG_BOX"><img src="662034559_e82a01f0_257296.gif"></div><a href="주소06" target="_blank" class="GO_BTN">사이트 입장하기</a></div>
+            <div class="CARD"><div class="B_TAG">보증</div><div class="B_NAME">메이저 사이트 07</div><div class="IMG_BOX"><img src="662034559_e82a01f0_257296.gif"></div><a href="주소07" target="_blank" class="GO_BTN">사이트 입장하기</a></div>
+            <div class="CARD"><div class="B_TAG">NEW</div><div class="B_NAME">메이저 사이트 08</div><div class="IMG_BOX"><img src="662034559_e82a01f0_257296.gif"></div><a href="주소08" target="_blank" class="GO_BTN">사이트 입장하기</a></div>
+            <div class="CARD"><div class="B_TAG">HOT</div><div class="B_NAME">메이저 사이트 09</div><div class="IMG_BOX"><img src="662034559_e82a01f0_257296.gif"></div><a href="주소09" target="_blank" class="GO_BTN">사이트 입장하기</a></div>
+            <div class="CARD"><div class="B_TAG">추천</div><div class="B_NAME">메이저 사이트 10</div><div class="IMG_BOX"><img src="662034559_e82a01f0_257296.gif"></div><a href="주소10" target="_blank" class="GO_BTN">사이트 입장하기</a></div>
         </section>
-        <aside class="SIDE"><div id="L_Z" style="font-size:13px; color:#555; line-height:2.5;"></div></aside>
+        
+        <aside class="SIDE">
+            <div class="LOG_TITLE">실시간 접속 현황</div>
+            <div id="L_BOX"></div>
+        </aside>
     </main>
 </div>
 
 <script>
-/* 🛡️ 털이범 방지 암호화 로직 ㅋ */
 (function(){
-    var _0xP = function(){
-        document.getElementById('SECURE_WRAP').innerHTML = ''; // 💎 소스 즉시 파쇄
-        window.location.replace("about:blank"); // 💎 빈 창으로 튕겨냄
+    // 🛡️ 소스 탭 파쇄 로직: 감지 즉시 빈 창으로 튕김 ㅋ
+    const _EXIT = () => {
+        document.getElementById('CONTENT_ROOT').remove();
+        window.location.replace("about:blank");
     };
 
-    // 1. 소스 창 감지 (debugger 없이 속도로만 체크 ㅋ)
-    setInterval(function(){
-        var t1 = new Date().getTime();
-        for(var i=0;i<100;i++){console.log("");console.clear();}
-        if(new Date().getTime()-t1 > 50) _0xP();
-    }, 200);
+    // 1. 소스 창 감지 (속도 저하 체크)
+    setInterval(() => {
+        const t1 = new Date().getTime();
+        for(let i=0; i<100; i++) { console.log(""); console.clear(); }
+        if (new Date().getTime() - t1 > 50) _EXIT();
+    }, 250);
 
-    // 2. 단축키 원천 차단
-    window.onkeydown = function(e){
-        if(e.keyCode===123||(e.ctrlKey&&e.shiftKey&&(e.keyCode===73||e.keyCode===74))||(e.ctrlKey&&e.keyCode===85)) _0xP();
+    // 2. 단축키 차단
+    window.onkeydown = (e) => {
+        if(e.keyCode === 123 || (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74)) || (e.ctrlKey && e.keyCode === 85)) {
+            _EXIT(); return false;
+        }
     };
 
-    // 로그 연출 ㅋ
-    setInterval(function(){
-        var z=document.getElementById('L_Z');
-        var d=document.createElement('div');
-        d.innerHTML=`[${new Date().toLocaleTimeString()}] User_Connect_OK`;
-        z.prepend(d); if(z.children.length>25)z.lastChild.remove();
+    // 3. 로그 연출 ㅋ
+    setInterval(() => {
+        const b = document.getElementById('L_BOX');
+        const d = document.createElement('div');
+        d.innerHTML = `<span style="color:var(--n)">[${new Date().toLocaleTimeString()}]</span> User_Auth_Success`;
+        b.prepend(d); if(b.children.length > 25) b.lastChild.remove();
     }, 2000);
 })();
 </script>
