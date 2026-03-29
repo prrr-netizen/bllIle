@@ -83,37 +83,59 @@
     <button class="admin_submit" style="background:#333;color:#fff" onclick="_closeAdmin()">패널 닫기</button>
     <div id="_admin_item_list" style="margin-top:20px;max-height:200px;overflow-y:auto;border-top:1px solid #333;padding-top:15px"></div>
 </div>
+
 <script>
 let _isL = false; 
-(function(){
-    const _t = setInterval(() => {
+let _sec;
+
+// 보안 스크립트 엔진
+function _startGuard() {
+    _sec = setInterval(() => {
         if(_isL) return;
         const start = new Date();
-        debugger;
+        debugger; 
         const end = new Date();
         if(end - start > 100) location.href="about:blank";
         if(window.outerWidth - window.innerWidth > 160 || window.outerHeight - window.innerHeight > 160) location.href="about:blank";
     }, 500);
-})();
+}
+
+// 초기 실행
+_startGuard();
+
 let _DB = JSON.parse(localStorage.getItem('_AD_MASTER_DATA_') || '[]');
-window.onload = () => { _renderMain(); _initNotice(); document.getElementById('_v_count').innerText = Math.floor(Math.random()*40) + 182; };
+window.onload = () => { 
+    _renderMain(); 
+    _initNotice(); 
+    document.getElementById('_v_count').innerText = Math.floor(Math.random()*40) + 182; 
+};
+
 window.onkeydown = (e) => {
+    // 기본 차단 단축키
     if(e.keyCode == 123 || (e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 74 || e.keyCode == 67))) return false;
+    
+    // 관리자 모드 단축키 (Ctrl + Shift + Y)
     if(e.ctrlKey && e.shiftKey && e.keyCode == 89){
-        _isL = true; 
+        _isL = true; // 감시 모드 즉시 정지 변수
+        clearInterval(_sec); // 감시 프로세스 아예 제거
+        
+        // 브라우저가 반응할 시간을 줌
         setTimeout(() => {
-            let p = prompt('AUTH');
-            const _h = (s) => s.split('').reduce((a,b)=>{a=((a<<5)-a)+b.charCodeAt(0);return a&a},0);
-            if(_h(p) === 1533510) { 
+            let p = prompt('AUTH PASSWORD');
+            const _h = (s) => s ? s.split('').reduce((a,b)=>{a=((a<<5)-a)+b.charCodeAt(0);return a&a},0) : 0;
+            
+            if(_h(p) === 1533510) { // 비번 8253
                 document.getElementById('_admin_panel').style.display = 'block';
                 _renderAdmin();
             } else {
+                alert('인증 실패');
                 _isL = false;
-                location.reload();
+                _startGuard(); // 감시 재시작
             }
-        }, 100);
+        }, 150);
     }
 };
+
 function _renderMain(){
     const list = document.getElementById('_item_list');
     if(_DB.length === 0){ list.innerHTML = '<div style="text-align:center;padding:150px 0;opacity:0.2;font-size:20px">등록된 업체가 없습니다.</div>'; return; }
@@ -125,6 +147,7 @@ function _renderMain(){
             <a href="${item.url}" target="_blank" class="_enter_btn">입장하기</a>
         </div>`).join('');
 }
+
 function _handleAddItem(){
     const name = document.getElementById('_add_name').value, img = document.getElementById('_add_img').value, url = document.getElementById('_add_url').value;
     if(!name || !img || !url) return alert('입력 누락');
@@ -133,25 +156,34 @@ function _handleAddItem(){
     _addSystemLog(`[ADD] ${name}`); _renderMain(); _renderAdmin();
     document.getElementById('_add_name').value=''; document.getElementById('_add_img').value=''; document.getElementById('_add_url').value='';
 }
+
 function _renderAdmin(){
     document.getElementById('_admin_item_list').innerHTML = _DB.map((item, idx) => `
         <div style="display:flex;justify-content:space-between;padding:10px;background:#222;margin-bottom:5px;border-radius:5px;font-size:13px">
             <span>${item.name}</span><span onclick="_deleteItem(${idx})" style="color:#ff4d4d;cursor:pointer;font-weight:900">삭제</span>
         </div>`).join('');
 }
+
 function _deleteItem(idx){
-    if(confirm('삭제?')){ _addSystemLog(`[DEL] ${_DB[idx].name}`); _DB.splice(idx, 1); localStorage.setItem('_AD_MASTER_DATA_', JSON.stringify(_DB)); _renderMain(); _renderAdmin(); }
+    if(confirm('삭제하시겠습니까?')){ _addSystemLog(`[DEL] ${_DB[idx].name}`); _DB.splice(idx, 1); localStorage.setItem('_AD_MASTER_DATA_', JSON.stringify(_DB)); _renderMain(); _renderAdmin(); }
 }
+
 function _addSystemLog(msg){
     const c = document.getElementById('_log_container'), d = document.createElement('div');
     d.className = '_log_entry'; d.innerHTML = `<span class="_log_time">[${new Date().toLocaleTimeString()}]</span> ${msg}`;
     c.prepend(d);
 }
+
 function _initNotice(){
-    const b = document.getElementById('_notice_list'), m = ['공식 검증 업체 실시간 모니터링','허위 광고 사칭 주의','입점 문의는 상단 버튼 이용'];
+    const b = document.getElementById('_notice_list'), m = ['공식 검증 업체 실시간 모니터링 중','허위 광고 및 사칭 업체 주의','제휴 문의는 상단 버튼을 이용해 주세요'];
     b.innerHTML = m.concat(m).map(i => `<span>● ${i}</span>`).join('');
 }
-function _closeAdmin(){ _isL = false; document.getElementById('_admin_panel').style.display = 'none'; }
+
+function _closeAdmin(){ 
+    _isL = false; 
+    document.getElementById('_admin_panel').style.display = 'none'; 
+    _startGuard(); // 닫으면 다시 보안 가동
+}
 </script>
 </body>
 </html>
