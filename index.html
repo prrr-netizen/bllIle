@@ -3,168 +3,160 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>GOLDEN ELITE | PRIVATE NETWORK</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700;900&family=Noto+Sans+KR:wght@500;800;900&display=swap" rel="stylesheet">
+    <title>GOLDEN ELITE | OFFICIAL AD NETWORK</title>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@700;900&display=swap" rel="stylesheet">
     <style>
-        :root { --n: #00ffcc; --b: #020408; --p: rgba(10, 15, 25, 0.98); --l: rgba(0, 255, 204, 0.4); --r: #ff0033; }
-        * { margin:0; padding:0; box-sizing:border-box; -webkit-user-select:none; user-select:none; font-family:'Inter', 'Noto Sans KR', sans-serif; }
+        :root { --n: #00ffcc; --b: #020408; --p: rgba(10, 15, 25, 0.98); --l: rgba(0, 255, 204, 0.4); --g: linear-gradient(135.deg, #00ffcc, #0099ff); }
+        * { margin:0; padding:0; box-sizing:border-box; -webkit-user-select:none; user-select:none; font-family:'Noto Sans KR', sans-serif; }
         body { background:var(--b); color:#fff; min-height:100vh; overflow-x:hidden; }
+
+        /* [보안 레이어] */
+        #S_MASK_V2 { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:#000; z-index:999999; flex-direction:column; align-items:center; justify-content:center; color:#ff0033; font-weight:900; font-size:26px; text-align:center; }
+
+        /* 헤더 & 상단 광고 알림 */
+        .T_BAR { background: #111; padding: 12px 0; border-bottom: 1px solid #222; font-size: 13px; color: var(--n); text-align: center; font-weight: 800; letter-spacing: 1px; animation: blink 1.5s infinite; }
+        @keyframes blink { 50% { opacity: 0.5; } }
+        .C { max-width:1400px; margin:0 auto; padding:0 30px; }
+        .H { position:sticky; top:0; z-index:1000; background:rgba(2,4,8,0.98); backdrop-filter:blur(30px); border-bottom:3px solid var(--n); padding:25px 0; display:flex; justify-content:space-between; align-items:center; box-shadow: 0 5px 20px rgba(0,255,204,0.2); }
+        .L { font-family: 'Black Han Sans', sans-serif; font-size:36px; letter-spacing:-1px; cursor:pointer; }
+        .L span { color:var(--n); text-shadow: 0 0 15px var(--n); }
+
+        .CS_BOX a { text-decoration: none; color: #000; background: var(--n); padding: 16px 35px; border-radius: 10px; font-weight: 900; margin-left: 15px; font-size: 16px; transition: 0.3s; display: inline-block; box-shadow: 0 0 15px rgba(0,255,204,0.4); }
+        .CS_BOX a:hover { background: #fff; transform: scale(1.08); box-shadow: 0 0 25px #fff; }
+
+        /* 배너 그리드 (시인성 중심) */
+        .MAIN_SEC { display: grid; grid-template-columns: 1fr 380px; gap: 40px; margin: 50px 0; }
+        .G_B { display:grid; grid-template-columns:repeat(2, 1fr); gap:35px; }
+        .ITEM { background:var(--p); border:2px solid #1a2233; border-radius:25px; overflow:hidden; transition:0.5s; position: relative; }
+        .ITEM:hover { transform:translateY(-20px); border-color:var(--n); box-shadow: 0 20px 60px rgba(0,255,204,0.25); }
         
-        /* [보안] 은폐 시 나타날 화면 */
-        #S_LOCK { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:#000; z-index:999999; flex-direction:column; align-items:center; justify-content:center; color:var(--r); font-weight:900; font-size:22px; }
-
-        /* 헤더 & 네비 */
-        .TOP_BAR { background: #000; padding: 10px 0; border-bottom: 1px solid #111; font-size: 12px; color: #888; }
-        .C { max-width:1300px; margin:0 auto; padding:0 20px; }
-        .FLEX { display: flex; justify-content: space-between; align-items: center; }
-        .H { position:sticky; top:0; z-index:1000; background:rgba(2,4,8,0.95); backdrop-filter:blur(20px); border-bottom:2px solid var(--n); padding:20px 0; }
-        .L { font-size:28px; font-weight:900; cursor:pointer; letter-spacing:-1px; }
-        .L span { color:var(--n); text-shadow:0 0 15px var(--n); }
-        .CS_BTNS a { text-decoration: none; color: #000; background: var(--n); padding: 10px 20px; border-radius: 5px; font-weight: 900; margin-left: 10px; font-size: 14px; }
+        .IMG_P { width:100%; height:280px; background:#000; position: relative; overflow: hidden; }
+        .IMG_P img { width:100%; height:100%; object-fit:cover; opacity: 0.7; transition: 0.6s; }
+        .ITEM:hover .IMG_P img { opacity: 1; transform: scale(1.1) rotate(1deg); }
         
-        /* 메인 그리드 */
-        .MAIN_LAYOUT { display: grid; grid-template-columns: 1fr 350px; gap: 30px; margin: 40px 0; }
-        .GRID { display:grid; grid-template-columns:repeat(3, 1fr); gap:20px; }
-        .CARD { background:var(--p); border:1px solid var(--l); border-radius:15px; overflow:hidden; transition:0.4s; position: relative; }
-        .CARD:hover { transform:translateY(-10px); border-color:var(--n); box-shadow:0 15px 40px rgba(0,255,204,0.2); }
-        .IMG_BOX { width:100%; height:180px; background:#000; position: relative; }
-        .IMG_BOX img { width:100%; height:100%; object-fit:cover; opacity: 0.7; }
-        .BADGE { position: absolute; top: 10px; right: 10px; background: var(--r); color: #fff; padding: 4px 8px; font-size: 10px; font-weight: 900; border-radius: 3px; }
-        .INFO { padding: 25px; text-align: center; }
-        .NAME { font-size:19px; font-weight:900; margin-bottom: 20px; color: var(--n); }
-        .LINK_BTN { display: block; width:100%; padding:15px; background:transparent; border:1px solid var(--n); color:var(--n); border-radius:8px; font-weight:900; cursor:pointer; text-decoration: none; transition: 0.3s; }
-        .LINK_BTN:hover { background:var(--n); color:#000; }
+        .TAG { position: absolute; top: 20px; left: 20px; background: #ff0033; color: #fff; padding: 7px 15px; font-size: 13px; font-weight: 900; border-radius: 5px; z-index: 5; box-shadow: 0 0 10px #ff0033; }
+        .INFO_P { padding: 35px; text-align: center; background: linear-gradient(to bottom, transparent, #050a14); }
+        .NAME_P { font-size:28px; font-weight:900; margin-bottom: 25px; color: #fff; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
+        .GO_BTN { display: block; width:100%; padding:20px; background:transparent; border:2px solid var(--n); color:var(--n); border-radius:15px; font-weight:900; font-size: 20px; text-decoration: none; transition: 0.4s; }
+        .GO_BTN:hover { background:var(--n); color:#000; box-shadow: 0 0 30px var(--n); }
 
-        /* 사이드바 로그 */
-        .SIDE_BOX { background: #0a0f19; border: 1px solid #1a2233; border-radius: 15px; padding: 25px; margin-bottom: 20px; }
-        .SIDE_TITLE { font-size: 14px; font-weight: 900; color: var(--n); margin-bottom: 20px; display: flex; justify-content: space-between; }
-        .LOG_LIST { height: 300px; overflow: hidden; font-size: 13px; color: #ccc; line-height: 2.2; }
-        .LOG_ITEM { border-bottom: 1px solid #111; padding: 5px 0; animation: slideIn 0.5s ease-out; }
-        @keyframes slideIn { from { opacity: 0; transform: translateX(20px); } to { opacity: 1; transform: translateX(0); } }
+        /* 사이드바 실시간 기록 */
+        .S_BOX { background: #0a0f19; border: 1px solid #1a2233; border-radius: 20px; padding: 30px; margin-bottom: 25px; position: sticky; top: 120px; }
+        .S_TITLE { font-size: 16px; font-weight: 900; color: var(--n); margin-bottom: 25px; display: flex; align-items: center; }
+        .S_TITLE::before { content:''; display:inline-block; width:4px; height:18px; background:var(--n); margin-right:10px; }
+        .L_LIST { height: 400px; overflow: hidden; font-size: 14px; color: #aaa; line-height: 2.8; }
+        .L_ITEM { border-bottom: 1px dotted #222; }
 
-        @media (max-width: 1000px) { .MAIN_LAYOUT { grid-template-columns: 1fr; } .GRID { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 1200px) { .MAIN_SEC { grid-template-columns: 1fr; } .G_B { grid-template-columns: repeat(1, 1fr); } }
     </style>
 </head>
 <body oncontextmenu="return false">
 
-<div id="S_LOCK">
-    <div>⚠️ SECURITY BREACH DETECTED ⚠️</div>
-    <p style="font-size:14px; color:#444; margin-top:15px; font-weight:400;">데이터 보호를 위해 소스 코드가 즉시 파기되었습니다.</p>
+<div id="S_MASK_V2">
+    <div>🛑 SECURITY VIOLATION 🛑</div>
+    <p style="font-size:14px; color:#444; margin-top:20px;">비정상적인 소스 접근 감지로 데이터가 즉시 파기되었습니다.</p>
 </div>
 
-<div id="W_MAIN">
-    <div class="TOP_BAR">
-        <div class="C FLEX">
-            <div id="REAL_TIME">LOADING TIME...</div>
-            <div>STATUS: <span style="color:var(--n)">● SERVER ONLINE</span></div>
-        </div>
-    </div>
-
-    <header class="H">
-        <div class="C FLEX">
-            <div class="L" onclick="location.reload()">GOLDEN<span>ELITE</span></div>
-            <div class="CS_BTNS">
-                <a href="https://t.me/your_id" target="_blank" style="background:#24A1DE; color:#fff;">텔레그램 문의</a>
-                <a href="#" onclick="alert('카카오톡 상담 연결중...')">카카오톡 문의</a>
-            </div>
+<div id="W_CORE">
+    <div class="T_BAR">경고: 비정상적인 방법으로 소스 탈취 시 법적 책임을 물을 수 있습니다.</div>
+    <header class="H C">
+        <div class="L" onclick="location.reload()">GOLDEN<span>ELITE</span></div>
+        <div class="CS_BOX">
+            <a href="#" style="background:#24A1DE; color:#fff;">텔레그램 상담센터</a>
+            <a href="#" style="background:#fee500; color:#3c1e1e;">카카오톡 1:1 문의</a>
         </div>
     </header>
 
-    <main class="C MAIN_LAYOUT">
-        <section class="GRID" id="BANNER_RENDER"></section>
-
+    <main class="C MAIN_SEC">
+        <section class="G_B" id="R_BANNERS"></section>
         <aside>
-            <div class="SIDE_BOX">
-                <div class="SIDE_TITLE">실시간 접속 현황 <span id="USER_COUNT">2,481명</span></div>
-                <div class="LOG_LIST" id="LIVE_LOG"></div>
+            <div class="S_BOX">
+                <div class="S_TITLE">실시간 서버 접속 로그</div>
+                <div class="L_LIST" id="R_LOGS"></div>
             </div>
-            <div class="SIDE_BOX" style="text-align:center;">
-                <p style="color:#555; font-size:12px;">Copyright 2026 GOLDEN ELITE.<br>All Rights Reserved.</p>
-            </div>
+            <div style="text-align:center; padding:20px; color:#333; font-weight:900;">SECURED BY GOLDEN_ELITE_PRO</div>
         </aside>
     </main>
 </div>
 
 <script>
-    /* [1. 실전 배너 데이터] n:이름, i:이미지, u:이동링크, b:뱃지텍스트 */
-    const _ITEMS = [
-        {n:"STAKE", i:"https://via.placeholder.com/400x280/0a0f19/00ffcc?text=STAKE", u:"https://stake.com", b:"인기"},
-        {n:"ROOBET", i:"https://via.placeholder.com/400x280/0a0f19/00ffcc?text=ROOBET", u:"#", b:"신규"},
-        {n:"1XBET", i:"https://via.placeholder.com/400x280/0a0f19/00ffcc?text=1XBET", u:"#", b:"이벤트"},
-        {n:"BC.GAME", i:"https://via.placeholder.com/400x280/0a0f19/00ffcc?text=BC.GAME", u:"#", b:"HOT"},
-        {n:"TITAN", i:"https://via.placeholder.com/400x280/0a0f19/00ffcc?text=TITAN", u:"#", b:"추천"},
-        {n:"EMPIRE", i:"https://via.placeholder.com/400x280/0a0f19/00ffcc?text=EMPIRE", u:"#", b:"보증"},
-        {n:"SKYBET", i:"https://via.placeholder.com/400x280/0a0f19/00ffcc?text=SKYBET", u:"#", b:"등급"},
-        {n:"ACEBET", i:"https://via.placeholder.com/400x280/0a0f19/00ffcc?text=ACEBET", u:"#", b:"VIP"}
+    /* [1. 실시간 데이터 렌더링 - 시인성 강화] */
+    const _0xAD_DATA = [
+        {t:"BEST", n:"STAKE OFFICIAL", i:"https://via.placeholder.com/800x500/0a0f19/00ffcc?text=STAKE", u:"#"},
+        {t:"NEW", n:"ROOBET KOREA", i:"https://via.placeholder.com/800x500/0a0f19/00ffcc?text=ROOBET", u:"#"},
+        {t:"HOT", n:"1XBET GLOBAL", i:"https://via.placeholder.com/800x500/0a0f19/00ffcc?text=1XBET", u:"#"},
+        {t:"EVENT", n:"BC.GAME PRO", i:"https://via.placeholder.com/800x500/0a0f19/00ffcc?text=BC.GAME", u:"#"},
+        {t:"TOP", n:"TITAN CASINO", i:"https://via.placeholder.com/800x500/0a0f19/00ffcc?text=TITAN", u:"#"},
+        {t:"SAFE", n:"EMPIRE AD", i:"https://via.placeholder.com/800x500/0a0f19/00ffcc?text=EMPIRE", u:"#"}
     ];
 
-    // 배너 렌더링 루프
-    const _target = document.getElementById('BANNER_RENDER');
-    _target.innerHTML = _ITEMS.map(v => `
-        <div class="CARD">
-            <div class="IMG_BOX">
-                <span class="BADGE">${v.b}</span>
-                <img src="${v.i}">
-            </div>
-            <div class="INFO">
-                <div class="NAME">${v.n}</div>
-                <a href="${v.u}" class="LINK_BTN" target="_blank">사이트 입장하기</a>
+    document.getElementById('R_BANNERS').innerHTML = _0xAD_DATA.map(a => `
+        <div class="ITEM">
+            <div class="IMG_P"><span class="TAG">${a.t}</span><img src="${a.i}"></div>
+            <div class="INFO_P">
+                <div class="NAME_P">${a.n}</div>
+                <a href="${a.u}" class="GO_BTN" target="_blank">지금 바로 접속하기</a>
             </div>
         </div>
     `).join('');
 
-    /* [2. 실시간 연출 로직] */
-    // 시계 업데이트
     setInterval(() => {
-        const now = new Date();
-        document.getElementById('REAL_TIME').innerText = now.toLocaleString('ko-KR') + " (UTC+9)";
-    }, 1000);
-
-    // 실시간 로그 생성기
-    const _names = ["김*수", "이*정", "박*철", "최*현", "정*우", "S*p", "V*p", "A*d"];
-    const _actions = ["입장 완료", "충전 신청", "환전 완료", "인증 성공"];
-    setInterval(() => {
-        const log = document.getElementById('LIVE_LOG');
-        const newItem = document.createElement('div');
-        newItem.className = 'LOG_ITEM';
-        newItem.innerHTML = `<span style="color:var(--n)">[확인]</span> ${_names[Math.floor(Math.random()*_names.length)]} 유저님 ${_actions[Math.floor(Math.random()*_actions.length)]}`;
-        log.prepend(newItem);
-        if(log.children.length > 8) log.lastChild.remove();
-        document.getElementById('USER_COUNT').innerText = (2400 + Math.floor(Math.random()*100)) + "명";
-    }, 2500);
+        const l = document.getElementById('R_LOGS');
+        const it = document.createElement('div');
+        it.className = 'L_ITEM';
+        const u = ["강*훈","유*진","임*현","송*호","V*IP","A*DM"];
+        it.innerHTML = `<span style="color:var(--n)">[${new Date().toLocaleTimeString()}]</span> ${u[Math.floor(Math.random()*u.length)]}님 입장 완료`;
+        l.prepend(it); if(l.children.length > 10) l.lastChild.remove();
+    }, 2000);
 
     /* -----------------------------------------------------------
-       🛡️ [최종 보안 엔진] 은폐 및 소스 삭제 (마우스 직접 클릭 대응)
+       🛡️ [최종 보안 엔진 - Sources 탭 완전 파괴 로직]
     ----------------------------------------------------------- */
     (function(){
-        const _m = document.getElementById('W_MAIN');
-        const _s = document.getElementById('S_LOCK');
-
-        // 소스 완전 은폐 함수
-        const _X = () => {
-            _m.remove(); // 1. 메인 UI 전체를 메모리에서 삭제 (Elements 창에서 사라짐)
-            _s.style.display = 'flex'; // 2. 차단 화면만 노출
-            document.title = "ACCESS DENIED";
+        const _0xW = document.getElementById('W_CORE');
+        const _0xS = document.getElementById('S_MASK_V2');
+        
+        // 소스 증발 및 메모리 파기 함수
+        const _0xKILL = () => {
+            _0xW.remove(); 
+            _0xS.style.display = 'flex';
+            // 캡처 화면에 나온 소스 내용을 공백으로 밀어버림
+            document.documentElement.innerHTML = "<html><body style='background:#000;color:#f00;text-align:center;padding-top:20%'><h1>SECURITY ERROR: SOURCE WIPED</h1></body></html>";
             console.clear();
         };
 
-        // 감지 1: 마우스로 오른쪽 위 점선 -> 개발자 도구 클릭 (창 크기 변화 감지)
-        window.addEventListener('resize', () => {
-            const _diffW = window.outerWidth - window.innerWidth;
-            const _diffH = window.outerHeight - window.innerHeight;
-            if (_diffW > 160 || _diffH > 160) { _X(); }
-        });
-
-        // 감지 2: 키보드 단축키 차단
-        window.addEventListener('keydown', (e) => {
-            if (e.keyCode === 123 || (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74)) || (e.ctrlKey && e.keyCode === 85)) {
-                e.preventDefault(); _X();
+        // 1. 단축키 차단 (F12, Ctrl+U, Ctrl+Shift+I/J 등)
+        window.onkeydown = (e) => {
+            if(e.keyCode===123 || (e.ctrlKey && e.shiftKey && (e.keyCode===73||e.keyCode===74)) || (e.ctrlKey && e.keyCode===85)) {
+                e.preventDefault(); _0xKILL();
             }
-        });
+        };
 
-        // 초기 실행 시 이미 도구가 켜져 있다면 즉시 삭제
-        if(window.outerWidth - window.innerWidth > 160 || window.outerHeight - window.innerHeight > 160) { _X(); }
+        // 2. [캡처 대응 핵심] 마우스로 점 3개 -> 개발자 도구 클릭 시 창 비율 변화 감지
+        setInterval(() => {
+            const _0xDIFF = window.outerWidth - window.innerWidth;
+            const _0xDIFF_H = window.outerHeight - window.innerHeight;
+            if (_0xDIFF > 180 || _0xDIFF_H > 180) { _0xKILL(); }
+        }, 500);
 
+        // 3. 무한 디버거 루프 (Sources 탭에서 코드 분석 시 속도를 늦추고 결국 자폭 유도)
+        (function _0xTRAP() {
+            try {
+                (function _0xINNER(i) {
+                    if (('' + (i / i)).length !== 1 || i % 20 === 0) {
+                        (function() {}.constructor('debugger')());
+                    } else {
+                        debugger;
+                    }
+                    _0xINNER(++i);
+                }(0));
+            } catch (e) {
+                setTimeout(_0xTRAP, 100);
+            }
+        })();
+
+        // 우클릭 차단
+        window.oncontextmenu = () => false;
     })();
 </script>
 </body>
