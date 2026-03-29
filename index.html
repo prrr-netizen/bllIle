@@ -1,189 +1,185 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
-<title>OFFICIAL LIST</title>
-<style>
-/* 기본 셋팅 및 복사 방지 */
-*{margin:0;padding:0;box-sizing:border-box;-webkit-user-select:none;user-select:none;font-family:"Noto Sans KR",sans-serif}
-body{background:#0a0a0f;color:#fff;min-height:100vh;overflow-x:hidden}
-body::before{content:"";position:fixed;inset:0;background:radial-gradient(ellipse 80% 40% at 50% 0%,rgba(255,180,0,.06),transparent 55%);pointer-events:none;z-index:0}
-
-/* 최상단 문의 버튼 영역 */
-._top_btns{background:#000;padding:8px 20px;display:flex;justify-content:flex-end;gap:10px;border-bottom:1px solid #222}
-._btn_link{text-decoration:none;font-size:11px;font-weight:800;padding:5px 12px;border-radius:4px;transition:0.2s}
-._btn_discord{background:#5865F2;color:#fff}
-._btn_inquiry{background:#f0b400;color:#000}
-
-/* 헤더 및 로고 */
-header{position:sticky;top:0;z-index:50;background:rgba(8,8,13,.92);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,180,0,.12)}
-._hi{max-width:1400px;margin:0 auto;padding:0 20px;height:60px;display:flex;align-items:center;justify-content:space-between}
-._logo{font-size:20px;font-weight:900;color:#f0b400;letter-spacing:.06em;text-decoration:none}
-._logo span{color:#fff}
-._oc{display:flex;align-items:center;gap:5px;font-size:12px;color:rgba(255,255,255,.5)}
-._od{width:6px;height:6px;border-radius:50%;background:#4ade80}
-
-/* 공지사항 바 */
-._nb{background:rgba(240,180,0,.06);border-bottom:1px solid rgba(240,180,0,.1);padding:8px 0;overflow:hidden}
-._nt{display:flex;gap:50px;animation:_mk 30s linear infinite;white-space:nowrap;width:max-content}
-._nt span{font-size:12px;color:rgba(255,180,0,.8);font-weight:600}
-
-/* 리스트 레이아웃 */
-._mw{max-width:1400px;margin:0 auto;padding:20px;display:grid;grid-template-columns:1fr 300px;gap:20px;position:relative;z-index:1}
-.ITEM{background:linear-gradient(135deg,rgba(18,18,28,.95),rgba(12,12,20,.98));border:1px solid rgba(255,255,255,.07);border-radius:12px;height:120px;display:flex;align-items:center;overflow:hidden;margin-bottom:12px;transition:0.2s}
-.ITEM:hover{border-color:#f0b400;transform:translateY(-2px)}
-._rk{width:70px;text-align:center;font-size:24px;font-weight:900;color:rgba(255,255,255,0.2)}
-._gi{width:380px;height:100%;background:#000;border-right:1px solid #222}
-._gi img{width:100%;height:100%;object-fit:cover}
-._if{flex:1;padding:0 20px}
-._ti{font-size:18px;font-weight:900;margin-bottom:5px}
-._go{background:#f0b400;color:#000;padding:10px 25px;text-decoration:none;font-weight:900;font-size:13px;border-radius:6px;margin-right:20px}
-
-/* 시스템 로그 사이드바 */
-._scd{background:#0d0d16;border:1px solid #222;border-radius:12px;padding:15px;height:500px;position:sticky;top:80px}
-#_xlg{font-size:11px;color:#666;height:440px;overflow-y:auto;display:flex;flex-direction:column;gap:5px}
-._log_line{padding:5px;border-bottom:1px solid #1a1a25}
-._log_time{color:#f0b400;margin-right:5px;font-family:monospace}
-
-/* 관리자 창 */
-#_xam{display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);width:400px;background:#111;border:2px solid #f0b400;padding:25px;z-index:1000;border-radius:15px}
-#_xam input{width:100%;padding:10px;margin-bottom:10px;background:#000;color:#fff;border:1px solid #333}
-#_xam button{width:100%;padding:12px;background:#f0b400;border:none;font-weight:900;cursor:pointer;margin-bottom:5px}
-
-@keyframes _mk{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-@media (max-width:1000px){._mw{grid-template-columns:1fr}._scd{display:none}._gi{width:200px}}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <title>OFFICIAL VERIFIED LIST</title>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;-webkit-user-select:none;user-select:none;font-family:"Noto Sans KR",sans-serif}
+        body{background:#0a0a0f;color:#fff;min-height:100vh;overflow-x:hidden}
+        body::before{content:"";position:fixed;inset:0;background:radial-gradient(ellipse 80% 40% at 50% 0%,rgba(255,180,0,0.08),transparent 55%);pointer-events:none;z-index:0}
+        ._top_bar{background:#000;padding:10px 20px;display:flex;justify-content:flex-end;gap:12px;border-bottom:1px solid #1a1a25;position:relative;z-index:100}
+        ._top_btn{text-decoration:none;font-size:12px;font-weight:900;padding:6px 16px;border-radius:4px;transition:0.2s}
+        ._btn_disc{background:#5865F2;color:#fff}._btn_disc:hover{background:#4752c4}
+        ._btn_inq{background:#f0b400;color:#000}._btn_inq:hover{background:#d49e00}
+        header{position:sticky;top:0;z-index:50;background:rgba(8,8,13,0.95);backdrop-filter:blur(15px);border-bottom:1px solid rgba(255,180,0,0.15)}
+        ._hi{max-width:1400px;margin:0 auto;padding:0 20px;height:65px;display:flex;align-items:center;justify-content:space-between}
+        ._logo{font-size:22px;font-weight:900;color:#f0b400;text-decoration:none;letter-spacing:0.05em}
+        ._logo span{color:#fff}
+        ._oc_box{display:flex;align-items:center;gap:8px;font-size:13px;background:rgba(255,255,255,0.05);padding:6px 15px;border-radius:99px;border:1px solid rgba(255,255,255,0.1)}
+        ._oc_dot{width:7px;height:7px;background:#4ade80;border-radius:50%;animation:blink 1.5s infinite}
+        ._notice_w{background:rgba(240,180,0,0.05);border-bottom:1px solid rgba(240,180,0,0.1);padding:10px 0;overflow:hidden}
+        ._notice_t{display:flex;gap:60px;animation:marquee 35s linear infinite;white-space:nowrap;width:max-content}
+        ._notice_t span{font-size:13px;color:rgba(255,180,0,0.8);font-weight:600}
+        ._main_wrapper{max-width:1400px;margin:0 auto;padding:30px 20px;display:grid;grid-template-columns:1fr 320px;gap:25px;position:relative;z-index:1}
+        .ITEM_CARD{background:linear-gradient(135deg, rgba(20,20,30,0.9), rgba(10,10,15,0.95));border:1px solid rgba(255,255,255,0.08);border-radius:15px;height:135px;display:flex;align-items:center;margin-bottom:15px;overflow:hidden;transition:0.3s ease;animation:fadeIn 0.5s ease both}
+        .ITEM_CARD:hover{border-color:#f0b400;transform:translateY(-3px);box-shadow:0 10px 30px rgba(0,0,0,0.5)}
+        ._item_rank{width:80px;height:100%;display:flex;align-items:center;justify-content:center;font-size:32px;font-weight:900;color:rgba(255,255,255,0.1);background:rgba(255,255,255,0.02)}
+        ._item_img{width:400px;height:100%;background:#000;border-right:1px solid rgba(255,255,255,0.05)}
+        ._item_img img{width:100%;height:100%;object-fit:cover}
+        ._item_info{flex:1;padding:0 25px}
+        ._item_name{font-size:22px;font-weight:900;margin-bottom:8px;color:#fff}
+        ._item_badge{display:inline-block;font-size:11px;font-weight:800;padding:3px 10px;border-radius:4px;background:rgba(74,222,128,0.1);color:#4ade80;border:1px solid rgba(74,222,128,0.2)}
+        ._enter_btn{background:linear-gradient(to bottom, #f0b400, #d49e00);color:#000;text-decoration:none;font-weight:900;font-size:14px;padding:12px 30px;border-radius:8px;margin-right:25px;transition:0.2s}
+        ._enter_btn:hover{filter:brightness(1.1)}
+        ._sidebar{background:rgba(15,15,25,0.8);border:1px solid #222;border-radius:15px;padding:20px;height:600px;position:sticky;top:90px;display:flex;flex-direction:column}
+        ._side_title{font-size:12px;font-weight:900;color:#f0b400;margin-bottom:20px;letter-spacing:0.1em;border-bottom:1px solid #333;padding-bottom:10px}
+        #_log_container{flex:1;overflow-y:auto;font-size:11px;display:flex;flex-direction:column;gap:8px}
+        ._log_entry{padding:8px;background:rgba(0,0,0,0.2);border-radius:5px;border-left:3px solid #f0b400}
+        ._log_time{color:#777;margin-right:5px;font-family:monospace}
+        #_admin_panel{display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);width:450px;background:#111;border:2px solid #f0b400;padding:30px;z-index:2000;border-radius:20px;box-shadow:0 0 50px rgba(0,0,0,0.8)}
+        #_admin_panel h2{margin-bottom:20px;text-align:center;color:#f0b400}
+        .admin_input{width:100%;padding:12px;margin-bottom:12px;background:#000;color:#fff;border:1px solid #333;border-radius:8px}
+        .admin_submit{width:100%;padding:15px;background:#f0b400;border:none;font-weight:900;cursor:pointer;border-radius:8px;margin-bottom:10px}
+        @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+        @keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+        @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+        @media (max-width:1100px){._main_wrapper{grid-template-columns:1fr}._sidebar{display:none}._item_img{width:250px}}
+        @media (max-width:600px){.ITEM_CARD{flex-direction:column;height:auto;padding-bottom:20px}._item_img{width:100%;height:150px}._enter_btn{width:calc(100% - 40px);margin:15px 20px 0;text-align:center}}
+    </style>
 </head>
 <body oncontextmenu="return false">
-
-<div class="_top_btns">
-    <a href="https://discord.gg/yourlink" target="_blank" class="_btn_link _btn_discord">디스코드 채널</a>
-    <a href="https://t.me/yourid" target="_blank" class="_btn_link _btn_inquiry">실시간 입점 문의</a>
+<div class="_top_bar">
+    <a href="#" class="_top_btn _btn_disc">DISCORD 공식 채널</a>
+    <a href="#" class="_top_btn _btn_inq">24H 입점 문의</a>
 </div>
-
 <header>
     <div class="_hi">
-        <a href="#" class="_logo">AD <span>MASTER</span></a>
-        <div class="_oc"><span class="_od"></span> 실시간 접속자: <b id="_v_count">0</b>명</div>
+        <a href="#" class="_logo">AD<span>MASTER</span></a>
+        <div class="_oc_box">
+            <span class="_oc_dot"></span>
+            현재 <b id="_v_count" style="color:#4ade80;margin:0 3px">0</b>명 접속 중
+        </div>
     </div>
 </header>
-
-<div class="_nb"><div class="_nt" id="_notice_bar"></div></div>
-
-<div class="_mw">
-    <main id="_list_view"></main>
+<div class="_notice_w">
+    <div class="_notice_t" id="_notice_list"></div>
+</div>
+<div class="_main_wrapper">
+    <main id="_item_list"></main>
     <aside>
-        <div class="_scd">
-            <div style="font-size:11px;font-weight:900;color:#f0b400;margin-bottom:15px">SYSTEM LOG (REAL-TIME)</div>
-            <div id="_xlg"></div>
+        <div class="_sidebar">
+            <div class="_side_title">REAL-TIME SYSTEM LOG</div>
+            <div id="_log_container"></div>
         </div>
     </aside>
 </div>
-
-<div id="_xam">
-    <h3 style="margin-bottom:15px">ADMIN PANEL</h3>
-    <input type="text" id="_in_n" placeholder="업체명">
-    <input type="text" id="_in_i" placeholder="이미지 URL">
-    <input type="text" id="_in_u" placeholder="링크 (https://...)">
-    <button onclick="_addItem()">업체 등록하기</button>
-    <button onclick="_closeAdmin()" style="background:#333;color:#fff">닫기</button>
-    <div id="_admin_list" style="margin-top:15px;max-height:150px;overflow-y:auto;border-top:1px solid #333;padding-top:10px"></div>
+<div id="_admin_panel">
+    <h2>ADMIN MODE</h2>
+    <input type="text" id="_add_name" class="admin_input" placeholder="업체명">
+    <input type="text" id="_add_img" class="admin_input" placeholder="이미지 URL (직사각형 권장)">
+    <input type="text" id="_add_url" class="admin_input" placeholder="이동할 링크 주소">
+    <button class="admin_submit" onclick="_handleAddItem()">신규 업체 등록</button>
+    <button class="admin_submit" style="background:#333;color:#fff" onclick="_closeAdmin()">패널 닫기</button>
+    <div id="_admin_item_list" style="margin-top:20px;max-height:200px;overflow-y:auto;border-top:1px solid #333;padding-top:15px"></div>
 </div>
-
 <script>
-/* 보안: F12 차단 및 튕기기 */
 (function(){
-    setInterval(()=>{debugger;},100);
-    setInterval(()=>{if(window.outerWidth-window.innerWidth>160||window.outerHeight-window.innerHeight>160){location.href="about:blank";}},500);
+    setInterval(function(){debugger;}, 100);
+    setInterval(function(){
+        if(window.outerWidth - window.innerWidth > 160 || window.outerHeight - window.innerHeight > 160){
+            location.href="about:blank";
+        }
+    }, 500);
 })();
-
-let _items = JSON.parse(localStorage.getItem('_AD_DATA_') || '[]');
-
+let _DB = JSON.parse(localStorage.getItem('_AD_MASTER_DATA_') || '[]');
 window.onload = () => {
-    _render();
+    _renderMain();
     _initNotice();
-    // 방문자수 고정 느낌으로 출력 (새로고침 시에만 한 번 정해짐)
-    document.getElementById('_v_count').innerText = Math.floor(Math.random()*45) + 165;
+    document.getElementById('_v_count').innerText = Math.floor(Math.random()*40) + 182;
 };
-
-/* 단축키: Ctrl+Shift+Y (PW: 8253) */
 window.onkeydown = (e) => {
     if(e.ctrlKey && e.shiftKey && e.keyCode == 89){
         let p = prompt('PASSWORD');
-        if(btoa(p) === "ODI1Mw=="){ // "8253"의 Base64
-            document.getElementById('_xam').style.display='block';
+        if(btoa(p) === "ODI1Mw=="){ 
+            document.getElementById('_admin_panel').style.display = 'block';
             _renderAdmin();
-        } else { location.reload(); }
+        } else {
+            location.reload();
+        }
     }
     if(e.keyCode == 123 || (e.ctrlKey && e.shiftKey && e.keyCode == 73)) return false;
 };
-
-function _render(){
-    const c = document.getElementById('_list_view');
-    if(_items.length === 0){
-        c.innerHTML = '<div style="text-align:center;padding:100px;opacity:0.2">등록된 업체가 없습니다.</div>';
+function _renderMain(){
+    const list = document.getElementById('_item_list');
+    if(_DB.length === 0){
+        list.innerHTML = '<div style="text-align:center;padding:150px 0;opacity:0.2;font-size:20px">등록된 업체가 없습니다.</div>';
         return;
     }
-    c.innerHTML = _items.map((it, i) => `
-        <div class="ITEM">
-            <div class="_rk">${i+1}</div>
-            <div class="_gi"><img src="${it.i}" onerror="this.src='https://via.placeholder.com/380x120?text=IMAGE+ERROR'"></div>
-            <div class="_if">
-                <div class="_ti">${it.n}</div>
-                <div style="font-size:10px;color:#4ade80;font-weight:700">OFFICIAL PARTNER</div>
+    list.innerHTML = _DB.map((item, idx) => `
+        <div class="ITEM_CARD">
+            <div class="_item_rank">${idx + 1}</div>
+            <div class="_item_img"><img src="${item.img}" onerror="this.src='https://via.placeholder.com/400x135?text=AD+BANNER'"></div>
+            <div class="_item_info">
+                <div class="_item_name">${item.name}</div>
+                <div class="_item_badge">OFFICIAL VERIFIED</div>
             </div>
-            <a href="${it.u}" target="_blank" class="_go">입장하기</a>
+            <a href="${item.url}" target="_blank" class="_enter_btn">입장하기</a>
         </div>
     `).join('');
 }
-
-function _addItem(){
-    const n = document.getElementById('_in_n').value, i = document.getElementById('_in_i').value, u = document.getElementById('_in_u').value;
-    if(!n || !i || !u) return alert('정보를 모두 입력하세요.');
-    
-    _items.push({n, i, u});
-    localStorage.setItem('_AD_DATA_', JSON.stringify(_items));
-    _addLog(`[System] 신규 업체 등록: ${n}`);
-    _render();
+function _handleAddItem(){
+    const name = document.getElementById('_add_name').value;
+    const img = document.getElementById('_add_img').value;
+    const url = document.getElementById('_add_url').value;
+    if(!name || !img || !url) return alert('모든 정보를 입력해 주세요.');
+    _DB.push({name, img, url});
+    localStorage.setItem('_AD_MASTER_DATA_', JSON.stringify(_DB));
+    _addSystemLog(`[SUCCESS] 신규 업체 등록 완료: ${name}`);
+    _renderMain();
     _renderAdmin();
-    document.getElementById('_in_n').value=''; document.getElementById('_in_i').value=''; document.getElementById('_in_u').value='';
+    document.getElementById('_add_name').value = '';
+    document.getElementById('_add_img').value = '';
+    document.getElementById('_add_url').value = '';
 }
-
 function _renderAdmin(){
-    document.getElementById('_admin_list').innerHTML = _items.map((it, i) => `
-        <div style="display:flex;justify-content:space-between;font-size:12px;padding:5px;background:#222;margin-bottom:2px">
-            <span>${it.n}</span>
-            <b onclick="_delItem(${i})" style="color:red;cursor:pointer">삭제</b>
+    const adminList = document.getElementById('_admin_item_list');
+    adminList.innerHTML = _DB.map((item, idx) => `
+        <div style="display:flex;justify-content:space-between;padding:8px;background:#222;margin-bottom:5px;border-radius:5px;font-size:13px">
+            <span>${item.name}</span>
+            <span onclick="_deleteItem(${idx})" style="color:#ff4d4d;cursor:pointer;font-weight:900">삭제</span>
         </div>
     `).join('');
 }
-
-function _delItem(i){
-    if(confirm('정말 삭제하시겠습니까?')){
-        _addLog(`[System] 업체 삭제 완료: ${_items[i].n}`);
-        _items.splice(i, 1);
-        localStorage.setItem('_AD_DATA_', JSON.stringify(_items));
-        _render();
+function _deleteItem(idx){
+    if(confirm('해당 업체를 삭제하시겠습니까?')){
+        _addSystemLog(`[WARNING] 업체 데이터 삭제: ${_DB[idx].name}`);
+        _DB.splice(idx, 1);
+        localStorage.setItem('_AD_MASTER_DATA_', JSON.stringify(_DB));
+        _renderMain();
         _renderAdmin();
     }
 }
-
-function _addLog(msg){
-    const l = document.getElementById('_xlg');
+function _addSystemLog(msg){
+    const container = document.getElementById('_log_container');
     const div = document.createElement('div');
-    div.className = '_log_line';
+    div.className = '_log_entry';
     div.innerHTML = `<span class="_log_time">[${new Date().toLocaleTimeString()}]</span> ${msg}`;
-    l.prepend(div);
+    container.prepend(div);
 }
-
 function _initNotice(){
-    const b = document.getElementById('_notice_bar');
-    const m = ['24시간 사고 보장 시스템 운영 중','신규 검증 업체 등록 완료','공식 광고 파트너십 문의 환영','철저한 검증 절차를 거친 업체만 등록됩니다'];
-    b.innerHTML = m.concat(m).map(t => `<span>● ${t}</span>`).join('');
+    const bar = document.getElementById('_notice_list');
+    const msgs = [
+        '공식 검증 업체 24시간 모니터링 중입니다.',
+        '허위 광고 및 사칭 업체 주의 바랍니다.',
+        '신규 입점 및 제휴 문의는 상단 버튼을 이용해 주세요.',
+        '안전한 광고 생태계를 위해 최선을 다하겠습니다.'
+    ];
+    bar.innerHTML = msgs.concat(msgs).map(m => `<span>● ${m}</span>`).join('');
 }
-
-function _closeAdmin(){ document.getElementById('_xam').style.display='none'; }
+function _closeAdmin(){
+    document.getElementById('_admin_panel').style.display = 'none';
+}
 </script>
 </body>
 </html>
