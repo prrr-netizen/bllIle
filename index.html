@@ -2,45 +2,50 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RLNL PLATFORM | OFFICIAL</title>
+    <title>OFFICIAL PLATFORM</title>
     <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@700;900&display=swap" rel="stylesheet">
     <style>
         :root { --n: #00ffcc; --b: #020408; --p: rgba(10,15,25,0.98); }
         * { margin:0; padding:0; box-sizing:border-box; font-family:'Noto Sans KR', sans-serif; -webkit-user-select:none; user-select:none; }
         body { background:var(--b); color:#fff; min-height:100vh; overflow-x:hidden; }
 
-        /* [1] 헤더 */
-        header { width:100%; background:rgba(2,4,8,0.98); border-bottom:1px solid var(--n); padding:15px 40px; display:flex; justify-content:space-between; align-items:center; position:sticky; top:0; z-index:1000; }
-        .LOGO { font-family:'Black Han Sans', sans-serif; font-size:26px; color:#fff; cursor:pointer; }
+        /* [1] 헤더 (슬림 & 고급형) */
+        header { width:100%; background:rgba(2,4,8,0.98); border-bottom:1px solid var(--n); padding:12px 30px; display:flex; justify-content:space-between; align-items:center; position:sticky; top:0; z-index:1000; }
+        .LOGO { font-family:'Black Han Sans', sans-serif; font-size:24px; color:#fff; cursor:pointer; }
         .LOGO span { color:var(--n); }
-        .SNS_BTNS { display:flex; gap:10px; }
-        .SNS_BTNS a { text-decoration:none; padding:8px 18px; border-radius:5px; font-weight:900; font-size:12px; transition:0.3s; color:#000; }
+        .SNS_BTNS { display:flex; gap:8px; }
+        .SNS_BTNS a { text-decoration:none; padding:8px 15px; border-radius:4px; font-weight:900; font-size:12px; color:#000; transition:0.3s; }
         .KAKA { background:#FEE500; }
         .TELE { background:#0088cc; color:#fff; }
         .DISC { background:#5865F2; color:#fff; }
 
-        /* [2] 메인 레이아웃 (중앙 정렬) */
-        .MAIN_WRAP { max-width: 1450px; margin: 40px auto; padding: 0 20px; display: grid; grid-template-columns: 1fr 300px; gap: 30px; }
-        .BANNER_GRID { display:grid; grid-template-columns:repeat(5, 1fr); gap:15px; }
-        .CARD { background:var(--p); border:1px solid #1a2233; border-radius:10px; overflow:hidden; text-align:center; padding-bottom:15px; transition:0.3s; }
-        .CARD:hover { border-color:var(--n); transform:translateY(-8px); box-shadow:0 10px 20px rgba(0,255,204,0.15); }
+        /* [2] 메인 레이아웃 */
+        .M_C { max-width: 1400px; margin: 30px auto; padding: 0 20px; display: grid; grid-template-columns: 1fr 280px; gap: 20px; }
         
-        .IMG_BOX { width:100%; height:90px; background:#111; display:flex; align-items:center; justify-content:center; border-bottom:1px solid #1a2233; overflow:hidden; }
-        .IMG_BOX img { width:85%; height:80%; object-fit:contain; opacity:0.8; transition:0.4s; }
+        /* [3] 배너 5열 중앙 배치 - 토토 GIF 배너 최적화 (이름 제거) */
+        .G_B { display:grid; grid-template-columns:repeat(5, 1fr); gap:10px; justify-content:center; }
+        .CARD { background:var(--p); border:1px solid #1a2233; border-radius:6px; overflow:hidden; text-align:center; padding-bottom:15px; transition:0.3s; }
+        .CARD:hover { border-color:var(--n); transform:translateY(-4px); box-shadow:0 8px 15px rgba(0,255,204,0.1); }
         
-        .NAME { font-size:15px; font-weight:900; margin:12px 0; color:#eee; }
-        .ENTER_BTN { display:block; width:85%; margin:0 auto; padding:10px; border:1px solid var(--n); color:var(--n); border-radius:5px; font-weight:900; text-decoration:none; font-size:12px; transition:0.3s; }
-        .ENTER_BTN:hover { background:var(--n); color:#000; }
+        /* 💎 토토 GIF 배너 영역 (높이 120px 고정) 💎 */
+        .IMG { width:100%; height:120px; background:#111; display:flex; align-items:center; justify-content:center; border-bottom:1px solid #1a2233; overflow:hidden; }
+        .IMG img { width:100%; height:100%; object-fit:cover; opacity:0.7; transition:0.3s; }
+        .CARD:hover .IMG img { opacity:1; transform:scale(1.05); } /* 마우스 올리면 GIF 커짐 ㅋ */
+        
+        /* 토토 사이트 이름 제거됨 */
+        
+        .GO { display:block; width:85%; margin:10px auto 0; padding:8px; border:1px solid var(--n); color:var(--n); border-radius:4px; font-weight:900; text-decoration:none; font-size:11px; transition:0.3s; }
+        .GO:hover { background:var(--n); color:#000; }
 
-        /* [3] 사이드바 로그 */
-        .SIDEBAR { background:#0a0f19; border:1px solid #1a2233; border-radius:10px; padding:20px; height:500px; position:sticky; top:110px; }
-        .LOG_TITLE { color:var(--n); font-weight:900; font-size:14px; margin-bottom:15px; border-bottom:1px solid #222; padding-bottom:10px; }
-        .LOG_LIST { height:400px; overflow:hidden; font-size:12px; color:#555; line-height:2.4; }
+        /* [4] 사이드바 로그 */
+        .SIDEBAR { background:#0a0f19; border:1px solid #1a2233; border-radius:6px; padding:15px; height:480px; position:sticky; top:100px; }
+        .LOG_TITLE { color:var(--n); font-weight:900; font-size:12px; margin-bottom:12px; border-bottom:1px solid #222; padding-bottom:8px; }
+        .LOG_LIST { height:420px; overflow:hidden; font-size:11px; color:#555; line-height:2.2; }
 
-        /* [4] 🛡️ 보안 화면 (도메인 유지) */
+        /* [5] 🛡️ 보안 자폭 레이어 (도메인 유지형) */
         #SECURITY_SHIELD { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:#000; z-index:999999; flex-direction:column; align-items:center; justify-content:center; }
-        #SECURITY_SHIELD h1 { color:var(--n); font-size:30px; font-family:'Black Han Sans'; margin-bottom:15px; }
+        #SECURITY_SHIELD h1 { color:var(--n); font-size:26px; font-family:'Black Han Sans'; margin-bottom:12px; }
+        #SECURITY_SHIELD p { color:#666; font-weight:bold; }
     </style>
 </head>
 <body oncontextmenu="return false">
@@ -49,14 +54,15 @@
         <header>
             <div class="LOGO" onclick="location.reload()">RLNL<span>PLATFORM</span></div>
             <div class="SNS_BTNS">
-                <a href="#" target="_blank" class="KAKA">KAKAOTALK</a>
-                <a href="#" target="_blank" class="TELE">TELEGRAM</a>
-                <a href="#" target="_blank" class="DISC">DISCORD</a>
+                <a href="카톡링크" target="_blank" class="KAKA">KAKAOTALK</a>
+                <a href="텔레링크" target="_blank" class="TELE">TELEGRAM</a>
+                <a href="디코링크" target="_blank" class="DISC">DISCORD</a>
             </div>
         </header>
 
         <div class="MAIN_WRAP">
             <section class="BANNER_GRID" id="BANNER_CONTAINER"></section>
+            
             <aside class="SIDEBAR">
                 <div class="LOG_TITLE">LIVE SERVER ACTIVITY</div>
                 <div class="LOG_LIST" id="LOG_CONTAINER"></div>
@@ -66,68 +72,78 @@
 
     <div id="SECURITY_SHIELD">
         <h1>🛡️ SECURITY DETECTED</h1>
-        <p style="color:#666;">소스 코드 분석 감지로 인해 화면을 보호합니다. (F5 새로고침)</p>
+        <p>비정상적인 소스 코드 분석 시도가 감지되어 콘텐츠를 삭제합니다.</p>
+        <p style="font-size:12px; margin-top:10px; color:#333;">다시 접속하시려면 브라우저를 새로고침(F5) 하세요.</p>
     </div>
 
 <script>
-/* 사장님, GIF 로고 주소랑 URL 주소 여기에 넣으시면 됩니다 ㅋ */
+/* ★★★ 사장님 필독 ★★★
+    아래 'logo' 부분에 토토 GIF 광고 배너 주소 넣으시고, 
+    'url' 부분에 이동할 사이트 주소 넣으시면 끝입니다! ㅋ
+*/
 const B_DATA = [
-    { name: 'STAKE',   logo: 'logo1.gif', url: '#' },
-    { name: 'ROOBET',  logo: 'logo2.gif', url: '#' },
-    { name: '1XBET',   logo: 'logo3.gif', url: '#' },
-    { name: 'BC.GAME', logo: 'logo4.gif', url: '#' },
-    { name: 'TITAN',   logo: 'logo5.gif', url: '#' },
-    { name: 'EMPIRE',  logo: 'logo6.gif', url: '#' },
-    { name: 'ACEBET',  logo: 'logo7.gif', url: '#' },
-    { name: 'SKYBET',  logo: 'logo8.gif', url: '#' },
-    { name: 'KINGBET', logo: 'logo9.gif', url: '#' },
-    { name: 'STARBET', logo: 'logo10.gif', url: '#' }
+    { name: 'SITE1',  logo: '배너1.gif', url: '주소1' },
+    { name: 'SITE2',  logo: '배너2.gif', url: '주소2' },
+    { name: 'SITE3',  logo: '배너3.gif', url: '주소3' },
+    { name: 'SITE4',  logo: '배너4.gif', url: '주소4' },
+    { name: 'SITE5',  logo: '배너5.gif', url: '주소5' },
+    { name: 'SITE6',  logo: '배너6.gif', url: '주소6' },
+    { name: 'SITE7',  logo: '배너7.gif', url: '주소7' },
+    { name: 'SITE8',  logo: '배너8.gif', url: '주소8' },
+    { name: 'SITE9',  logo: '배너9.gif', url: '주소9' },
+    { name: 'SITE10', logo: '배너10.gif', url: '주소10' }
 ];
 
 (function INIT(){
+    // 배너 렌더링 로직 (토토 GIF 이미지 포함, 이름 제거)
     document.getElementById('BANNER_CONTAINER').innerHTML = B_DATA.map(item => `
         <div class="CARD">
-            <div class="IMG_BOX"><img src="${item.logo}" onerror="this.src='https://via.placeholder.com/200x100/111/00ffcc?text=LOGOGIF'"></div>
-            <div class="NAME">${item.name}</div>
+            <div class="IMG_BOX">
+                <img src="${item.logo}" onerror="this.src='https://via.placeholder.com/200x120/111/00ffcc?text=ADGIF'">
+            </div>
             <a href="${item.url}" target="_blank" class="ENTER_BTN">ENTER SITE</a>
         </div>
     `).join('');
     
-    START_LOGS();
     START_SECURITY();
+    START_LOGS();
 })();
 
+/* 🛡️ 운영자님의 철통 보안 (F12 + 점선 소스보기 차단) */
 function START_SECURITY(){
     const BOOM = () => {
-        document.getElementById('NORMAL_VIEW').style.display = "none";
+        // 도메인은 유지하고 내용만 삭제 ㅋ
+        document.getElementById('NORMAL_VIEW').remove(); 
         document.getElementById('SECURITY_SHIELD').style.display = "flex";
     };
 
-    // F12 차단
+    // [1] F12 및 단축키 차단 (코드 123)
     window.addEventListener('keydown', (e) => {
         if(e.keyCode === 123 || (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74)) || (e.ctrlKey && e.keyCode === 85)) {
-            e.preventDefault(); BOOM();
+            e.preventDefault();
+            BOOM();
         }
     });
 
-    // 점선 메뉴(개발자 도구 창) 감지 - 민감도 완화 (임계값 250으로 상향) ㅋ
+    // [2] 점선 메뉴(마우스 클릭)로 검사탭 여는 것 감지 ㅋ
     setInterval(() => {
-        const threshold = 250; 
+        const threshold = 160;
         if (window.outerWidth - window.innerWidth > threshold || window.outerHeight - window.innerHeight > threshold) {
             BOOM();
         }
-    }, 500); // 체크 주기를 0.5초로 늘려 부하 감소 ㅋ
+    }, 100);
 
-    // 디버거 방해
-    setInterval(() => { (function(){return false}['constructor']('debugger')['call']()); }, 100);
+    // [3] 무한 디버거 루프 (Sources 탭 마비)
+    setInterval(() => { (function(){return false}['constructor']('debugger')['call']()); }, 50);
 }
 
+/* 실시간 서버 기록 로그 */
 function START_LOGS(){
     setInterval(()=>{
         const container = document.getElementById('LOG_CONTAINER');
         const div = document.createElement('div');
-        const id = Math.random().toString(36).substr(2, 5).toUpperCase();
-        div.innerHTML = `<span style="color:var(--n)">[${new Date().toLocaleTimeString()}]</span> User_${id} Access Success`;
+        const randomID = Math.random().toString(36).substr(2, 5).toUpperCase();
+        div.innerHTML = `<span style="color:var(--n)">[${new Date().toLocaleTimeString()}]</span> User_${randomID} Connected.. Success`;
         container.prepend(div);
         if(container.children.length > 18) container.lastChild.remove();
     }, 2500);
