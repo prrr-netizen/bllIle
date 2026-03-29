@@ -2,144 +2,138 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>OFFICIAL PLATFORM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>RLNL PLATFORM | OFFICIAL</title>
     <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@700;900&display=swap" rel="stylesheet">
     <style>
-        :root { --n: #00ffcc; --b: #020408; --p: rgba(10,15,25,0.98); }
-        * { margin:0; padding:0; box-sizing:border-box; font-family:'Noto Sans KR', sans-serif; -webkit-user-select:none; user-select:none; }
+        :root { --n: #00ffcc; --b: #020408; --p: rgba(10,15,25,0.98); --l: rgba(0,255,204,0.4); --r: #ff0033; }
+        * { margin:0; padding:0; box-sizing:border-box; -webkit-user-select:none; user-select:none; font-family:'Noto Sans KR', sans-serif; }
         body { background:var(--b); color:#fff; min-height:100vh; overflow-x:hidden; }
 
-        /* [1] 헤더 */
-        header { width:100%; background:rgba(2,4,8,0.98); border-bottom:1px solid var(--n); padding:15px 40px; display:flex; justify-content:space-between; align-items:center; position:sticky; top:0; z-index:1000; box-shadow: 0 5px 15px rgba(0,0,0,0.5); }
-        .LOGO { font-family:'Black Han Sans', sans-serif; font-size:28px; color:#fff; cursor:pointer; letter-spacing:1px; }
-        .LOGO span { color:var(--n); }
+        /* 🛡️ 보안 잠금 화면 (사장님 스타일) */
+        #S_LOCK { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:#000; z-index:999999; flex-direction:column; align-items:center; justify-content:center; color:var(--r); font-weight:900; font-size:22px; text-shadow:0 0 10px var(--r); }
         
-        /* [2] 메인 레이아웃 (5열 2줄) */
-        .M_C { max-width: 1650px; margin: 40px auto; padding: 0 20px; display: grid; grid-template-columns: 1fr 320px; gap: 30px; }
-        .G_B { display:grid; grid-template-columns:repeat(5, 1fr); gap:20px; }
+        .C { max-width:1600px; margin:0 auto; padding:0 20px; }
+        .H { position:sticky; top:0; z-index:1000; background:rgba(2,4,8,0.95); backdrop-filter:blur(15px); border-bottom:2px solid var(--n); padding:15px 40px; display:flex; justify-content:space-between; align-items:center; }
+        .L { font-family:'Black Han Sans', sans-serif; font-size:30px; cursor:pointer; }
+        .L span { color:var(--n); text-shadow:0 0 10px var(--n); }
         
-        .CARD { background:var(--p); border:2px solid #1a2233; border-radius:12px; overflow:hidden; transition:0.3s; position:relative; }
-        .CARD:hover { border-color:var(--n); transform:translateY(-8px); box-shadow:0 15px 30px rgba(0,255,204,0.2); }
+        /* 💎 메인 레이아웃 (배너 존) */
+        .MAIN_SET { display:grid; grid-template-columns: 1fr 340px; gap:30px; margin:40px auto; }
+        .G_Z { display:grid; grid-template-columns:repeat(2, 1fr); gap:20px; } /* 2열로 토토 배너 느낌 ㅋ */
         
-        /* 💎 배너 이름 설정 💎 */
-        .B_NAME { background: rgba(0,255,204,0.1); color: var(--n); padding: 12px; text-align: center; font-weight: 900; font-size: 17px; border-bottom: 1px solid #1a2233; text-shadow: 0 0 10px rgba(0,255,204,0.5); }
+        /* 💎 토토 스타일 배너 카드 💎 */
+        .CARD { background:var(--p); border:1px solid var(--l); border-radius:10px; overflow:hidden; transition:0.3s; position:relative; display:flex; flex-direction:column; }
+        .CARD:hover { border-color:var(--n); transform:translateY(-5px); box-shadow:0 10px 20px rgba(0,255,204,0.2); }
         
-        .IMG { width:100%; height:200px; background:#111; display:flex; align-items:center; justify-content:center; overflow:hidden; }
-        .IMG img { width:100%; height:100%; object-fit:cover; transition:0.4s; }
-        .CARD:hover .IMG img { transform: scale(1.1); }
+        .B_NAME { background: rgba(0,255,204,0.1); color: var(--n); padding: 10px; text-align: center; font-weight: 900; font-size: 18px; border-bottom: 1px solid #1a2233; }
         
-        /* 💎 토토 스타일 바로가기 버튼 💎 */
-        .ENTER_BTN { display:block; width:90%; margin:15px auto; padding:12px; background:transparent; border:2px solid var(--n); color:var(--n); text-align:center; text-decoration:none; font-size:15px; font-weight:900; border-radius:6px; transition:0.3s; box-shadow: inset 0 0 0 0 var(--n); }
-        .ENTER_BTN:hover { background:var(--n); color:#000; box-shadow: inset 0 0 20px rgba(0,0,0,0.2), 0 0 15px var(--n); }
+        .I_Z { width:100%; height:160px; background:#111; overflow:hidden; position:relative; }
+        .I_Z img { width:100%; height:100%; object-fit:cover; opacity:0.8; transition:0.4s; }
+        .CARD:hover .I_Z img { opacity:1; transform:scale(1.05); }
+        
+        .GO { display:block; width:90%; margin:15px auto; padding:12px; background:transparent; border:2px solid var(--n); color:var(--n); text-align:center; text-decoration:none; font-size:15px; font-weight:900; border-radius:6px; transition:0.3s; }
+        .GO:hover { background:var(--n); color:#000; box-shadow:0 0 15px var(--n); }
 
-        /* [3] 상담 버튼 */
-        .CS_FLOAT { position:fixed; bottom:40px; right:40px; z-index:9999; display:flex; flex-direction:column; gap:15px; }
-        .CS_BTN { width:75px; height:75px; border-radius:50%; display:flex; align-items:center; justify-content:center; text-decoration:none; font-size:12px; font-weight:900; box-shadow:0 10px 25px rgba(0,0,0,0.6); transition:0.3s; animation: pulse 2s infinite; }
-        .TELE { background:#0088cc; color:#fff; }
-        .KAKA { background:#FEE500; color:#000; }
-        @keyframes pulse { 0% { box-shadow:0 0 0 0 rgba(0,255,204,0.4); } 70% { box-shadow:0 0 0 15px rgba(0,255,204,0); } 100% { box-shadow:0 0 0 0 rgba(0,255,204,0); } }
-
-        /* [4] 사이드바 */
-        .SIDEBAR { background:#0a0f19; border:1px solid #1a2233; border-radius:12px; padding:25px; height:660px; }
-        .LOG_TITLE { color:var(--n); font-weight:900; font-size:16px; margin-bottom:20px; border-bottom:1px solid #222; padding-bottom:15px; display:flex; justify-content:space-between; }
-        .LOG_LIST { height:550px; overflow:hidden; font-size:13px; color:#555; line-height:2.6; }
+        .SIDE { background:#0a0f19; border:1px solid #1a2233; border-radius:12px; padding:25px; height:600px; }
+        .LOGS { height:500px; overflow:hidden; font-size:13px; color:#555; line-height:2.6; border-top:1px solid #1a2233; margin-top:15px; padding-top:10px; }
+        
+        @media (max-width:1000px) { .G_Z { grid-template-columns:1fr; } .MAIN_SET { grid-template-columns:1fr; } }
     </style>
 </head>
 <body oncontextmenu="return false">
 
-    <div id="MAIN_APP">
-        <header>
-            <div class="LOGO" onclick="location.reload()">RLNL<span>PLATFORM</span></div>
-        </header>
-        <div class="M_C">
-            <section class="G_B" id="BANNER_GRID"></section>
-            <aside class="SIDEBAR">
-                <div class="LOG_TITLE">LIVE MONITORING <span style="font-size:10px; color:#444;">SECURE ON</span></div>
-                <div id="LOGS" class="LOG_LIST"></div>
-            </aside>
+<div id="S_LOCK">🛑 SECURITY BREACH: SOURCE PURGED</div>
+
+<div id="RLNL_CORE">
+    <header class="H">
+        <div class="L" onclick="location.reload()">RLNL<span>PLATFORM</span></div>
+        <div style="display:flex; gap:10px;">
+            <a href="#" style="text-decoration:none; color:#000; background:var(--n); padding:10px 20px; border-radius:5px; font-weight:900;">텔레그램 문의</a>
         </div>
-        <div class="CS_FLOAT">
-            <a href="텔레주소" target="_blank" class="CS_BTN TELE">TELEGRAM</a>
-            <a href="카톡주소" target="_blank" class="CS_BTN KAKA">KAKAO</a>
-        </div>
-    </div>
+    </header>
+
+    <main class="C MAIN_SET">
+        <section class="G_Z" id="B_LIST"></section>
+        <aside class="SIDE">
+            <div style="font-weight:900; color:var(--n); font-size:16px;">LIVE TRANSACTION LOG</div>
+            <div class="LOGS" id="L_LIST"></div>
+        </aside>
+    </main>
+</div>
 
 <script>
 /**
- * ★ 사장님 수정 포인트 (최종) ★
- * name: 사이트 이름 / url: 접속 주소 / img: 배너 이미지 (이미 사장님 걸로 고정 ㅋ)
+ * ★ 사장님 최종 수정 포인트 ★
  */
-const IMG_SRC = '49dc19377b18f04e82bbb033c5589799.png';
-const DATA = [
-    { name: '사이트이름01', img: IMG_SRC, url: 'https://주소1.com' },
-    { name: '사이트이름02', img: IMG_SRC, url: 'https://주소2.com' },
-    { name: '사이트이름03', img: IMG_SRC, url: 'https://주소3.com' },
-    { name: '사이트이름04', img: IMG_SRC, url: 'https://주소4.com' },
-    { name: '사이트이름05', img: IMG_SRC, url: 'https://주소5.com' },
-    { name: '사이트이름06', img: IMG_SRC, url: 'https://주소6.com' },
-    { name: '사이트이름07', img: IMG_SRC, url: 'https://주소7.com' },
-    { name: '사이트이름08', img: IMG_SRC, url: 'https://주소8.com' },
-    { name: '사이트이름09', img: IMG_SRC, url: 'https://주소9.com' },
-    { name: '사이트이름10', img: IMG_SRC, url: 'https://주소10.com' }
+const IMG_URL = '49dc19377b18f04e82bbb033c5589799.png';
+const B_DATA = [
+    { n: "배너이름01", u: "https://주소1.com" },
+    { n: "배너이름02", u: "https://주소2.com" },
+    { n: "배너이름03", u: "https://주소3.com" },
+    { n: "배너이름04", u: "https://주소4.com" },
+    { n: "배너이름05", u: "https://주소5.com" },
+    { n: "배너이름06", u: "https://주소6.com" },
+    { n: "배너이름07", u: "https://주소7.com" },
+    { n: "배너이름08", u: "https://주소8.com" },
+    { n: "배너이름09", u: "https://주소9.com" },
+    { n: "배너이름10", u: "https://주소10.com" }
 ];
 
-(function() {
-    // 1. 배너 렌더링
-    document.getElementById('BANNER_GRID').innerHTML = DATA.map(v => `
-        <div class="CARD">
-            <div class="B_NAME">${v.name}</div>
-            <div class="IMG"><img src="${v.img}"></div>
-            <a href="${v.url}" target="_blank" class="ENTER_BTN">바로가기 ▶</a>
-        </div>
-    `).join('');
+/* 배너 렌더링 */
+document.getElementById('B_LIST').innerHTML = B_DATA.map(v => `
+    <div class="CARD">
+        <div class="B_NAME">${v.n}</div>
+        <div class="I_Z"><img src="${IMG_URL}"></div>
+        <a href="${v.u}" target="_blank" class="GO">바로가기 ▶</a>
+    </div>
+`).join('');
 
-    // 2. 🛡️ [사장님 캡처 사진 해결] Sources 탭 화이트아웃 보안 로직
-    const killSource = () => {
-        (function() {
-            (function a() {
-                try {
-                    (function b(i) {
-                        // 소스 탭 내부를 하얗게 밀어버리는 공백 로그 투척 ㅋ
-                        console.clear();
-                        console.log("%c ", "font-size:5000px; background:white;"); 
-                        
-                        if (i % 20 === 0) {
-                            (function(){}).constructor('debugger')();
-                        } else {
-                            debugger; // 사장님 사진처럼 멈추게 함 ㅋ
-                        }
-                        b(++i);
-                    })(0);
-                } catch (e) { setTimeout(a, 50); }
-            })();
-        })();
+/* 실시간 로그 */
+setInterval(()=>{
+    const l=document.getElementById('L_LIST');
+    const d=document.createElement('div');
+    const id=Math.random().toString(36).substr(2,5).toUpperCase();
+    d.innerHTML=`<span style="color:var(--n)">[${new Date().toLocaleTimeString()}]</span> User_${id} Access Success`;
+    l.prepend(d); if(l.children.length>15)l.lastChild.remove();
+}, 2500);
+
+/* -----------------------------------------------------------
+   🛡️ [최종 보안 엔진] - 사장님 스타일 + 화이트아웃 결합
+----------------------------------------------------------- */
+(function(){
+    const _c = document.getElementById('RLNL_CORE');
+    const _s = document.getElementById('S_LOCK');
+    
+    const _X = () => {
+        _c.remove(); // UI 즉시 파괴
+        _s.style.display = 'flex'; // 블랙아웃 화면
+        // 소스 탭 내용 파기 ㅋ
+        document.documentElement.innerHTML = "<html><body><pre>" + Array(500).join("SOURCE_PROTECTED_BY_RLNL\n") + "</pre></body></html>";
+        console.clear();
+        for(let i=0; i<100; i++) console.log("%c ", "font-size:1000px; background:white;");
     };
 
-    // 소스 감시 (일반 유저 접속 시엔 절대 안 멈춤 ㅋ)
+    // 1. 단축키 차단
+    window.onkeydown = (e) => {
+        if(e.keyCode === 123 || (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74)) || (e.ctrlKey && e.keyCode === 85)) {
+            _X(); return false;
+        }
+    };
+
+    // 2. 창 크기 변화 감시 (검사창 열기 방지)
     setInterval(() => {
-        const start = new Date();
-        debugger; 
-        if (new Date() - start > 150) {
-            // 소스 창 열리면 메인 화면도 날리고 보안 경고 ㅋ
-            document.getElementById('MAIN_APP').innerHTML = '<div style="background:white; color:black; height:100vh; display:flex; align-items:center; justify-content:center; font-size:50px; font-weight:900;">SECURITY DETECTED</div>';
-            killSource();
+        const threshold = 160;
+        if (window.outerWidth - window.innerWidth > threshold || window.outerHeight - window.innerHeight > threshold) {
+            _X();
         }
     }, 500);
 
-    // 3. 실시간 로그 연출
+    // 3. 무한 디버거
     setInterval(() => {
-        const l = document.getElementById('LOGS');
-        const d = document.createElement('div');
-        const id = Math.random().toString(36).substr(2, 5).toUpperCase();
-        d.innerHTML = `<span style="color:var(--n)">[${new Date().toLocaleTimeString()}]</span> User_${id} Access Granted`;
-        l.prepend(d); if(l.children.length > 20) l.lastChild.remove();
-    }, 2000);
+        (function() { return false; }['constructor']('debugger')['call']());
+    }, 100);
 })();
-
-// F12 등 단축키 1차 방어 ㅋ
-window.onkeydown = function(e) {
-    if(e.keyCode === 123 || (e.ctrlKey && e.shiftKey && e.keyCode === 73)) return false;
-};
 </script>
 </body>
 </html>
