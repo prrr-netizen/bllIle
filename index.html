@@ -1,24 +1,19 @@
-<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"><title>&#xAC80;&#xC99D; &#xACF5;&#xC2DD; &#xB9AC;&#xC2A4;&#xD2B8;</title><style>body{margin:0;background:#0a0a0f;font-family:'Noto Sans KR',sans-serif}#_w{display:flex;align-items:center;justify-content:center;min-height:100vh;background:#0a0a0f}</style></head><body oncontextmenu="return false"><div id="_w"></div><script>
 (function(){
-  
-var _z=function(_e,_k){return _e.split('').map(function(_c){return String.fromCharCode(_c.charCodeAt(0)^_k)}).join('')};
-var _b64=atob;
-
+var _z=function(_s,_k){return _s.split('').map(function(_c){return String.fromCharCode(_c.charCodeAt(0)^_k)}).join('')};
 var _C={
-  _HK: _z('\x69\x72\x3B\x38\x3D\x3C\x34\x36\x34\x30\x3C\x66\x39\x32\x37\x3E\x61\x37\x30\x37\x35\x61\x32\x3D\x34\x3B\x39\x6F\x36\x33\x34\x37\x35\x6B\x37\x3E\x61\x39\x32\x3F\x66\x37\x38\x3C\x36\x38\x38\x62\x36\x66\x3D\x3E\x65\x36\x33\x66\x39\x36\x38\x66\x33\x38\x36\x63\x36\x38',0x5A),
-  _SA: _z('\x19\x12\x1B\x0E\x1B\x56\x1B\x56\x06',0x5A),
-  _LS: _z('\x04\x56\x13\x01\x15\x01\x56\x08\x01\x15\x01\x56\x06\x0B',0x5A),
-  _AM: '_xam',_RT: '_xrt',_IA: '_xia',_LG: '_xlg',_OC: '_xoc',_LC: '_xlc',_SC: '_xsc'
+  _HK:_z('\x69\x72\x3B\x38\x3D\x3C\x34\x36\x34\x30\x3C\x66\x39\x32\x37\x3E\x61\x37\x30\x37\x35\x61\x32\x3D\x34\x3B\x39\x6F\x36\x33\x34\x37\x35\x6B\x37\x3E\x61\x39\x32\x3F\x66\x37\x38\x3C\x36\x38\x38\x62\x36\x66\x3D\x3E\x65\x36\x33\x66\x39\x36\x38\x66\x33\x38\x36\x63\x36\x38',0x5A),
+  _SA:_z('\x19\x12\x1B\x0E\x1B\x56\x1B\x56\x06',0x5A),
+  _LS:_z('\x04\x56\x13\x01\x15\x01\x56\x08\x01\x15\x01\x56\x06\x0B',0x5A),
+  _AM:'_xam',_RT:'_xrt',_IA:'_xia',_LG:'_xlg',_OC:'_xoc',_LC:'_xlc',_SC:'_xsc'
 };
-
 var W=window,D=document;
-  
+
+/* CSS */
 var _css=D.createElement('style');
 _css.textContent=[
   '*{margin:0;padding:0;box-sizing:border-box;-webkit-user-select:none;user-select:none;font-family:"Noto Sans KR","Pretendard",sans-serif}',
   'body{background:#0a0a0f;color:#fff;min-height:100vh;overflow-x:hidden}',
-  'body::before{content:"";position:fixed;inset:0;background:radial-gradient(ellipse 80% 40% at 50% 0%,rgba(255,180,0,.06),transparent 55%),radial-gradient(ellipse 50% 60% at 0% 50%,rgba(80,80,200,.04),transparent 50%);pointer-events:none;z-index:0}',
-  
+  'body::before{content:"";position:fixed;inset:0;background:radial-gradient(ellipse 80% 40% at 50% 0%,rgba(255,180,0,.06),transparent 55%);pointer-events:none;z-index:0}',
   '#_xam{display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);width:94%;max-width:780px;background:#0d0d16;border:1px solid rgba(255,180,0,.3);padding:28px;z-index:100000;border-radius:14px;box-shadow:0 0 60px rgba(255,180,0,.08),0 30px 80px rgba(0,0,0,.85);backdrop-filter:blur(12px);max-height:90vh;overflow-y:auto}',
   '#_xam h2{font-size:17px;font-weight:800;color:#f0b400;margin-bottom:4px;letter-spacing:.04em}',
   '#_xam p{color:rgba(255,255,255,.35);font-size:11px;margin-bottom:16px}',
@@ -28,7 +23,7 @@ _css.textContent=[
   '._aform{display:flex;flex-direction:column;gap:12px}',
   '._arow{display:flex;flex-direction:column;gap:4px}',
   '._arow label{font-size:11px;color:rgba(255,255,255,.45);font-weight:600;letter-spacing:.04em}',
-  '._arow input,._arow select{background:rgba(0,0,0,.5);color:#fff;border:1px solid rgba(255,255,255,.1);padding:10px 12px;border-radius:8px;font-size:13px;outline:none;width:100%;transition:.2s}',
+  '._arow input{background:rgba(0,0,0,.5);color:#fff;border:1px solid rgba(255,255,255,.1);padding:10px 12px;border-radius:8px;font-size:13px;outline:none;width:100%;transition:.2s}',
   '._arow input:focus{border-color:rgba(255,180,0,.4)}',
   '._arow input[type=file]{padding:7px 12px;color:rgba(255,255,255,.5);cursor:pointer}',
   '._imgpv{width:100%;height:80px;object-fit:cover;border-radius:6px;border:1px solid rgba(255,255,255,.08);margin-top:4px;display:none}',
@@ -40,7 +35,6 @@ _css.textContent=[
   '._abtn.add{background:linear-gradient(135deg,#f0b400,#e07b00);color:#000}',
   '._abtn.add:hover{filter:brightness(1.1)}',
   '._abtn.cls{background:rgba(255,255,255,.05);color:rgba(255,255,255,.4);border:1px solid rgba(255,255,255,.08)}',
-  
   '._alist{display:flex;flex-direction:column;gap:8px}',
   '._ali{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:8px;padding:10px;overflow:hidden}',
   '._ali img{width:80px;height:44px;object-fit:cover;border-radius:5px;border:1px solid rgba(255,255,255,.06);flex-shrink:0}',
@@ -49,7 +43,6 @@ _css.textContent=[
   '._ali ._aln span{font-size:10px;color:rgba(255,255,255,.35)}',
   '._adel{padding:5px 12px;background:rgba(220,50,50,.15);border:1px solid rgba(220,50,50,.2);color:#f87171;border-radius:6px;font-size:11px;font-weight:700;cursor:pointer;transition:.2s;flex-shrink:0}',
   '._adel:hover{background:rgba(220,50,50,.3)}',
-  
   'header{position:sticky;top:0;z-index:50;background:rgba(8,8,13,.92);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,180,0,.12)}',
   '._hi{max-width:1400px;margin:0 auto;padding:0 20px;height:60px;display:flex;align-items:center;justify-content:space-between}',
   '._logo{display:flex;align-items:center;gap:10px;text-decoration:none}',
@@ -58,7 +51,6 @@ _css.textContent=[
   '._oc{display:flex;align-items:center;gap:5px;font-size:12px;color:rgba(255,255,255,.55);background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);padding:5px 13px;border-radius:999px}',
   '._oc b{color:#4ade80;font-weight:700}',
   '._od{width:6px;height:6px;border-radius:50%;background:#4ade80;flex-shrink:0;animation:_bl 1.6s ease-in-out infinite}',
-  
   '._nb{background:rgba(240,180,0,.06);border-top:1px solid rgba(240,180,0,.1);border-bottom:1px solid rgba(240,180,0,.1);padding:8px 0;overflow:hidden;position:relative}',
   '._nb::before,._nb::after{content:"";position:absolute;top:0;bottom:0;width:60px;z-index:2}',
   '._nb::before{left:0;background:linear-gradient(90deg,#0a0a0f,transparent)}',
@@ -66,7 +58,6 @@ _css.textContent=[
   '._nt{display:flex;gap:56px;animation:_mk 30s linear infinite;white-space:nowrap;width:max-content}',
   '._nt span{font-size:12px;font-weight:600;color:rgba(255,180,0,.75);letter-spacing:.04em}',
   '._nt span::before{content:"◆ ";color:rgba(255,180,0,.3)}',
-  
   '._hs{text-align:center;padding:38px 20px 28px;position:relative;z-index:1}',
   '._hb{display:inline-flex;align-items:center;gap:7px;background:rgba(240,180,0,.08);border:1px solid rgba(240,180,0,.22);padding:5px 16px;border-radius:999px;font-size:11px;font-weight:700;color:#f0b400;letter-spacing:.08em;margin-bottom:14px}',
   '._hs h1{font-size:clamp(20px,4vw,38px);font-weight:900;line-height:1.2;margin-bottom:8px;letter-spacing:-.01em}',
@@ -75,14 +66,12 @@ _css.textContent=[
   '._hst{display:flex;justify-content:center;gap:32px;margin-top:20px;flex-wrap:wrap}',
   '._hst div .v{font-size:22px;font-weight:900;color:#f0b400;line-height:1}',
   '._hst div .k{font-size:10px;color:rgba(255,255,255,.35);margin-top:3px}',
-  
   '._mw{max-width:1400px;margin:0 auto;padding:18px 20px 60px;display:grid;grid-template-columns:1fr 275px;gap:22px;position:relative;z-index:1}',
   '._lhd{display:flex;align-items:center;gap:10px;margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,.05)}',
   '._lhd::before{content:"";width:3px;height:14px;background:linear-gradient(180deg,#f0b400,#e07b00);border-radius:2px;flex-shrink:0}',
   '._lhd h2{font-size:13px;font-weight:700;color:rgba(255,255,255,.6);letter-spacing:.04em}',
   '._cnt{margin-left:auto;font-size:11px;color:rgba(255,255,255,.3);background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);padding:2px 10px;border-radius:999px}',
   '._bl{display:flex;flex-direction:column;gap:11px}',
-  
   '.ITEM{background:linear-gradient(135deg,rgba(18,18,28,.95),rgba(12,12,20,.98));border:1px solid rgba(255,255,255,.07);border-radius:12px;height:128px;display:flex;align-items:center;overflow:hidden;transition:.22s;position:relative;animation:_fu .45s ease-out both}',
   '.ITEM:hover{border-color:rgba(240,180,0,.3);transform:translateY(-1px);box-shadow:0 10px 40px rgba(0,0,0,.5),0 0 24px rgba(240,180,0,.05)}',
   '._rk{min-width:76px;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;padding:0 4px;position:relative}',
@@ -109,7 +98,6 @@ _css.textContent=[
   '._go{display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,#f0b400,#e07b00);color:#000;padding:11px 24px;text-decoration:none;font-weight:900;font-size:13px;border-radius:8px;margin-right:18px;transition:.2s;white-space:nowrap;flex-shrink:0;letter-spacing:.02em}',
   '._go:hover{filter:brightness(1.12);transform:translateY(-1px);box-shadow:0 8px 24px rgba(240,180,0,.3)}',
   '._go::after{content:"▶";font-size:9px}',
-  
   '._scd{background:linear-gradient(180deg,rgba(16,16,24,.98),rgba(10,10,16,.98));border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:18px;position:sticky;top:70px}',
   '._shd{font-size:10px;font-weight:700;color:rgba(255,180,0,.7);letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px;padding-bottom:9px;border-bottom:1px solid rgba(255,255,255,.05);display:flex;align-items:center;gap:5px}',
   '._shd::before{content:"";width:6px;height:6px;border-radius:50%;background:#4ade80;animation:_bl 1.6s ease-in-out infinite;flex-shrink:0}',
@@ -136,153 +124,105 @@ _css.textContent=[
 D.head.appendChild(_css);
 
 D.getElementById('_w').remove();
-
-var _nb_items=['공식 광고 파트너 모집 중','검증된 업체만 엄선 등록','안전한 광고 플랫폼','공식 파트너 혜택 제공','24시간 운영 관리','입점 문의 환영','공식 광고 파트너 모집 중','검증된 업체만 엄선 등록','안전한 광고 플랫폼','공식 파트너 혜택 제공','24시간 운영 관리','입점 문의 환영'];
-
+var _nbi=['공식 광고 파트너 모집 중','검증된 업체만 엄선 등록','안전한 광고 플랫폼','공식 파트너 혜택 제공','24시간 운영 관리','입점 문의 환영','공식 광고 파트너 모집 중','검증된 업체만 엄선 등록','안전한 광고 플랫폼','공식 파트너 혜택 제공','24시간 운영 관리','입점 문의 환영'];
 D.body.innerHTML=
-'<div id="'+_C._AM+'">'
-  +'<h2>&#x2699; \uAD11\uACE0 \uC785\uC810 \uAD00\uB9AC\uC790</h2>'
-  +'<p>\uBC1C\uAE09\uBC1B\uC740 \uC811\uADFC \uCF54\uB4DC\uB85C\uB9CC \uC774\uC6A9\uD558\uC138\uC694</p>'
-  +'<div class="_atab">'
-    +'<button class="_atb on" id="_tab1">\uC5C5\uCCB4 \uCD94\uAC00</button>'
-    +'<button class="_atb" id="_tab2">\uB4F1\uB85D \uBAA9\uB85D</button>'
-  +'</div>'
-  +'<div id="_tapA">'
-    +'<div class="_aform">'
-      +'<div class="_arow"><label>&#x1F3F7; \uC5C5\uCCB4\uBA85</label><input id="_fn" type="text" placeholder="\uC5C5\uCCB4 \uC774\uB984 \uC785\uB825"></div>'
-      +'<div class="_arow"><label>&#x1F4F7; \uC774\uBBF8\uC9C0</label>'
-        +'<div class="_iopt"><button class="_iobt on" id="_iurl">\uC678\uBD80 URL</button><button class="_iobt" id="_ifile">\uD30C\uC77C \uC5C5\uB85C\uB4DC</button></div>'
-        +'<div id="_iurlw"><input id="_fu2" type="text" placeholder="https://... \uB610\uB294 \uD30C\uC77C\uBA85.gif"></div>'
-        +'<div id="_ifiw" style="display:none"><input id="_ff" type="file" accept="image/*,image/gif"></div>'
-        +'<img id="_ipv" class="_imgpv">'
-      +'</div>'
-      +'<div class="_arow"><label>&#x1F517; \uC774\uB3D9; \uB9C1\uD06C</label><input id="_fl" type="text" placeholder="https://"></div>'
-      +'<div class="_abtns"><button class="_abtn add" id="_fadd">+ \uCD94\uAC00</button><button class="_abtn cls" id="_fcls">\uCC3D \uB2EB\uAE30</button></div>'
-    +'</div>'
-  +'</div>'
-  +'<div id="_tapB" style="display:none">'
-    +'<div class="_alist" id="_alist"></div>'
-    +'<div style="margin-top:12px;display:flex;gap:8px"><button class="_abtn cls" id="_fcls2" style="flex:unset;padding:10px 20px">\uCC3D \uB2EB\uAE30</button></div>'
-  +'</div>'
-+'</div>'
-+'<header><div class="_hi">'
-  +'<a class="_logo" href="#"><b>AD</b><span>MASTER</span></a>'
-  +'<div class="_oc"><span class="_od"></span>\uC2E4\uC2DC\uAC04 <b id="'+_C._OC+'">0</b>\uBA85 \uC811\uC18D \uC911</div>'
-+'</div></header>'
-+'<div class="_nb"><div class="_nt">'+_nb_items.map(function(t){return'<span>'+t+'</span>'}).join('')+'</div></div>'
-+'<div class="_hs">'
-  +'<div class="_hb">&#x2714; OFFICIAL VERIFIED</div>'
-  +'<h1>\uAC80\uC99D <b>\uACF5\uC2DD \uB9AC\uC2A4\uD2B8</b></h1>'
-  +'<p>\uC9C1\uC811 \uAC80\uC99D\uD55C \uACF5\uC2DD \uD30C\uD2B8\uB108\uB9CC \uC5C4\uC120\uD558\uC5EC \uC18C\uAC1C\uD569\uB2C8\uB2E4</p>'
-  +'<div class="_hst">'
-    +'<div><div class="v" id="_sc2">0</div><div class="k">\uB4F1\uB85D \uC5C5\uCCB4</div></div>'
-    +'<div><div class="v" id="_oc2">0</div><div class="k">\uC2E4\uC2DC\uAC04 \uC811\uC18D</div></div>'
-    +'<div><div class="v">100%</div><div class="k">\uAC80\uC99D \uC644\uB8CC</div></div>'
-  +'</div>'
-+'</div>'
-+'<div class="_mw">'
-  +'<div>'
-    +'<div class="_lhd"><h2>\uAC80\uC99D \uACF5\uC2DD \uB9AC\uC2A4\uD2B8</h2><span class="_cnt" id="'+_C._LC+'">0\uAC1C</span></div>'
-    +'<main class="_bl" id="'+_C._RT+'"><div class="_es"><p>\uB4F1\uB85D\uB41C \uC5C5\uCCB4\uAC00 \uC5C6\uC2B5\uB2C8\uB2E4</p></div></main>'
-  +'</div>'
-  +'<aside><div class="_scd">'
-    +'<div class="_sbx">'
-      +'<div class="_sb"><div class="_sk">\uB4F1\uB85D \uC5C5\uCCB4</div><div class="_sv" id="'+_C._SC+'">0<small>\uAC1C</small></div></div>'
-      +'<div class="_sb"><div class="_sk">\uC0C1\uD0DC</div><div class="_sv" style="color:#4ade80;font-size:11px;">\u25CF ONLINE</div></div>'
-    +'</div>'
-    +'<div class="_shd">LIVE LOG</div>'
-    +'<div id="'+_C._LG+'"></div>'
-  +'</div></aside>'
-+'</div>'
-+'<footer>AD MASTER &copy; 2025 &nbsp;|&nbsp; \uC778\uC99D \uAD11\uACE0 \uD50C\uB7AB\uD3FC</footer>';
+'<div id="_xam">'
++'<h2>&#x2699; 광고 입점 관리자</h2>'
++'<p>발급받은 접근 코드로만 이용하세요</p>'
++'<div class="_atab"><button class="_atb on" id="_tab1">업체 추가</button><button class="_atb" id="_tab2">등록 목록</button></div>'
++'<div id="_tapA">'
++'<div class="_aform">'
++'<div class="_arow"><label>🏷 업체명</label><input id="_fn" type="text" placeholder="업체 이름 입력"></div>'
++'<div class="_arow"><label>📷 이미지</label>'
++'<div class="_iopt"><button class="_iobt on" id="_iurl">외부 URL</button><button class="_iobt" id="_ifile">파일 업로드</button></div>'
++'<div id="_iurlw"><input id="_fu2" type="text" placeholder="https://... 또는 파일명.gif"></div>'
++'<div id="_ifiw" style="display:none"><input id="_ff" type="file" accept="image/*"></div>'
++'<img id="_ipv" class="_imgpv"></div>'
++'<div class="_arow"><label>🔗 이동 링크</label><input id="_fl" type="text" placeholder="https://"></div>'
++'<div class="_abtns"><button class="_abtn add" id="_fadd">+ 추가</button><button class="_abtn cls" id="_fcls">창 닫기</button></div>'
++'</div></div>'
++'<div id="_tapB" style="display:none"><div class="_alist" id="_alist"></div>'
++'<div style="margin-top:12px"><button class="_abtn cls" id="_fcls2" style="flex:unset;padding:10px 20px">창 닫기</button></div>'
++'</div></div>'
++'<header><div class="_hi"><a class="_logo" href="#"><b>AD</b><span>MASTER</span></a>'
++'<div class="_oc"><span class="_od"></span>실시간 <b id="_xoc">0</b>명 접속 중</div></div></header>'
++'<div class="_nb"><div class="_nt">'+_nbi.map(function(t){return'<span>'+t+'</span>'}).join('')+'</div></div>'
++'<div class="_hs"><div class="_hb">✔ OFFICIAL VERIFIED</div>'
++'<h1>검증 <b>공식 리스트</b></h1>'
++'<p>직접 검증한 공식 파트너만 엄선하여 소개합니다</p>'
++'<div class="_hst"><div><div class="v" id="_sc2">0</div><div class="k">등록 업체</div></div>'
++'<div><div class="v" id="_oc2">0</div><div class="k">실시간 접속</div></div>'
++'<div><div class="v">100%</div><div class="k">검증 완료</div></div></div></div>'
++'<div class="_mw"><div>'
++'<div class="_lhd"><h2>검증 공식 리스트</h2><span class="_cnt" id="_xlc">0개</span></div>'
++'<main class="_bl" id="_xrt"><div class="_es"><p>등록된 업체가 없습니다</p></div></main>'
++'</div><aside><div class="_scd">'
++'<div class="_sbx"><div class="_sb"><div class="_sk">등록 업체</div><div class="_sv" id="_xsc">0<small>개</small></div></div>'
++'<div class="_sb"><div class="_sk">상태</div><div class="_sv" style="color:#4ade80;font-size:11px;">● ONLINE</div></div></div>'
++'<div class="_shd">LIVE LOG</div><div id="_xlg"></div>'
++'</div></aside></div>'
++'<footer>AD MASTER © 2025 | 인증 광고 플랫폼</footer>';
 
 function _gid(id){return D.getElementById(id)}
-function _uC(n){
-  ['_xlc','_sc2'].forEach(function(id){var e=_gid(id);if(e)e.textContent=n+(id==='_xlc'?'\uAC1C':'')});
-  var s=_gid(_C._SC);if(s)s.innerHTML=n+'<small>\uAC1C</small>';
-}
-
-async function _gh(v){
-  var b=new TextEncoder().encode(v);
-  var h=await crypto.subtle.digest(_C._SA,b);
-  return Array.from(new Uint8Array(h)).map(function(x){return x.toString(16).padStart(2,'0')}).join('');
-}
-
+function _uC(n){var e=_gid('_xlc');if(e)e.textContent=n+'개';var e2=_gid('_sc2');if(e2)e2.textContent=n;var e3=_gid('_xsc');if(e3)e3.innerHTML=n+'<small>개</small>'}
+async function _gh(v){var b=new TextEncoder().encode(v);var h=await crypto.subtle.digest(_C._SA,b);return Array.from(new Uint8Array(h)).map(function(x){return x.toString(16).padStart(2,'0')}).join('')}
 function _ld(){try{return JSON.parse(localStorage.getItem(_C._LS)||'[]')}catch(e){return[]}}
-function _sv2(arr){localStorage.setItem(_C._LS,JSON.stringify(arr))}
-
+function _sv2(a){localStorage.setItem(_C._LS,JSON.stringify(a))}
 var _rc=['_r1','_r2','_r3'];
+function _esc(s){return(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
 function _render(){
-  var arr=_ld(),rt=_gid(_C._RT);
-  if(!arr.length){rt.innerHTML='<div class="_es"><p>\uB4F1\uB85D\uB41C \uC5C5\uCCB4\uAC00 \uC5C6\uC2B5\uB2C8\uB2E4</p></div>';_uC(0);return}
+  var arr=_ld(),rt=_gid('_xrt');
+  if(!arr.length){rt.innerHTML='<div class="_es"><p>등록된 업체가 없습니다</p></div>';_uC(0);return}
   var h='';
   arr.forEach(function(it,i){
     var rc=i<3?_rc[i]:'_rn';
     h+='<div class="ITEM" style="animation-delay:'+(i*55)+'ms">'
-      +'<div class="_rk '+rc+'"><span class="_rb">\uACF5\uC2DD</span><span class="_rn">'+(i+1)+'</span><span class="_rt2">RANK</span></div>'
-      +'<div class="_gi"><img src="'+_esc(it.img)+'" loading="lazy"></div>'
-      +'<div class="_if"><div class="_ti">'+_esc(it.name)+'</div>'
-        +'<div class="_st">'
-          +'<span class="_tg g">\u2714 \uAC80\uC99D\uC644\uB8CC</span>'
-          +'<span class="_tg">\uACF5\uC2DD \uD30C\uD2B8\uB108</span>'
-          +'<span class="_tg b">\uCD94\uCC9C \uC5C5\uCCB4</span>'
-        +'</div>'
-      +'</div>'
-      +'<a href="'+_esc(it.url)+'" target="_blank" class="_go">\uC785\uC7A5\uD558\uAE30</a>'
-    +'</div>';
+    +'<div class="_rk '+rc+'"><span class="_rb">공식</span><span class="_rn">'+(i+1)+'</span><span class="_rt2">RANK</span></div>'
+    +'<div class="_gi"><img src="'+_esc(it.img)+'" loading="lazy"></div>'
+    +'<div class="_if"><div class="_ti">'+_esc(it.name)+'</div>'
+    +'<div class="_st"><span class="_tg g">✔ 검증완료</span><span class="_tg">공식 파트너</span><span class="_tg b">추천 업체</span></div>'
+    +'</div><a href="'+_esc(it.url)+'" target="_blank" class="_go">입장하기</a></div>';
   });
   rt.innerHTML=h;_uC(arr.length);
 }
-function _esc(s){return(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
-
-var _imgMode='url';
-_gid('_iurl').onclick=function(){_imgMode='url';this.className='_iobt on';_gid('_ifile').className='_iobt';_gid('_iurlw').style.display='';_gid('_ifiw').style.display='none'};
-_gid('_ifile').onclick=function(){_imgMode='file';this.className='_iobt on';_gid('_iurl').className='_iobt';_gid('_iurlw').style.display='none';_gid('_ifiw').style.display=''};
-_gid('_ff').onchange=function(){
-  var f=this.files[0];if(!f)return;
-  var fr=new FileReader();
-  fr.onload=function(e){_gid('_ipv').src=e.target.result;_gid('_ipv').style.display='block'};
-  fr.readAsDataURL(f);
-};
-_gid('_fu2').oninput=function(){
-  var v=this.value.trim();
-  if(v){_gid('_ipv').src=v;_gid('_ipv').style.display='block'}else{_gid('_ipv').style.display='none'}
-};
-_gid('_fadd').onclick=function(){
-  var name=_gid('_fn').value.trim();
-  var imgVal=_imgMode==='url'?_gid('_fu2').value.trim():(_gid('_ff').files[0]?_gid('_ipv').src:'');
-  var url=_gid('_fl').value.trim();
-  if(!name)return alert('\uC5C5\uCCB4\uBA85\uC744 \uC785\uB825\uD558\uC138\uC694');
-  if(!imgVal)return alert('\uC774\uBBF8\uC9C0\uB97C \uC120\uD0DD\uD558\uC138\uC694');
-  if(!url)return alert('\uC774\uB3D9\uB9C1\uD06C\uB97C \uC785\uB825\uD558\uC138\uC694');
-  var arr=_ld();arr.push({name:name,img:imgVal,url:url});_sv2(arr);_render();
-  _gid('_fn').value='';_gid('_fu2').value='';_gid('_fl').value='';_gid('_ff').value='';_gid('_ipv').style.display='none';
-  alert('\uCD94\uAC00\uB418\uC5C8\uC2B5\uB2C8\uB2E4!');_renderList();
-};
 function _renderList(){
   var arr=_ld(),el=_gid('_alist');
-  if(!arr.length){el.innerHTML='<div style="color:rgba(255,255,255,.3);font-size:12px;text-align:center;padding:20px">\uB4F1\uB85D\uB41C \uC5C5\uCCB4\uAC00 \uC5C6\uC2B5\uB2C8\uB2E4</div>';return}
+  if(!arr.length){el.innerHTML='<div style="color:rgba(255,255,255,.3);font-size:12px;text-align:center;padding:20px">등록된 업체가 없습니다</div>';return}
   el.innerHTML=arr.map(function(it,i){
-    return '<div class="_ali"><img src="'+_esc(it.img)+'" loading="lazy"><div class="_aln"><b>'+_esc(it.name)+'</b><span>'+_esc(it.url)+'</span></div>'
-      +'<button class="_adel" data-i="'+i+'">\uC0AD\uC81C</button></div>';
+    return'<div class="_ali"><img src="'+_esc(it.img)+'" loading="lazy"><div class="_aln"><b>'+_esc(it.name)+'</b><span>'+_esc(it.url)+'</span></div><button class="_adel" data-i="'+i+'">삭제</button></div>';
   }).join('');
   el.querySelectorAll('._adel').forEach(function(btn){
     btn.onclick=function(){
       var idx=parseInt(this.getAttribute('data-i'));
-      if(!confirm((idx+1)+'\uBC88 \uC5C5\uCCB4\uB97C \uC0AD\uC81C\uD560\uAE4C\uC694?'))return;
+      if(!confirm((idx+1)+'번 업체를 삭제할까요?'))return;
       var a=_ld();a.splice(idx,1);_sv2(a);_render();_renderList();
     };
   });
 }
+var _imgMode='url';
+_gid('_iurl').onclick=function(){_imgMode='url';this.className='_iobt on';_gid('_ifile').className='_iobt';_gid('_iurlw').style.display='';_gid('_ifiw').style.display='none'};
+_gid('_ifile').onclick=function(){_imgMode='file';this.className='_iobt on';_gid('_iurl').className='_iobt';_gid('_iurlw').style.display='none';_gid('_ifiw').style.display=''};
+_gid('_ff').onchange=function(){var f=this.files[0];if(!f)return;var fr=new FileReader();fr.onload=function(e){_gid('_ipv').src=e.target.result;_gid('_ipv').style.display='block'};fr.readAsDataURL(f)};
+_gid('_fu2').oninput=function(){var v=this.value.trim();if(v){_gid('_ipv').src=v;_gid('_ipv').style.display='block'}else{_gid('_ipv').style.display='none'}};
+_gid('_fadd').onclick=function(){
+  var name=_gid('_fn').value.trim();
+  var imgVal=_imgMode==='url'?_gid('_fu2').value.trim():(_gid('_ff').files[0]?_gid('_ipv').src:'');
+  var url=_gid('_fl').value.trim();
+  if(!name)return alert('업체명을 입력하세요');
+  if(!imgVal)return alert('이미지를 선택하세요');
+  if(!url)return alert('이동링크를 입력하세요');
+  var arr=_ld();arr.push({name:name,img:imgVal,url:url});_sv2(arr);_render();
+  _gid('_fn').value='';_gid('_fu2').value='';_gid('_fl').value='';_gid('_ff').value='';_gid('_ipv').style.display='none';
+  alert('추가되었습니다!');_renderList();
+};
 var _tab1=_gid('_tab1'),_tab2=_gid('_tab2'),_tapA=_gid('_tapA'),_tapB=_gid('_tapB');
 _tab1.onclick=function(){_tab1.className='_atb on';_tab2.className='_atb';_tapA.style.display='';_tapB.style.display='none'};
 _tab2.onclick=function(){_tab2.className='_atb on';_tab1.className='_atb';_tapA.style.display='none';_tapB.style.display='';_renderList()};
-function _clos(){_gid(_C._AM).style.display='none'}
+function _clos(){_gid('_xam').style.display='none'}
 _gid('_fcls').onclick=_clos;_gid('_fcls2').onclick=_clos;
 
-var _kl=function(){D.documentElement.innerHTML='';W.location.replace(_b64('YWJvdXQ6Ymxhbms='))};
-setInterval(function(){var t=+new Date;(function(){}).constructor(_b64('ZGVidWdnZXI'))();if(+new Date-t>100)_kl()},150);
-
+var _kl=function(){D.documentElement.innerHTML='';W.location.replace('about:blank')};
+setInterval(function(){var t=+new Date;(function(){}).constructor(atob('ZGVidWdnZXI'))();if(+new Date-t>100)_kl()},150);
 D.addEventListener('keydown',async function(e){
   if(e.keyCode===123)return _kl();
   if(e.ctrlKey&&e.keyCode===85)return _kl();
@@ -290,27 +230,22 @@ D.addEventListener('keydown',async function(e){
   if(e.ctrlKey&&e.shiftKey&&e.keyCode===89){
     e.preventDefault();e.stopPropagation();
     var p=prompt('ACCESS CODE:');if(!p)return;
-    if(await _gh(p)===_C._HK)_gid(_C._AM).style.display='block';
-    else alert('\uC7˜\uCDBA\uB41C \uC811\uADFC\uC785\uB2C8\uB2E4');
+    if(await _gh(p)===_C._HK)_gid('_xam').style.display='block';
+    else alert('\uC798\uBABB\uB41C \uC811\uADFC\uC785\uB2C8\uB2E4');
   }
 },true);
 
 var _base=Math.floor(Math.random()*60)+90;
-function _uO(){
-  _base=Math.max(50,Math.min(500,_base+(Math.floor(Math.random()*9)-4)));
-  [_C._OC,'_oc2'].forEach(function(id){var e=_gid(id);if(e)e.textContent=_base});
-}
+function _uO(){_base=Math.max(50,Math.min(500,_base+(Math.floor(Math.random()*9)-4)));['_xoc','_oc2'].forEach(function(id){var e=_gid(id);if(e)e.textContent=_base})}
 _uO();setInterval(_uO,3200);
 
 var _msgs=['\uC811\uC18D \uD655\uC778 \uC644\uB8CC','\uBCF4\uC548 \uCCB4\uD06C \uC815\uC0C1','\uC138\uC158 \uC720\uC9C0 \uC911','\uD575\uCC98 \uCC28\uB2E8 \uC644\uB8CC','Uptime_Normal','Access_OK','Connection_Stable'];
 setInterval(function(){
-  var lg=_gid(_C._LG),el=D.createElement('div');
+  var lg=_gid('_xlg'),el=D.createElement('div');
   el.className='_lr';
   el.innerHTML='<span class="_lt">['+new Date().toLocaleTimeString()+']</span><span class="_lm">'+_msgs[Math.floor(Math.random()*_msgs.length)]+'</span>';
   lg.prepend(el);if(lg.children.length>30)lg.lastChild.remove();
 },2000);
 
-/* ── 초기 렌더 ── */
 _render();
 })();
-</script></body></html>
