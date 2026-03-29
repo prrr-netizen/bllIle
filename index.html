@@ -2,119 +2,72 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>RLNL OFFICIAL NETWORK</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>OFFICIAL AD PLATFORM</title>
     <style>
         :root { --n: #00ffcc; --b: #020408; --p: rgba(10,15,25,0.98); --r: #ff0033; }
         * { margin:0; padding:0; box-sizing:border-box; -webkit-user-select:none; user-select:none; font-family:'Noto Sans KR', sans-serif; }
         body { background:var(--b); color:#fff; min-height:100vh; overflow-x:hidden; }
-        #S_LOCK { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:#fff; z-index:9999; flex-direction:column; align-items:center; justify-content:center; color:#000; font-weight:900; font-size:24px; }
         header { width:100%; background:rgba(2,4,8,0.98); border-bottom:3px solid var(--n); padding:15px 40px; display:flex; justify-content:space-between; align-items:center; position:sticky; top:0; z-index:1000; }
-        .LOGO { font-size:32px; font-weight:900; } .LOGO span { color:var(--n); }
+        .LOGO { font-size:32px; font-weight:900; cursor:pointer; } .LOGO span { color:var(--n); }
         .M_C { max-width:1650px; margin:40px auto; padding:0 20px; display:grid; grid-template-columns: 1fr 340px; gap:30px; }
         .G_B { display:grid; grid-template-columns:repeat(2, 1fr); gap:25px; } 
-        .CARD { background:linear-gradient(145deg, #0d121d, #020408); border:2px solid #1a2233; border-radius:12px; overflow:hidden; position:relative; }
+        .CARD { background:linear-gradient(145deg, #0d121d, #020408); border:2px solid #1a2233; border-radius:12px; overflow:hidden; position:relative; transition:0.3s; }
         .B_NAME { background: rgba(0,255,204,0.05); color: #fff; padding: 12px 20px; font-weight: 900; font-size: 19px; border-bottom: 1px solid #1a2233; }
         .IMG_BOX { width:100%; height:200px; background:#000; overflow:hidden; }
         .IMG_BOX img { width:100%; height:100%; object-fit:cover; }
-        .GO_BTN { display:block; width:92%; margin:15px auto; padding:14px; background:linear-gradient(to right, #00ffcc, #00ccaa); color:#000; text-align:center; text-decoration:none; font-weight:900; border-radius:8px; }
-        .SIDE { background:rgba(10,15,25,0.9); border:2px solid #1a2233; border-radius:12px; padding:25px; height:680px; }
+        .GO_BTN { display:block; width:92%; margin:15px auto; padding:14px; background:linear-gradient(to right, #00ffcc, #00ccaa); color:#000; text-align:center; text-decoration:none; font-weight:900; border-radius:8px; box-shadow: 0 4px 0 #008877; }
+        .SIDE { background:rgba(10,15,25,0.9); border:2px solid #1a2233; border-radius:12px; padding:25px; height:680px; position:sticky; top:120px; }
+        @media (max-width:1100px) { .G_B { grid-template-columns:1fr; } .M_C { grid-template-columns:1fr; } }
     </style>
 </head>
 <body oncontextmenu="return false">
 
-<div id="S_LOCK">🛑 SECURITY DETECTED: ACCESS DENIED</div>
-
-<div id="RLNL_CORE">
-    <header><div class="LOGO">RLNL<span>PLATFORM</span></div><div style="background:var(--n); color:#000; padding:10px 20px; border-radius:8px; font-weight:900;">고객센터</div></header>
+<div id="SECURE_WRAP">
+    <header><div class="LOGO">RLNL<span>PLATFORM</span></div><div style="background:var(--n); color:#000; padding:10px 20px; border-radius:8px; font-weight:900;">1:1 고객센터</div></header>
     <main class="M_C">
         <section class="G_B">
-            <div class="CARD">
-                <div class="B_NAME">메이저 01</div>
-                <div class="IMG_BOX"><img src="662034559_e82a01f0_257296.gif"></div>
-                <a href="여기에_1번_링크_넣으세요" target="_blank" class="GO_BTN">사이트 입장</a>
-            </div>
-            <div class="CARD">
-                <div class="B_NAME">메이저 02</div>
-                <div class="IMG_BOX"><img src="662034559_e82a01f0_257296.gif"></div>
-                <a href="여기에_2번_링크_넣으세요" target="_blank" class="GO_BTN">사이트 입장</a>
-            </div>
-            <div class="CARD">
-                <div class="B_NAME">메이저 03</div>
-                <div class="IMG_BOX"><img src="662034559_e82a01f0_257296.gif"></div>
-                <a href="여기에_3번_링크_넣으세요" target="_blank" class="GO_BTN">사이트 입장</a>
-            </div>
-            <div class="CARD">
-                <div class="B_NAME">메이저 04</div>
-                <div class="IMG_BOX"><img src="662034559_e82a01f0_257296.gif"></div>
-                <a href="여기에_4번_링크_넣으세요" target="_blank" class="GO_BTN">사이트 입장</a>
-            </div>
-            <div class="CARD">
-                <div class="B_NAME">메이저 05</div>
-                <div class="IMG_BOX"><img src="662034559_e82a01f0_257296.gif"></div>
-                <a href="여기에_5번_링크_넣으세요" target="_blank" class="GO_BTN">사이트 입장</a>
-            </div>
-            <div class="CARD">
-                <div class="B_NAME">메이저 06</div>
-                <div class="IMG_BOX"><img src="662034559_e82a01f0_257296.gif"></div>
-                <a href="여기에_6번_링크_넣으세요" target="_blank" class="GO_BTN">사이트 입장</a>
-            </div>
-            <div class="CARD">
-                <div class="B_NAME">메이저 07</div>
-                <div class="IMG_BOX"><img src="662034559_e82a01f0_257296.gif"></div>
-                <a href="여기에_7번_링크_넣으세요" target="_blank" class="GO_BTN">사이트 입장</a>
-            </div>
-            <div class="CARD">
-                <div class="B_NAME">메이저 08</div>
-                <div class="IMG_BOX"><img src="662034559_e82a01f0_257296.gif"></div>
-                <a href="여기에_8번_링크_넣으세요" target="_blank" class="GO_BTN">사이트 입장</a>
-            </div>
-            <div class="CARD">
-                <div class="B_NAME">메이저 09</div>
-                <div class="IMG_BOX"><img src="662034559_e82a01f0_257296.gif"></div>
-                <a href="여기에_9번_링크_넣으세요" target="_blank" class="GO_BTN">사이트 입장</a>
-            </div>
-            <div class="CARD">
-                <div class="B_NAME">메이저 10</div>
-                <div class="IMG_BOX"><img src="662034559_e82a01f0_257296.gif"></div>
-                <a href="여기에_10번_링크_넣으세요" target="_blank" class="GO_BTN">사이트 입장</a>
-            </div>
+            <div class="CARD"><div class="B_NAME">메이저 01</div><div class="IMG_BOX"><img src="662034559_e82a01f0_257296.gif"></div><a href="#" target="_blank" class="GO_BTN">사이트 입장</a></div>
+            <div class="CARD"><div class="B_NAME">메이저 02</div><div class="IMG_BOX"><img src="662034559_e82a01f0_257296.gif"></div><a href="#" target="_blank" class="GO_BTN">사이트 입장</a></div>
+            <div class="CARD"><div class="B_NAME">메이저 03</div><div class="IMG_BOX"><img src="662034559_e82a01f0_257296.gif"></div><a href="#" target="_blank" class="GO_BTN">사이트 입장</a></div>
+            <div class="CARD"><div class="B_NAME">메이저 04</div><div class="IMG_BOX"><img src="662034559_e82a01f0_257296.gif"></div><a href="#" target="_blank" class="GO_BTN">사이트 입장</a></div>
+            <div class="CARD"><div class="B_NAME">메이저 05</div><div class="IMG_BOX"><img src="662034559_e82a01f0_257296.gif"></div><a href="#" target="_blank" class="GO_BTN">사이트 입장</a></div>
+            <div class="CARD"><div class="B_NAME">메이저 06</div><div class="IMG_BOX"><img src="662034559_e82a01f0_257296.gif"></div><a href="#" target="_blank" class="GO_BTN">사이트 입장</a></div>
+            <div class="CARD"><div class="B_NAME">메이저 07</div><div class="IMG_BOX"><img src="662034559_e82a01f0_257296.gif"></div><a href="#" target="_blank" class="GO_BTN">사이트 입장</a></div>
+            <div class="CARD"><div class="B_NAME">메이저 08</div><div class="IMG_BOX"><img src="662034559_e82a01f0_257296.gif"></div><a href="#" target="_blank" class="GO_BTN">사이트 입장</a></div>
+            <div class="CARD"><div class="B_NAME">메이저 09</div><div class="IMG_BOX"><img src="662034559_e82a01f0_257296.gif"></div><a href="#" target="_blank" class="GO_BTN">사이트 입장</a></div>
+            <div class="CARD"><div class="B_NAME">메이저 10</div><div class="IMG_BOX"><img src="662034559_e82a01f0_257296.gif"></div><a href="#" target="_blank" class="GO_BTN">사이트 입장</a></div>
         </section>
-        <aside class="SIDE">
-            <div style="color:var(--n); font-weight:900;">LIVE MONITORING</div>
-            <div id="L_LIST" style="height:600px; overflow:hidden; font-size:13px; color:#555; margin-top:15px; border-top:1px solid #222;"></div>
-        </aside>
+        <aside class="SIDE"><div id="L_Z" style="font-size:13px; color:#555; line-height:2.5;"></div></aside>
     </main>
 </div>
 
 <script>
+/* 🛡️ 털이범 방지 암호화 로직 ㅋ */
 (function(){
-    // 🛡️ 보안 로직: 소스 탭 누르는 즉시 파괴 ㅋ
-    const _BURN = () => {
-        const core = document.getElementById('RLNL_CORE');
-        if(core) core.remove(); 
-        document.getElementById('S_LOCK').style.display = 'flex';
-        document.documentElement.innerHTML = ""; 
-        window.location.replace("about:blank"); 
+    var _0xP = function(){
+        document.getElementById('SECURE_WRAP').innerHTML = ''; // 💎 소스 즉시 파쇄
+        window.location.replace("about:blank"); // 💎 빈 창으로 튕겨냄
     };
 
-    // 속도 감지 (F12 열면 브라우저 느려짐 감지 ㅋ)
-    setInterval(() => {
-        const t1 = new Date().getTime();
-        for(let i=0; i<50; i++) { console.log(""); console.clear(); }
-        if (new Date().getTime() - t1 > 50) _BURN();
-    }, 500);
+    // 1. 소스 창 감지 (debugger 없이 속도로만 체크 ㅋ)
+    setInterval(function(){
+        var t1 = new Date().getTime();
+        for(var i=0;i<100;i++){console.log("");console.clear();}
+        if(new Date().getTime()-t1 > 50) _0xP();
+    }, 200);
 
-    // 단축키 차단
-    window.onkeydown = (e) => {
-        if(e.keyCode === 123 || (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74)) || (e.ctrlKey && e.keyCode === 85)) _BURN();
+    // 2. 단축키 원천 차단
+    window.onkeydown = function(e){
+        if(e.keyCode===123||(e.ctrlKey&&e.shiftKey&&(e.keyCode===73||e.keyCode===74))||(e.ctrlKey&&e.keyCode===85)) _0xP();
     };
 
-    // 로그 연출
-    setInterval(()=>{
-        const l=document.getElementById('L_LIST');
-        const d=document.createElement('div');
-        d.innerHTML=`[${new Date().toLocaleTimeString()}] User Access Success`;
-        l.prepend(d); if(l.children.length>25)l.lastChild.remove();
+    // 로그 연출 ㅋ
+    setInterval(function(){
+        var z=document.getElementById('L_Z');
+        var d=document.createElement('div');
+        d.innerHTML=`[${new Date().toLocaleTimeString()}] User_Connect_OK`;
+        z.prepend(d); if(z.children.length>25)z.lastChild.remove();
     }, 2000);
 })();
 </script>
