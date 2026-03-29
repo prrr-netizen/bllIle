@@ -3,190 +3,190 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>GOLDEN | OFFICIAL</title>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
+    <title>GOLDEN ELITE | PREMIUM NETWORK</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
-        :root { --neon: #00ffcc; --bg: #030509; --panel: rgba(13, 22, 38, 0.95); --border: rgba(0, 255, 204, 0.4); --text: #ffffff; }
-        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-user-select: none; user-select: none; font-family: 'Noto Sans KR', sans-serif; }
-        body { background: var(--bg); color: var(--text); overflow-x: hidden; min-height: 100vh; }
-
-        /* 차단 레이어 (평소엔 숨김) */
-        #secure-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 999999; color: red; flex-direction: column; align-items: center; justify-content: center; font-size: 24px; font-weight: 900; text-align: center; line-height: 1.6; }
-
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        :root { --neon: #00ffcc; --bg: #020408; --panel: rgba(10, 15, 25, 0.98); --border: rgba(0, 255, 204, 0.3); }
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-user-select: none; user-select: none; font-family: 'Inter', 'Noto Sans KR', sans-serif; }
+        body { background: var(--bg); color: #fff; overflow-x: hidden; background-image: radial-gradient(circle at 50% -20%, #1a2a2a 0%, var(--bg) 85%); }
         
-        /* 프리미엄 헤더 */
-        .header { position: sticky; top: 0; z-index: 1000; background: rgba(3, 5, 9, 0.9); backdrop-filter: blur(20px); border-bottom: 2px solid var(--neon); padding: 20px 0; }
-        .logo { font-size: 28px; font-weight: 900; letter-spacing: 2px; }
-        .logo span { color: var(--neon); text-shadow: 0 0 10px var(--neon); }
+        /* 보안 차단 레이어 */
+        #S_O { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 100000; color: #ff0033; flex-direction: column; align-items: center; justify-content: center; font-size: 22px; font-weight: 900; text-shadow: 0 0 10px #ff0033; }
 
-        /* 배너 레이아웃 (해외형 4열) */
-        .main-layout { display: grid; grid-template-columns: 1fr 300px; gap: 40px; margin: 50px auto; }
-        .banner-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; }
+        .container { max-width: 1400px; margin: 0 auto; padding: 0 30px; }
         
-        .card { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); position: relative; }
-        .card:hover { transform: translateY(-10px); border-color: var(--neon); box-shadow: 0 0 25px rgba(0,255,204,0.2); }
-        .card-img { width: 100%; height: 130px; background: #000; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid var(--border); }
-        .card-img img { width: 100%; height: 100%; object-fit: cover; }
-        .card-info { padding: 15px; text-align: center; }
-        .card-title { font-size: 15px; font-weight: 800; margin-bottom: 12px; }
+        /* 사이버펑크 헤더 */
+        .header { position: sticky; top: 0; z-index: 1000; background: rgba(2, 4, 8, 0.9); backdrop-filter: blur(25px); border-bottom: 2px solid var(--neon); padding: 18px 0; box-shadow: 0 5px 30px rgba(0,255,204,0.1); }
+        .logo { font-size: 26px; font-weight: 900; text-transform: uppercase; letter-spacing: 2px; cursor: pointer; }
+        .logo span { color: var(--neon); text-shadow: 0 0 15px var(--neon); }
         
-        .btn-entry { width: 100%; padding: 10px; background: transparent; border: 1px solid var(--neon); color: var(--neon); border-radius: 5px; font-weight: 900; cursor: pointer; transition: 0.3s; }
-        .btn-entry:hover { background: var(--neon); color: #000; }
+        /* 메인 레이아웃 */
+        .main-content { display: grid; grid-template-columns: 1fr 320px; gap: 40px; margin: 50px auto; }
+        .banner-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+        
+        /* 해외형 카드 디자인 */
+        .card { background: var(--panel); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; transition: 0.4s cubic-bezier(0.2, 0.8, 0.2, 1); cursor: pointer; position: relative; }
+        .card:hover { transform: translateY(-12px); border-color: var(--neon); box-shadow: 0 20px 40px rgba(0,0,0,0.8), 0 0 20px rgba(0,255,204,0.2); }
+        .card-img { width: 100%; height: 150px; background: #000; position: relative; overflow: hidden; border-bottom: 1px solid var(--border); }
+        .card-img img { width: 100%; height: 100%; object-fit: cover; opacity: 0.8; transition: 0.5s; }
+        .card:hover .card-img img { opacity: 1; transform: scale(1.1); }
+        .card-body { padding: 22px; text-align: center; }
+        .card-name { font-size: 17px; font-weight: 800; color: #fff; margin-bottom: 18px; letter-spacing: 1px; }
+        .btn-go { width: 100%; padding: 13px; background: transparent; border: 1px solid var(--neon); color: var(--neon); border-radius: 8px; font-weight: 900; font-size: 13px; transition: 0.3s; text-transform: uppercase; }
+        .btn-go:hover { background: var(--neon); color: #000; box-shadow: 0 0 15px var(--neon); }
 
-        /* 사이드바 */
-        .side-widget { background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 15px; padding: 20px; margin-bottom: 20px; }
-        .widget-h { font-size: 13px; font-weight: 900; color: var(--neon); margin-bottom: 15px; text-transform: uppercase; }
-        .live-log { font-size: 12px; color: #666; height: 180px; overflow: hidden; }
+        /* 사이드바 위젯 */
+        .widget { background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 20px; padding: 25px; margin-bottom: 25px; }
+        .widget-title { font-size: 13px; font-weight: 900; color: var(--neon); text-transform: uppercase; margin-bottom: 20px; border-left: 3px solid var(--neon); padding-left: 12px; }
+        .stat-val { font-size: 32px; font-weight: 900; color: #fff; margin-bottom: 5px; }
 
-        /* 모달 (로그인/가입) */
-        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.98); z-index: 10001; align-items: center; justify-content: center; }
-        .modal-content { background: #0b1019; width: 380px; padding: 40px; border-radius: 20px; border: 1px solid var(--neon); text-align: center; }
-        .input-box { width: 100%; padding: 14px; background: #05070a; border: 1px solid #222; border-radius: 8px; color: #fff; margin-bottom: 15px; }
-        .cap-flex { display: flex; gap: 10px; margin-bottom: 20px; }
-        .cap-num { flex: 1; background: #1e2633; color: var(--neon); font-size: 22px; font-weight: 900; display: flex; align-items: center; justify-content: center; letter-spacing: 8px; border-radius: 8px; }
+        /* 실전 로그인 모달 */
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.96); z-index: 99999; align-items: center; justify-content: center; backdrop-filter: blur(10px); }
+        .modal-box { background: #0b0f1a; width: 420px; padding: 50px; border-radius: 30px; border: 1px solid var(--neon); box-shadow: 0 0 50px rgba(0,255,204,0.15); text-align: center; animation: zoomIn 0.3s ease; }
+        @keyframes zoomIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+        .modal-h { font-size: 26px; font-weight: 900; margin-bottom: 35px; color: #fff; letter-spacing: 1px; }
+        .input-f { width: 100%; padding: 18px; background: #05070a; border: 1px solid #1e2633; border-radius: 12px; color: #fff; margin-bottom: 15px; font-size: 15px; outline: none; }
+        .input-f:focus { border-color: var(--neon); box-shadow: 0 0 10px rgba(0,255,204,0.2); }
+        .cap-row { display: flex; gap: 12px; margin-bottom: 30px; }
+        .cap-view { flex: 1; background: #1e2633; color: var(--neon); font-size: 24px; font-weight: 900; border-radius: 12px; display: flex; align-items: center; justify-content: center; letter-spacing: 8px; font-style: italic; }
+        .btn-submit { width: 100%; padding: 20px; background: var(--neon); border: none; color: #000; font-weight: 900; border-radius: 12px; cursor: pointer; font-size: 16px; transition: 0.3s; }
+        .btn-submit:hover { filter: brightness(1.2); transform: translateY(-2px); }
 
-        @media (max-width: 1100px) { .banner-grid { grid-template-columns: repeat(2, 1fr); } .main-layout { grid-template-columns: 1fr; } }
+        @media (max-width: 1200px) { .banner-grid { grid-template-columns: repeat(2, 1fr); } .main-content { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body oncontextmenu="return false">
 
-<div id="secure-overlay">
-    <div>🛑 보안 위반 감지 (SECURITY BREACH) 🛑</div>
-    <div style="font-size: 16px; color: #555; margin-top: 20px;">비정상적인 접근이 감지되어 데이터를 보호하기 위해<br>현재 세션을 즉시 종료하고 소스코드를 파기했습니다.</div>
-    <button onclick="location.reload()" style="margin-top:30px; padding:10px 20px; background:red; border:none; color:#fff; font-weight:bold; cursor:pointer;">서버 재연결</button>
+<div id="S_O">
+    <div>⚠️ SECURITY BREACH DETECTED ⚠️</div>
+    <div style="font-size: 15px; color: #666; margin-top: 20px; font-weight: 400;">비정상적인 접근 감지로 인해 모든 데이터가 보호 모드로 전환되었습니다.<br>페이지를 새로고침하십시오.</div>
 </div>
 
-<div id="app-wrapper">
+<div id="A_W">
     <header class="header">
         <div class="container" style="display:flex; justify-content:space-between; align-items:center;">
-            <div class="logo">GOLDEN<span>ELITE</span></div>
-            <button onclick="openAuth()" style="background:var(--neon); border:none; padding:10px 22px; border-radius:6px; font-weight:900; cursor:pointer;">회원가입 / 로그인</button>
+            <div class="logo" onclick="location.reload()">GOLDEN<span>ELITE</span></div>
+            <div id="user-status" style="display:flex; gap:15px; align-items:center;">
+                <button onclick="o_m()" style="background:transparent; border:none; color:#fff; font-weight:700; cursor:pointer; font-size:14px;">로그인</button>
+                <button onclick="o_m()" style="background:var(--neon); border:none; color:#000; padding:10px 22px; border-radius:6px; font-weight:900; cursor:pointer; font-size:14px;">회원가입</button>
+            </div>
         </div>
     </header>
 
-    <main class="container">
-        <div class="main-layout">
-            <section>
-                <div class="banner-grid" id="banner-list">
-                    </div>
-            </section>
-            <aside>
-                <div class="side-widget">
-                    <div class="widget-h">실시간 트래픽</div>
-                    <div id="live-users" style="font-size: 24px; font-weight: 900; color: #00ff41;">1,542</div>
-                    <div class="live-log" id="log-target" style="margin-top:15px;"></div>
-                </div>
-            </aside>
-        </div>
+    <main class="container main-content">
+        <section>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:30px;">
+                <h3 style="font-size:14px; font-weight:900; color:#444; text-transform:uppercase; letter-spacing:2px;">Elite Partner Network</h3>
+            </div>
+            <div class="banner-grid" id="b-list"></div>
+        </section>
+
+        <aside>
+            <div class="widget">
+                <div class="widget-title">Live Server Status</div>
+                <div class="stat-val" id="u-count">2,415</div>
+                <div style="font-size:12px; color:#555;">실시간 온라인 유저</div>
+            </div>
+            <div class="widget">
+                <div class="widget-title">Security Protocol</div>
+                <p style="font-size:12px; color:#666; line-height:1.8;">Hyper-V3 실시간 감시 엔진 가동 중<br>모든 IP 및 접속 로그 암호화 저장</p>
+            </div>
+        </aside>
     </main>
 </div>
 
 <div class="modal" id="authModal">
-    <div class="modal-content">
-        <h2 style="margin-bottom:25px; letter-spacing:1px;">인증 센터</h2>
-        <input type="text" class="input-box" placeholder="아이디">
-        <input type="password" class="input-box" placeholder="비밀번호">
-        <div class="cap-flex">
-            <div class="cap-num" id="cap-display">0000</div>
-            <input type="text" id="cap-input" class="input-box" style="margin:0; width:120px; text-align:center;" placeholder="인증코드">
+    <div class="modal-box">
+        <div class="modal-h">MEMBER ACCESS</div>
+        <input type="text" id="u_id" class="input-f" placeholder="아이디" autocomplete="off">
+        <input type="password" id="u_pw" class="input-f" placeholder="비밀번호" autocomplete="off">
+        <div class="cap-row">
+            <div class="cap-view" id="cap_code">----</div>
+            <input type="text" id="cap_in" class="input-f" style="margin:0; width:140px; text-align:center;" placeholder="인증코드" maxlength="4">
         </div>
-        <button onclick="handleAuth()" style="width:100%; padding:16px; background:var(--neon); border:none; border-radius:8px; font-weight:900; font-size:15px; cursor:pointer;">네트워크 입장하기</button>
-        <p onclick="closeAuth()" style="margin-top:20px; color:#444; font-size:12px; cursor:pointer;">창 닫기</p>
+        <button class="btn-submit" onclick="h_a()">인증 및 로그인</button>
+        <p onclick="c_m()" style="margin-top:25px; color:#444; font-size:12px; cursor:pointer; text-transform:uppercase; letter-spacing:1px;">Close Window</p>
     </div>
 </div>
 
 <script>
-    /* 1. 파트너 설정 (이미지 URL 및 이동 주소) */
-    const _DATA = [
-        {n:"STAKE", i:"https://via.placeholder.com/400x260/111/00ffcc?text=STAKE", url:"#"},
-        {n:"ROYAL", i:"https://via.placeholder.com/400x260/111/00ffcc?text=ROYAL", url:"#"},
-        {n:"1XBET", i:"https://via.placeholder.com/400x260/111/00ffcc?text=1XBET", url:"#"},
-        {n:"BC.GAME", i:"https://via.placeholder.com/400x260/111/00ffcc?text=BC.GAME", url:"#"},
-        {n:"TITAN", i:"https://via.placeholder.com/400x260/111/00ffcc?text=TITAN", url:"#"},
-        {n:"EMPIRE", i:"https://via.placeholder.com/400x260/111/00ffcc?text=EMPIRE", url:"#"},
-        {n:"SKY", i:"https://via.placeholder.com/400x260/111/00ffcc?text=SKY", url:"#"},
-        {n:"ACE", i:"https://via.placeholder.com/400x260/111/00ffcc?text=ACE", url:"#"}
+    /* [데이터 설정] 이미지 주소와 이동할 URL을 입력하세요 */
+    const _D = [
+        {n:"STAKE", i:"https://via.placeholder.com/400x280/0a0f19/00ffcc?text=STAKE+LOGO", u:"#"},
+        {n:"ROOBET", i:"https://via.placeholder.com/400x280/0a0f19/00ffcc?text=ROOBET+LOGO", u:"#"},
+        {n:"1XBET", i:"https://via.placeholder.com/400x280/0a0f19/00ffcc?text=1XBET+LOGO", u:"#"},
+        {n:"BC.GAME", i:"https://via.placeholder.com/400x280/0a0f19/00ffcc?text=BC.GAME+LOGO", u:"#"},
+        {n:"TITAN", i:"https://via.placeholder.com/400x280/0a0f19/00ffcc?text=TITAN+LOGO", u:"#"},
+        {n:"EMPIRE", i:"https://via.placeholder.com/400x280/0a0f19/00ffcc?text=EMPIRE+LOGO", u:"#"},
+        {n:"SKYBET", i:"https://via.placeholder.com/400x280/0a0f19/00ffcc?text=SKYBET+LOGO", u:"#"},
+        {n:"ACEBET", i:"https://via.placeholder.com/400x280/0a0f19/00ffcc?text=ACEBET+LOGO", u:"#"}
     ];
 
-    document.getElementById('banner-list').innerHTML = _DATA.map(p => `
-        <div class="card">
-            <div class="card-img"><img src="${p.i}"></div>
-            <div class="card-info">
-                <div class="card-title">${p.n}</div>
-                <button class="btn-entry" onclick="window.open('${p.url}')">사이트 입장</button>
+    /* [렌더링 루틴] */
+    const render = () => {
+        document.getElementById('b-list').innerHTML = _D.map(p => `
+            <div class="card">
+                <div class="card-img"><img src="${p.i}"></div>
+                <div class="card-body">
+                    <div class="card-name">${p.n}</div>
+                    <button class="btn-go" onclick="window.open('${p.u}', '_blank')">사이트 입장</button>
+                </div>
             </div>
-        </div>
-    `).join('');
-
-    /* 2. 인증 로직 */
-    let _TARGET_CAP = "";
-    const openAuth = () => {
-        document.getElementById('authModal').style.display='flex';
-        _TARGET_CAP = Math.floor(1000 + Math.random()*9000);
-        document.getElementById('cap-display').innerText = _TARGET_CAP;
+        `).join('');
     };
-    const closeAuth = () => document.getElementById('authModal').style.display='none';
-    const handleAuth = () => {
-        if(document.getElementById('cap-input').value == _TARGET_CAP) alert("✅ 보안 인증 성공!");
-        else { alert("❌ 인증번호가 틀렸습니다."); openAuth(); }
+    render();
+
+    /* [회원 인증 시스템] */
+    let _C = "";
+    const o_m = () => {
+        document.getElementById('authModal').style.display = 'flex';
+        _C = Math.floor(1000 + Math.random()*9000);
+        document.getElementById('cap_code').innerText = _C;
+    };
+    const c_m = () => document.getElementById('authModal').style.display = 'none';
+
+    const h_a = () => {
+        const id = document.getElementById('u_id').value;
+        const cap = document.getElementById('cap_in').value;
+        if(!id) { alert("아이디를 입력해주세요."); return; }
+        if(cap != _C) { alert("인증코드가 일치하지 않습니다."); o_m(); return; }
+
+        alert("✅ 보안 인증이 완료되었습니다.\n환영합니다, " + id + "님.");
+        c_m();
+        document.getElementById('user-status').innerHTML = `<span style="color:var(--neon); font-weight:900;">WELCOME, ${id}님</span> <span style="color:#333">|</span> <span onclick="location.reload()" style="cursor:pointer; font-size:12px; color:#666;">로그아웃</span>`;
     };
 
-    /* 3. 실시간 로그 시뮬레이션 */
-    setInterval(() => {
-        const log = document.getElementById('log-target');
-        const d = document.createElement('div');
-        d.style = "padding:6px 0; border-bottom:1px solid rgba(255,255,255,0.02); display:flex; justify-content:space-between;";
-        d.innerHTML = `<span>User_${Math.floor(Math.random()*999)} Connected</span> <span style="color:#333">방금전</span>`;
-        log.prepend(d);
-        if(log.children.length > 8) log.lastElementChild.remove();
-        document.getElementById('user-users').innerText = (1500 + Math.floor(Math.random()*100)).toLocaleString();
-    }, 2500);
+    /* [실전 보안 엔진 - 난독화 및 실시간 감시] */
+    (function(){
+        const s_o = document.getElementById('S_O');
+        const a_w = document.getElementById('A_W');
+        
+        // 소스 파괴 함수
+        function _X() { a_w.remove(); s_o.style.display = "flex"; console.clear(); }
 
-    /* -----------------------------------------------------------
-       🛡️ [99.9% 최종 보안] 마우스 메뉴 진입 + 단축키 차단 엔진
-    ----------------------------------------------------------- */
-    (function() {
-        const overlay = document.getElementById('secure-overlay');
-        const wrapper = document.getElementById('app-wrapper');
-
-        function selfDestruct() {
-            wrapper.remove(); // 1. 메인 소스 즉시 삭제 (메모리에서도 제거)
-            overlay.style.display = "flex"; // 2. 차단 화면 활성화
-            console.clear(); // 3. 콘솔 기록 삭제
-        }
-
-        // A. 키보드 단축키 차단 (F12, Ctrl+U 등)
+        // 1. 단축키 차단 (F12, Ctrl+U 등)
         window.addEventListener('keydown', (e) => {
-            if (e.keyCode == 123 || (e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 74)) || (e.ctrlKey && e.keyCode == 85)) {
-                e.preventDefault();
-                selfDestruct();
+            if(e.keyCode == 123 || (e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 74)) || (e.ctrlKey && e.keyCode == 85)) {
+                e.preventDefault(); _X();
             }
         });
 
-        // B. 마우스 우회 진입 실시간 감지 (창 크기 변화 감시)
-        // 일반인이 브라우저 메뉴로 개발자 도구를 열면 내부 창 크기가 급격히 변하는 원리 이용
-        const threshold = 160;
-        const checkDevTools = () => {
-            const widthDiff = window.outerWidth - window.innerWidth > threshold;
-            const heightDiff = window.outerHeight - window.innerHeight > threshold;
-            if (widthDiff || heightDiff) {
-                selfDestruct();
-            }
-        };
-        setInterval(checkDevTools, 500);
+        // 2. 마우스 우회 진입 감지 (창 크기 변화 실시간 모니터링)
+        setInterval(() => {
+            if(window.outerWidth - window.innerWidth > 160 || window.outerHeight - window.innerHeight > 160) { _X(); }
+        }, 500);
 
-        // C. 디버거 트랩 (무한 루프 방해)
-        const trap = function() {
-            const start = new Date().getTime();
+        // 3. 디버거 루프 (뜯기 시도 시 실행 멈춤)
+        setInterval(() => {
+            const t1 = new Date().getTime();
             debugger;
-            const end = new Date().getTime();
-            if (end - start > 100) { selfDestruct(); }
-        };
-        setInterval(trap, 200);
+            if(new Date().getTime() - t1 > 100) { _X(); }
+        }, 200);
 
-        // D. 우클릭 차단
-        window.oncontextmenu = () => false;
+        // 실시간 인원 수 업데이트
+        setInterval(() => {
+            document.getElementById('u-count').innerText = (2400 + Math.floor(Math.random()*100)).toLocaleString();
+        }, 3000);
     })();
 </script>
 </body>
