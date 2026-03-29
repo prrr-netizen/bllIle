@@ -88,7 +88,7 @@
 let _isL = false; 
 let _sec;
 
-// 보안 스크립트 엔진
+
 function _startGuard() {
     _sec = setInterval(() => {
         if(_isL) return;
@@ -100,7 +100,7 @@ function _startGuard() {
     }, 500);
 }
 
-// 초기 실행
+
 _startGuard();
 
 let _DB = JSON.parse(localStorage.getItem('_AD_MASTER_DATA_') || '[]');
@@ -111,26 +111,26 @@ window.onload = () => {
 };
 
 window.onkeydown = (e) => {
-    // 기본 차단 단축키
-    if(e.keyCode == 123 || (e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 74 || e.keyCode == 67))) return false;
     
-    // 관리자 모드 단축키 (Ctrl + Shift + Y)
+    if(e.keyCode == 123 || (e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 74 || e.keyCode == 67))) return false;
+
+    
     if(e.ctrlKey && e.shiftKey && e.keyCode == 89){
-        _isL = true; // 감시 모드 즉시 정지 변수
-        clearInterval(_sec); // 감시 프로세스 아예 제거
+        _isL = true;
+        clearInterval(_sec);
+
         
-        // 브라우저가 반응할 시간을 줌
         setTimeout(() => {
             let p = prompt('AUTH PASSWORD');
             const _h = (s) => s ? s.split('').reduce((a,b)=>{a=((a<<5)-a)+b.charCodeAt(0);return a&a},0) : 0;
             
-            if(_h(p) === 1533510) { // 비번 8253
+            if(_h(p) === 1533510) {
                 document.getElementById('_admin_panel').style.display = 'block';
                 _renderAdmin();
             } else {
                 alert('인증 실패');
                 _isL = false;
-                _startGuard(); // 감시 재시작
+                _startGuard();
             }
         }, 150);
     }
@@ -182,7 +182,7 @@ function _initNotice(){
 function _closeAdmin(){ 
     _isL = false; 
     document.getElementById('_admin_panel').style.display = 'none'; 
-    _startGuard(); // 닫으면 다시 보안 가동
+    _startGuard();
 }
 </script>
 </body>
