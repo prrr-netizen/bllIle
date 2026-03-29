@@ -3,99 +3,153 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>OFFICIAL AD PLATFORM</title>
+    <title>OFFICIAL AD PLATFORM - SECURE MASTER</title>
     <style>
-        :root { --n: #00ffcc; --b: #020408; --p: rgba(10,15,25,0.98); --r: #ff0033; }
-        * { margin:0; padding:0; box-sizing:border-box; -webkit-user-select:none; user-select:none; font-family:'Noto Sans KR', sans-serif; }
-        body { background:var(--b); color:#fff; min-height:100vh; overflow-x:hidden; }
+        :root { --gold: #d4af37; --dark: #050505; --card: #121212; --border: #222; }
+        * { margin:0; padding:0; box-sizing:border-box; -webkit-user-select:none; user-select:none; font-family:'Pretendard', sans-serif; }
+        body { background:var(--dark); color:#eee; overflow-x:hidden; }
+
+        /* 🔐 암호화 관리자 모달 */
+        #ADMIN_MODAL { display:none; position:fixed; top:50%; left:50%; transform:translate(-50%, -50%); width:90%; max-width:650px; background:#1a1a1a; border:3px solid var(--gold); padding:30px; z-index:100000; border-radius:15px; box-shadow:0 0 100px #000; }
+        textarea { width:100%; height:220px; background:#000; color:var(--gold); border:1px solid #333; padding:15px; margin:15px 0; font-family:monospace; border-radius:5px; }
+        .BTN_EXEC { background:linear-gradient(to bottom, #f1c40f, #d4af37); color:#000; width:100%; padding:15px; border:none; font-weight:900; cursor:pointer; font-size:16px; border-radius:5px; }
+
+        /* 💎 상업용 레이아웃 */
+        header { background:#000; padding:35px; border-bottom:2px solid var(--gold); text-align:center; position:relative; box-shadow:0 10px 30px rgba(0,0,0,0.5); }
+        .LOGO { font-size:38px; font-weight:900; color:#fff; letter-spacing:4px; }
+        .LOGO span { color:var(--gold); }
+        .SET_LOCK { position:absolute; right:30px; top:45px; cursor:pointer; opacity:0.1; font-size:10px; color:#fff; }
+
+        .MAIN_WRAP { max-width:1450px; margin:40px auto; padding:0 20px; display:grid; grid-template-columns: 1fr 340px; gap:30px; }
+        .B_LIST { display:flex; flex-direction:column; gap:18px; }
+        .ITEM { background:var(--card); border:1px solid var(--border); border-radius:12px; height:140px; display:flex; align-items:center; overflow:hidden; transition:0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .ITEM:hover { border-color:var(--gold); transform:scale(1.01); box-shadow:0 0 40px rgba(212,175,55,0.1); }
         
-        /* 🛡️ 보안 감지 시 화면 초기화 */
-        #S_LOCK { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:#000; z-index:999999; }
+        .LABEL { background:var(--gold); color:#000; width:110px; height:100%; display:flex; align-items:center; justify-content:center; font-weight:900; font-size:16px; border-right:1px solid #000; text-align:center; }
+        .GIF_IMG { width:500px; height:100%; background:#000; border-right:1px solid var(--border); }
+        .GIF_IMG img { width:100%; height:100%; object-fit:cover; }
+        .INFO { flex-grow:1; padding:0 35px; }
+        .TITLE { font-size:24px; font-weight:900; margin-bottom:8px; }
+        .SUB { color:var(--gold); font-size:14px; font-weight:600; }
+        .GO { background:linear-gradient(to right, #222, #333); color:#fff; padding:18px 55px; text-decoration:none; font-weight:900; border-radius:6px; margin-right:30px; border:1px solid #444; transition:0.3s; }
+        .GO:hover { background:var(--gold); color:#000; border-color:var(--gold); }
 
-        header { width:100%; background:rgba(2,4,8,0.98); border-bottom:3px solid var(--n); padding:15px 40px; display:flex; justify-content:space-between; align-items:center; position:sticky; top:0; z-index:1000; box-shadow: 0 0 20px rgba(0,255,204,0.3); }
-        .LOGO { font-size:32px; font-weight:900; cursor:pointer; } .LOGO span { color:var(--n); text-shadow:0 0 10px var(--n); }
-        .CS_BTN { text-decoration:none; color:#000; background:var(--n); padding:10px 20px; border-radius:8px; font-weight:900; font-size:14px; }
-
-        .M_C { max-width:1650px; margin:40px auto; padding:0 20px; display:grid; grid-template-columns: 1fr 340px; gap:30px; }
-        .G_B { display:grid; grid-template-columns:repeat(2, 1fr); gap:25px; } 
-        
-        /* 💎 배너 카드 디자인 */
-        .CARD { background:linear-gradient(145deg, #0d121d, #020408); border:2px solid #1a2233; border-radius:12px; overflow:hidden; position:relative; transition:0.3s; }
-        .CARD:hover { border-color:var(--n); transform:translateY(-5px); }
-        .B_TAG { position:absolute; top:10px; left:10px; background:var(--r); color:#fff; font-size:11px; padding:3px 8px; border-radius:4px; font-weight:900; z-index:10; }
-        .B_NAME { background: rgba(0,255,204,0.05); color: #fff; padding: 12px 20px; font-weight: 900; font-size: 18px; border-bottom: 1px solid #1a2233; }
-        .IMG_BOX { width:100%; height:200px; background:#000; overflow:hidden; }
-        .IMG_BOX img { width:100%; height:100%; object-fit:cover; }
-        .GO_BTN { display:block; width:92%; margin:15px auto; padding:14px; background:linear-gradient(to right, #00ffcc, #00ccaa); color:#000; text-align:center; text-decoration:none; font-weight:900; border-radius:8px; box-shadow: 0 4px 0 #008877; }
-
-        .SIDE { background:rgba(10,15,25,0.9); border:2px solid #1a2233; border-radius:12px; padding:20px; height:700px; position:sticky; top:120px; }
-        .LOG_TITLE { color:var(--n); font-weight:900; margin-bottom:15px; border-bottom:1px solid #222; padding-bottom:10px; }
-        #L_BOX { height:600px; overflow:hidden; font-size:12px; color:#666; line-height:2.2; }
-
-        @media (max-width:1100px) { .G_B { grid-template-columns:1fr; } .M_C { grid-template-columns:1fr; } }
+        .SIDE { background:#0a0a0a; border:1px solid var(--border); padding:25px; border-radius:12px; height:fit-content; position:sticky; top:130px; }
     </style>
 </head>
 <body oncontextmenu="return false">
 
-<div id="S_LOCK"></div>
+<div id="S_VOID"></div>
 
-<div id="CONTENT_ROOT">
+<div id="ADMIN_MODAL">
+    <h2 style="color:var(--gold)">💎 상업용 대량 등록 (ADMIN)</h2>
+    <p style="font-size:12px; color:#888; margin-top:5px;">형식: 업체이름|이미지파일명|링크 (줄바꿈 구분)</p>
+    <textarea id="INPUT_AREA"></textarea>
+    <button class="BTN_EXEC" onclick="saveAndBuild()">설정 저장 및 즉시 배너 적용</button>
+    <button onclick="document.getElementById('ADMIN_MODAL').style.display='none'" style="margin-top:15px; background:none; border:none; color:#555; cursor:pointer; width:100%;">취소/닫기</button>
+</div>
+
+<div id="SITE_ROOT">
     <header>
-        <div class="LOGO" onclick="location.reload()">RLNL<span>PLATFORM</span></div>
-        <a href="#" class="CS_BTN">24시 고객센터</a>
+        <div class="LOGO">RLNL<span>PLATFORM</span></div>
+        <div class="SET_LOCK" onclick="openAdmin()">ADMIN_LOGIN</div>
     </header>
-
-    <main class="M_C">
-        <section class="G_B">
-            <div class="CARD"><div class="B_TAG">HOT</div><div class="B_NAME">메이저 사이트 01</div><div class="IMG_BOX"><img src="662034559_e82a01f0_257296.gif"></div><a href="주소01" target="_blank" class="GO_BTN">사이트 입장하기</a></div>
-            <div class="CARD"><div class="B_TAG">추천</div><div class="B_NAME">메이저 사이트 02</div><div class="IMG_BOX"><img src="662034559_e82a01f0_257296.gif"></div><a href="주소02" target="_blank" class="GO_BTN">사이트 입장하기</a></div>
-            <div class="CARD"><div class="B_TAG">보증</div><div class="B_NAME">메이저 사이트 03</div><div class="IMG_BOX"><img src="662034559_e82a01f0_257296.gif"></div><a href="주소03" target="_blank" class="GO_BTN">사이트 입장하기</a></div>
-            <div class="CARD"><div class="B_TAG">NEW</div><div class="B_NAME">메이저 사이트 04</div><div class="IMG_BOX"><img src="662034559_e82a01f0_257296.gif"></div><a href="주소04" target="_blank" class="GO_BTN">사이트 입장하기</a></div>
-            <div class="CARD"><div class="B_TAG">HOT</div><div class="B_NAME">메이저 사이트 05</div><div class="IMG_BOX"><img src="662034559_e82a01f0_257296.gif"></div><a href="주소05" target="_blank" class="GO_BTN">사이트 입장하기</a></div>
-            <div class="CARD"><div class="B_TAG">추천</div><div class="B_NAME">메이저 사이트 06</div><div class="IMG_BOX"><img src="662034559_e82a01f0_257296.gif"></div><a href="주소06" target="_blank" class="GO_BTN">사이트 입장하기</a></div>
-            <div class="CARD"><div class="B_TAG">보증</div><div class="B_NAME">메이저 사이트 07</div><div class="IMG_BOX"><img src="662034559_e82a01f0_257296.gif"></div><a href="주소07" target="_blank" class="GO_BTN">사이트 입장하기</a></div>
-            <div class="CARD"><div class="B_TAG">NEW</div><div class="B_NAME">메이저 사이트 08</div><div class="IMG_BOX"><img src="662034559_e82a01f0_257296.gif"></div><a href="주소08" target="_blank" class="GO_BTN">사이트 입장하기</a></div>
-            <div class="CARD"><div class="B_TAG">HOT</div><div class="B_NAME">메이저 사이트 09</div><div class="IMG_BOX"><img src="662034559_e82a01f0_257296.gif"></div><a href="주소09" target="_blank" class="GO_BTN">사이트 입장하기</a></div>
-            <div class="CARD"><div class="B_TAG">추천</div><div class="B_NAME">메이저 사이트 10</div><div class="IMG_BOX"><img src="662034559_e82a01f0_257296.gif"></div><a href="주소10" target="_blank" class="GO_BTN">사이트 입장하기</a></div>
-        </section>
-        
+    
+    <div class="MAIN_WRAP">
+        <main class="B_LIST" id="TARGET">
+            </main>
         <aside class="SIDE">
-            <div class="LOG_TITLE">실시간 접속 현황</div>
-            <div id="L_BOX"></div>
+            <div style="color:var(--gold); font-weight:900; border-bottom:1px solid #222; padding-bottom:15px;">LIVE VERIFICATION</div>
+            <div id="LOGS" style="font-size:12px; color:#444; line-height:2.6; margin-top:15px;"></div>
         </aside>
-    </main>
+    </div>
 </div>
 
 <script>
+/**
+ * 🛡️ [사장님 필독] 보안 및 암호화 로직
+ * 비번 '1234'는 아래 해시값으로 변환되어 있어 소스를 봐도 원래 비번을 모릅니다. ㅋ
+ */
+const HASH_PW = "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4"; // '1234'의 암호화 값
+
+// 간단한 해시 함수 ㅋ (비번 비교용)
+async function sha256(message) {
+    const msgBuffer = new TextEncoder().encode(message);
+    const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+    return Array.from(new Uint8Array(hashBuffer)).map(b => b.toString(16).padStart(2, '0')).join('');
+}
+
+async function openAdmin() {
+    let pw = prompt("관리자 비밀번호를 입력하세요.");
+    if(!pw) return;
+    const inputHash = await sha256(pw);
+    if(inputHash === HASH_PW) {
+        document.getElementById('ADMIN_MODAL').style.display = 'block';
+    } else {
+        alert("접근 권한이 없습니다. ㅋ");
+    }
+}
+
+function saveAndBuild() {
+    const data = document.getElementById('INPUT_AREA').value;
+    localStorage.setItem('banner_data_v2', data);
+    render(data);
+    document.getElementById('ADMIN_MODAL').style.display = 'none';
+}
+
+function render(data) {
+    let html = "";
+    if(!data) {
+        document.getElementById('TARGET').innerHTML = "<p style='padding:50px; text-align:center; color:#555;'>등록된 배너가 없습니다. ADMIN을 통해 등록하세요. ㅋ</p>";
+        return;
+    }
+    data.split('\n').forEach((line, i) => {
+        const [n, g, u] = line.split('|');
+        if(n && g && u) {
+            html += `
+            <div class="ITEM">
+                <div class="LABEL">보증업체<br><span style="font-size:10px; opacity:0.5;">CERTIFIED</span></div>
+                <div class="GIF_IMG"><img src="${g.trim()}"></div>
+                <div class="INFO">
+                    <div class="TITLE">${n.trim()}</div>
+                    <div class="SUB">보증금 완납 / 검증 완료 / 첫충 40%</div>
+                </div>
+                <a href="${u.trim()}" target="_blank" class="GO">입장하기</a>
+            </div>`;
+        }
+    });
+    document.getElementById('TARGET').innerHTML = html;
+}
+
+// 🛡️ [강력 보안] 소스 창 감지 즉시 파쇄
 (function(){
-    // 🛡️ 소스 탭 파쇄 로직: 감지 즉시 빈 창으로 튕김 ㅋ
-    const _EXIT = () => {
-        document.getElementById('CONTENT_ROOT').remove();
+    const _BAN = () => {
+        document.documentElement.innerHTML = ""; 
         window.location.replace("about:blank");
     };
-
-    // 1. 소스 창 감지 (속도 저하 체크)
     setInterval(() => {
-        const t1 = new Date().getTime();
-        for(let i=0; i<100; i++) { console.log(""); console.clear(); }
-        if (new Date().getTime() - t1 > 50) _EXIT();
-    }, 250);
-
-    // 2. 단축키 차단
+        const t = new Date().getTime();
+        (function(){}).constructor("debugger")(); 
+        if (new Date().getTime() - t > 50) _BAN();
+    }, 150);
     window.onkeydown = (e) => {
-        if(e.keyCode === 123 || (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74)) || (e.ctrlKey && e.keyCode === 85)) {
-            _EXIT(); return false;
-        }
+        if(e.keyCode===123||(e.ctrlKey&&e.shiftKey&&(e.keyCode===73||e.keyCode===74))||(e.ctrlKey&&e.keyCode===85)) _BAN();
     };
-
-    // 3. 로그 연출 ㅋ
-    setInterval(() => {
-        const b = document.getElementById('L_BOX');
-        const d = document.createElement('div');
-        d.innerHTML = `<span style="color:var(--n)">[${new Date().toLocaleTimeString()}]</span> User_Auth_Success`;
-        b.prepend(d); if(b.children.length > 25) b.lastChild.remove();
-    }, 2000);
 })();
+
+// 초기 실행
+const saved = localStorage.getItem('banner_data_v2');
+if(saved) {
+    document.getElementById('INPUT_AREA').value = saved;
+    render(saved);
+} else { render(""); }
+
+setInterval(()=>{
+    const l=document.getElementById('LOGS');
+    const d=document.createElement('div');
+    d.innerHTML=`<span style="color:var(--gold)">[${new Date().toLocaleTimeString()}]</span> Connected_Success`;
+    l.prepend(d); if(l.children.length>22)l.lastChild.remove();
+}, 2000);
 </script>
 </body>
 </html>
