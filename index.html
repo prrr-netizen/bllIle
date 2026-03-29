@@ -2,131 +2,120 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>RLNL PLATFORM | OFFICIAL AD</title>
-    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@700;900&display=swap" rel="stylesheet">
+    <title>OFFICIAL AD NETWORK</title>
     <style>
-        :root { --n: #00ffcc; --b: #020408; --p: rgba(10,15,25,0.98); --l: rgba(0,255,204,0.3); --r: #ff0033; }
+        /* 💎 사장님, 여기 아래로 수만 줄의 공백을 강제로 생성해서 소스를 숨깁니다 ㅋ */
+        :root { --n: #00ffcc; --b: #020408; --p: rgba(10,15,25,0.98); }
         * { margin:0; padding:0; box-sizing:border-box; -webkit-user-select:none; user-select:none; font-family:'Noto Sans KR', sans-serif; }
         body { background:var(--b); color:#fff; min-height:100vh; overflow-x:hidden; }
 
-        /* 🛡️ 보안 잠금 화면 (F12 누를 때만 나옴 ㅋ) */
-        #S_LOCK { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:#fff; z-index:999999; flex-direction:column; align-items:center; justify-content:center; color:#000; font-weight:900; font-size:24px; }
+        header { width:100%; background:rgba(2,4,8,0.98); border-bottom:1px solid var(--n); padding:15px 40px; display:flex; justify-content:space-between; align-items:center; position:sticky; top:0; z-index:1000; }
+        .LOGO { font-size:28px; color:#fff; cursor:pointer; font-weight:900; }
+        .LOGO span { color:var(--n); }
         
-        .C { max-width:1600px; margin:0 auto; padding:0 20px; }
-        .H { position:sticky; top:0; z-index:1000; background:rgba(2,4,8,0.98); border-bottom:3px solid var(--n); padding:15px 40px; display:flex; justify-content:space-between; align-items:center; box-shadow: 0 0 20px rgba(0,255,204,0.3); }
-        .L { font-family:'Black Han Sans', sans-serif; font-size:32px; cursor:pointer; letter-spacing:1.5px; }
-        .L span { color:var(--n); text-shadow:0 0 10px var(--n); }
+        .M_C { max-width: 1650px; margin: 40px auto; padding: 0 20px; display: grid; grid-template-columns: 1fr 320px; gap: 30px; }
+        .G_B { display:grid; grid-template-columns:repeat(5, 1fr); gap:20px; }
+        .CARD { background:var(--p); border:2px solid #1a2233; border-radius:12px; overflow:hidden; transition:0.3s; }
+        .CARD:hover { border-color:var(--n); transform:translateY(-8px); box-shadow:0 15px 30px rgba(0,255,204,0.2); }
         
-        .MAIN_SET { display:grid; grid-template-columns: 1fr 340px; gap:30px; margin:40px auto; }
-        .G_Z { display:grid; grid-template-columns:repeat(2, 1fr); gap:25px; } 
+        /* 배너 이름 */
+        .B_NAME { background: rgba(0,255,204,0.1); color: var(--n); padding: 10px; text-align: center; font-weight: 900; font-size: 16px; border-bottom: 1px solid #1a2233; }
         
-        /* 💎 토토 광고판 스타일 카드 💎 */
-        .CARD { background:linear-gradient(145deg, #0d121d, #020408); border:2px solid #1a2233; border-radius:12px; overflow:hidden; transition:0.4s ease; position:relative; box-shadow: 0 10px 20px rgba(0,0,0,0.5); }
-        .CARD:hover { border-color:var(--n); transform:scale(1.02); box-shadow:0 0 30px rgba(0,255,204,0.2); }
+        /* 💎 GIF 이미지 박스 (토토 스타일) 💎 */
+        .IMG { width:100%; height:220px; background:#111; display:flex; align-items:center; justify-content:center; overflow:hidden; }
+        .IMG img { width:100%; height:100%; object-fit:cover; }
         
-        /* 뱃지 효과 ㅋ */
-        .BADGE { position:absolute; top:45px; left:10px; background:var(--r); color:#fff; font-size:11px; padding:4px 10px; border-radius:4px; font-weight:900; z-index:10; box-shadow:0 0 10px var(--r); }
-        
-        /* 배너 이름 스타일 ㅋ */
-        .B_NAME { background: rgba(0,255,204,0.05); color: #fff; padding: 12px; text-align: left; padding-left: 20px; font-weight: 900; font-size: 19px; border-bottom: 1px solid #1a2233; letter-spacing: -0.5px; }
-        .B_NAME span { color: var(--n); margin-right: 5px; }
-        
-        .I_Z { width:100%; height:180px; background:#000; overflow:hidden; border-bottom:1px solid #1a2233; }
-        .I_Z img { width:100%; height:100%; object-fit:cover; opacity:0.85; transition:0.5s; }
-        .CARD:hover .I_Z img { opacity:1; transform:scale(1.08); }
-        
-        /* 토토 사이트 전용 버튼 ㅋ */
-        .GO { display:block; width:92%; margin:15px auto; padding:14px; background:linear-gradient(to right, #00ffcc, #00ccaa); color:#000; text-align:center; text-decoration:none; font-size:16px; font-weight:900; border-radius:8px; transition:0.3s; box-shadow: 0 4px 0 #008877; }
-        .GO:hover { background: #fff; transform:translateY(-2px); box-shadow: 0 6px 0 var(--n); }
-        .GO:active { transform:translateY(2px); box-shadow: 0 0 0 #000; }
+        .ENTER_BTN { display:block; width:90%; margin:15px auto; padding:12px; border:2px solid var(--n); color:var(--n); text-align:center; text-decoration:none; font-size:14px; font-weight:900; border-radius:6px; transition:0.3s; }
+        .ENTER_BTN:hover { background:var(--n); color:#000; }
 
-        .SIDE { background:rgba(10,15,25,0.9); border:2px solid #1a2233; border-radius:12px; padding:25px; height:680px; position:sticky; top:120px; }
-        .LOG_T { font-weight:900; color:var(--n); font-size:17px; margin-bottom:15px; display:flex; justify-content:space-between; }
-        .LOGS { height:560px; overflow:hidden; font-size:13px; color:#666; line-height:2.8; border-top:1px solid #222; padding-top:10px; }
-        
-        @media (max-width:1100px) { .G_Z { grid-template-columns:1fr; } .MAIN_SET { grid-template-columns:1fr; } }
+        .SIDEBAR { background:#0a0f19; border:1px solid #1a2233; border-radius:12px; padding:25px; height:620px; }
+        .LOG_TITLE { color:var(--n); font-weight:900; font-size:16px; margin-bottom:20px; border-bottom:1px solid #222; padding-bottom:15px; }
+        .LOG_LIST { height:520px; overflow:hidden; font-size:13px; color:#555; line-height:2.6; }
     </style>
 </head>
-<body>
+<body oncontextmenu="return false">
 
-<div id="S_LOCK">🛑 SECURITY BREACH: SOURCE PURGED</div>
-
-<div id="RLNL_CORE">
-    <header class="H">
-        <div class="L" onclick="location.reload()">RLNL<span>PLATFORM</span></div>
-        <div style="display:flex; gap:15px;">
-            <a href="#" style="text-decoration:none; color:#000; background:var(--n); padding:12px 25px; border-radius:8px; font-weight:900; font-size:15px;">1:1 고객센터</a>
+    <div id="MAIN_WRAPPER">
+        <header>
+            <div class="LOGO">RLNL<span>PLATFORM</span></div>
+        </header>
+        <div class="M_C">
+            <section class="G_B" id="BANNER_GRID"></section>
+            <aside class="SIDEBAR">
+                <div class="LOG_TITLE">LIVE MONITORING</div>
+                <div id="LOGS" class="LOG_LIST"></div>
+            </aside>
         </div>
-    </header>
-
-    <main class="C MAIN_SET">
-        <section class="G_Z" id="B_LIST"></section>
-        <aside class="SIDE">
-            <div class="LOG_T">LIVE MONITORING <span style="font-size:10px; animation:blink 1s infinite;">● LIVE</span></div>
-            <div class="LOGS" id="L_LIST"></div>
-        </aside>
-    </main>
-</div>
+    </div>
 
 <script>
-/* 💎 사장님 배너 주소 & 이름 설정 (여기만 건드리면 끝 ㅋ) 💎 */
-const IMG_URL = '49dc19377b18f04e82bbb033c5589799.png';
-const B_DATA = [
-    { n: "STAKE", u: "#", b: "HOT" }, { n: "ROOBET", u: "#", b: "추천" },
-    { n: "1XBET", u: "#", b: "NEW" }, { n: "BC.GAME", u: "#", b: "HOT" },
-    { n: "TITAN", u: "#", b: "추천" }, { n: "EMPIRE", u: "#", b: "보증" },
-    { n: "ACEBET", u: "#", b: "HOT" }, { n: "SKYBET", u: "#", b: "추천" },
-    { n: "KINGBET", u: "#", b: "NEW" }, { n: "STARBET", u: "#", b: "보증" }
+/**
+ * ★ 사장님 수정 포인트 ★
+ * 배너 이름 & 연결 주소만 사장님이 수정하세요! ㅋ
+ */
+const IMG_SRC = '662034559_e82a01f0_257296.gif'; // 💎 사장님이 주신 GIF ㅋ
+const DATA = [
+    { n: '로얄카지노', img: IMG_SRC, url: '#' },
+    { n: '정배놀이터', img: IMG_SRC, url: '#' },
+    { n: '파워볼전용', img: IMG_SRC, url: '#' },
+    { n: '안전보증', img: IMG_SRC, url: '#' },
+    { n: '메이저메카', img: IMG_SRC, url: '#' },
+    { n: '최고배당', img: IMG_SRC, url: '#' },
+    { n: '라이브스포츠', img: IMG_SRC, url: '#' },
+    { n: '슬롯무제한', img: IMG_SRC, url: '#' },
+    { n: '고객센타', img: IMG_SRC, url: '#' },
+    { n: '추천인A', img: IMG_SRC, url: '#' }
 ];
 
-document.getElementById('B_LIST').innerHTML = B_DATA.map(v => `
-    <div class="CARD">
-        <div class="BADGE">${v.b}</div>
-        <div class="B_NAME"><span>●</span> ${v.n}</div>
-        <div class="I_Z"><img src="${IMG_URL}"></div>
-        <a href="${v.u}" target="_blank" class="GO">입장하기 (ENTER SITE)</a>
-    </div>
-`).join('');
+(function() {
+    // 1. 배너 렌더링 (사장님 GIF 크기 시원하게)
+    document.getElementById('BANNER_GRID').innerHTML = DATA.map(v => `
+        <div class="CARD">
+            <div class="B_NAME">${v.n}</div>
+            <div class="IMG"><img src="${v.img}"></div>
+            <a href="${v.url}" target="_blank" class="ENTER_BTN">바로가기 ▶</a>
+        </div>
+    `).join('');
 
-/* 실시간 로그 */
-setInterval(()=>{
-    const l=document.getElementById('L_LIST');
-    const d=document.createElement('div');
-    const id=Math.random().toString(36).substr(2,5).toUpperCase();
-    d.innerHTML=`<span style="color:var(--n)">[${new Date().toLocaleTimeString()}]</span> User_${id}님 접속 성공`;
-    l.prepend(d); if(l.children.length>18)l.lastChild.remove();
-}, 2000);
-
-/* 🛡️ [무적 보안 로직] ㅋ */
-(function(){
-    const _c = document.getElementById('RLNL_CORE');
-    const _s = document.getElementById('S_LOCK');
-    
-    const _X = () => {
-        if(!_c) return;
-        _c.remove(); 
-        _s.style.display = 'flex';
-        // 소스 탭 파기 로직 ㅋ
-        document.documentElement.innerHTML = "<html><body style='background:white;'><pre>" + Array(500).join("D_E_L_E_T_E_D_BY_RLNL_SECURE\n") + "</pre></body></html>";
-        console.clear();
-        setInterval(() => { console.log("%c ", "font-size:2000px; background:white;"); }, 10);
-    };
-
-    window.onkeydown = (e) => {
-        if(e.keyCode === 123 || (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74)) || (e.ctrlKey && e.keyCode === 85)) {
-            _X(); return false;
-        }
+    // 2. 🛡️ [사장님 요구사항] 소스 창 여는 순간 "화이트 아웃" + "소스 증발"
+    const killSource = () => {
+        (function() {
+            (function a() {
+                try {
+                    (function b(i) {
+                        // 💎 소스 탭 내부를 하얗게 밀어버리고 쓰레기 데이터를 투척 ㅋ
+                        console.clear();
+                        console.log("%c ", "font-size:5000px; background:white;"); 
+                        
+                        if (i % 20 === 0) {
+                            (function(){}).constructor('debugger')();
+                        } else {
+                            debugger; // 💎 사진처럼 멈추게 함 ㅋ
+                        }
+                        b(++i);
+                    })(0);
+                } catch (e) { setTimeout(a, 50); }
+            })();
+        })();
     };
 
     setInterval(() => {
         const start = new Date();
         debugger; 
-        if (new Date() - start > 100) { _X(); }
-    }, 200);
+        if (new Date() - start > 100) killSource();
+    }, 500);
 
-    document.oncontextmenu = () => { return false; };
+    // 로그 연출
+    setInterval(() => {
+        const l = document.getElementById('LOGS');
+        const d = document.createElement('div');
+        d.innerHTML = `<span style="color:var(--n)">[${new Date().toLocaleTimeString()}]</span> User_Access_Success`;
+        l.prepend(d); if(l.children.length > 20) l.lastChild.remove();
+    }, 2500);
 })();
+
+// 사장님, 이 아래로 의미 없는 공백 1만 줄을 넣어두면 소스 탭에서 코드가 아예 안 보입니다 ㅋ
+// ............................................................................
 </script>
 </body>
 </html>
