@@ -10,41 +10,40 @@
         * { margin:0; padding:0; box-sizing:border-box; font-family:'Noto Sans KR', sans-serif; -webkit-user-select:none; user-select:none; }
         body { background:var(--b); color:#fff; min-height:100vh; overflow-x:hidden; }
 
-        /* 헤더 스타일 */
+        /* [1] 헤더 - 로고 및 SNS 버튼 */
         header { width:100%; background:rgba(2,4,8,0.98); border-bottom:1px solid var(--n); padding:15px 40px; display:flex; justify-content:space-between; align-items:center; position:sticky; top:0; z-index:1000; }
         .LOGO { font-family:'Black Han Sans', sans-serif; font-size:26px; color:#fff; cursor:pointer; }
         .LOGO span { color:var(--n); }
-        
-        /* 상단 커뮤니티 버튼 */
         .SNS_BTNS { display:flex; gap:10px; }
-        .SNS_BTNS a { text-decoration:none; padding:8px 15px; border-radius:5px; font-weight:900; font-size:12px; transition:0.3s; color:#000; }
-        .KAKA { background:#FEE500; } /* 카카오 노랑 */
-        .TELE { background:#0088cc; color:#fff; } /* 텔레그램 파랑 */
-        .DISC { background:#5865F2; color:#fff; } /* 디스코드 보라 */
+        .SNS_BTNS a { text-decoration:none; padding:8px 18px; border-radius:5px; font-weight:900; font-size:12px; transition:0.3s; color:#000; }
+        .KAKA { background:#FEE500; }
+        .TELE { background:#0088cc; color:#fff; }
+        .DISC { background:#5865F2; color:#fff; }
 
-        /* 메인 레이아웃 (중앙 정렬) */
-        .MAIN_WRAP { max-width: 1400px; margin: 40px auto; padding: 0 20px; display: grid; grid-template-columns: 1fr 300px; gap: 30px; }
+        /* [2] 메인 레이아웃 */
+        .MAIN_WRAP { max-width: 1450px; margin: 40px auto; padding: 0 20px; display: grid; grid-template-columns: 1fr 300px; gap: 30px; }
         
-        /* 배너 5개씩 2줄 중앙 배치 */
-        .BANNER_GRID { display:grid; grid-template-columns:repeat(5, 1fr); gap:15px; justify-content:center; }
-        .CARD { background:var(--p); border:1px solid #1a2233; border-radius:8px; overflow:hidden; text-align:center; padding-bottom:15px; transition:0.3s; }
-        .CARD:hover { border-color:var(--n); transform:translateY(-5px); }
+        /* [3] 배너 5열 2줄 중앙 배치 (GIF 최적화) */
+        .BANNER_GRID { display:grid; grid-template-columns:repeat(5, 1fr); gap:15px; }
+        .CARD { background:var(--p); border:1px solid #1a2233; border-radius:10px; overflow:hidden; text-align:center; padding-bottom:15px; transition:0.3s; }
+        .CARD:hover { border-color:var(--n); transform:translateY(-8px); box-shadow:0 10px 20px rgba(0,255,204,0.15); }
         
-        .IMG_BOX { width:100%; height:80px; background:#111; display:flex; align-items:center; justify-content:center; border-bottom:1px solid #1a2233; }
-        .IMG_BOX span { color:var(--n); font-weight:900; font-size:14px; }
+        .IMG_BOX { width:100%; height:90px; background:#111; display:flex; align-items:center; justify-content:center; border-bottom:1px solid #1a2233; overflow:hidden; }
+        .IMG_BOX img { width:85%; height:80%; object-fit:contain; opacity:0.8; transition:0.4s; }
+        .CARD:hover .IMG_BOX img { opacity:1; transform:scale(1.1); } /* 마우스 올리면 GIF 커짐 ㅋ */
         
-        .NAME { font-size:14px; font-weight:900; margin:12px 0; color:#eee; }
-        .ENTER_BTN { display:block; width:85%; margin:0 auto; padding:8px; border:1px solid var(--n); color:var(--n); border-radius:4px; font-weight:900; text-decoration:none; font-size:11px; transition:0.3s; }
+        .NAME { font-size:15px; font-weight:900; margin:12px 0; color:#eee; }
+        .ENTER_BTN { display:block; width:85%; margin:0 auto; padding:10px; border:1px solid var(--n); color:var(--n); border-radius:5px; font-weight:900; text-decoration:none; font-size:12px; transition:0.3s; }
         .ENTER_BTN:hover { background:var(--n); color:#000; }
 
-        /* 실시간 로그 사이드바 */
-        .SIDEBAR { background:#0a0f19; border:1px solid #1a2233; border-radius:8px; padding:20px; height:500px; position:sticky; top:100px; }
-        .LOG_TITLE { color:var(--n); font-weight:900; font-size:13px; margin-bottom:15px; border-bottom:1px solid #222; padding-bottom:10px; }
-        .LOG_LIST { height:400px; overflow:hidden; font-size:11px; color:#555; line-height:2.2; }
+        /* [4] 사이드바 - 실시간 로그 */
+        .SIDEBAR { background:#0a0f19; border:1px solid #1a2233; border-radius:10px; padding:20px; height:500px; position:sticky; top:110px; }
+        .LOG_TITLE { color:var(--n); font-weight:900; font-size:14px; margin-bottom:15px; border-bottom:1px solid #222; padding-bottom:10px; }
+        .LOG_LIST { height:400px; overflow:hidden; font-size:12px; color:#555; line-height:2.4; }
 
-        /* 🛡️ 보안 발동 시 화면 (도메인은 그대로!) */
+        /* [5] 🛡️ 보안 자폭 레이어 (도메인 유지형) */
         #SECURITY_SHIELD { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:#000; z-index:999999; flex-direction:column; align-items:center; justify-content:center; }
-        #SECURITY_SHIELD h1 { color:var(--n); font-size:28px; font-family:'Black Han Sans'; margin-bottom:15px; }
+        #SECURITY_SHIELD h1 { color:var(--n); font-size:30px; font-family:'Black Han Sans'; margin-bottom:15px; text-shadow:0 0 15px var(--n); }
         #SECURITY_SHIELD p { color:#666; font-weight:bold; }
     </style>
 </head>
@@ -54,9 +53,9 @@
         <header>
             <div class="LOGO" onclick="location.reload()">RLNL<span>PLATFORM</span></div>
             <div class="SNS_BTNS">
-                <a href="#" class="KAKA">KAKAOTALK</a>
-                <a href="#" class="TELE">TELEGRAM</a>
-                <a href="#" class="DISC">DISCORD</a>
+                <a href="카톡링크" target="_blank" class="KAKA">KAKAOTALK</a>
+                <a href="텔레링크" target="_blank" class="TELE">TELEGRAM</a>
+                <a href="디코링크" target="_blank" class="DISC">DISCORD</a>
             </div>
         </header>
 
@@ -72,37 +71,53 @@
 
     <div id="SECURITY_SHIELD">
         <h1>🛡️ SECURITY DETECTED</h1>
-        <p>비정상적인 접근(소스 코드 분석)이 감지되어 화면을 보호합니다.</p>
-        <p style="font-size:12px; margin-top:10px;">다시 접속하시려면 새로고침(F5)을 누르세요.</p>
+        <p>비정상적인 소스 코드 분석 시도가 감지되어 콘텐츠를 삭제합니다.</p>
+        <p style="font-size:12px; margin-top:10px; color:#333;">다시 접속하시려면 브라우저를 새로고침(F5) 하세요.</p>
     </div>
 
 <script>
-/* [배너 이름 세팅] */
-const B_NAMES = ['STAKE','ROOBET','1XBET','BC.GAME','TITAN','EMPIRE','ACEBET','SKYBET','KINGBET','STARBET'];
+/* ★★★ 사장님 필독 ★★★
+    아래 'logo' 부분에 GIF 파일 주소 넣으시고, 
+    'url' 부분에 이동할 사이트 주소 넣으시면 끝입니다! ㅋ
+*/
+const B_DATA = [
+    { name: 'STAKE',   logo: '로고1.gif', url: '주소1' },
+    { name: 'ROOBET',  logo: '로고2.gif', url: '주소2' },
+    { name: '1XBET',   logo: '로고3.gif', url: '주소3' },
+    { name: 'BC.GAME', logo: '로고4.gif', url: '주소4' },
+    { name: 'TITAN',   logo: '로고5.gif', url: '주소5' },
+    { name: 'EMPIRE',  logo: '로고6.gif', url: '주소6' },
+    { name: 'ACEBET',  logo: '로고7.gif', url: '주소7' },
+    { name: 'SKYBET',  logo: '로고8.gif', url: '주소8' },
+    { name: 'KINGBET', logo: '로고9.gif', url: '주소9' },
+    { name: 'STARBET', logo: '로고10.gif', url: '주소10' }
+];
 
-// 1. 배너 & 로그 초기화
 (function INIT(){
-    document.getElementById('BANNER_CONTAINER').innerHTML = B_NAMES.map(v => `
+    // 배너 렌더링 로직 (GIF 이미지 포함)
+    document.getElementById('BANNER_CONTAINER').innerHTML = B_DATA.map(item => `
         <div class="CARD">
-            <div class="IMG_BOX"><span>${v}</span></div>
-            <div class="NAME">${v}</div>
-            <a href="#" class="ENTER_BTN">ENTER SITE</a>
+            <div class="IMG_BOX">
+                <img src="${item.logo}" onerror="this.src='https://via.placeholder.com/200x100/111/00ffcc?text=LOGOGIF'">
+            </div>
+            <div class="NAME">${item.name}</div>
+            <a href="${item.url}" target="_blank" class="ENTER_BTN">ENTER SITE</a>
         </div>
     `).join('');
     
-    START_LOGS();
     START_SECURITY();
+    START_LOGS();
 })();
 
-/* 🛡️ 운영자님의 핵심 보안 로직 (F12 + 점선 소스보기 차단) */
+/* 🛡️ 운영자님의 철통 보안 (F12 + 점선 소스보기 차단) */
 function START_SECURITY(){
     const BOOM = () => {
-        // 도메인은 유지하고 내용만 싹 교체 ㅋ
-        document.getElementById('NORMAL_VIEW').innerHTML = "";
+        // 도메인은 유지하고 내용만 삭제 ㅋ
+        document.getElementById('NORMAL_VIEW').remove(); 
         document.getElementById('SECURITY_SHIELD').style.display = "flex";
     };
 
-    // [1] F12 및 소스보기 단축키 차단
+    // [1] F12 및 단축키 차단 (코드 123)
     window.addEventListener('keydown', (e) => {
         if(e.keyCode === 123 || (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74)) || (e.ctrlKey && e.keyCode === 85)) {
             e.preventDefault();
@@ -110,8 +125,7 @@ function START_SECURITY(){
         }
     });
 
-    // [2] 점선 메뉴(검사창) 실시간 감지 ㅋ
-    // 0.1초마다 창 크기 체크해서 소스탭 열리는 순간 컷! ㅋ
+    // [2] 점선 메뉴(마우스 클릭)로 검사탭 여는 것 감지 ㅋ
     setInterval(() => {
         const threshold = 160;
         if (window.outerWidth - window.innerWidth > threshold || window.outerHeight - window.innerHeight > threshold) {
@@ -119,20 +133,20 @@ function START_SECURITY(){
         }
     }, 100);
 
-    // [3] 무한 디버거 (소스탭 열어도 분석 못하게 브라우저 멈춤)
+    // [3] 무한 디버거 루프 (분석 방해)
     setInterval(() => { (function(){return false}['constructor']('debugger')['call']()); }, 50);
 }
 
-/* 실시간 로그 생성기 */
+/* 실시간 서버 기록 로그 */
 function START_LOGS(){
     setInterval(()=>{
         const container = document.getElementById('LOG_CONTAINER');
         const div = document.createElement('div');
         const randomID = Math.random().toString(36).substr(2, 5).toUpperCase();
-        div.innerHTML = `<span style="color:var(--n)">[${new Date().toLocaleTimeString()}]</span> User_${randomID} Access Success`;
+        div.innerHTML = `<span style="color:var(--n)">[${new Date().toLocaleTimeString()}]</span> User_${randomID} Connected.. Success`;
         container.prepend(div);
         if(container.children.length > 18) container.lastChild.remove();
-    }, 2000);
+    }, 2500);
 }
 </script>
 </body>
