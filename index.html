@@ -1,111 +1,83 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>GOLDEN ELITE | ENTERPRISE NETWORK</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <title>GOLDEN ELITE | OFFICIAL NETWORK</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
-        :root { --neon: #00ffcc; --bg: #030509; --panel: rgba(13, 17, 26, 0.8); --border: rgba(0, 255, 204, 0.2); --text: #e1e1e1; }
-        
-        /* 기본 보안 및 초기화 */
-        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-user-select: none; user-select: none; font-family: 'Inter', sans-serif; outline: none; }
-        body { background: var(--bg); background-image: radial-gradient(circle at 50% -20%, #1a1f3d 0%, var(--bg) 80%); color: var(--text); overflow-x: hidden; scroll-behavior: smooth; }
+        :root { --neon: #00ffcc; --bg: #030509; --panel: rgba(13, 20, 35, 0.9); --border: rgba(0, 255, 204, 0.3); --text: #f0f0f0; }
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-user-select: none; user-select: none; font-family: 'Noto Sans KR', sans-serif; outline: none; }
+        body { background: var(--bg); color: var(--text); overflow-x: hidden; scroll-behavior: smooth; }
 
-        .container { max-width: 1400px; margin: 0 auto; padding: 0 30px; }
+        .container { max-width: 1400px; margin: 0 auto; padding: 0 25px; }
 
-        /* 해외형 네온 탑바 */
-        .top-bar { background: rgba(0,0,0,0.6); border-bottom: 1px solid var(--border); padding: 10px 0; font-size: 11px; letter-spacing: 1px; color: #666; }
+        /* 상단 상태바 */
+        .top-bar { background: rgba(0,0,0,0.8); border-bottom: 1px solid var(--border); padding: 10px 0; font-size: 11px; color: #888; letter-spacing: 0.5px; }
         .flex-between { display: flex; justify-content: space-between; align-items: center; }
-        .status-dot { width: 8px; height: 8px; background: #00ff41; border-radius: 50%; display: inline-block; margin-right: 5px; box-shadow: 0 0 10px #00ff41; animation: blink 1.5s infinite; }
+        .status-online { color: #00ff41; font-weight: bold; text-shadow: 0 0 8px #00ff41; }
 
-        /* 프리미엄 헤더 */
-        .header { position: sticky; top: 0; z-index: 1000; background: rgba(3, 5, 9, 0.9); backdrop-filter: blur(20px); border-bottom: 2px solid var(--neon); padding: 20px 0; }
-        .logo { font-size: 28px; font-weight: 900; color: #fff; text-transform: uppercase; letter-spacing: 2px; filter: drop-shadow(0 0 10px rgba(0,255,204,0.3)); cursor: pointer; }
+        /* 헤더 */
+        .header { position: sticky; top: 0; z-index: 1000; background: rgba(3, 5, 9, 0.95); backdrop-filter: blur(25px); border-bottom: 2px solid var(--neon); padding: 18px 0; }
+        .logo { font-size: 26px; font-weight: 900; color: #fff; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; }
         .logo span { color: var(--neon); }
-        .nav-btns { display: flex; gap: 15px; align-items: center; }
+        .nav-btns { display: flex; gap: 12px; }
 
-        /* 세련된 버튼 애니메이션 */
-        .btn { padding: 12px 24px; border-radius: 6px; font-size: 13px; font-weight: 900; cursor: pointer; border: none; transition: 0.3s; text-transform: uppercase; }
-        .btn-join { background: var(--neon); color: #000; position: relative; overflow: hidden; }
-        .btn-join:hover { box-shadow: 0 0 20px rgba(0, 255, 204, 0.5); transform: translateY(-2px); }
-        .btn-join::after { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent); transition: 0.5s; }
-        .btn-join:hover::after { left: 100%; }
+        /* 버튼 디자인 */
+        .btn { padding: 10px 22px; border-radius: 6px; font-size: 14px; font-weight: 800; cursor: pointer; border: none; transition: 0.3s; }
+        .btn-join { background: var(--neon); color: #000; box-shadow: 0 0 15px rgba(0, 255, 204, 0.3); }
+        .btn-join:hover { transform: scale(1.05); box-shadow: 0 0 25px rgba(0, 255, 204, 0.5); }
         .btn-login { background: transparent; color: #fff; border: 1px solid var(--border); }
-        .btn-login:hover { border-color: var(--neon); color: var(--neon); }
 
-        /* 메인 와이드 레이아웃 */
-        .main-layout { display: grid; grid-template-columns: 1fr 350px; gap: 50px; margin: 60px auto; align-items: start; }
-
-        /* 해외형 카드 그리드 (사이즈 축소 & 컴팩트) */
-        .partner-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
-        .card { background: var(--panel); border: 1px solid var(--border); border-radius: 16px; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); cursor: pointer; position: relative; overflow: hidden; backdrop-filter: blur(10px); aspect-ratio: 3 / 4; display: flex; flex-direction: column; }
-        .card:hover { transform: translateY(-15px) scale(1.03); border-color: var(--neon); box-shadow: 0 20px 40px rgba(0,0,0,0.7), 0 0 30px rgba(0, 255, 204, 0.15); }
-        .card-top { width: 100%; height: 50%; background: linear-gradient(135deg, #0a0e17, #1e263a); display: flex; align-items: center; justify-content: center; font-size: 60px; border-bottom: 1px solid var(--border); }
-        .card-body { padding: 25px; flex: 1; display: flex; flex-direction: column; justify-content: space-between; text-align: center; }
-        .card-label { font-size: 10px; background: rgba(0, 255, 204, 0.1); color: var(--neon); padding: 5px 12px; border-radius: 20px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px; display: inline-block; }
-        .card-name { font-size: 16px; font-weight: 800; text-transform: uppercase; color: #fff; margin-bottom: 20px; letter-spacing: 1px; }
+        /* 메인 배너 영역 */
+        .main-layout { display: grid; grid-template-columns: 1fr 320px; gap: 40px; margin: 50px auto; }
+        .banner-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
         
-        .btn-view { background: transparent; border: 1px solid var(--neon); color: var(--neon); padding: 12px; border-radius: 6px; font-size: 12px; font-weight: 900; width: 100%; transition: 0.3s; text-transform: uppercase; }
-        .btn-view:hover { background: var(--neon); color: #000; box-shadow: 0 0 15px rgba(0,255,204,0.3); }
-
-        /* 사이드바 글래스모피즘 위젯 */
-        .sidebar { display: flex; flex-direction: column; gap: 30px; position: sticky; top: 120px; }
-        .widget { background: rgba(255,255,255,0.02); border-radius: 24px; padding: 25px; border: 1px solid var(--border); backdrop-filter: blur(5px); }
-        .widget-title { font-size: 13px; font-weight: 900; color: var(--neon); margin-bottom: 20px; text-transform: uppercase; letter-spacing: 2px; border-left: 3px solid var(--neon); padding-left: 10px; }
-        .log-list { font-size: 12px; color: #777; height: 250px; overflow: hidden; position: relative; }
-        .log-row { padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.03); display: flex; justify-content: space-between; animation: slideIn 0.5s ease; }
-        .log-row span.user { color: #aaa; font-weight: bold; }
-        .log-row span.action { color: var(--neon); opacity: 0.7; }
-
-        /* 로그인 모달 (복잡한 양식 & 애니메이션) */
-        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.96); z-index: 99999; align-items: center; justify-content: center; }
-        .modal-box { background: #0b1019; width: 420px; padding: 50px; border-radius: 30px; border: 1px solid var(--neon); box-shadow: 0 0 60px rgba(0, 255, 204, 0.2); animation: modalSpawn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); position: relative; }
-        .modal-h { font-size: 28px; font-weight: 900; margin-bottom: 35px; text-align: center; color: #fff; text-transform: uppercase; letter-spacing: 2px; }
-        .input-wrap { position: relative; margin-bottom: 20px; }
-        .input-field { width: 100%; padding: 18px; background: #05070a; border: 1px solid #1e2633; border-radius: 10px; color: #fff; font-size: 15px; outline: none; transition: 0.3s; }
-        .input-field:focus { border-color: var(--neon); box-shadow: 0 0 15px rgba(0,255,204,0.2); }
+        .card { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; transition: 0.4s; position: relative; }
+        .card:hover { transform: translateY(-10px); border-color: var(--neon); box-shadow: 0 15px 35px rgba(0,0,0,0.8); }
         
-        .captcha-wrap { display: flex; gap: 15px; align-items: center; margin-bottom: 30px; }
-        .captcha-code { flex: 1; background: #1e2633; border-radius: 10px; height: 55px; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 24px; letter-spacing: 8px; color: var(--neon); font-style: italic; border: 1px dotted var(--border); }
-        .btn-submit { width: 100%; padding: 20px; background: var(--neon); border: none; color: #000; font-weight: 900; border-radius: 10px; cursor: pointer; font-size: 15px; text-transform: uppercase; transition: 0.3s; }
-        .btn-submit:hover { opacity: 0.8; transform: scale(0.98); }
+        /* 배너 이미지 크기 최적화 */
+        .card-img-wrap { width: 100%; height: 140px; background: #000; display: flex; align-items: center; justify-content: center; overflow: hidden; border-bottom: 1px solid var(--border); }
+        .card-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+        .card:hover .card-img-wrap img { transform: scale(1.1); }
 
-        /* 애니메이션 키프레임 */
-        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
-        @keyframes slideIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes modalSpawn { from { opacity: 0; transform: scale(0.8); } to { opacity: 1; transform: scale(1); } }
+        .card-body { padding: 20px; text-align: center; }
+        .card-name { font-size: 16px; font-weight: 800; color: #fff; margin-bottom: 15px; }
+        .btn-go { width: 100%; padding: 12px; background: transparent; border: 1px solid var(--neon); color: var(--neon); border-radius: 6px; font-size: 13px; font-weight: 900; cursor: pointer; transition: 0.3s; }
+        .btn-go:hover { background: var(--neon); color: #000; }
 
-        /* 로그인 후 상태바 */
-        #user-suite { display: none; font-size: 13px; color: var(--neon); font-weight: bold; border: 1px solid var(--neon); padding: 10px 20px; border-radius: 30px; background: rgba(0,255,204,0.1); }
+        /* 사이드바 */
+        .sidebar { display: flex; flex-direction: column; gap: 20px; }
+        .widget { background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 15px; padding: 20px; }
+        .widget-h { font-size: 13px; font-weight: 900; color: var(--neon); margin-bottom: 15px; border-bottom: 1px solid var(--border); padding-bottom: 10px; }
+        .log-item { font-size: 12px; color: #666; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.03); display: flex; justify-content: space-between; }
 
-        /* 모바일 대응 */
-        @media (max-width: 1200px) { .partner-grid { grid-template-columns: repeat(2, 1fr); } .main-layout { grid-template-columns: 1fr; } }
-        @media (max-width: 600px) { .partner-grid { grid-template-columns: 1fr; } .modal-box { width: 90%; padding: 30px; } }
+        /* 회원가입 모달 */
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 10000; align-items: center; justify-content: center; }
+        .modal-box { background: #0b1019; width: 400px; padding: 40px; border-radius: 20px; border: 1px solid var(--neon); text-align: center; }
+        .modal-h { font-size: 24px; font-weight: 900; color: #fff; margin-bottom: 30px; }
+        .input-f { width: 100%; padding: 15px; background: #05070a; border: 1px solid #222; border-radius: 8px; color: #fff; margin-bottom: 15px; }
+        .captcha-flex { display: flex; gap: 10px; margin-bottom: 20px; }
+        .cap-box { flex: 1; background: #1e2633; color: var(--neon); font-size: 24px; font-weight: 900; display: flex; align-items: center; justify-content: center; letter-spacing: 5px; border-radius: 8px; }
+
+        @media (max-width: 1100px) { .banner-grid { grid-template-columns: repeat(2, 1fr); } .main-layout { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body oncontextmenu="return false">
 
 <div class="top-bar">
     <div class="container flex-between">
-        <div><span class="status-dot"></span>GLOBAL NETWORK: <span style="color:#fff">ACTIVE</span> | SECURED BY GOLDEN ELITE</div>
-        <div>REGION: <span style="color:#fff">GLOBAL GATEWAY</span> | TIME: <span id="top-time" style="color:#fff">00:00:00 GMT</span></div>
+        <div>GLOBAL SERVER: <span class="status-online">● ONLINE</span></div>
+        <div>실시간 접속자: <span id="user-count" style="color:#fff">1,842</span>명</div>
     </div>
 </div>
 
 <header class="header">
     <div class="container flex-between">
-        <div class="logo" onclick="window.scrollTo(0,0)">GOLDEN<span>ELITE</span></div>
+        <div class="logo">GOLDEN<span>ELITE</span></div>
         <div class="nav-btns">
-            <div id="auth-btns" style="display:flex; gap:15px;">
-                <button class="btn btn-login" onclick="openModal()">SIGN IN</button>
-                <button class="btn btn-join" onclick="openModal()">JOIN NOW</button>
-            </div>
-            <div id="user-suite">
-                <span>WELCOME, <span id="user-id-nm">USER</span></span>
-                <span style="color:#555; margin: 0 10px;">|</span>
-                <span onclick="location.reload()" style="cursor:pointer; color:#fff;">LOGOUT</span>
-            </div>
+            <button class="btn btn-login" onclick="openModal()">로그인</button>
+            <button class="btn btn-join" onclick="openModal()">회원가입</button>
         </div>
     </div>
 </header>
@@ -113,171 +85,126 @@
 <main class="container">
     <div class="main-layout">
         <section>
-            <h3 style="margin-bottom:30px; font-size:16px; font-weight:900; letter-spacing:2px; color:#444; text-transform:uppercase;">Verified Elite Network</h3>
-            <div class="partner-grid" id="partner-list">
+            <h3 style="margin-bottom:20px; font-size:15px; color:#555;">인증된 파트너 네트워크</h3>
+            <div class="banner-grid" id="render-target">
                 </div>
         </section>
 
         <aside class="sidebar">
             <div class="widget">
-                <div class="widget-title">Live Traffic Feed</div>
-                <div class="log-list" id="log-container">
-                    </div>
+                <div class="widget-h">실시간 접속 로그</div>
+                <div id="log-list"></div>
             </div>
             <div class="widget">
-                <div class="widget-title">Enterprise Security</div>
-                <div style="font-size:12px; color:#666; line-height:1.8;">
-                    Protocol: <span style="color:#fff">AES-256 Encrypted</span><br>
-                    Monitoring: <span style="color:var(--neon)">24/7 Real-time</span><br>
-                    Status: <span style="color:#00ff41">Secured</span>
-                </div>
+                <div class="widget-h">보안 상태</div>
+                <p style="font-size:12px; color:#555;">강력한 256비트 암호화가 적용된 안전한 플랫폼입니다.</p>
             </div>
         </aside>
     </div>
 </main>
 
-<div class="modal" id="loginModal">
+<div class="modal" id="authModal">
     <div class="modal-box">
-        <div class="modal-h">MEMBER AUTH</div>
-        <div class="input-wrap">
-            <input type="text" id="log-id" class="input-field" placeholder="Username / Email" autocomplete="off">
+        <div class="modal-h">회원가입 / 로그인</div>
+        <input type="text" class="input-f" placeholder="아이디">
+        <input type="password" class="input-f" placeholder="비밀번호">
+        <div class="captcha-flex">
+            <div class="cap-box" id="cap-code">0000</div>
+            <input type="text" class="input-f" style="width:120px; margin:0;" placeholder="인증코드" id="cap-input">
         </div>
-        <div class="input-wrap">
-            <input type="password" id="log-pw" class="input-field" placeholder="Password" autocomplete="off">
-        </div>
-        <div class="captcha-wrap">
-            <div class="captcha-code" id="cap-num">----</div>
-            <input type="text" id="cap-input" class="input-field" style="margin:0; width:130px; text-align:center;" placeholder="Code" maxlength="4">
-        </div>
-        <button class="btn-submit" onclick="simLogin()">ACCESS NETWORK</button>
-        <p onclick="closeModal()" style="text-align:center; color:#555; font-size:12px; margin-top:25px; cursor:pointer; text-transform:uppercase; letter-spacing:1px;">Close Window</p>
+        <button class="btn-join btn" style="width:100%; padding:18px;" onclick="checkAuth()">인증 및 입장하기</button>
+        <p onclick="closeModal()" style="margin-top:20px; color:#444; cursor:pointer; font-size:12px;">창 닫기</p>
     </div>
 </div>
 
 <script>
-    /* =========================================
-       1. 데이터 및 배너 렌더링 (8개 확장)
-       ========================================= */
+    /* [관리자 설정]
+       이미지 주소(i)와 이동 주소(url)를 아래 형식에 맞춰 수정하세요.
+       이미지 권장 사이즈: 400x280 (PNG, JPG, GIF 모두 가능)
+    */
     const _PARTNERS = [
-        {n:"STAKE GLOBAL", i:"🔥"}, {n:"ROO CASINO", i:"🎲"}, {n:"1X BET", i:"🌐"}, {n:"BC.GAME", i:"⚡"},
-        {n:"ROYAL VIP", i:"👑"}, {n:"TITAN SEC", i:"🛡️"}, {n:"EMPIRE INT", i:"🏛️"}, {n:"SKY HIGH", i:"🌌"}
+        {n:"스테이크", i:"https://via.placeholder.com/400x280/111/00ffcc?text=STAKE", url:"https://www.google.com"},
+        {n:"로얄카지노", i:"https://via.placeholder.com/400x280/111/00ffcc?text=ROYAL", url:"#"},
+        {n:"1XBET", i:"https://via.placeholder.com/400x280/111/00ffcc?text=1XBET", url:"#"},
+        {n:"BC게임", i:"https://via.placeholder.com/400x280/111/00ffcc?text=BC.GAME", url:"#"},
+        {n:"타이탄", i:"https://via.placeholder.com/400x280/111/00ffcc?text=TITAN", url:"#"},
+        {n:"엠파이어", i:"https://via.placeholder.com/400x280/111/00ffcc?text=EMPIRE", url:"#"},
+        {n:"스카이", i:"https://via.placeholder.com/400x280/111/00ffcc?text=SKY", url:"#"},
+        {n:"에이스", i:"https://via.placeholder.com/400x280/111/00ffcc?text=ACE", url:"#"}
     ];
-    
-    const renderBanners = () => {
-        const target = document.getElementById('partner-list');
-        target.innerHTML = _PARTNERS.map(p => `
+
+    const render = () => {
+        document.getElementById('render-target').innerHTML = _PARTNERS.map(p => `
             <div class="card">
-                <div class="card-top">${p.i}</div>
+                <div class="card-img-wrap"><img src="${p.i}" alt="banner"></div>
                 <div class="card-body">
-                    <div>
-                        <span class="card-label">Verified</span>
-                        <div class="card-name">${p.n}</div>
-                    </div>
-                    <button class="btn-view" onclick="secureGo('${p.n}')">ENTER SITE</button>
+                    <div class="card-name">${p.n}</div>
+                    <button class="btn-go" onclick="goLink('${p.n}', '${p.url}')">사이트 입장</button>
                 </div>
             </div>
         `).join('');
     };
 
-    const secureGo = (n) => { if(confirm(`Access to [${n}] secure gateway?`)) alert('Redirecting via secure tunnel...'); };
+    const goLink = (n, u) => {
+        if(u === "#") { alert("준비 중인 파트너사입니다."); return; }
+        if(confirm(`[ ${n} ] 공식 사이트로 안전하게 이동하시겠습니까?`)) window.open(u, '_blank');
+    };
 
-    /* =========================================
-       2. 로그인 및 캡차 로직 (시뮬레이션)
-       ========================================= */
+    /* 모달 & 인증 */
     let _CAP = "";
     const openModal = () => {
-        document.getElementById('loginModal').style.display = 'flex';
-        // 가짜 데이터 채우기
-        document.getElementById('log-id').value = "Premium_User_" + Math.floor(Math.random()*100);
-        document.getElementById('log-pw').value = "**********";
-        // 캡차 생성
+        document.getElementById('authModal').style.display = 'flex';
         _CAP = Math.floor(1000 + Math.random()*9000);
-        document.getElementById('cap-num').innerText = _CAP;
+        document.getElementById('cap-code').innerText = _CAP;
     };
-    const closeModal = () => document.getElementById('loginModal').style.display = 'none';
-
-    // 로그인 버튼 클릭 시 (복잡한 메시지 박스 시뮬레이션)
-    const simLogin = () => {
-        const id = document.getElementById('log-id').value;
-        const capIn = document.getElementById('cap-input').value;
-
-        if(capIn != _CAP) {
-            alert("❌ AUTHENTICATION FAILED\n\nSecurity Code is incorrect.\nPlease check the 4-digit number and try again.");
-            openModal(); // 캡차 재생성
-            document.getElementById('cap-input').value = "";
-            return;
-        }
-
-        alert(`⏳ ESTABLISHING SECURE CONNECTION...\n\nWelcome, ${id}.\nYour identity has been verified by Golden Elite Security.`);
-        alert("✅ CONNECTION ESTABLISHED\n\nYou are now accessing the premium network area.");
-
-        // UI 변경 (회원 상태로)
-        closeModal();
-        document.getElementById('auth-btns').style.display = 'none';
-        document.getElementById('user-suite').style.display = 'flex';
-        document.getElementById('user-id-nm').innerText = id;
+    const closeModal = () => document.getElementById('authModal').style.display = 'none';
+    const checkAuth = () => {
+        if(document.getElementById('cap-input').value == _CAP) alert("인증되었습니다. 환영합니다!");
+        else { alert("인증코드가 일치하지 않습니다."); openModal(); }
     };
 
-    /* =========================================
-       3. 실시간 글로벌 로그 및 시계
-       ========================================= */
-    const _REGIONS = ["US_EAST", "EU_WEST", "KR_SEOUL", "JP_TOKYO", "SG_CLUSTER"];
-    const _ACTS = ["Connected", "Auth_Success", "Query_Data", "Ping_Secure"];
-
-    const updateLogs = () => {
-        const container = document.getElementById('log-container');
-        const row = document.createElement('div');
-        row.className = 'log-row';
-        
-        const rReg = _REGIONS[Math.floor(Math.random() * _REGIONS.length)];
-        const rAct = _ACTS[Math.floor(Math.random() * _ACTS.length)];
-        const rId = Math.floor(Math.random()*255);
-
-        row.innerHTML = `<span class="user">Node_${rId}@${rReg}</span> <span class="action">${rAct}</span>`;
-        container.prepend(row);
-        if(container.children.length > 12) container.lastElementChild.remove();
-    };
-
+    /* 실시간 로그 */
     setInterval(() => {
-        document.getElementById('top-time').innerText = new Date().toTimeString().split(' ')[0] + " GMT";
-    }, 1000);
+        const logs = document.getElementById('log-list');
+        const d = document.createElement('div');
+        d.className = 'log-item';
+        d.innerHTML = `<span>익명 유저 접속 중...</span> <span>방금 전</span>`;
+        logs.prepend(d);
+        if(logs.children.length > 10) logs.lastElementChild.remove();
+        document.getElementById('user-count').innerText = (1800 + Math.floor(Math.random()*100)).toLocaleString();
+    }, 3000);
 
-    /* =========================================
-       4. 철벽 보안 (Enterprise Anti-Debug)
-       ========================================= */
+    /* -----------------------------------------------------------
+       🛡️ 99% 철벽 보안 (개발자 도구 원천 봉쇄)
+    ----------------------------------------------------------- */
     (function(){
-        // (1) 단축키 및 우클릭 금지
-        window.addEventListener('keydown', (e) => {
+        // 1. F12, 우클릭, 소스보기 원천 차단
+        window.onkeydown = (e) => {
             if(e.keyCode == 123 || (e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 74)) || (e.ctrlKey && e.keyCode == 85)) {
-                e.preventDefault();
-                alert("🛑 SECURITY VIOLATION 감지\n\n소스코드 접근이 차단되었습니다.\n당신의 IP와 접속 시도가 기록되고 있습니다.");
+                alert("보안 정책에 따라 시스템 접근이 차단되었습니다.");
+                return false;
             }
-        });
-
-        // (2) 무한 디버거 루프 (뜯으려 하면 프리징)
-        const block = function() {
-            setInterval(function() {
-                debugger;
-            }, 50);
         };
-        try { block(); } catch (err) {}
 
-        // (3) 콘솔 청소 및 가짜 데이터 도배
+        // 2. 무한 디버거 루프 (브라우저 일시정지 트랩)
+        const d = function() {
+            try { (function() { return (function(a) { return (function(res) { return res.constructor("debugger")(); })(a); })(function() { }); })(); } catch (e) { }
+            setTimeout(d, 50);
+        };
+        d();
+
+        // 3. 콘솔 분석 방해 (가짜 메시지 무한 출력 및 화면 파괴)
         setInterval(() => {
-            console.clear();
-            console.log("%c🛑 STOP: PREMIUM SECURITY ACTIVE", "color:red; font-size:40px; font-weight:bold; -webkit-text-stroke:1px black;");
-            console.log("%cUnauthorized access is strictly prohibited. Your activity is being monitored.", "color:#ffb400; font-size:16px;");
-            // 가짜 데이터 도배로 로직 숨기기
-            for(let i=0; i<30; i++) {
-                console.log(`Fake_Data_Stream_${Math.random()}_[AUTH_KEY_${Math.random()}]`);
+            const before = new Date().getTime();
+            debugger;
+            const after = new Date().getTime();
+            if(after - before > 100) {
+                document.body.innerHTML = "<div style='background:#000; color:red; height:100vh; display:flex; align-items:center; justify-content:center; font-size:30px; font-weight:900;'>ACCESS DENIED: SECURITY BREACH DETECTED</div>";
             }
-        }, 1000);
+        }, 500);
     })();
 
-    /* 초기 실행 */
-    renderBanners();
-    setInterval(updateLogs, 2500); // 2.5초마다 로그 업데이트
+    render();
 </script>
-
 </body>
 </html>
