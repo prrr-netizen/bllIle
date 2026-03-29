@@ -13,23 +13,20 @@
         .LOGO { font-family:'Black Han Sans', sans-serif; font-size:28px; color:#fff; cursor:pointer; }
         .LOGO span { color:var(--n); }
         
-        /* 💎 배너 레이아웃 - 크기 대폭 확대 💎 */
+        /* 💎 배너 10개 시원하게 확대 (220px) 💎 */
         .M_C { max-width: 1600px; margin: 40px auto; padding: 0 20px; display: grid; grid-template-columns: 1fr 320px; gap: 30px; }
         .G_B { display:grid; grid-template-columns:repeat(5, 1fr); gap:20px; }
         .CARD { background:var(--p); border:2px solid #1a2233; border-radius:12px; overflow:hidden; transition:0.3s; }
         .CARD:hover { border-color:var(--n); transform:translateY(-8px); box-shadow:0 15px 30px rgba(0,255,204,0.2); }
-        
-        /* 배너 높이 220px로 확대 ㅋ */
-        .IMG { width:100%; height:220px; background:#111; display:flex; align-items:center; justify-content:center; overflow:hidden; border-bottom:1px solid #1a2233; }
-        .IMG img { width:100%; height:100%; object-fit:cover; transition:0.4s; }
-        
-        .ENTER_BTN { display:block; width:90%; margin:15px auto; padding:12px; border:2px solid var(--n); color:var(--n); text-align:center; text-decoration:none; font-size:14px; font-weight:900; border-radius:6px; transition:0.3s; }
-        .ENTER_BTN:hover { background:var(--n); color:#000; }
+        .IMG { width:100%; height:220px; background:#111; display:flex; align-items:center; justify-content:center; overflow:hidden; }
+        .IMG img { width:100%; height:100%; object-fit:cover; }
+        .ENTER_BTN { display:block; width:90%; margin:15px auto; padding:12px; border:2px solid var(--n); color:var(--n); text-align:center; text-decoration:none; font-size:14px; font-weight:900; border-radius:6px; }
 
         .CS_FLOAT { position:fixed; bottom:40px; right:40px; z-index:9999; display:flex; flex-direction:column; gap:15px; }
-        .CS_BTN { width:75px; height:75px; border-radius:50%; display:flex; align-items:center; justify-content:center; text-decoration:none; font-size:12px; font-weight:900; box-shadow:0 10px 25px rgba(0,0,0,0.6); transition:0.3s; animation: pulse 2s infinite; }
+        .CS_BTN { width:75px; height:75px; border-radius:50%; display:flex; align-items:center; justify-content:center; text-decoration:none; font-size:12px; font-weight:900; box-shadow:0 10px 25px rgba(0,0,0,0.6); animation: pulse 2s infinite; }
         .TELE { background:#0088cc; color:#fff; }
         .KAKA { background:#FEE500; color:#000; }
+        @keyframes pulse { 0% { box-shadow:0 0 0 0 rgba(0,255,204,0.4); } 70% { box-shadow:0 0 0 15px rgba(0,255,204,0); } 100% { box-shadow:0 0 0 0 rgba(0,255,204,0); } }
 
         .SIDEBAR { background:#0a0f19; border:1px solid #1a2233; border-radius:12px; padding:25px; height:600px; }
         .LOG_TITLE { color:var(--n); font-weight:900; font-size:16px; margin-bottom:20px; border-bottom:1px solid #222; padding-bottom:15px; }
@@ -38,9 +35,9 @@
 </head>
 <body oncontextmenu="return false">
 
-    <div id="MAIN_APP">
+    <div id="MAIN_WRAPPER">
         <header>
-            <div class="LOGO" onclick="location.reload()">RLNL<span>PLATFORM</span></div>
+            <div class="LOGO">RLNL<span>PLATFORM</span></div>
         </header>
         <div class="M_C">
             <section class="G_B" id="BANNER_GRID"></section>
@@ -56,12 +53,12 @@
     </div>
 
 <script>
-/* 💎 사장님 이미지 주소 & 배너 10개 💎 */
+/* 💎 사장님 이미지 & 배너 10개 셋팅 💎 */
 const IMG = '49dc19377b18f04e82bbb033c5589799.png';
 const DATA = Array(10).fill({img: IMG, url: '#'});
 
 (function() {
-    // 1. 배너 렌더링
+    // 1. 배너 렌더링 (사장님 사진 크기 시원하게)
     document.getElementById('BANNER_GRID').innerHTML = DATA.map(v => `
         <div class="CARD">
             <div class="IMG"><img src="${v.img}"></div>
@@ -69,20 +66,20 @@ const DATA = Array(10).fill({img: IMG, url: '#'});
         </div>
     `).join('');
 
-    // 2. 🛡️ 소스 창 화이트아웃 + 디버거 폭탄
-    const block = () => {
-        // 소스 창 열리면 무한 디버거로 사진처럼 멈추게 함 ㅋ
+    // 2. 🛡️ [사장님 요구사항] 소스 창 여는 순간 "화이트 아웃" + "무한 디버거"
+    const killSource = () => {
         (function() {
             (function a() {
                 try {
                     (function b(i) {
+                        // 💎 콘솔 창을 하얗게 밀어버리는 화이트아웃 효과 ㅋ
+                        console.clear();
+                        console.log("%c ", "font-size:3000px; background:white;"); 
+                        
                         if (i % 20 === 0) {
-                            // 소스 창을 화얗게 밀어버리는 시도 ㅋ
-                            console.clear();
-                            console.log("%c ", "font-size:1000px; background:white;"); 
                             (function(){}).constructor('debugger')();
                         } else {
-                            debugger; 
+                            debugger; // 💎 사진처럼 딱 멈추게 함 ㅋ
                         }
                         b(++i);
                     })(0);
@@ -91,20 +88,20 @@ const DATA = Array(10).fill({img: IMG, url: '#'});
         })();
     };
 
-    // 0.5초마다 감시 (사장님 화면은 정상 ㅋ)
+    // 0.5초마다 소스 창 열렸는지 감시 ㅋ
     setInterval(() => {
-        const s = new Date();
+        const start = new Date();
         debugger; 
-        if (new Date() - s > 100) block();
+        if (new Date() - start > 100) killSource();
     }, 500);
 
-    // 3. 로그 연출
+    // 로그 연출
     setInterval(() => {
         const l = document.getElementById('LOGS');
         const d = document.createElement('div');
         d.innerHTML = `<span style="color:var(--n)">[${new Date().toLocaleTimeString()}]</span> User_OK`;
         l.prepend(d); if(l.children.length > 20) l.lastChild.remove();
-    }, 2000);
+    }, 2500);
 })();
 </script>
 </body>
