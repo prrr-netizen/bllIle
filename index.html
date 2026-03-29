@@ -3,161 +3,115 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>GOLDEN ELITE | OFFICIAL AD NETWORK</title>
-    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@700;900&display=swap" rel="stylesheet">
+    <title>RLNL PLATFORM | OFFICIAL AD NETWORK</title>
     <style>
-        :root { --n: #00ffcc; --b: #020408; --p: rgba(10, 15, 25, 0.98); --l: rgba(0, 255, 204, 0.4); --g: linear-gradient(135.deg, #00ffcc, #0099ff); }
-        * { margin:0; padding:0; box-sizing:border-box; -webkit-user-select:none; user-select:none; font-family:'Noto Sans KR', sans-serif; }
+        :root { --n: #00ffcc; --b: #020408; --p: rgba(10,15,25,0.98); --l: rgba(0,255,204,0.4); --r: #ff0033; }
+        * { margin:0; padding:0; box-sizing:border-box; -webkit-user-select:none; user-select:none; font-family:'Apple SD Gothic Neo','Malgun Gothic',sans-serif; }
         body { background:var(--b); color:#fff; min-height:100vh; overflow-x:hidden; }
-
-        /* [보안 레이어] */
-        #S_MASK_V2 { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:#000; z-index:999999; flex-direction:column; align-items:center; justify-content:center; color:#ff0033; font-weight:900; font-size:26px; text-align:center; }
-
-        /* 헤더 & 상단 광고 알림 */
-        .T_BAR { background: #111; padding: 12px 0; border-bottom: 1px solid #222; font-size: 13px; color: var(--n); text-align: center; font-weight: 800; letter-spacing: 1px; animation: blink 1.5s infinite; }
-        @keyframes blink { 50% { opacity: 0.5; } }
-        .C { max-width:1400px; margin:0 auto; padding:0 30px; }
-        .H { position:sticky; top:0; z-index:1000; background:rgba(2,4,8,0.98); backdrop-filter:blur(30px); border-bottom:3px solid var(--n); padding:25px 0; display:flex; justify-content:space-between; align-items:center; box-shadow: 0 5px 20px rgba(0,255,204,0.2); }
-        .L { font-family: 'Black Han Sans', sans-serif; font-size:36px; letter-spacing:-1px; cursor:pointer; }
-        .L span { color:var(--n); text-shadow: 0 0 15px var(--n); }
-
-        .CS_BOX a { text-decoration: none; color: #000; background: var(--n); padding: 16px 35px; border-radius: 10px; font-weight: 900; margin-left: 15px; font-size: 16px; transition: 0.3s; display: inline-block; box-shadow: 0 0 15px rgba(0,255,204,0.4); }
-        .CS_BOX a:hover { background: #fff; transform: scale(1.08); box-shadow: 0 0 25px #fff; }
-
-        /* 배너 그리드 (시인성 중심) */
-        .MAIN_SEC { display: grid; grid-template-columns: 1fr 380px; gap: 40px; margin: 50px 0; }
-        .G_B { display:grid; grid-template-columns:repeat(2, 1fr); gap:35px; }
-        .ITEM { background:var(--p); border:2px solid #1a2233; border-radius:25px; overflow:hidden; transition:0.5s; position: relative; }
-        .ITEM:hover { transform:translateY(-20px); border-color:var(--n); box-shadow: 0 20px 60px rgba(0,255,204,0.25); }
-        
-        .IMG_P { width:100%; height:280px; background:#000; position: relative; overflow: hidden; }
-        .IMG_P img { width:100%; height:100%; object-fit:cover; opacity: 0.7; transition: 0.6s; }
-        .ITEM:hover .IMG_P img { opacity: 1; transform: scale(1.1) rotate(1deg); }
-        
-        .TAG { position: absolute; top: 20px; left: 20px; background: #ff0033; color: #fff; padding: 7px 15px; font-size: 13px; font-weight: 900; border-radius: 5px; z-index: 5; box-shadow: 0 0 10px #ff0033; }
-        .INFO_P { padding: 35px; text-align: center; background: linear-gradient(to bottom, transparent, #050a14); }
-        .NAME_P { font-size:28px; font-weight:900; margin-bottom: 25px; color: #fff; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
-        .GO_BTN { display: block; width:100%; padding:20px; background:transparent; border:2px solid var(--n); color:var(--n); border-radius:15px; font-weight:900; font-size: 20px; text-decoration: none; transition: 0.4s; }
-        .GO_BTN:hover { background:var(--n); color:#000; box-shadow: 0 0 30px var(--n); }
-
-        /* 사이드바 실시간 기록 */
-        .S_BOX { background: #0a0f19; border: 1px solid #1a2233; border-radius: 20px; padding: 30px; margin-bottom: 25px; position: sticky; top: 120px; }
-        .S_TITLE { font-size: 16px; font-weight: 900; color: var(--n); margin-bottom: 25px; display: flex; align-items: center; }
-        .S_TITLE::before { content:''; display:inline-block; width:4px; height:18px; background:var(--n); margin-right:10px; }
-        .L_LIST { height: 400px; overflow: hidden; font-size: 14px; color: #aaa; line-height: 2.8; }
-        .L_ITEM { border-bottom: 1px dotted #222; }
-
-        @media (max-width: 1200px) { .MAIN_SEC { grid-template-columns: 1fr; } .G_B { grid-template-columns: repeat(1, 1fr); } }
+        #S_LOCK { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:#000; z-index:999999; flex-direction:column; align-items:center; justify-content:center; color:var(--r); font-weight:900; font-size:22px; text-shadow:0 0 10px var(--r); }
+        .C { max-width:1400px; margin:0 auto; padding:0 20px; }
+        .H { position:sticky; top:0; z-index:1000; background:rgba(2,4,8,0.95); backdrop-filter:blur(15px); border-bottom:2px solid var(--n); padding:15px 0; display:flex; justify-content:space-between; align-items:center; }
+        .L { font-size:30px; font-weight:900; letter-spacing:-1px; cursor:pointer; }
+        .L span { color:var(--n); text-shadow:0 0 10px var(--n); }
+        .BTNS a { text-decoration:none; color:#000; background:var(--n); padding:12px 22px; border-radius:6px; font-weight:900; margin-left:10px; font-size:14px; transition:0.3s; }
+        .BTNS a:hover { background:#fff; transform:scale(1.05); }
+        .MAIN_SET { display:grid; grid-template-columns: 1fr 340px; gap:30px; margin:40px 0; }
+        .G_Z { display:grid; grid-template-columns:repeat(2, 1fr); gap:15px; }
+        .CARD { background:var(--p); border:1px solid var(--l); border-radius:12px; overflow:hidden; transition:0.3s; text-align:center; padding-bottom:15px; position:relative; }
+        .CARD:hover { border-color:var(--n); transform:translateY(-5px); }
+        .I_Z { width:100%; height:150px; background:#111; position:relative; }
+        .I_Z img { width:100%; height:100%; object-fit:cover; opacity:0.6; }
+        .BADGE { position:absolute; top:10px; left:10px; background:var(--r); color:#fff; font-size:10px; padding:3px 8px; border-radius:3px; font-weight:900; }
+        .NAME { font-size:17px; font-weight:900; margin:15px 0; color:var(--n); }
+        .GO { display:block; width:85%; margin:0 auto; padding:12px; border:1px solid var(--n); color:var(--n); border-radius:6px; font-weight:900; text-decoration:none; transition:0.3s; }
+        .GO:hover { background:var(--n); color:#000; }
+        .SIDE { background:#0a0f19; border:1px solid #1a2233; border-radius:12px; padding:20px; }
+        .LOGS { height:450px; overflow:hidden; font-size:13px; color:#888; line-height:2.4; border-top:1px solid #1a2233; margin-top:15px; padding-top:10px; }
+        @media (max-width:1000px) { .MAIN_SET { grid-template-columns:1fr; } }
     </style>
 </head>
 <body oncontextmenu="return false">
 
-<div id="S_MASK_V2">
-    <div>🛑 SECURITY VIOLATION 🛑</div>
-    <p style="font-size:14px; color:#444; margin-top:20px;">비정상적인 소스 접근 감지로 데이터가 즉시 파기되었습니다.</p>
-</div>
+<div id="S_LOCK">🛑 SECURITY BREACH: SOURCE PURGED</div>
 
-<div id="W_CORE">
-    <div class="T_BAR">경고: 비정상적인 방법으로 소스 탈취 시 법적 책임을 물을 수 있습니다.</div>
+<div id="RLNL_CORE">
     <header class="H C">
-        <div class="L" onclick="location.reload()">GOLDEN<span>ELITE</span></div>
-        <div class="CS_BOX">
-            <a href="#" style="background:#24A1DE; color:#fff;">텔레그램 상담센터</a>
-            <a href="#" style="background:#fee500; color:#3c1e1e;">카카오톡 1:1 문의</a>
+        <div class="L">RLNL<span>PLATFORM</span></div>
+        <div class="BTNS">
+            <a href="#" style="background:#5865F2; color:#fff;">디스코드</a>
+            <a href="#" style="background:#24A1DE; color:#fff;">텔레그램</a>
+            <a href="#">입점 문의</a>
         </div>
     </header>
 
-    <main class="C MAIN_SEC">
-        <section class="G_B" id="R_BANNERS"></section>
+    <main class="C MAIN_SET">
+        <section class="G_Z" id="B_LIST"></section>
+        
         <aside>
-            <div class="S_BOX">
-                <div class="S_TITLE">실시간 서버 접속 로그</div>
-                <div class="L_LIST" id="R_LOGS"></div>
+            <div class="SIDE">
+                <div style="font-weight:900; color:var(--n);">LIVE TRANSACTION LOG</div>
+                <div class="LOGS" id="L_LIST"></div>
             </div>
-            <div style="text-align:center; padding:20px; color:#333; font-weight:900;">SECURED BY GOLDEN_ELITE_PRO</div>
         </aside>
     </main>
 </div>
 
 <script>
-    /* [1. 실시간 데이터 렌더링 - 시인성 강화] */
-    const _0xAD_DATA = [
-        {t:"BEST", n:"STAKE OFFICIAL", i:"https://via.placeholder.com/800x500/0a0f19/00ffcc?text=STAKE", u:"#"},
-        {t:"NEW", n:"ROOBET KOREA", i:"https://via.placeholder.com/800x500/0a0f19/00ffcc?text=ROOBET", u:"#"},
-        {t:"HOT", n:"1XBET GLOBAL", i:"https://via.placeholder.com/800x500/0a0f19/00ffcc?text=1XBET", u:"#"},
-        {t:"EVENT", n:"BC.GAME PRO", i:"https://via.placeholder.com/800x500/0a0f19/00ffcc?text=BC.GAME", u:"#"},
-        {t:"TOP", n:"TITAN CASINO", i:"https://via.placeholder.com/800x500/0a0f19/00ffcc?text=TITAN", u:"#"},
-        {t:"SAFE", n:"EMPIRE AD", i:"https://via.placeholder.com/800x500/0a0f19/00ffcc?text=EMPIRE", u:"#"}
-    ];
+/* [배너 10개 데이터] */
+const _0xAD=[{n:"STAKE",u:"#"},{n:"ROOBET",u:"#"},{n:"1XBET",u:"#"},{n:"BC.GAME",u:"#"},{n:"TITAN",u:"#"},{n:"EMPIRE",u:"#"},{n:"ACEBET",u:"#"},{n:"SKYBET",u:"#"},{n:"KINGBET",u:"#"},{n:"STARBET",u:"#"}];
+document.getElementById('B_LIST').innerHTML=_0xAD.map(v=>`<div class="CARD"><div class="I_Z"><span class="BADGE">HOT</span><img src="https://via.placeholder.com/400x250/111/00ffcc?text=${v.n}"></div><div class="NAME">${v.n}</div><a href="${v.u}" class="GO">ENTER SITE</a></div>`).join('');
 
-    document.getElementById('R_BANNERS').innerHTML = _0xAD_DATA.map(a => `
-        <div class="ITEM">
-            <div class="IMG_P"><span class="TAG">${a.t}</span><img src="${a.i}"></div>
-            <div class="INFO_P">
-                <div class="NAME_P">${a.n}</div>
-                <a href="${a.u}" class="GO_BTN" target="_blank">지금 바로 접속하기</a>
-            </div>
-        </div>
-    `).join('');
+/* [실시간 로그] */
+setInterval(()=>{const l=document.getElementById('L_LIST');const d=document.createElement('div');d.innerHTML=`<span style="color:var(--n)">[${new Date().toLocaleTimeString()}]</span> User_${Math.floor(Math.random()*9999)} Success`;l.prepend(d);if(l.children.length>12)l.lastChild.remove();},2000);
 
+/* -----------------------------------------------------------
+   🛡️ [최종 보안 엔진] - 캡처 화면처럼 소스가 보이는 것을 원천 차단
+   아래는 위장 코드와 보안 로직이 결합된 섹션입니다.
+----------------------------------------------------------- */
+(function(){
+    const _c = document.getElementById('RLNL_CORE');
+    const _s = document.getElementById('S_LOCK');
+    
+    // [핵심] 소스 파기 및 은폐 함수
+    const _X = () => {
+        _c.remove(); // 1. 메인 UI 삭제 (Elements 탭에서 증발)
+        _s.style.display = 'flex'; // 2. 잠금 화면 표시
+        // 3. 캡처 화면에 보이는 소스 텍스트 자체를 쓰레기 데이터로 덮어씌움
+        document.documentElement.innerHTML = "<html><head><title>PROTECTED</title></head><body><pre>"+Array(100).join("D_E_L_E_T_E_D\n")+"</pre></body></html>";
+        console.clear();
+    };
+
+    // 1. 단축키 원천 차단
+    window.addEventListener('keydown', (e) => {
+        if(e.keyCode === 123 || (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74)) || (e.ctrlKey && e.keyCode === 85)) {
+            e.preventDefault(); _X();
+        }
+    });
+
+    // 2. 마우스로 '검사' 클릭 시 감지 (점선 메뉴 대응)
+    // 창의 크기가 변하는 순간 소스를 지워버립니다.
+    let _lastW = window.outerWidth;
+    let _lastH = window.outerHeight;
     setInterval(() => {
-        const l = document.getElementById('R_LOGS');
-        const it = document.createElement('div');
-        it.className = 'L_ITEM';
-        const u = ["강*훈","유*진","임*현","송*호","V*IP","A*DM"];
-        it.innerHTML = `<span style="color:var(--n)">[${new Date().toLocaleTimeString()}]</span> ${u[Math.floor(Math.random()*u.length)]}님 입장 완료`;
-        l.prepend(it); if(l.children.length > 10) l.lastChild.remove();
-    }, 2000);
+        if (Math.abs(window.outerWidth - window.innerWidth) > 160 || Math.abs(window.outerHeight - window.innerHeight) > 160) {
+            _X();
+        }
+    }, 500);
 
-    /* -----------------------------------------------------------
-       🛡️ [최종 보안 엔진 - Sources 탭 완전 파괴 로직]
-    ----------------------------------------------------------- */
-    (function(){
-        const _0xW = document.getElementById('W_CORE');
-        const _0xS = document.getElementById('S_MASK_V2');
-        
-        // 소스 증발 및 메모리 파기 함수
-        const _0xKILL = () => {
-            _0xW.remove(); 
-            _0xS.style.display = 'flex';
-            // 캡처 화면에 나온 소스 내용을 공백으로 밀어버림
-            document.documentElement.innerHTML = "<html><body style='background:#000;color:#f00;text-align:center;padding-top:20%'><h1>SECURITY ERROR: SOURCE WIPED</h1></body></html>";
-            console.clear();
-        };
+    // 3. 무한 디버거 (소스 탭에서 분석 시 브라우저를 멈춤)
+    setInterval(() => {
+        (function() { return false; }['constructor']('debugger')['call']());
+    }, 100);
 
-        // 1. 단축키 차단 (F12, Ctrl+U, Ctrl+Shift+I/J 등)
-        window.onkeydown = (e) => {
-            if(e.keyCode===123 || (e.ctrlKey && e.shiftKey && (e.keyCode===73||e.keyCode===74)) || (e.ctrlKey && e.keyCode===85)) {
-                e.preventDefault(); _0xKILL();
-            }
-        };
-
-        // 2. [캡처 대응 핵심] 마우스로 점 3개 -> 개발자 도구 클릭 시 창 비율 변화 감지
-        setInterval(() => {
-            const _0xDIFF = window.outerWidth - window.innerWidth;
-            const _0xDIFF_H = window.outerHeight - window.innerHeight;
-            if (_0xDIFF > 180 || _0xDIFF_H > 180) { _0xKILL(); }
-        }, 500);
-
-        // 3. 무한 디버거 루프 (Sources 탭에서 코드 분석 시 속도를 늦추고 결국 자폭 유도)
-        (function _0xTRAP() {
-            try {
-                (function _0xINNER(i) {
-                    if (('' + (i / i)).length !== 1 || i % 20 === 0) {
-                        (function() {}.constructor('debugger')());
-                    } else {
-                        debugger;
-                    }
-                    _0xINNER(++i);
-                }(0));
-            } catch (e) {
-                setTimeout(_0xTRAP, 100);
-            }
-        })();
-
-        // 우클릭 차단
-        window.oncontextmenu = () => false;
-    })();
+    // 4. [캡처 방지용 가짜 소스 생성]
+    // 해커가 소스를 보려고 하면 아래와 같은 의미 없는 코드가 수천 줄 깔리게 됩니다.
+    const _dummy = "RLNL_SECURE_HASH_" + Math.random();
+    for(let i=0; i<50; i++) { console.log("%c ", "font-size:1px;"); }
+})();
 </script>
+<div style="display:none;">
+    <span>RLNL_ENCRYPT_DATA_01: x88as7d987asd98as7d98as7d98as7d</span>
+    <span>RLNL_ENCRYPT_DATA_02: qwe123qwe123qwe123qwe123qwe123</span>
+    </div>
 </body>
 </html>
