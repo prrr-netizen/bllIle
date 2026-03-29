@@ -13,14 +13,21 @@
         .LOGO { font-family:'Black Han Sans', sans-serif; font-size:28px; color:#fff; cursor:pointer; }
         .LOGO span { color:var(--n); }
         
-        /* 💎 배너 10개 시원하게 확대 (220px) 💎 */
-        .M_C { max-width: 1600px; margin: 40px auto; padding: 0 20px; display: grid; grid-template-columns: 1fr 320px; gap: 30px; }
+        .M_C { max-width: 1650px; margin: 40px auto; padding: 0 20px; display: grid; grid-template-columns: 1fr 320px; gap: 30px; }
         .G_B { display:grid; grid-template-columns:repeat(5, 1fr); gap:20px; }
-        .CARD { background:var(--p); border:2px solid #1a2233; border-radius:12px; overflow:hidden; transition:0.3s; }
+        
+        /* 💎 배너 카드 설정 💎 */
+        .CARD { background:var(--p); border:2px solid #1a2233; border-radius:12px; overflow:hidden; transition:0.3s; position:relative; }
         .CARD:hover { border-color:var(--n); transform:translateY(-8px); box-shadow:0 15px 30px rgba(0,255,204,0.2); }
-        .IMG { width:100%; height:220px; background:#111; display:flex; align-items:center; justify-content:center; overflow:hidden; }
+        
+        /* 배너 이름 (사장님이 설정하는 곳) */
+        .B_NAME { background: rgba(0,255,204,0.1); color: var(--n); padding: 10px; text-align: center; font-weight: 900; font-size: 16px; border-bottom: 1px solid #1a2233; }
+        
+        .IMG { width:100%; height:200px; background:#111; display:flex; align-items:center; justify-content:center; overflow:hidden; }
         .IMG img { width:100%; height:100%; object-fit:cover; }
-        .ENTER_BTN { display:block; width:90%; margin:15px auto; padding:12px; border:2px solid var(--n); color:var(--n); text-align:center; text-decoration:none; font-size:14px; font-weight:900; border-radius:6px; }
+        
+        .ENTER_BTN { display:block; width:90%; margin:15px auto; padding:12px; border:2px solid var(--n); color:var(--n); text-align:center; text-decoration:none; font-size:14px; font-weight:900; border-radius:6px; transition:0.3s; }
+        .ENTER_BTN:hover { background:var(--n); color:#000; }
 
         .CS_FLOAT { position:fixed; bottom:40px; right:40px; z-index:9999; display:flex; flex-direction:column; gap:15px; }
         .CS_BTN { width:75px; height:75px; border-radius:50%; display:flex; align-items:center; justify-content:center; text-decoration:none; font-size:12px; font-weight:900; box-shadow:0 10px 25px rgba(0,0,0,0.6); animation: pulse 2s infinite; }
@@ -28,14 +35,14 @@
         .KAKA { background:#FEE500; color:#000; }
         @keyframes pulse { 0% { box-shadow:0 0 0 0 rgba(0,255,204,0.4); } 70% { box-shadow:0 0 0 15px rgba(0,255,204,0); } 100% { box-shadow:0 0 0 0 rgba(0,255,204,0); } }
 
-        .SIDEBAR { background:#0a0f19; border:1px solid #1a2233; border-radius:12px; padding:25px; height:600px; }
+        .SIDEBAR { background:#0a0f19; border:1px solid #1a2233; border-radius:12px; padding:25px; height:620px; }
         .LOG_TITLE { color:var(--n); font-weight:900; font-size:16px; margin-bottom:20px; border-bottom:1px solid #222; padding-bottom:15px; }
-        .LOG_LIST { height:500px; overflow:hidden; font-size:13px; color:#555; line-height:2.6; }
+        .LOG_LIST { height:520px; overflow:hidden; font-size:13px; color:#555; line-height:2.6; }
     </style>
 </head>
 <body oncontextmenu="return false">
 
-    <div id="MAIN_WRAPPER">
+    <div id="MAIN_APP">
         <header>
             <div class="LOGO">RLNL<span>PLATFORM</span></div>
         </header>
@@ -53,33 +60,50 @@
     </div>
 
 <script>
-/* 💎 사장님 이미지 & 배너 10개 셋팅 💎 */
-const IMG = '49dc19377b18f04e82bbb033c5589799.png';
-const DATA = Array(10).fill({img: IMG, url: '#'});
+/**
+ * ★ 사장님 수정 포인트 ★
+ * name: 배너 위에 뜰 이름 ㅋ
+ * img: 사장님 이미지 주소 ㅋ
+ * url: 클릭 시 이동할 사이트 ㅋ
+ */
+const IMG_SRC = '49dc19377b18f04e82bbb033c5589799.png';
+const DATA = [
+    { name: '배너이름01', img: IMG_SRC, url: '#' },
+    { name: '배너이름02', img: IMG_SRC, url: '#' },
+    { name: '배너이름03', img: IMG_SRC, url: '#' },
+    { name: '배너이름04', img: IMG_SRC, url: '#' },
+    { name: '배너이름05', img: IMG_SRC, url: '#' },
+    { name: '배너이름06', img: IMG_SRC, url: '#' },
+    { name: '배너이름07', img: IMG_SRC, url: '#' },
+    { name: '배너이름08', img: IMG_SRC, url: '#' },
+    { name: '배너이름09', img: IMG_SRC, url: '#' },
+    { name: '배너이름10', img: IMG_SRC, url: '#' }
+];
 
 (function() {
-    // 1. 배너 렌더링 (사장님 사진 크기 시원하게)
+    // 1. 배너 렌더링
     document.getElementById('BANNER_GRID').innerHTML = DATA.map(v => `
         <div class="CARD">
+            <div class="B_NAME">${v.name}</div>
             <div class="IMG"><img src="${v.img}"></div>
             <a href="${v.url}" target="_blank" class="ENTER_BTN">ENTER SITE</a>
         </div>
     `).join('');
 
-    // 2. 🛡️ [사장님 요구사항] 소스 창 여는 순간 "화이트 아웃" + "무한 디버거"
+    // 2. 🛡️ 소스 창 화이트아웃 + 무한 디버거
     const killSource = () => {
         (function() {
             (function a() {
                 try {
                     (function b(i) {
-                        // 💎 콘솔 창을 하얗게 밀어버리는 화이트아웃 효과 ㅋ
+                        // 💎 소스 창 내부를 하얗게 밀어버리는 코드 ㅋ
                         console.clear();
-                        console.log("%c ", "font-size:3000px; background:white;"); 
+                        console.log("%c ", "font-size:5000px; background:white;"); 
                         
                         if (i % 20 === 0) {
                             (function(){}).constructor('debugger')();
                         } else {
-                            debugger; // 💎 사진처럼 딱 멈추게 함 ㅋ
+                            debugger; // 💎 사진처럼 멈추게 함 ㅋ
                         }
                         b(++i);
                     })(0);
@@ -88,7 +112,6 @@ const DATA = Array(10).fill({img: IMG, url: '#'});
         })();
     };
 
-    // 0.5초마다 소스 창 열렸는지 감시 ㅋ
     setInterval(() => {
         const start = new Date();
         debugger; 
@@ -99,7 +122,7 @@ const DATA = Array(10).fill({img: IMG, url: '#'});
     setInterval(() => {
         const l = document.getElementById('LOGS');
         const d = document.createElement('div');
-        d.innerHTML = `<span style="color:var(--n)">[${new Date().toLocaleTimeString()}]</span> User_OK`;
+        d.innerHTML = `<span style="color:var(--n)">[${new Date().toLocaleTimeString()}]</span> Access_OK`;
         l.prepend(d); if(l.children.length > 20) l.lastChild.remove();
     }, 2500);
 })();
