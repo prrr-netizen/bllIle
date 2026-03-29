@@ -8,9 +8,9 @@
     <style>
         :root { --n: #00ffcc; --b: #020408; --p: rgba(10, 15, 25, 0.98); --l: rgba(0, 255, 204, 0.4); }
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-user-select: none; user-select: none; font-family: 'Noto Sans KR', sans-serif; }
-        body { background: var(--b); color: #fff; min-height: 100vh; }
+        body { background: var(--b); color: #fff; min-height: 100vh; overflow-x: hidden; }
 
-        /* [보안] 평소엔 절대 안 보임 */
+        /* 보안 감지 시 띄울 레이어 */
         #S_MASK { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 999999; color: #ff0033; flex-direction: column; align-items: center; justify-content: center; font-size: 20px; font-weight: 900; }
 
         .C { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
@@ -33,14 +33,14 @@
 <body oncontextmenu="return false">
 
 <div id="S_MASK">
-    <div>⚠️ 보안 위반 감지 (Security Access Denied) ⚠️</div>
-    <p style="font-size: 14px; color: #444; margin-top: 15px;">비정상적인 접근 시도로 인해 소스 코드가 보호되었습니다.</p>
+    <div>🛑 SECURITY BREACH 🛑</div>
+    <p style="font-size: 14px; color: #444; margin-top: 15px;">비정상적인 접근 시도가 감지되었습니다.</p>
 </div>
 
 <div id="MAIN_UI">
     <header class="H C">
         <div class="L">GOLDEN<span>ELITE</span></div>
-        <button style="background:var(--n); border:none; padding:8px 20px; border-radius:5px; font-weight:900; cursor:pointer;">입장 / 가입</button>
+        <button style="background:var(--n); border:none; padding:8px 20px; border-radius:5px; font-weight:900; cursor:pointer;" onclick="alert('준비중입니다')">로그인 / 가입</button>
     </header>
 
     <div class="C">
@@ -49,7 +49,7 @@
 </div>
 
 <script>
-    /* [배너 설정] 주소와 이름을 여기에 넣으세요 */
+    /* 배너 데이터 수정구역 */
     const _D = [
         {n:"STAKE", i:"https://via.placeholder.com/400x280/0a0f19/00ffcc?text=STAKE", u:"#"},
         {n:"ROOBET", i:"https://via.placeholder.com/400x280/0a0f19/00ffcc?text=ROOBET", u:"#"},
@@ -70,39 +70,39 @@
     `).join('');
 
     /* -----------------------------------------------------------
-       🛡️ [실전 보정 보안] 정상 접속은 허용, 침입만 차단
+       🛡️ [실전 최종 보안] - 접속 보장 및 정밀 감지
     ----------------------------------------------------------- */
     (function(){
         const mask = document.getElementById('S_MASK');
         const ui = document.getElementById('MAIN_UI');
-        
-        // 소스 파괴 로직
-        const DESTROY = () => { 
-            ui.innerHTML = ""; // 메인 소스 즉시 삭제
-            ui.style.display = "none";
-            mask.style.display = "flex"; 
-            console.clear(); 
-        };
+        const DESTROY = () => { ui.remove(); mask.style.display = "flex"; console.clear(); };
 
-        // 1. 단축키 차단 (F12 등)
+        // 1. 단축키 차단 (F12, Ctrl+U 등)
         window.addEventListener('keydown', (e) => {
             if (e.keyCode === 123 || (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74)) || (e.ctrlKey && e.keyCode === 85)) {
                 e.preventDefault(); DESTROY();
             }
         });
 
-        // 2. [수정됨] 마우스 우회 차단 감도 조절
-        // 창 크기가 아주 작아도 작동하게 250px 이상의 급격한 변화만 감지
-        setInterval(() => {
-            const threshold = 250; 
-            const isDevToolsOpen = window.outerWidth - window.innerWidth > threshold || window.outerHeight - window.innerHeight > threshold;
-            if (isDevToolsOpen) { DESTROY(); }
-        }, 1000);
+        // 2. [핵심수정] 마우스 우회 정밀 감지
+        // 창 크기가 변할 때만 체크해서 접속 시 오류 방지
+        let isChecking = false;
+        window.addEventListener('resize', () => {
+            if(isChecking) return;
+            isChecking = true;
+            setTimeout(() => {
+                const threshold = 160;
+                if(window.outerWidth - window.innerWidth > threshold || window.outerHeight - window.innerHeight > threshold) {
+                    DESTROY();
+                }
+                isChecking = false;
+            }, 500);
+        });
 
-        // 3. 디버거 감지 (도구를 켠 상태에서만 작동)
+        // 3. 디버거 트랩 (도구가 열렸을 때만 반응)
         setInterval(() => {
             const start = new Date().getTime();
-            debugger;
+            debugger; 
             if (new Date().getTime() - start > 100) { DESTROY(); }
         }, 1000);
 
