@@ -2,117 +2,87 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>RLNL PLATFORM | PRIVATE</title>
-    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@700;900&display=swap" rel="stylesheet">
+    <title>RLNL PLATFORM | SECURE</title>
     <style>
-        :root { --n: #00ffcc; --b: #020408; --p: rgba(10,15,25,0.98); }
-        * { margin:0; padding:0; box-sizing:border-box; font-family:'Noto Sans KR', sans-serif; -webkit-user-select:none; user-select:none; }
-        body { background:var(--b); color:#fff; min-height:100vh; overflow:hidden; }
+        :root { --n: #00ffcc; --b: #020408; }
+        * { margin:0; padding:0; box-sizing:border-box; font-family:sans-serif; -webkit-user-select:none; user-select:none; }
+        body { background:var(--b); color:#fff; overflow:hidden; }
 
-        /* 헤더 - 콤팩트 스타일 */
-        header { width:100%; position:sticky; top:0; z-index:1000; background:rgba(2,4,8,0.98); border-bottom:1px solid var(--n); padding:8px 20px; display:flex; justify-content:space-between; align-items:center; }
-        .LOGO { font-family:'Black Han Sans', sans-serif; font-size:20px; color:#fff; }
-        .LOGO span { color:var(--n); }
-        .BTNS a { text-decoration:none; padding:6px 12px; border-radius:4px; font-weight:900; font-size:11px; margin-left:5px; }
-        .L_B { border:1px solid var(--n); color:var(--n); }
-        .J_B { background:var(--n); color:#000; }
-
-        /* 메인 레이아웃 및 5열 배너 (슬림 사이즈) */
-        .M_C { max-width: 1300px; margin: 20px auto; padding: 0 15px; display: grid; grid-template-columns: 1fr 260px; gap: 15px; }
-        .G_B { display:grid; grid-template-columns:repeat(5, 1fr); gap:8px; }
-        .CARD { background:var(--p); border:1px solid #1a2233; border-radius:5px; overflow:hidden; text-align:center; padding-bottom:10px; transition:0.2s; }
+        /* 배너 레이아웃 (슬림 사이즈) */
+        .CONTAINER { max-width: 1200px; margin: 20px auto; padding: 20px; display: grid; grid-template-columns: 1fr 250px; gap: 15px; }
+        .GRID { display:grid; grid-template-columns:repeat(5, 1fr); gap:10px; }
+        .CARD { background:#0a0f19; border:1px solid #1a2233; border-radius:4px; padding:10px; text-align:center; transition:0.2s; }
         .CARD:hover { border-color:var(--n); }
-        
-        .IMG { width:100%; height:75px; background:#111; overflow:hidden; border-bottom:1px solid #1a2233; display:flex; align-items:center; justify-content:center; }
-        .IMG img { width:90%; height:80%; object-fit:contain; opacity:0.6; }
-        .NAME { font-size:12px; font-weight:900; margin:6px 0; color:#ddd; }
-        .GO { display:block; width:80%; margin:0 auto; padding:5px; border:1px solid var(--n); color:var(--n); border-radius:3px; font-weight:900; text-decoration:none; font-size:10px; }
+        .IMG { height:60px; background:#111; margin-bottom:8px; display:flex; align-items:center; justify-content:center; font-weight:bold; color:var(--n); font-size:12px; }
+        .GO { display:block; padding:5px; border:1px solid var(--n); color:var(--n); text-decoration:none; font-size:10px; font-weight:bold; }
 
-        /* 사이드바 */
-        .SIDE { background:#0a0f19; border:1px solid #1a2233; border-radius:5px; padding:12px; height:400px; }
-        .LOGS { height:350px; overflow:hidden; font-size:10px; color:#444; line-height:2; border-top:1px solid #111; padding-top:8px; }
-
-        /* 보안 발동 시 메시지 */
-        #SECURE_MSG { display:none; position:fixed; top:50%; left:50%; transform:translate(-50%,-50%); text-align:center; z-index:99999; }
-        #SECURE_MSG h1 { color:var(--n); font-size:20px; margin-bottom:10px; }
+        /* 자폭 시 노출될 레이어 */
+        #BLOCK_LAYER { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:#000; z-index:99999; color:var(--n); flex-direction:column; align-items:center; justify-content:center; }
     </style>
 </head>
 <body oncontextmenu="return false">
 
-    <div id="SAFE_ZONE">
-        <header>
-            <div class="LOGO">RLNL<span>PLATFORM</span></div>
-            <div class="BTNS"><a href="#" class="L_B">LOGIN</a><a href="#" class="J_B">JOIN</a></div>
-        </header>
-
-        <div class="M_C">
-            <section class="G_B" id="B_AREA"></section>
-            <aside><div class="SIDE"><div style="color:var(--n);font-weight:900;font-size:11px;margin-bottom:8px;">MONITORING</div><div class="LOGS" id="L_AREA"></div></div></aside>
+    <div id="VIEW_ZONE">
+        <div class="CONTAINER">
+            <section class="GRID" id="B_LIST"></section>
+            <aside style="border:1px solid #1a2233; padding:10px; font-size:10px; color:#444;">
+                <div style="color:var(--n); margin-bottom:10px;">LIVE MONITORING</div>
+                <div id="L_LIST"></div>
+            </aside>
         </div>
     </div>
 
-    <div id="SECURE_MSG">
-        <h1>🛡️ SECURITY ALERT</h1>
-        <p>비정상적인 접근이 감지되어 콘텐츠를 보호합니다.</p>
+    <div id="BLOCK_LAYER">
+        <h1 style="font-size:24px;">🛡️ SECURITY SYSTEM ACTIVE</h1>
+        <p style="margin-top:10px; color:#666;">소스 코드 보호를 위해 콘텐츠를 숨겼습니다.</p>
     </div>
 
 <script>
-const B_NAMES = ['STAKE','ROOBET','1XBET','BC.GAME','TITAN','EMPIRE','ACEBET','SKYBET','KINGBET','STARBET'];
+const NAMES = ['STAKE','ROOBET','1XBET','BC.GAME','TITAN','EMPIRE','ACEBET','SKYBET','KINGBET','STARBET'];
 
-// 1. 초기 세팅
+// 1. 배너 생성
+document.getElementById('B_LIST').innerHTML = NAMES.map(v => `
+    <div class="CARD">
+        <div class="IMG">${v}</div>
+        <a href="#" class="GO">ENTER</a>
+    </div>
+`).join('');
+
+/* 🛡️ 운영자님의 핵심 요구사항: F12 & 점선 메뉴 차단 */
 (function(){
-    document.getElementById('B_AREA').innerHTML = B_NAMES.map(v => `
-        <div class="CARD">
-            <div class="IMG"><img src="https://via.placeholder.com/150x80/111/00ffcc?text=${v}"></div>
-            <div class="NAME">${v}</div>
-            <a href="#" class="GO">ENTER</a>
-        </div>
-    `).join('');
-    
-    KILL_SOURCE();
-    RUN_LOGS();
-})();
-
-/* 🛡️ 운영자님이 원하시는 "도메인 유지형" 보안 엔진 */
-function KILL_SOURCE(){
-    const PROTECT = () => {
-        // 도메인은 그대로 두고 내부 콘텐츠만 싹 지움 ㅋ
-        document.getElementById('SAFE_ZONE').innerHTML = "";
-        document.getElementById('SECURE_MSG').style.display = "block";
-        document.body.style.background = "#000";
+    const HIDE = () => {
+        document.getElementById('VIEW_ZONE').style.display = "none";
+        document.getElementById('BLOCK_LAYER').style.display = "flex";
     };
 
-    // 1. 단축키 차단 (F12, Ctrl+U, Ctrl+S 등)
+    // [체크 1] F12 및 소스보기 단축키 (F12 = 123)
     window.addEventListener('keydown', (e) => {
-        if(e.keyCode === 123 || (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74)) || (e.ctrlKey && e.keyCode === 85) || (e.ctrlKey && e.keyCode === 83)) {
+        if(e.keyCode === 123 || (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74)) || (e.ctrlKey && e.keyCode === 85)) {
             e.preventDefault();
-            PROTECT();
+            HIDE();
         }
     });
 
-    // 2. 점선 메뉴/창 크기 감지 (실시간 감시 강화) ㅋ
+    // [체크 2] 점선 메뉴로 들어오는 '검사'창 감지 ㅋ
+    // 소스 창이 열리면서 브라우저 가용 면적이 줄어드는 걸 0.1초마다 체크
     setInterval(() => {
-        const threshold = 160;
-        if (window.outerWidth - window.innerWidth > threshold || window.outerHeight - window.innerHeight > threshold) {
-            PROTECT();
+        const diff = 160;
+        if (window.outerWidth - window.innerWidth > diff || window.outerHeight - window.innerHeight > diff) {
+            HIDE();
         }
     }, 100);
 
-    // 3. 무한 디버거 함정 (소스 탭을 열어도 코드를 못 보게 브라우저를 멈춤)
-    setInterval(() => {
-        (function(){return false}['constructor']('debugger')['call']());
-    }, 50);
-}
+    // [체크 3] 무한 디버거 (분석 원천 봉쇄)
+    setInterval(() => { (function(){return false}['constructor']('debugger')['call']()); }, 50);
+})();
 
-function RUN_LOGS(){
-    setInterval(()=>{
-        const l = document.getElementById('L_AREA');
-        const d = document.createElement('div');
-        d.innerHTML = `<span style="color:var(--n)">[${new Date().toLocaleTimeString()}]</span> User_${Math.floor(Math.random()*999)} Success`;
-        l.prepend(d); if(l.children.length > 15) l.lastChild.remove();
-    }, 3000);
-}
+// 로그 연출
+setInterval(()=>{
+    const l = document.getElementById('L_LIST');
+    const d = document.createElement('div');
+    d.innerHTML = `[${new Date().toLocaleTimeString()}] Access Verified...`;
+    l.prepend(d); if(l.children.length > 15) l.lastChild.remove();
+}, 2500);
 </script>
 </body>
 </html>
