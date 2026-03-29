@@ -3,127 +3,128 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>OFFICIAL PLATFORM - SECURE</title>
+    <title>OFFICIAL AD PLATFORM - SECURE MASTER</title>
     <style>
         :root { --gold: #d4af37; --dark: #050505; --card: #121212; --border: #222; }
         * { margin:0; padding:0; box-sizing:border-box; -webkit-user-select:none; user-select:none; font-family:'Pretendard', sans-serif; }
         body { background:var(--dark); color:#eee; overflow-x:hidden; }
 
-        /* 🔐 관리자 모달 (평소엔 절대 안 보임 ㅋ) */
-        #ADMIN_MODAL { display:none; position:fixed; top:50%; left:50%; transform:translate(-50%, -50%); width:90%; max-width:700px; background:#1a1a1a; border:3px solid var(--gold); padding:35px; z-index:100000; border-radius:15px; box-shadow:0 0 100px #000; }
-        textarea { width:100%; height:250px; background:#000; color:var(--gold); border:1px solid #333; padding:15px; margin:15px 0; font-family:monospace; font-size:14px; border-radius:5px; }
-        .BTN_EXEC { background:linear-gradient(to bottom, #f1c40f, #d4af37); color:#000; width:100%; padding:18px; border:none; font-weight:900; cursor:pointer; font-size:18px; border-radius:5px; }
+        /* 🔐 암호화 관리자 모달 (Ctrl+Shift+Y로 오픈) */
+        #ADMIN_MODAL { display:none; position:fixed; top:50%; left:50%; transform:translate(-50%, -50%); width:90%; max-width:800px; background:#1a1a1a; border:3px solid var(--gold); padding:35px; z-index:100000; border-radius:15px; box-shadow:0 0 100px #000; }
+        textarea { width:100%; height:300px; background:#000; color:var(--gold); border:1px solid #333; padding:15px; margin:15px 0; font-family:monospace; font-size:14px; border-radius:5px; }
+        .BTN_EXEC { background:linear-gradient(to bottom, #f1c40f, #d4af37); color:#000; width:100%; padding:20px; border:none; font-weight:900; cursor:pointer; font-size:18px; border-radius:5px; }
 
-        header { background:#000; padding:40px; border-bottom:2px solid var(--gold); text-align:center; box-shadow:0 10px 30px rgba(0,0,0,0.5); }
-        .LOGO { font-size:42px; font-weight:900; color:#fff; letter-spacing:5px; }
-        .LOGO span { color:var(--gold); }
+        /* 💎 상업용 대형 디자인 레이아웃 */
+        header { background:#000; padding:45px; border-bottom:3px solid var(--gold); text-align:center; box-shadow:0 10px 30px rgba(0,0,0,0.8); }
+        .LOGO { font-size:45px; font-weight:900; color:#fff; letter-spacing:6px; }
+        .LOGO span { color:var(--gold); text-shadow: 0 0 20px rgba(212,175,55,0.6); }
 
-        .MAIN_WRAP { max-width:1450px; margin:40px auto; padding:0 20px; display:grid; grid-template-columns: 1fr 340px; gap:35px; }
-        .B_LIST { display:flex; flex-direction:column; gap:20px; }
-        .ITEM { background:var(--card); border:1px solid var(--border); border-radius:12px; height:140px; display:flex; align-items:center; overflow:hidden; transition:0.3s; }
-        .ITEM:hover { border-color:var(--gold); transform:scale(1.01); }
+        .MAIN_WRAP { max-width:1500px; margin:50px auto; padding:0 25px; display:grid; grid-template-columns: 1fr 350px; gap:40px; }
+        .B_LIST { display:flex; flex-direction:column; gap:25px; }
         
-        .LABEL { background:var(--gold); color:#000; width:110px; height:100%; display:flex; align-items:center; justify-content:center; font-weight:900; font-size:16px; border-right:1px solid #000; text-align:center; }
-        .GIF_IMG { width:500px; height:100%; background:#000; border-right:1px solid var(--border); }
+        .ITEM { background:var(--card); border:1px solid var(--border); border-radius:15px; height:150px; display:flex; align-items:center; overflow:hidden; transition:0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .ITEM:hover { border-color:var(--gold); transform:scale(1.015); box-shadow:0 0 50px rgba(212,175,55,0.15); }
+        
+        .LABEL { background:var(--gold); color:#000; width:120px; height:100%; display:flex; align-items:center; justify-content:center; font-weight:900; font-size:18px; border-right:2px solid #000; text-align:center; line-height:1.2; }
+        .GIF_IMG { width:550px; height:100%; background:#000; border-right:1px solid var(--border); }
         .GIF_IMG img { width:100%; height:100%; object-fit:cover; }
-        .INFO { flex-grow:1; padding:0 35px; }
-        .TITLE { font-size:26px; font-weight:900; margin-bottom:8px; }
-        .SUB { color:var(--gold); font-size:15px; font-weight:600; }
-        .GO { background:#222; color:#fff; padding:18px 55px; text-decoration:none; font-weight:900; border-radius:6px; margin-right:30px; border:1px solid #444; }
-        .GO:hover { background:var(--gold); color:#000; }
+        
+        .INFO { flex-grow:1; padding:0 40px; }
+        .TITLE { font-size:28px; font-weight:900; margin-bottom:10px; color:#fff; }
+        .SUB { color:var(--gold); font-size:16px; font-weight:600; letter-spacing:1px; }
+        
+        .GO { background:linear-gradient(to right, #222, #383838); color:#fff; padding:22px 65px; text-decoration:none; font-weight:900; font-size:20px; border-radius:8px; margin-right:40px; border:1px solid #444; transition:0.3s; }
+        .GO:hover { background:var(--gold); color:#000; border-color:var(--gold); box-shadow:0 0 20px rgba(212,175,55,0.4); }
 
-        .SIDE { background:#0a0a0a; border:1px solid var(--border); padding:25px; border-radius:12px; height:fit-content; position:sticky; top:130px; }
+        .SIDE { background:#0a0a0a; border:1px solid var(--border); padding:30px; border-radius:15px; height:fit-content; position:sticky; top:150px; }
     </style>
 </head>
 <body oncontextmenu="return false">
 
-<div id="S_VOID"></div>
-
 <div id="ADMIN_MODAL">
-    <h2 style="color:var(--gold)">💎 상업용 대량 등록 (ADMIN)</h2>
-    <p style="font-size:13px; color:#888; margin-top:5px;">형식: 업체이름|이미지파일명|링크 (줄바꿈 구분)</p>
+    <h2 style="color:var(--gold); font-size:28px;">💎 상업용 대량 등록 (ADMIN)</h2>
+    <p style="color:#888; margin-top:10px;">[형식] 업체명|사진파일명|이동링크 (엔터로 구분)</p>
     <textarea id="INPUT_AREA">메이저01|662034559_e82a01f0_257296.gif|https://site1.com</textarea>
-    <button class="BTN_EXEC" onclick="saveAndBuild()">설정 저장 및 배너 적용</button>
-    <button onclick="document.getElementById('ADMIN_MODAL').style.display='none'" style="margin-top:15px; background:none; border:none; color:#555; cursor:pointer; width:100%;">창 닫기</button>
+    <button class="BTN_EXEC" onclick="saveData()">🚀 배너 데이터 즉시 적용 및 저장</button>
+    <button onclick="document.getElementById('ADMIN_MODAL').style.display='none'" style="margin-top:20px; background:none; border:none; color:#555; cursor:pointer; width:100%;">창 닫기</button>
 </div>
 
 <div id="SITE_ROOT">
-    <header><div class="LOGO">RLNL<span>PLATFORM</span></div></header>
+    <header><div class="LOGO">AD<span>MASTER</span></div></header>
     <div class="MAIN_WRAP">
-        <main class="B_LIST" id="TARGET"></main>
+        <main class="B_LIST" id="RENDER_TARGET"></main>
         <aside class="SIDE">
-            <div style="color:var(--gold); font-weight:900; border-bottom:1px solid #222; padding-bottom:15px;">LIVE VERIFICATION</div>
-            <div id="LOGS" style="font-size:12px; color:#444; line-height:2.6; margin-top:15px;"></div>
+            <div style="color:var(--gold); font-weight:900; border-bottom:2px solid #222; padding-bottom:20px; font-size:18px;">LIVE MONITORING</div>
+            <div id="LOGS" style="font-size:13px; color:#444; line-height:3; margin-top:20px;"></div>
         </aside>
     </div>
 </div>
 
 <script>
-// 🔑 비번 '1234' 암호화 값 (소스 털려도 원래 비번 모름 ㅋ)
-const HASH_PW = "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4";
 
-async function sha256(m) {
+const HASH_KEY = "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4";
+
+async function getHash(m) {
     const b = new TextEncoder().encode(m);
     const h = await crypto.subtle.digest('SHA-256', b);
     return Array.from(new Uint8Array(h)).map(x => x.toString(16).padStart(2, '0')).join('');
 }
 
-// 🛡️ [무적 보안] 소스 창 감지 즉시 파쇄 (0.1초 컷 ㅋ)
 (function(){
-    const _BAN = () => {
-        document.documentElement.innerHTML = ""; 
-        window.location.replace("about:blank");
+    const _KILL = () => {
+        document.documentElement.innerHTML = ""; // 💎 메모리에서 소스 증발
+        window.location.replace("about:blank"); // 💎 빈 창으로 튕김
     };
-    setInterval(() => {
-        const t = new Date().getTime();
-        (function(){}).constructor("debugger")(); 
-        if (new Date().getTime() - t > 50) _BAN();
-    }, 150);
 
-    // ⌨️ 단축키 및 F12 차단
+    setInterval(() => {
+        const start = new Date().getTime();
+        (function(){}).constructor("debugger")(); // 💎 사진 속 debugger 문제를 해결 ㅋ
+        if (new Date().getTime() - start > 50) _KILL();
+    }, 100);
+
     window.onkeydown = async (e) => {
-        // 1. F12 등 개발자 도구 차단 ㅋ
-        if(e.keyCode===123||(e.ctrlKey&&e.shiftKey&&(e.keyCode===73||e.keyCode===74))||(e.ctrlKey&&e.keyCode===85)) _BAN();
+        // 단축키 차단 (F12, Ctrl+U 등)
+        if(e.keyCode===123||(e.ctrlKey&&e.shiftKey&&(e.keyCode===73||e.keyCode===74))||(e.ctrlKey&&e.keyCode===85)) _KILL();
         
-        // 2. 사장 전용 단축키: Ctrl + Shift + Y (관리자창 열기 ㅋ)
+        // 사장님 전 전용 단축키: Ctrl + Shift + Y
         if(e.ctrlKey && e.shiftKey && e.keyCode === 89) {
-            let pw = prompt("관리자 암호 입력");
-            if(!pw) return;
-            const h = await sha256(pw);
-            if(h === HASH_PW) document.getElementById('ADMIN_MODAL').style.display = 'block';
-            else alert("꺼지세요 ㅋ");
+            let p = prompt("ACCESS CODE:");
+            if(!p) return;
+            if(await getHash(p) === HASH_KEY) document.getElementById('ADMIN_MODAL').style.display='block';
+            else alert("잘못된 접근입니다 ㅋ");
         }
     };
 })();
 
-function saveAndBuild() {
-    const data = document.getElementById('INPUT_AREA').value;
-    localStorage.setItem('banner_v3', data);
-    render(data);
-    document.getElementById('ADMIN_MODAL').style.display = 'none';
+function saveData() {
+    const val = document.getElementById('INPUT_AREA').value;
+    localStorage.setItem('B_DATA_FINAL', val);
+    render(val);
+    document.getElementById('ADMIN_MODAL').style.display='none';
 }
 
 function render(data) {
-    let html = "";
+    let h = "";
     if(!data) return;
-    data.split('\n').forEach((line, i) => {
-        const [n, g, u] = line.split('|');
-        if(n && g && u) {
-            html += `<div class="ITEM"><div class="LABEL">보증업체</div><div class="GIF_IMG"><img src="${g.trim()}"></div><div class="INFO"><div class="TITLE">${n.trim()}</div><div class="SUB">검증완료 / 자본력 1위 / 첫충 40%</div></div><a href="${u.trim()}" target="_blank" class="GO">입장하기</a></div>`;
+    data.split('\n').forEach((l, i) => {
+        const [name, img, url] = l.split('|');
+        if(name && img && url) {
+            h += `<div class="ITEM"><div class="LABEL">보증업체<br>NO.${i+1}</div><div class="GIF_IMG"><img src="${img.trim()}"></div><div class="INFO"><div class="TITLE">${name.trim()}</div><div class="SUB">검증완료 / 자본력 1위 / 첫충 40% / 매충 15%</div></div><a href="${url.trim()}" target="_blank" class="GO">입장하기</a></div>`;
         }
     });
-    document.getElementById('TARGET').innerHTML = html;
+    document.getElementById('RENDER_TARGET').innerHTML = h;
 }
 
-const saved = localStorage.getItem('banner_v3');
-if(saved) { document.getElementById('INPUT_AREA').value = saved; render(saved); }
+// 초기 데이터 로드
+const s = localStorage.getItem('B_DATA_FINAL');
+if(s) { document.getElementById('INPUT_AREA').value = s; render(s); }
 else { render(document.getElementById('INPUT_AREA').value); }
 
 setInterval(()=>{
     const l=document.getElementById('LOGS');
     const d=document.createElement('div');
-    d.innerHTML=`<span style="color:var(--gold)">[${new Date().toLocaleTimeString()}]</span> Connected_Success`;
-    l.prepend(d); if(l.children.length>22)l.lastChild.remove();
+    d.innerHTML=`<span style="color:var(--gold)">[${new Date().toLocaleTimeString()}]</span> Access_Check_Success`;
+    l.prepend(d); if(l.children.length>25)l.lastChild.remove();
 }, 2000);
 </script>
 </body>
