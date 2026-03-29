@@ -9,75 +9,78 @@
         * { margin:0; padding:0; box-sizing:border-box; font-family:'Noto Sans KR', sans-serif; -webkit-user-select:none; user-select:none; }
         body { background:var(--b); color:#fff; min-height:100vh; overflow-x:hidden; }
 
-        header { width:100%; background:rgba(2,4,8,0.98); border-bottom:1px solid var(--n); padding:15px 40px; display:flex; justify-content:space-between; align-items:center; position:sticky; top:0; z-index:1000; }
-        .LOGO { font-family:'Black Han Sans', sans-serif; font-size:28px; color:#fff; cursor:pointer; }
+        /* [1] 헤더 */
+        header { width:100%; background:rgba(2,4,8,0.98); border-bottom:1px solid var(--n); padding:15px 40px; display:flex; justify-content:space-between; align-items:center; position:sticky; top:0; z-index:1000; box-shadow: 0 5px 15px rgba(0,0,0,0.5); }
+        .LOGO { font-family:'Black Han Sans', sans-serif; font-size:28px; color:#fff; cursor:pointer; letter-spacing:1px; }
         .LOGO span { color:var(--n); }
         
+        /* [2] 메인 레이아웃 (5열 2줄) */
         .M_C { max-width: 1650px; margin: 40px auto; padding: 0 20px; display: grid; grid-template-columns: 1fr 320px; gap: 30px; }
         .G_B { display:grid; grid-template-columns:repeat(5, 1fr); gap:20px; }
         
-        /* 💎 배너 카드 설정 💎 */
         .CARD { background:var(--p); border:2px solid #1a2233; border-radius:12px; overflow:hidden; transition:0.3s; position:relative; }
         .CARD:hover { border-color:var(--n); transform:translateY(-8px); box-shadow:0 15px 30px rgba(0,255,204,0.2); }
         
-        /* 배너 이름 (사장님이 설정하는 곳) */
-        .B_NAME { background: rgba(0,255,204,0.1); color: var(--n); padding: 10px; text-align: center; font-weight: 900; font-size: 16px; border-bottom: 1px solid #1a2233; }
+        /* 💎 배너 이름 설정 💎 */
+        .B_NAME { background: rgba(0,255,204,0.1); color: var(--n); padding: 12px; text-align: center; font-weight: 900; font-size: 17px; border-bottom: 1px solid #1a2233; text-shadow: 0 0 10px rgba(0,255,204,0.5); }
         
         .IMG { width:100%; height:200px; background:#111; display:flex; align-items:center; justify-content:center; overflow:hidden; }
-        .IMG img { width:100%; height:100%; object-fit:cover; }
+        .IMG img { width:100%; height:100%; object-fit:cover; transition:0.4s; }
+        .CARD:hover .IMG img { transform: scale(1.1); }
         
-        .ENTER_BTN { display:block; width:90%; margin:15px auto; padding:12px; border:2px solid var(--n); color:var(--n); text-align:center; text-decoration:none; font-size:14px; font-weight:900; border-radius:6px; transition:0.3s; }
-        .ENTER_BTN:hover { background:var(--n); color:#000; }
+        /* 💎 토토 스타일 바로가기 버튼 💎 */
+        .ENTER_BTN { display:block; width:90%; margin:15px auto; padding:12px; background:transparent; border:2px solid var(--n); color:var(--n); text-align:center; text-decoration:none; font-size:15px; font-weight:900; border-radius:6px; transition:0.3s; box-shadow: inset 0 0 0 0 var(--n); }
+        .ENTER_BTN:hover { background:var(--n); color:#000; box-shadow: inset 0 0 20px rgba(0,0,0,0.2), 0 0 15px var(--n); }
 
+        /* [3] 상담 버튼 */
         .CS_FLOAT { position:fixed; bottom:40px; right:40px; z-index:9999; display:flex; flex-direction:column; gap:15px; }
-        .CS_BTN { width:75px; height:75px; border-radius:50%; display:flex; align-items:center; justify-content:center; text-decoration:none; font-size:12px; font-weight:900; box-shadow:0 10px 25px rgba(0,0,0,0.6); animation: pulse 2s infinite; }
+        .CS_BTN { width:75px; height:75px; border-radius:50%; display:flex; align-items:center; justify-content:center; text-decoration:none; font-size:12px; font-weight:900; box-shadow:0 10px 25px rgba(0,0,0,0.6); transition:0.3s; animation: pulse 2s infinite; }
         .TELE { background:#0088cc; color:#fff; }
         .KAKA { background:#FEE500; color:#000; }
         @keyframes pulse { 0% { box-shadow:0 0 0 0 rgba(0,255,204,0.4); } 70% { box-shadow:0 0 0 15px rgba(0,255,204,0); } 100% { box-shadow:0 0 0 0 rgba(0,255,204,0); } }
 
-        .SIDEBAR { background:#0a0f19; border:1px solid #1a2233; border-radius:12px; padding:25px; height:620px; }
-        .LOG_TITLE { color:var(--n); font-weight:900; font-size:16px; margin-bottom:20px; border-bottom:1px solid #222; padding-bottom:15px; }
-        .LOG_LIST { height:520px; overflow:hidden; font-size:13px; color:#555; line-height:2.6; }
+        /* [4] 사이드바 */
+        .SIDEBAR { background:#0a0f19; border:1px solid #1a2233; border-radius:12px; padding:25px; height:660px; }
+        .LOG_TITLE { color:var(--n); font-weight:900; font-size:16px; margin-bottom:20px; border-bottom:1px solid #222; padding-bottom:15px; display:flex; justify-content:space-between; }
+        .LOG_LIST { height:550px; overflow:hidden; font-size:13px; color:#555; line-height:2.6; }
     </style>
 </head>
 <body oncontextmenu="return false">
 
     <div id="MAIN_APP">
         <header>
-            <div class="LOGO">RLNL<span>PLATFORM</span></div>
+            <div class="LOGO" onclick="location.reload()">RLNL<span>PLATFORM</span></div>
         </header>
         <div class="M_C">
             <section class="G_B" id="BANNER_GRID"></section>
             <aside class="SIDEBAR">
-                <div class="LOG_TITLE">LIVE MONITORING</div>
+                <div class="LOG_TITLE">LIVE MONITORING <span style="font-size:10px; color:#444;">SECURE ON</span></div>
                 <div id="LOGS" class="LOG_LIST"></div>
             </aside>
         </div>
         <div class="CS_FLOAT">
-            <a href="텔레주소" target="_blank" class="CS_BTN TELE">TELE</a>
-            <a href="카톡주소" target="_blank" class="CS_BTN KAKA">KAKA</a>
+            <a href="텔레주소" target="_blank" class="CS_BTN TELE">TELEGRAM</a>
+            <a href="카톡주소" target="_blank" class="CS_BTN KAKA">KAKAO</a>
         </div>
     </div>
 
 <script>
 /**
- * ★ 사장님 수정 포인트 ★
- * name: 배너 위에 뜰 이름 ㅋ
- * img: 사장님 이미지 주소 ㅋ
- * url: 클릭 시 이동할 사이트 ㅋ
+ * ★ 사장님 수정 포인트 (최종) ★
+ * name: 사이트 이름 / url: 접속 주소 / img: 배너 이미지 (이미 사장님 걸로 고정 ㅋ)
  */
 const IMG_SRC = '49dc19377b18f04e82bbb033c5589799.png';
 const DATA = [
-    { name: '배너이름01', img: IMG_SRC, url: '#' },
-    { name: '배너이름02', img: IMG_SRC, url: '#' },
-    { name: '배너이름03', img: IMG_SRC, url: '#' },
-    { name: '배너이름04', img: IMG_SRC, url: '#' },
-    { name: '배너이름05', img: IMG_SRC, url: '#' },
-    { name: '배너이름06', img: IMG_SRC, url: '#' },
-    { name: '배너이름07', img: IMG_SRC, url: '#' },
-    { name: '배너이름08', img: IMG_SRC, url: '#' },
-    { name: '배너이름09', img: IMG_SRC, url: '#' },
-    { name: '배너이름10', img: IMG_SRC, url: '#' }
+    { name: '사이트이름01', img: IMG_SRC, url: 'https://주소1.com' },
+    { name: '사이트이름02', img: IMG_SRC, url: 'https://주소2.com' },
+    { name: '사이트이름03', img: IMG_SRC, url: 'https://주소3.com' },
+    { name: '사이트이름04', img: IMG_SRC, url: 'https://주소4.com' },
+    { name: '사이트이름05', img: IMG_SRC, url: 'https://주소5.com' },
+    { name: '사이트이름06', img: IMG_SRC, url: 'https://주소6.com' },
+    { name: '사이트이름07', img: IMG_SRC, url: 'https://주소7.com' },
+    { name: '사이트이름08', img: IMG_SRC, url: 'https://주소8.com' },
+    { name: '사이트이름09', img: IMG_SRC, url: 'https://주소9.com' },
+    { name: '사이트이름10', img: IMG_SRC, url: 'https://주소10.com' }
 ];
 
 (function() {
@@ -86,24 +89,24 @@ const DATA = [
         <div class="CARD">
             <div class="B_NAME">${v.name}</div>
             <div class="IMG"><img src="${v.img}"></div>
-            <a href="${v.url}" target="_blank" class="ENTER_BTN">ENTER SITE</a>
+            <a href="${v.url}" target="_blank" class="ENTER_BTN">바로가기 ▶</a>
         </div>
     `).join('');
 
-    // 2. 🛡️ 소스 창 화이트아웃 + 무한 디버거
+    // 2. 🛡️ [사장님 캡처 사진 해결] Sources 탭 화이트아웃 보안 로직
     const killSource = () => {
         (function() {
             (function a() {
                 try {
                     (function b(i) {
-                        // 💎 소스 창 내부를 하얗게 밀어버리는 코드 ㅋ
+                        // 소스 탭 내부를 하얗게 밀어버리는 공백 로그 투척 ㅋ
                         console.clear();
                         console.log("%c ", "font-size:5000px; background:white;"); 
                         
                         if (i % 20 === 0) {
                             (function(){}).constructor('debugger')();
                         } else {
-                            debugger; // 💎 사진처럼 멈추게 함 ㅋ
+                            debugger; // 사장님 사진처럼 멈추게 함 ㅋ
                         }
                         b(++i);
                     })(0);
@@ -112,20 +115,31 @@ const DATA = [
         })();
     };
 
+    // 소스 감시 (일반 유저 접속 시엔 절대 안 멈춤 ㅋ)
     setInterval(() => {
         const start = new Date();
         debugger; 
-        if (new Date() - start > 100) killSource();
+        if (new Date() - start > 150) {
+            // 소스 창 열리면 메인 화면도 날리고 보안 경고 ㅋ
+            document.getElementById('MAIN_APP').innerHTML = '<div style="background:white; color:black; height:100vh; display:flex; align-items:center; justify-content:center; font-size:50px; font-weight:900;">SECURITY DETECTED</div>';
+            killSource();
+        }
     }, 500);
 
-    // 로그 연출
+    // 3. 실시간 로그 연출
     setInterval(() => {
         const l = document.getElementById('LOGS');
         const d = document.createElement('div');
-        d.innerHTML = `<span style="color:var(--n)">[${new Date().toLocaleTimeString()}]</span> Access_OK`;
+        const id = Math.random().toString(36).substr(2, 5).toUpperCase();
+        d.innerHTML = `<span style="color:var(--n)">[${new Date().toLocaleTimeString()}]</span> User_${id} Access Granted`;
         l.prepend(d); if(l.children.length > 20) l.lastChild.remove();
-    }, 2500);
+    }, 2000);
 })();
+
+// F12 등 단축키 1차 방어 ㅋ
+window.onkeydown = function(e) {
+    if(e.keyCode === 123 || (e.ctrlKey && e.shiftKey && e.keyCode === 73)) return false;
+};
 </script>
 </body>
 </html>
