@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>프리미엄 배너 광고 | TOP 파트너</title>
+    <title>PREMIUM PARTNER | 프리미엄 배너 광고 플랫폼</title>
     <style>
         * {
             margin: 0;
@@ -13,519 +13,407 @@
 
         body {
             background: linear-gradient(135deg, #0a0c1a 0%, #0c0f1f 100%);
-            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Pretendard', 'Inter', system-ui, sans-serif;
             color: #ffffff;
-            line-height: 1.4;
+            line-height: 1.6;
         }
 
         .container {
             max-width: 1280px;
             margin: 0 auto;
-            padding: 0 28px;
+            padding: 0 20px;
         }
 
-        /* 헤더 - 황금 포인트 */
+        /* 헤더 */
         .header {
             border-bottom: 2px solid rgba(255, 200, 50, 0.3);
-            padding: 14px 0;
-            backdrop-filter: blur(12px);
+            padding: 16px 0;
+            backdrop-filter: blur(15px);
             background: rgba(8, 10, 20, 0.9);
             position: sticky;
             top: 0;
-            z-index: 100;
+            z-index: 1000;
         }
 
         .header-inner {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
-            gap: 20px;
         }
 
         .logo {
-            font-weight: 800;
-            font-size: 1.5rem;
+            font-weight: 900;
+            font-size: 1.6rem;
             background: linear-gradient(135deg, #FFD966, #FFA500, #FF8C00);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            text-shadow: 0 0 15px rgba(255, 165, 0, 0.3);
+            text-shadow: 0 0 20px rgba(255, 165, 0, 0.4);
+            letter-spacing: -1px;
         }
 
         .nav {
             display: flex;
-            gap: 32px;
-            align-items: center;
+            gap: 24px;
         }
 
         .nav a {
             color: #e0e0e0;
             text-decoration: none;
             font-weight: 600;
-            font-size: 0.9rem;
-            transition: 0.2s;
-            cursor: pointer;
+            font-size: 0.95rem;
+            transition: 0.3s;
         }
 
         .nav a:hover {
             color: #FFA500;
         }
 
-        /* 실시간 시계 */
-        .clock-container {
-            text-align: center;
-            padding: 20px 0 12px;
+        /* 시계 & 긴급공지 */
+        .top-bar {
+            background: rgba(255, 165, 0, 0.1);
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 165, 0, 0.2);
+        }
+
+        .top-bar-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
         }
 
         .live-clock {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: rgba(0,0,0,0.5);
-            backdrop-filter: blur(8px);
-            padding: 8px 28px;
-            border-radius: 60px;
-            border: 1px solid rgba(255, 165, 0, 0.5);
-            box-shadow: 0 0 10px rgba(255, 165, 0, 0.2);
-        }
-
-        .clock-time {
-            font-family: monospace;
-            font-size: 1.3rem;
-            font-weight: 700;
-            letter-spacing: 2px;
             color: #FFD966;
+            font-family: 'monospace';
+            font-weight: bold;
         }
 
-        /* 히어로 - 토토 스타일 */
+        /* 메인 레이아웃: 배너 + 실시간 목록 */
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 320px;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        /* 실시간 목록 (Sidebar 스타일) */
+        .live-section {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 165, 0, 0.2);
+            border-radius: 20px;
+            padding: 20px;
+            height: fit-content;
+        }
+
+        .live-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #FFD966;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .live-list {
+            list-style: none;
+        }
+
+        .live-item {
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .live-item:last-child { border-bottom: none; }
+
+        .live-tag {
+            font-size: 0.7rem;
+            background: rgba(255, 165, 0, 0.2);
+            color: #FFA500;
+            padding: 2px 8px;
+            border-radius: 4px;
+            width: fit-content;
+        }
+
+        .live-text {
+            font-size: 0.9rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            color: #ddd;
+        }
+
+        .live-time {
+            font-size: 0.75rem;
+            color: #666;
+        }
+
+        /* 히어로 섹션 */
         .hero {
             text-align: center;
-            padding: 35px 0 25px;
+            padding: 60px 0;
+            grid-column: 1 / -1;
         }
 
         .hero-badge {
             display: inline-block;
             background: linear-gradient(135deg, #FFA500, #FF4500);
-            padding: 6px 20px;
-            border-radius: 40px;
-            font-size: 0.8rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-            color: #fff;
-            box-shadow: 0 0 15px rgba(255, 69, 0, 0.5);
+            padding: 8px 24px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 800;
+            margin-bottom: 24px;
+            box-shadow: 0 0 20px rgba(255, 69, 0, 0.4);
         }
 
         .animated-title {
-            font-size: 2.2rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #FFD966, #FFA500, #FF8C00);
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 15px;
+            background: linear-gradient(to right, #fff, #FFD966, #FFA500);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            letter-spacing: -0.5px;
-            animation: fadeInUp 0.8s ease-out;
-            text-shadow: 0 0 20px rgba(255, 165, 0, 0.3);
         }
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .hero .sub {
-            font-size: 0.95rem;
-            color: #cccccc;
-            margin-top: 12px;
-            opacity: 0.9;
-        }
-
-        /* 통계 - 강조 */
-        .stats {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            margin-top: 30px;
-            flex-wrap: wrap;
-        }
-
-        .stat-item {
-            text-align: center;
-            background: rgba(0,0,0,0.5);
-            padding: 12px 28px;
-            border-radius: 60px;
-            border: 1px solid rgba(255, 165, 0, 0.3);
-            min-width: 130px;
-        }
-
-        .stat-number {
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: #FFA500;
-        }
-
-        .stat-label {
-            font-size: 0.7rem;
-            color: #aaa;
-            letter-spacing: 0.5px;
-        }
-
-        /* 배너 섹션 */
+        /* 배너 카드 스타일 */
         .section-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            text-align: center;
-            margin: 40px 0 24px;
+            font-size: 1.6rem;
+            margin-bottom: 25px;
             color: #FFD966;
-            letter-spacing: -0.3px;
-            position: relative;
-        }
-
-        .section-title:before,
-        .section-title:after {
-            content: "◆";
-            font-size: 0.8rem;
-            color: #FFA500;
-            margin: 0 12px;
-            opacity: 0.6;
+            border-left: 5px solid #FFA500;
+            padding-left: 15px;
         }
 
         .banner-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 28px;
-            margin-bottom: 60px;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
         }
 
         .banner-card {
-            background: linear-gradient(145deg, #11162a, #0c1022);
-            border-radius: 20px;
+            background: #161b33;
+            border: 1px solid rgba(255, 165, 0, 0.2);
+            border-radius: 15px;
             overflow: hidden;
-            border: 1px solid rgba(255, 165, 0, 0.3);
-            transition: all 0.3s ease;
-            cursor: pointer;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
         .banner-card:hover {
-            transform: translateY(-6px);
+            transform: translateY(-10px);
             border-color: #FFA500;
-            box-shadow: 0 15px 30px rgba(255, 165, 0, 0.2);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
         }
 
-        .banner-image {
+        .banner-img {
             width: 100%;
-            height: 160px;
-            background: linear-gradient(135deg, #1a1f35, #0f1424);
+            height: 180px;
+            background: #0f1224;
             display: flex;
             align-items: center;
             justify-content: center;
-            overflow: hidden;
+            font-size: 3rem;
         }
 
-        .banner-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+        .banner-content { padding: 20px; }
 
-        .banner-image .placeholder {
-            font-size: 2.5rem;
-            color: #FFA500;
-        }
-
-        .banner-info {
-            padding: 20px;
-        }
-
-        .banner-name {
-            font-size: 1.25rem;
-            font-weight: 700;
-            margin-bottom: 8px;
+        .banner-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
-            gap: 8px;
-            color: #FFD966;
+            margin-bottom: 10px;
         }
 
-        .verify-badge {
-            background: linear-gradient(135deg, #FFA500, #FF4500);
-            color: #fff;
-            padding: 4px 12px;
-            border-radius: 30px;
-            font-size: 0.65rem;
-            font-weight: 700;
-            box-shadow: 0 0 8px rgba(255, 69, 0, 0.5);
-        }
+        .banner-title { font-weight: 800; font-size: 1.2rem; color: #FFD966; }
 
-        .banner-desc {
-            color: #aaa;
-            font-size: 0.85rem;
-            margin: 12px 0;
-            line-height: 1.4;
-        }
-
-        .btn-banner {
-            background: linear-gradient(135deg, #FFA500, #FF4500);
-            border: none;
+        .btn-go {
+            display: block;
             width: 100%;
             padding: 12px;
-            border-radius: 40px;
-            font-weight: 700;
-            font-size: 0.9rem;
-            margin-top: 12px;
-            cursor: pointer;
+            background: linear-gradient(90deg, #FFA500, #FF4500);
             color: white;
-            transition: all 0.2s;
-            box-shadow: 0 4px 12px rgba(255, 69, 0, 0.3);
-        }
-
-        .btn-banner:hover {
-            background: linear-gradient(135deg, #FF8C00, #FF2A00);
-            transform: scale(0.98);
-        }
-
-        /* 입점 안내 박스 - 황금 테두리 */
-        .info-box {
-            background: linear-gradient(145deg, #11162a, #0c1022);
-            border-radius: 32px;
-            padding: 40px 32px;
-            margin: 40px 0 50px;
             text-align: center;
-            border: 2px solid rgba(255, 165, 0, 0.5);
-            box-shadow: 0 0 20px rgba(255, 165, 0, 0.1);
-        }
-
-        .info-box h3 {
-            font-size: 1.4rem;
-            margin-bottom: 16px;
-            color: #FFD966;
-        }
-
-        .info-box p {
-            color: #aaa;
-            margin-bottom: 24px;
-        }
-
-        .btn-apply {
-            background: linear-gradient(135deg, #FFA500, #FF4500);
-            border: none;
-            padding: 14px 42px;
-            border-radius: 60px;
+            text-decoration: none;
+            border-radius: 8px;
             font-weight: 700;
-            font-size: 1rem;
-            cursor: pointer;
-            color: white;
-            transition: 0.2s;
-            box-shadow: 0 4px 15px rgba(255, 69, 0, 0.4);
+            margin-top: 15px;
         }
 
-        .btn-apply:hover {
-            transform: scale(0.98);
-            background: linear-gradient(135deg, #FF8C00, #FF2A00);
-        }
-
-        .footer {
-            border-top: 1px solid rgba(255, 165, 0, 0.2);
-            padding: 32px 0;
+        /* 하단 CTA */
+        .cta-box {
+            grid-column: 1 / -1;
+            margin: 60px 0;
+            padding: 50px;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1557683316-973673baf926?auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            border-radius: 30px;
             text-align: center;
-            color: #777;
-            font-size: 0.7rem;
+            border: 1px solid #FFA500;
         }
 
-        @media (max-width: 720px) {
-            .animated-title {
-                font-size: 1.5rem;
-            }
-            .hero .sub {
-                font-size: 0.8rem;
-            }
-            .nav {
-                gap: 16px;
-            }
-            .stats {
-                gap: 16px;
-            }
-            .stat-item {
-                padding: 8px 18px;
-                min-width: 100px;
-            }
-            .stat-number {
-                font-size: 1.3rem;
-            }
-            .banner-grid {
-                grid-template-columns: 1fr;
-            }
+        @media (max-width: 992px) {
+            .main-content { grid-template-columns: 1fr; }
+            .animated-title { font-size: 2rem; }
         }
     </style>
 </head>
 <body>
 
+<div class="top-bar">
+    <div class="container top-bar-inner">
+        <div><span style="color:#FFA500">NOTICE</span> 신규 프리미엄 파트너 입점 신청 접수 중</div>
+        <div class="live-clock" id="kstTime">--:--:-- KST</div>
+    </div>
+</div>
+
 <header class="header">
     <div class="container header-inner">
-        <div class="logo">⭐ TOP BANNER</div>
-        <div class="nav">
-            <a id="allBannerNavBtn">🏆 전체 배너 (3/9)</a>
-            <a id="applyNavBtn">📢 입점신청</a>
-            <a href="#">광고문의</a>
-        </div>
+        <div class="logo">GOLDEN PARTNER</div>
+        <nav class="nav">
+            <a href="#" id="allBannerNavBtn">파트너 목록</a>
+            <a href="#" class="applyBtn">입점신청</a>
+            <a href="#" style="color: #FFA500;">고객센터</a>
+        </nav>
     </div>
 </header>
 
-<main>
-    <div class="container">
-        <div class="clock-container">
-            <div class="live-clock">
-                <span>🕒</span>
-                <span class="clock-time" id="kstTime">--:--:--</span>
-                <span>KST</span>
-                <span style="color:#FFA500;">●</span>
+<main class="container">
+    <section class="hero">
+        <div class="hero-badge">BEST AD PLATFORM</div>
+        <h1 class="animated-title">압도적 노출, 확실한 파트너십</h1>
+        <p style="color: #aaa;">검증된 업체와의 제휴를 통해 안전하고 효율적인 비즈니스 환경을 제공합니다.</p>
+    </section>
+
+    <div class="main-content">
+        <div class="banner-section">
+            <h2 class="section-title">Verified Partners</h2>
+            <div class="banner-grid" id="bannerGrid">
+                </div>
+        </div>
+
+        <aside class="live-section">
+            <div class="live-title">
+                <span>🔥</span> 실시간 활동 내역
             </div>
-        </div>
+            <ul class="live-list" id="liveList">
+                <li class="live-item">
+                    <span class="live-tag">입점완료</span>
+                    <span class="live-text">A사 신규 프리미엄 배너 등록</span>
+                    <span class="live-time">방금 전</span>
+                </li>
+                <li class="live-item">
+                    <span class="live-tag">검증완료</span>
+                    <span class="live-text">B사 보안 및 안전성 검토 승인</span>
+                    <span class="live-time">5분 전</span>
+                </li>
+                <li class="live-item">
+                    <span class="live-tag" style="background:rgba(0,200,255,0.2); color:#00c8ff;">공지</span>
+                    <span class="live-text">3월 광고 슬롯 잔여 안내</span>
+                    <span class="live-time">12분 전</span>
+                </li>
+                <li class="live-item">
+                    <span class="live-tag">입점완료</span>
+                    <span class="live-text">C그룹 브랜드 공식 파트너 체결</span>
+                    <span class="live-time">28분 전</span>
+                </li>
+                <li class="live-item">
+                    <span class="live-tag">업데이트</span>
+                    <span class="live-text">모바일 환경 최적화 패치 완료</span>
+                    <span class="live-time">1시간 전</span>
+                </li>
+            </ul>
+        </aside>
 
-        <div class="hero">
-            <div class="hero-badge">⭐ PRIME PARTNER ⭐</div>
-            <div class="animated-title">프리미엄 배너 광고 플랫폼</div>
-            <div class="sub">검증된 업체 · 최고의 수익률 · 24시간 안전 운영</div>
-            <div class="stats">
-                <div class="stat-item"><div class="stat-number">50+</div><div class="stat-label">입점 업체</div></div>
-                <div class="stat-item"><div class="stat-number">99%</div><div class="stat-label">만족도</div></div>
-                <div class="stat-item"><div class="stat-number">24/7</div><div class="stat-label">실시간 모니터링</div></div>
-            </div>
-        </div>
-
-        <h2 class="section-title">🔥 검증된 TOP 파트너 🔥</h2>
-        <div class="banner-grid" id="bannerGrid"></div>
-
-        <div class="info-box">
-            <h3>📢 배너 광고 입점 안내</h3>
-            <p>✅ 검증된 업체만 입점 가능 | 🚀 월 10만 이상 노출 | 🎬 GIF/이미지 배너 지원 | 💰 최고 수익 보장</p>
-            <button class="btn-apply" id="applyBtn">📝 지금 바로 입점 신청하기</button>
-        </div>
+        <section class="cta-box">
+            <h2 style="font-size: 2rem; color: #FFD966; margin-bottom: 15px;">성공을 위한 최고의 선택</h2>
+            <p style="margin-bottom: 30px; opacity: 0.8;">상위 1% 노출량과 정밀한 타겟팅으로 귀사의 가치를 높이세요.</p>
+            <button class="btn-go applyBtn" style="display: inline-block; width: auto; padding: 15px 50px; cursor: pointer; border: none;">지금 문의하기</button>
+        </section>
     </div>
 </main>
 
-<footer class="footer">
-    <div class="container">
-        <p>© TOP BANNER — 프리미엄 배너 광고 플랫폼 | 책임감 있는 광고 운영</p>
-    </div>
+<footer style="padding: 50px 0; text-align: center; border-top: 1px solid rgba(255,255,255,0.1); margin-top: 50px;">
+    <p style="color: #555; font-size: 0.8rem;">&copy; 2026 PREMIUM PARTNER. All rights reserved. | Responsible Advertising</p>
 </footer>
 
 <script>
-    // 실시간 시계
+    // 1. 실시간 시계
     function updateClock() {
         const now = new Date();
-        const kstNow = new Date(now.getTime() + (9 * 60 * 60 * 1000));
-        document.getElementById('kstTime').textContent = 
-            `${String(kstNow.getUTCHours()).padStart(2,'0')}:${String(kstNow.getUTCMinutes()).padStart(2,'0')}:${String(kstNow.getUTCSeconds()).padStart(2,'0')}`;
+        const options = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };
+        document.getElementById('kstTime').textContent = now.toLocaleTimeString('ko-KR', options) + " KST";
     }
-    updateClock();
     setInterval(updateClock, 1000);
+    updateClock();
 
-    // ============================================================
-    // 👇 관리자 배너 설정 (imgUrl에 GIF/이미지 URL 입력)
-    // ============================================================
-    const coreBanners = [
-        { imgUrl: "", name: "TOP 배너 준비중", desc: "GIF/이미지 배너 등록 가능 | 최고 수익률 보장", link: "#" },
-        { imgUrl: "", name: "TOP 배너 준비중", desc: "GIF/이미지 배너 등록 가능 | 최고 수익률 보장", link: "#" },
-        { imgUrl: "", name: "TOP 배너 준비중", desc: "GIF/이미지 배너 등록 가능 | 최고 수익률 보장", link: "#" }
+    // 2. 배너 데이터 렌더링
+    const banners = [
+        { name: "메이저 파트너 A", desc: "업계 최대 규모, 압도적 신뢰도", icon: "💎", link: "#" },
+        { name: "프리미엄 뱅크", desc: "안전한 자금 관리와 빠른 지원", icon: "💰", link: "#" },
+        { name: "글로벌 네트워크", desc: "전 세계를 잇는 광고 솔루션", icon: "🌐", link: "#" },
+        { name: "브이아이피 라운지", desc: "상위 1%를 위한 특별한 혜택", icon: "👑", link: "#" },
+        { name: "넥스트 솔루션", desc: "기술로 앞서가는 비즈니스 파트너", icon: "🚀", link: "#" },
+        { name: "탑 클래스 광고", desc: "검증된 수익성과 확실한 노출", icon: "⭐", link: "#" }
     ];
-
-    const additionalBanners = [
-        { imgUrl: "", name: "TOP 배너 준비중", desc: "GIF/이미지 배너 등록 가능 | 최고 수익률 보장", link: "#" },
-        { imgUrl: "", name: "TOP 배너 준비중", desc: "GIF/이미지 배너 등록 가능 | 최고 수익률 보장", link: "#" },
-        { imgUrl: "", name: "TOP 배너 준비중", desc: "GIF/이미지 배너 등록 가능 | 최고 수익률 보장", link: "#" },
-        { imgUrl: "", name: "TOP 배너 준비중", desc: "GIF/이미지 배너 등록 가능 | 최고 수익률 보장", link: "#" },
-        { imgUrl: "", name: "TOP 배너 준비중", desc: "GIF/이미지 배너 등록 가능 | 최고 수익률 보장", link: "#" },
-        { imgUrl: "", name: "TOP 배너 준비중", desc: "GIF/이미지 배너 등록 가능 | 최고 수익률 보장", link: "#" }
-    ];
-
-    let isExpanded = false;
-    let currentBanners = [...coreBanners];
 
     function renderBanners() {
         const grid = document.getElementById('bannerGrid');
-        grid.innerHTML = '';
-        currentBanners.forEach((banner, idx) => {
-            const card = document.createElement('div');
-            card.className = 'banner-card';
-            card.setAttribute('data-url', banner.link);
-            
-            const icons = ['⭐', '🔥', '💎', '🏆', '👑', '💰'];
-            const imageHtml = banner.imgUrl && banner.imgUrl.trim() !== ""
-                ? `<img src="${banner.imgUrl}" alt="${banner.name} 배너" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'placeholder\'>${icons[idx % 6]}</div>';">`
-                : `<div class="placeholder">${icons[idx % 6]}</div>`;
-            
-            card.innerHTML = `
-                <div class="banner-image">${imageHtml}</div>
-                <div class="banner-info">
-                    <div class="banner-name">
-                        ${banner.name}
-                        <span class="verify-badge">VIP 검증</span>
+        grid.innerHTML = banners.map(b => `
+            <div class="banner-card">
+                <div class="banner-img">${b.icon}</div>
+                <div class="banner-content">
+                    <div class="banner-header">
+                        <span class="banner-title">${b.name}</span>
+                        <span style="font-size:0.7rem; color:#FFA500; border:1px solid #FFA500; padding:1px 5px; border-radius:3px;">VERIFIED</span>
                     </div>
-                    <div class="banner-desc">${banner.desc}</div>
-                    <button class="btn-banner">바로가기 ▶</button>
+                    <p style="font-size:0.85rem; color:#aaa;">${b.desc}</p>
+                    <a href="${b.link}" class="btn-go">상세보기 ▶</a>
                 </div>
-            `;
-            
-            card.addEventListener('click', (e) => {
-                if (e.target.classList.contains('btn-banner')) return;
-                if (banner.link && banner.link !== '#') {
-                    window.open(banner.link, '_blank');
-                } else {
-                    alert('🔜 준비 중인 배너입니다. 곧 입점 예정!');
-                }
-            });
-            
-            const btn = card.querySelector('.btn-banner');
-            btn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                if (banner.link && banner.link !== '#') {
-                    window.open(banner.link, '_blank');
-                } else {
-                    alert('🔜 준비 중인 배너입니다. 곧 입점 예정!');
-                }
-            });
-            
-            grid.appendChild(card);
-        });
+            </div>
+        `).join('');
     }
-
-    // 전체보기 토글 기능
-    function toggleAllBanners() {
-        const btn = document.getElementById('allBannerNavBtn');
-        if (!isExpanded) {
-            currentBanners = [...coreBanners, ...additionalBanners];
-            isExpanded = true;
-            btn.textContent = '🏆 접기 (3개)';
-            renderBanners();
-        } else {
-            currentBanners = [...coreBanners];
-            isExpanded = false;
-            btn.textContent = '🏆 전체 배너 (9개)';
-            renderBanners();
-        }
-    }
-
-    // 입점신청 알림
-    function showApplyAlert() {
-        alert('⭐ TOP BANNER 입점 문의\n\n✅ 검증된 업체만 입점 가능\n🚀 월 10만 이상 노출\n💰 최고 수익률 보장\n\n자세한 문의는 관리자에게 연락해주세요.');
-    }
-
-    // 헤더 버튼 연결
-    document.getElementById('allBannerNavBtn').addEventListener('click', toggleAllBanners);
-    document.getElementById('applyNavBtn').addEventListener('click', showApplyAlert);
-    document.getElementById('applyBtn').addEventListener('click', showApplyAlert);
-
     renderBanners();
+
+    // 3. 실시간 목록 랜덤 업데이트 시뮬레이션
+    const activities = ["신규 입점 신청", "보안 점검 완료", "배너 이미지 교체", "파트너십 연장", "노출 최적화 완료"];
+    const tags = ["진행중", "완료", "확인", "공지"];
+
+    function updateLiveList() {
+        const list = document.getElementById('liveList');
+        const newItem = document.createElement('li');
+        newItem.className = 'live-item';
+        newItem.style.opacity = '0';
+        newItem.style.transform = 'translateX(20px)';
+        
+        const randomAct = activities[Math.floor(Math.random() * activities.length)];
+        const randomTag = tags[Math.floor(Math.random() * tags.length)];
+
+        newItem.innerHTML = `
+            <span class="live-tag">${randomTag}</span>
+            <span class="live-text">${randomAct}</span>
+            <span class="live-time">방금 전</span>
+        `;
+
+        list.prepend(newItem);
+        if (list.children.length > 6) list.lastElementChild.remove();
+
+        setTimeout(() => {
+            newItem.style.transition = '0.5s';
+            newItem.style.opacity = '1';
+            newItem.style.transform = 'translateX(0)';
+        }, 100);
+    }
+    setInterval(updateLiveList, 5000); // 5초마다 새 활동 추가
+
+    // 4. 이벤트 리스너
+    document.querySelectorAll('.applyBtn').forEach(btn => {
+        btn.addEventListener('click', () => alert('📢 입점 문의 안내\n\n텔레그램: @GOLDEN_PARTNER\n24시간 상담원이 대기 중입니다.'));
+    });
 </script>
+
 </body>
 </html>
