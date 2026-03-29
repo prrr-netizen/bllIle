@@ -3,47 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>RLNL PLATFORM | PRIVATE ACCESS</title>
+    <title>RLNL PLATFORM | OFFICIAL</title>
     <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@700;900&display=swap" rel="stylesheet">
     <style>
         :root { --n: #00ffcc; --b: #020408; --p: rgba(10,15,25,0.98); --l: rgba(0,255,204,0.4); --r: #ff0033; }
         * { margin:0; padding:0; box-sizing:border-box; -webkit-user-select:none; user-select:none; font-family:'Noto Sans KR', sans-serif; }
-        body { background:var(--b); color:#fff; min-height:100vh; overflow:hidden; }
+        body { background:var(--b); color:#fff; min-height:100vh; overflow-x:hidden; }
 
         /* [캡차 레이어] */
         #CPT_L { position:fixed; top:0; left:0; width:100%; height:100%; background:#000; z-index:1000000; display:flex; flex-direction:column; align-items:center; justify-content:center; }
         .CPT_B { background:#0a0f19; padding:40px; border:1px solid var(--n); border-radius:15px; text-align:center; box-shadow:0 0 30px rgba(0,255,204,0.2); }
         .CPT_T { font-size:20px; font-weight:900; margin-bottom:20px; color:var(--n); }
-        #CPT_Q { font-size:24px; font-weight:900; background:#1a2233; padding:10px 20px; border-radius:8px; letter-spacing:5px; margin-bottom:20px; }
-        #CPT_I { background:#000; border:1px solid var(--n); color:#fff; padding:12px; width:100%; text-align:center; font-size:18px; outline:none; }
-        .CPT_BTN { margin-top:20px; background:var(--n); color:#000; border:none; padding:12px 30px; font-weight:900; cursor:pointer; width:100%; border-radius:5px; }
+        #CPT_Q { font-size:28px; font-weight:900; background:#1a2233; padding:15px 30px; border-radius:8px; letter-spacing:8px; margin-bottom:20px; color:#fff; }
+        #CPT_I { background:#000; border:2px solid var(--n); color:#fff; padding:15px; width:100%; text-align:center; font-size:20px; outline:none; border-radius:5px; -webkit-user-select:auto; user-select:auto; }
+        .CPT_BTN { margin-top:20px; background:var(--n); color:#000; border:none; padding:15px 30px; font-weight:900; cursor:pointer; width:100%; border-radius:5px; font-size:16px; }
 
-        /* 메인 레이아웃 */
-        #RLNL_MAIN { display:none; } /* 캡차 성공 전까지 숨김 */
+        /* 메인 UI (처음엔 숨김) */
+        #RLNL_MAIN { display:none; }
         .H_W { width:100%; position:sticky; top:0; z-index:1000; background:rgba(2,4,8,0.98); backdrop-filter:blur(15px); border-bottom:2px solid var(--n); padding:15px 0; }
         .C_H { max-width:1600px; margin:0 auto; padding:0 30px; display:flex; justify-content:space-between; align-items:center; }
         .LOGO { font-family:'Black Han Sans', sans-serif; font-size:32px; color:#fff; cursor:pointer; }
         .LOGO span { color:var(--n); text-shadow:0 0 10px var(--n); }
         
-        .AUTH_BTNS { display:flex; gap:10px; }
-        .AUTH_BTNS a { text-decoration:none; padding:8px 18px; border-radius:5px; font-weight:900; font-size:13px; transition:0.3s; }
-        .LOGIN { background:transparent; border:1px solid var(--n); color:var(--n); }
+        .AUTH_BTNS a { text-decoration:none; padding:10px 22px; border-radius:6px; font-weight:900; font-size:14px; margin-left:8px; }
+        .LOGIN { border:1px solid var(--n); color:var(--n); }
         .JOIN { background:var(--n); color:#000; }
 
-        .M_C { max-width:1650px; margin:40px auto; padding:0 30px; display:grid; grid-template-columns:1fr 300px; gap:20px; }
-        .G_B { display:grid; grid-template-columns:repeat(5, 1fr); gap:12px; }
-        .CARD { background:var(--p); border:1px solid var(--l); border-radius:10px; overflow:hidden; text-align:center; padding-bottom:15px; position:relative; }
-        .IMG_P { width:100%; height:110px; background:#111; overflow:hidden; }
+        /* 5열 카드 배치 */
+        .M_C { max-width: 1650px; margin: 40px auto; padding: 0 30px; display: grid; grid-template-columns: 1fr 320px; gap: 25px; }
+        .G_B { display:grid; grid-template-columns:repeat(5, 1fr); gap:15px; }
+        .CARD { background:var(--p); border:1px solid var(--l); border-radius:12px; overflow:hidden; text-align:center; padding-bottom:20px; transition:0.3s; }
+        .CARD:hover { border-color:var(--n); transform:translateY(-5px); }
+        .IMG_P { width:100%; height:120px; background:#111; overflow:hidden; }
         .IMG_P img { width:100%; height:100%; object-fit:cover; opacity:0.6; }
-        .NAME { font-size:15px; font-weight:900; margin:12px 0; color:var(--n); }
-        .GO { display:block; width:88%; margin:0 auto; padding:9px; border:1px solid var(--n); color:var(--n); border-radius:5px; font-weight:900; text-decoration:none; font-size:12px; }
+        .NAME { font-size:16px; font-weight:900; margin:15px 0; color:var(--n); }
+        .GO { display:block; width:85%; margin:0 auto; padding:10px; border:1px solid var(--n); color:var(--n); border-radius:6px; font-weight:900; text-decoration:none; font-size:13px; }
 
-        .S_B { background:#0a0f19; border:1px solid #1a2233; border-radius:10px; padding:20px; height:480px; }
-        .L_W { height:400px; overflow:hidden; font-size:12px; color:#555; line-height:2.2; border-top:1px solid #111; padding-top:10px; }
-        
-        /* 모바일 대응 */
+        .S_B { background:#0a0f19; border:1px solid #1a2233; border-radius:12px; padding:25px; height:500px; position:sticky; top:120px; }
+        .L_W { height:420px; overflow:hidden; font-size:13px; color:#555; line-height:2.3; border-top:1px solid #111; padding-top:15px; }
+
         @media (max-width: 1400px) { .G_B { grid-template-columns: repeat(3, 1fr); } }
-        @media (max-width: 1000px) { .M_C { grid-template-columns: 1fr; } }
+        @media (max-width: 1000px) { .M_C { grid-template-columns: 1fr; } .G_B { grid-template-columns: repeat(2, 1fr); } }
     </style>
 </head>
 <body oncontextmenu="return false">
@@ -52,108 +52,109 @@
     <div class="CPT_B">
         <div class="CPT_T">🛡️ HUMAN VERIFICATION</div>
         <div id="CPT_Q"></div>
-        <input type="text" id="CPT_I" placeholder="숫자를 입력하세요" maxlength="4">
-        <button class="CPT_BTN" onclick="V_CPT()">접속하기</button>
+        <input type="text" id="CPT_I" placeholder="숫자 4자리 입력" maxlength="4" autocomplete="off">
+        <button class="CPT_BTN" onclick="VERIFY()">본 사이트 입장</button>
     </div>
 </div>
 
 <div id="RLNL_MAIN">
     <header class="H_W">
         <div class="C_H">
-            <div class="LOGO">RLNL<span>PLATFORM</span></div>
+            <div class="LOGO" onclick="location.reload()">RLNL<span>PLATFORM</span></div>
             <div class="AUTH_BTNS">
                 <a href="#" class="LOGIN">로그인</a>
                 <a href="#" class="JOIN">회원가입</a>
             </div>
         </div>
     </header>
+
     <div class="M_C">
-        <section class="G_B" id="B_R"></section>
-        <aside><div class="S_B"><div style="color:var(--n);font-weight:900;margin-bottom:15px;">LIVE LOG</div><div class="L_W" id="L_R"></div></div></aside>
+        <section class="G_B" id="B_LIST"></section>
+        <aside>
+            <div class="S_B">
+                <div style="font-weight:900; color:var(--n); font-size:14px; margin-bottom:15px;">LIVE SERVER ACTIVITY</div>
+                <div class="L_W" id="L_LIST"></div>
+            </div>
+        </aside>
     </div>
 </div>
 
 <script>
-/* [고급 난독화 데이터] */
-const _0x1a2b=['STAKE','ROOBET','1XBET','BC.GAME','TITAN','EMPIRE','ACEBET','SKYBET','KINGBET','STARBET'];
-let _CQ; 
+/* [배너 데이터] */
+const _D_=['STAKE','ROOBET','1XBET','BC.GAME','TITAN','EMPIRE','ACEBET','SKYBET','KINGBET','STARBET'];
+let _ANS; 
 
 // 캡차 생성
-function G_CPT(){
-    _CQ = Math.floor(1000 + Math.random() * 9000);
-    document.getElementById('CPT_Q').innerText = _CQ;
+function GEN_CPT(){
+    _ANS = Math.floor(1000 + Math.random() * 9000);
+    document.getElementById('CPT_Q').innerText = _ANS;
 }
-G_CPT();
+GEN_CPT();
 
-// 캡차 확인
-function V_CPT(){
-    const i = document.getElementById('CPT_I').value;
-    if(i == _CQ){
-        document.getElementById('CPT_L').style.display='none';
+// 캡차 인증 실행
+function VERIFY(){
+    const val = document.getElementById('CPT_I').value;
+    if(val == _ANS){
+        document.getElementById('CPT_L').remove();
         document.getElementById('RLNL_MAIN').style.display='block';
         document.body.style.overflow='auto';
-        R_PLT();
-    } else { alert('인증번호가 틀렸습니다.'); G_CPT(); }
+        INIT_SITE();
+    } else { alert('인증번호가 일치하지 않습니다.'); GEN_CPT(); document.getElementById('CPT_I').value=''; }
 }
 
-function R_PLT(){
-    document.getElementById('B_R').innerHTML=_0x1a2b.map(v=>`<div class="CARD"><div class="IMG_P"><img src="https://via.placeholder.com/400x250/111/00ffcc?text=${v}"></div><div class="NAME">${v}</div><a href="#" class="GO">ENTER SITE</a></div>`).join('');
+function INIT_SITE(){
+    document.getElementById('B_LIST').innerHTML=_D_.map(v=>`
+        <div class="CARD">
+            <div class="IMG_P"><img src="https://via.placeholder.com/400x250/111/00ffcc?text=${v}"></div>
+            <div class="NAME">${v}</div>
+            <a href="#" class="GO">ENTER SITE</a>
+        </div>
+    `).join('');
 }
 
 /* -----------------------------------------------------------
-   🛡️ [최종 보안 엔진] - 소스 접근 시 즉시 파기 및 흰색 팅기기
+   🛡️ [최종 보안 엔진] - 정밀 타격 및 소스 은폐
 ----------------------------------------------------------- */
 (function(){
-    const _0x_p_ = () => {
-        // 소스 접근 감지 시 페이지 전체를 비워버리고 팅김 처리
-        document.body.innerHTML = ""; 
+    // 자폭 함수 (팅기기)
+    const _PURGE = () => {
         document.documentElement.innerHTML = "";
-        window.location.replace("about:blank"); // 흰색 페이지로 팅기기
+        window.location.replace("about:blank");
     };
 
-    // 1. 모든 키보드 차단 (특히 F12, Ctrl 조합)
+    // 1. 단축키 정밀 차단 (캡차 입력은 허용하되 보안 키만 차단)
     window.addEventListener('keydown', (e) => {
-        e.preventDefault(); // 모든 키 입력 원천 차단
-        _0x_p_();
+        // F12(123), Ctrl+Shift+I(73), Ctrl+Shift+J(74), Ctrl+U(85)
+        if(e.keyCode === 123 || (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74)) || (e.ctrlKey && e.keyCode === 85)) {
+            e.preventDefault();
+            _PURGE();
+        }
     });
 
-    // 2. 개발자 도구 감지 (강력 버전)
+    // 2. 개발자 도구 창 열기 감지
     setInterval(() => {
-        const threshold = 160;
-        if (window.outerWidth - window.innerWidth > threshold || window.outerHeight - window.innerHeight > threshold) {
-            _0x_p_();
+        if (window.outerWidth - window.innerWidth > 160 || window.outerHeight - window.innerHeight > 160) {
+            _PURGE();
         }
-    }, 300);
+    }, 500);
 
-    // 3. 무한 디버거 루프 (분석 시 브라우저 마비)
-    setInterval(() => {
-        (function(){return false}['constructor']('debugger')['call']());
-    }, 50);
+    // 3. 무한 디버거 함정
+    setInterval(() => { (function(){return false}['constructor']('debugger')['call']()); }, 100);
 
-    // 4. 소스 코드 난독화 위장 주석 (해커 혼란용)
-    /* @obfuscated_code_0x8812
-       _RLNL_SECURE_PAYLOAD_START_
-       [DECRYPTING...][BLOCKING_UNAUTHORIZED_IP...]
-       0x12, 0xFF, 0xAC, 0xDE, 0x11, 0x55, 0x99, 0x00
-    */
-    console.log("%c SECURITY SYSTEM ACTIVE", "color:red; font-weight:bold; font-size:20px;");
-    for(let i=0; i<100; i++){ console.log("RLNL_SECURE_DATA_HASH_" + Math.random()); }
+    // 4. 가짜 소스 도배 (소스 탭 난독화 위장)
+    for(let i=0; i<50; i++) { console.log("%c RLNL_SECURE_HASH_" + Math.random(), "color:#00ffcc; font-size:1px;"); }
 })();
 
 /* [실시간 로그] */
 setInterval(()=>{
     if(document.getElementById('RLNL_MAIN').style.display==='block'){
-        const l=document.getElementById('L_R');
+        const l=document.getElementById('L_LIST');
         const d=document.createElement('div');
-        d.innerHTML=`<span style="color:var(--n)">[${new Date().toLocaleTimeString()}]</span> User_${Math.random().toString(36).substr(2,5)} Success`;
-        l.prepend(d); if(l.children.length>15) l.lastChild.remove();
+        const id = Math.random().toString(36).substr(2, 5).toUpperCase();
+        d.innerHTML=`<span style="color:var(--n)">[${new Date().toLocaleTimeString()}]</span> User_${id} Successfully Connected.`;
+        l.prepend(d); if(l.children.length>18) l.lastChild.remove();
     }
-}, 2500);
+}, 2200);
 </script>
-
-<div style="display:none;">
-    <p>D_A_T_A_P_U_R_G_E_D</p>
-    </div>
-
 </body>
 </html>
