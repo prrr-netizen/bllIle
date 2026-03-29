@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>OFFICIAL AD PLATFORM - SECURE MASTER</title>
+    <title>OFFICIAL PLATFORM - MASTER</title>
     <style>
-        :root { --gold: #d4af37; --dark: #050505; --card: #121212; --border: #222; }
+        :root { --gold: #d4af37; --dark: #070707; --border: #222; }
         * { margin:0; padding:0; box-sizing:border-box; -webkit-user-select:none; user-select:none; font-family:'Pretendard', sans-serif; }
         body { background:var(--dark); color:#eee; overflow-x:hidden; }
 
@@ -19,18 +19,14 @@
 
         .MAIN_WRAP { max-width:1500px; margin:50px auto; padding:0 25px; display:grid; grid-template-columns: 1fr 350px; gap:40px; }
         .B_LIST { display:flex; flex-direction:column; gap:25px; }
-        
-        .ITEM { background:var(--card); border:1px solid var(--border); border-radius:15px; height:150px; display:flex; align-items:center; overflow:hidden; transition:0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .ITEM { background:#121212; border:1px solid var(--border); border-radius:15px; height:150px; display:flex; align-items:center; overflow:hidden; transition:0.3s cubic-bezier(0.4, 0, 0.2, 1); }
         .ITEM:hover { border-color:var(--gold); transform:scale(1.015); box-shadow:0 0 50px rgba(212,175,55,0.15); }
-        
         .LABEL { background:var(--gold); color:#000; width:120px; height:100%; display:flex; align-items:center; justify-content:center; font-weight:900; font-size:18px; border-right:2px solid #000; text-align:center; line-height:1.2; }
         .GIF_IMG { width:550px; height:100%; background:#000; border-right:1px solid var(--border); }
         .GIF_IMG img { width:100%; height:100%; object-fit:cover; }
-        
         .INFO { flex-grow:1; padding:0 40px; }
         .TITLE { font-size:28px; font-weight:900; margin-bottom:10px; color:#fff; }
         .SUB { color:var(--gold); font-size:16px; font-weight:600; letter-spacing:1px; }
-        
         .GO { background:linear-gradient(to right, #222, #383838); color:#fff; padding:22px 65px; text-decoration:none; font-weight:900; font-size:20px; border-radius:8px; margin-right:40px; border:1px solid #444; transition:0.3s; }
         .GO:hover { background:var(--gold); color:#000; border-color:var(--gold); box-shadow:0 0 20px rgba(212,175,55,0.4); }
 
@@ -40,7 +36,7 @@
 <body oncontextmenu="return false">
 
 <div id="ADMIN_MODAL">
-    <h2 style="color:var(--gold); font-size:28px;">💎 상업용 대량 등록 (ADMIN)</h2>
+    <h2 style="color:var(--gold); font-size:28px;">💎 대량 등록 (ADMIN)</h2>
     <p style="color:#888; margin-top:10px;">[형식] 업체명|사진파일명|이동링크 (엔터로 구분)</p>
     <textarea id="INPUT_AREA">메이저01|662034559_e82a01f0_257296.gif|https://site1.com</textarea>
     <button class="BTN_EXEC" onclick="saveData()">🚀 배너 데이터 즉시 적용 및 저장</button>
@@ -59,7 +55,6 @@
 </div>
 
 <script>
-
 const HASH_KEY = "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4";
 
 async function getHash(m) {
@@ -70,13 +65,13 @@ async function getHash(m) {
 
 (function(){
     const _KILL = () => {
-        document.documentElement.innerHTML = "";
+        document.documentElement.innerHTML = ""; 
         window.location.replace("about:blank");
     };
 
     setInterval(() => {
         const start = new Date().getTime();
-        (function(){}).constructor("debugger")();
+        (function(){}).constructor("debugger")(); 
         if (new Date().getTime() - start > 50) _KILL();
     }, 100);
 
@@ -111,7 +106,6 @@ function render(data) {
     document.getElementById('RENDER_TARGET').innerHTML = h;
 }
 
-// 초기 데이터 로드
 const s = localStorage.getItem('B_DATA_FINAL');
 if(s) { document.getElementById('INPUT_AREA').value = s; render(s); }
 else { render(document.getElementById('INPUT_AREA').value); }
