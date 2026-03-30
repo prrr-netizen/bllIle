@@ -13,101 +13,176 @@
             user-select: none;
         }
         body {
-            background: #0a0a0f;
+            background: radial-gradient(circle at top,#17172a 0,#05050a 55%,#020308 100%);
             color: #fff;
             min-height: 100vh;
             overflow-x: hidden;
         }
+
+        /* 상단 바 */
         ._top_bar {
-            background: #000;
+            background: rgba(0,0,0,0.95);
             padding: 10px 20px;
             display: flex;
             justify-content: flex-end;
             gap: 12px;
             border-bottom: 1px solid #1a1a25;
+            position: relative;
+            z-index: 30;
         }
         ._top_btn {
             text-decoration: none;
-            font-size: 14px;
-            font-weight: bold;
+            font-size: 13px;
+            font-weight: 800;
             padding: 8px 20px;
-            border-radius: 5px;
-            transition: 0.3s;
+            border-radius: 999px;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
         }
-        ._btn_disc { background: #5865F2; color: #fff; }
-        ._btn_inq { background: #f0b400; color: #000; }
+        /* 디스코드 버튼: 그라디언트 + 슬라이드 */
+        ._btn_disc {
+            color:#fff;
+            background: linear-gradient(120deg,#5865F2,#00C9FF,#92FE9D);
+            background-size: 200% 200%;
+            animation: discIdle 6s ease infinite;
+        }
+        ._btn_disc::before{
+            content:'';
+            position:absolute;
+            inset:0;
+            background:linear-gradient(120deg,#7b8bff,#00d4ff,#9dffb3);
+            background-size:200% 200%;
+            opacity:0;
+            transition:opacity .25s ease;
+        }
+        ._btn_disc span{
+            position:relative;
+            z-index:1;
+        }
+        ._btn_inq { 
+            background: #f0b400; 
+            color: #000; 
+        }
+        ._top_btn:hover{
+            transform:translateY(-2px);
+            box-shadow:0 8px 22px rgba(0,0,0,0.5);
+        }
+        ._btn_disc:hover{
+            animation:none;
+        }
+        ._btn_disc:hover::before{
+            opacity:1;
+        }
+        ._btn_inq:hover{
+            background:#ffe27a;
+        }
+
+        /* 헤더 */
         header {
             position: sticky;
             top: 0;
-            background: rgba(8, 8, 13, 0.95);
-            backdrop-filter: blur(10px);
+            background: linear-gradient(90deg,rgba(8,8,18,0.97),rgba(9,9,26,0.97));
+            backdrop-filter: blur(12px);
             border-bottom: 1px solid rgba(255, 180, 0, 0.25);
+            z-index:20;
         }
         ._hi {
             max-width: 1400px;
             margin: auto;
-            padding: 20px;
+            padding: 18px 20px;
             display: flex;
             align-items: center;
             justify-content: space-between;
         }
         ._logo {
             font-size: 24px;
-            font-weight: bold;
+            font-weight: 900;
             color: #f0b400;
             text-decoration: none;
+            letter-spacing: .12em;
         }
         ._oc_box {
             display: flex;
             align-items: center;
             gap: 10px;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.08);
             padding: 8px 15px;
             border-radius: 99px;
+            font-size: 13px;
         }
         ._oc_dot {
             width: 8px;
             height: 8px;
             background: #4ade80;
             border-radius: 50%;
+            box-shadow:0 0 10px #4ade80;
             animation: blink 1.5s infinite;
         }
+
+        /* 공지 마퀴 */
         ._notice_w {
-            background: rgba(240, 180, 0, 0.1);
+            background: radial-gradient(circle at left,#43340e 0,transparent 60%);
             padding: 10px 0;
             overflow: hidden;
+            border-bottom:1px solid rgba(240,180,0,0.3);
         }
         ._notice_t {
             display: flex;
-            gap: 100px;
+            gap: 80px;
             animation: marquee 35s linear infinite;
             white-space: nowrap;
         }
         ._notice_t span {
-            font-size: 14px;
-            color: rgba(255, 180, 0, 0.8);
+            font-size: 13px;
+            color: rgba(255, 200, 100, 0.9);
             font-weight: 600;
         }
+
+        /* 메인 래퍼 */
         ._main_wrapper {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 30px 20px;
+            padding: 30px 20px 60px;
             display: grid;
             grid-template-columns: 1fr 320px;
             gap: 25px;
         }
+
+        /* 카드 */
         .ITEM_CARD {
-            background: #14141e;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(13,13,25,0.98);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 15px;
             padding: 10px;
             display: flex;
             align-items: center;
             margin-bottom: 15px;
+            position:relative;
+            overflow:hidden;
+            transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease, background .2s ease;
+        }
+        .ITEM_CARD::before{
+            content:'';
+            position:absolute;
+            inset:-1px;
+            background:linear-gradient(120deg,transparent,rgba(240,180,0,0.45),transparent);
+            opacity:0;
+            transition:opacity .25s ease;
+            pointer-events:none;
+        }
+        .ITEM_CARD:hover{
+            transform:translateY(-3px);
+            box-shadow:0 12px 30px rgba(0,0,0,0.7);
+            border-color:rgba(240,180,0,0.55);
+            background:rgba(18,18,35,0.98);
+        }
+        .ITEM_CARD:hover::before{
+            opacity:1;
         }
         ._item_rank {
             width: 80px;
-            font-size: 36px;
+            font-size: 32px;
             font-weight: bold;
             color: rgba(255, 255, 255, 0.1);
             text-align: center;
@@ -116,20 +191,23 @@
             width: 100px;
             height: auto;
             margin-right: 15px;
+            border-radius: 12px;
+            overflow:hidden;
+            flex-shrink:0;
         }
         ._item_img img {
             width: 100%;
             height: auto;
-            border-radius: 10px;
+            display:block;
         }
         ._item_info {
             flex: 1;
             padding: 0 15px;
         }
         ._item_name {
-            font-size: 20px;
-            font-weight: bold;
-            margin-bottom: 5px;
+            font-size: 18px;
+            font-weight: 800;
+            margin-bottom: 6px;
         }
         ._enter_btn {
             background: #f0b400;
@@ -138,20 +216,34 @@
             font-weight: bold;
             padding: 10px 20px;
             border-radius: 10px;
-            transition: background 0.3s;
+            transition: background 0.25s ease, transform 0.15s ease, box-shadow 0.15s ease;
+            font-size:13px;
+            white-space:nowrap;
         }
         ._enter_btn:hover {
-            background: #e0a800;
+            background: #ffe27a;
+            transform:translateY(-1px);
+            box-shadow:0 6px 18px rgba(0,0,0,0.55);
         }
+
+        /* 사이드바 */
         ._sidebar {
-            background: #0f0f19;
+            background: rgba(6,6,14,0.96);
             border: 1px solid #222;
             border-radius: 15px;
             padding: 20px;
             height: 600px;
             position: sticky;
-            top: 20px;
+            top: 90px;
+            box-shadow:0 10px 35px rgba(0,0,0,0.7);
+            font-size:11px;
         }
+        #_log_container{
+            max-height:540px;
+            overflow-y:auto;
+        }
+
+        /* 관리자 패널 */
         #_admin_panel {
             display: none;
             position: fixed;
@@ -174,6 +266,7 @@
             color: #fff;
             border: 1px solid #333;
             border-radius: 8px;
+            font-size:13px;
         }
         .admin_submit {
             width: 100%;
@@ -188,6 +281,7 @@
         .admin_submit:hover {
             background: #e0a800;
         }
+
         @keyframes marquee {
             from { transform: translateX(0); }
             to { transform: translateX(-50%); }
@@ -196,6 +290,12 @@
             0%, 100% { opacity: 1; }
             50% { opacity: 0.3; }
         }
+        @keyframes discIdle{
+            0%{background-position:0% 50%;}
+            50%{background-position:100% 50%;}
+            100%{background-position:0% 50%;}
+        }
+
         @media(max-width: 960px) {
             ._main_wrapper {
                 grid-template-columns: 1fr;
@@ -203,6 +303,7 @@
             ._sidebar {
                 position: static;
                 height: auto;
+                margin-top:10px;
             }
             .ITEM_CARD {
                 flex-direction: column;
@@ -211,6 +312,7 @@
             ._item_rank {
                 width: auto;
                 text-align: left;
+                margin-bottom:4px;
             }
             ._item_img {
                 width: 100%;
@@ -219,14 +321,14 @@
             }
             ._enter_btn {
                 width: auto;
-                margin: 10px 0;
+                margin: 10px 0 0 auto;
             }
         }
     </style>
 </head>
 <body>
 <div class="_top_bar">
-    <a href="#" class="_top_btn _btn_disc">디스코드 채널</a>
+    <a href="#" class="_top_btn _btn_disc"><span>디스코드 채널</span></a>
     <a href="#" class="_top_btn _btn_inq">입점 문의</a>
 </div>
 
@@ -248,7 +350,7 @@
     <main id="_item_list"></main>
     <aside>
         <div class="_sidebar">
-            <div style="color: #f0b400; font-size: 14px; margin-bottom: 20px;">실시간 로그</div>
+            <div style="color: #f0b400; font-size: 13px; margin-bottom: 14px; font-weight:700;">실시간 로그</div>
             <div id="_log_container"></div>
         </div>
     </aside>
@@ -326,7 +428,7 @@ document.addEventListener('keydown', (e) => {
 function _render() {
     const list = document.getElementById('_item_list');
     if (!_DB.length) {
-        list.innerHTML = '<div style="text-align:center; padding:100px; color:#333">등록된 업체가 없습니다.</div>';
+        list.innerHTML = '<div style="text-align:center; padding:100px; color:#555;">등록된 업체가 없습니다.</div>';
         return;
     }
     list.innerHTML = _DB.map((i, idx) => `
@@ -337,7 +439,7 @@ function _render() {
             </div>
             <div class="_item_info">
                 <div class="_item_name">${i.name}</div>
-                <div style="color:#4ade80; font-size: 12px;">검증완료</div>
+                <div style="color:#4ade80; font-size: 11px;">검증완료</div>
             </div>
             <a href="${i.url}" target="_blank" class="_enter_btn">입장하기</a>
         </div>
@@ -382,7 +484,7 @@ function _del(idx) {
 function _log(msg) {
     const c = document.getElementById('_log_container');
     const d = document.createElement('div');
-    d.style.cssText = "font-size: 12px; padding: 5px; border-left: 2px solid #f0b400; margin-bottom: 5px; background: rgba(255, 255, 255, 0.02);";
+    d.style.cssText = "font-size: 11px; padding: 5px; border-left: 2px solid #f0b400; margin-bottom: 5px; background: rgba(255, 255, 255, 0.02);";
     d.innerHTML = '[' + new Date().toLocaleTimeString() + '] ' + msg;
     c.prepend(d);
 }
