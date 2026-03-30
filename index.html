@@ -265,59 +265,47 @@
 </div>
 
 <script>
-// ===================== 로컬 DB =====================
 let _DB = JSON.parse(localStorage.getItem('_AD_DATA_') || '[]');
 
-// ===================== 초기 로딩 =====================
 window.onload = () => {
     _render();
     _initNotice();
     document.getElementById('_v_count').innerText = Math.floor(Math.random()*40) + 182;
 };
 
-// ===================== 우클릭 방지 =====================
 document.addEventListener('contextmenu', (e) => {
     e.preventDefault();
     return false;
 });
 
-// ===================== 관리자 비밀번호 난독화 =====================
-// 실제 비번: "8253"[web:45]
-function _getAdminPassword(){
-    const a = 4 * 2;   // 8
-    const b = 7 - 5;   // 2
-    const c = 15 - 10; // 5
-    const d = 9 - 6;   // 3
-    return '' + a + b + c + d;
+// 비번 8253을 직접 안 쓰고, 숫자 배열 + 오프셋으로 복원
+function _s(){
+    const r = [210, 219, 222, 214];  // 아무 의미 없는 숫자처럼 보이게
+    const o = 202;                   // 기준값
+    return r.map(v => v - o).join('');
 }
 
-// ===================== 키보드 / DevTools 단축키 방지 =====================
-// 우클릭 + F12 + Ctrl+Shift+I/J/C + Ctrl+U[web:58][web:74]
 document.addEventListener('keydown', (e) => {
-    const key = e.keyCode;
+    const k = e.keyCode;
 
-    // F12
-    if (key === 123) {
+    if (k === 123) {
         e.preventDefault();
         return false;
     }
 
-    // Ctrl+Shift+I/J/C
-    if (e.ctrlKey && e.shiftKey && [73,74,67].includes(key)) {
+    if (e.ctrlKey && e.shiftKey && [73,74,67].includes(k)) {
         e.preventDefault();
         return false;
     }
 
-    // Ctrl+U (소스 보기)
-    if (e.ctrlKey && key === 85) {
+    if (e.ctrlKey && k === 85) {
         e.preventDefault();
         return false;
     }
 
-    // 관리자 모드: Ctrl + Shift + Y
-    if (e.ctrlKey && e.shiftKey && key === 89) {
+    if (e.ctrlKey && e.shiftKey && k === 89) {
         const p = prompt('관리자 비밀번호');
-        const real = _getAdminPassword();
+        const real = _s(); // "8253"이지만 코드상 바로 안 보임
         if (p === real) {
             document.getElementById('_admin_panel').style.display='block';
             _renderA();
@@ -327,27 +315,21 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
-// ===================== DevTools 감지 → 페이지 비우기 =====================
-// 창 크기 차이로 DevTools 열린 것 같으면 about:blank로 이동[web:83][web:78][web:92]
-(function detectDevTools(){
-    const threshold = 220; // 160 -> 220로 완화
-
-    function check(){
+// DevTools 감지 → about:blank
+(function(){
+    const t = 220;
+    function c(){
         const w = window.outerWidth  - window.innerWidth;
         const h = window.outerHeight - window.innerHeight;
-
-        if (w > threshold || h > threshold) {
-            // DevTools 켜진 걸로 보고 소스 안 보이게 바로 비워버림
+        if (w > t || h > t) {
             location.href = 'about:blank';
         }
     }
-
-    window.addEventListener('resize', check);
-    window.addEventListener('load', check);
-    window.addEventListener('focus', check);
+    window.addEventListener('resize', c);
+    window.addEventListener('load', c);
+    window.addEventListener('focus', c);
 })();
 
-// ===================== 리스트 렌더링 =====================
 function _render(){
     const list = document.getElementById('_item_list');
     if(!_DB.length){
@@ -369,7 +351,6 @@ function _render(){
     `).join('');
 }
 
-// ===================== 관리자 모드 =====================
 function _addItem(){
     const n = document.getElementById('_n').value.trim();
     const i = document.getElementById('_i').value.trim();
@@ -378,7 +359,7 @@ function _addItem(){
 
     _DB.push({name:n, img:i, url:u});
     localStorage.setItem('_AD_DATA_', JSON.stringify(_DB));
-    _addLog(`[+] ${n} 등록`);
+    _l('[+] ' + n + ' 등록');
     _render();
     _renderA();
 
@@ -400,17 +381,16 @@ function _del(idx){
     const n = _DB[idx].name;
     _DB.splice(idx,1);
     localStorage.setItem('_AD_DATA_', JSON.stringify(_DB));
-    _addLog(`[-] ${n} 삭제`);
+    _l('[-] ' + n + ' 삭제');
     _render();
     _renderA();
 }
 
-// ===================== 로그 / 공지 =====================
-function _addLog(msg){
+function _l(msg){
     const c = document.getElementById('_log_container');
     const d = document.createElement('div');
     d.style.cssText = "font-size:11px;padding:5px;border-left:2px solid #f0b400;margin-bottom:5px;background:rgba(255,255,255,0.02)";
-    d.innerHTML = `[${new Date().toLocaleTimeString()}] ${msg}`;
+    d.innerHTML = '[' + new Date().toLocaleTimeString() + '] ' + msg;
     c.prepend(d);
 }
 
@@ -420,7 +400,6 @@ function _initNotice(){
         m.concat(m).map(t=>`<span>● ${t}</span>`).join('');
 }
 
-// ===================== 관리자 패널 닫기 =====================
 function _closeAdmin(){
     document.getElementById('_admin_panel').style.display='none';
 }
