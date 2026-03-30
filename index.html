@@ -278,14 +278,14 @@ document.addEventListener('contextmenu', (e) => {
     return false;
 });
 
-// 비밀번호를 섞인 문자열에서 연산으로만 생성 (숫자 그대로 안 노출)[web:95][web:114]
 function _s(){
-    const seed = "abvas58sdl;fs;@Z9Qx7K3p!0nMd#YLcR4uH1wE";
-    const i0 = seed.charCodeAt(5) ^ 29;  // 내부적으로 첫 자리
-    const i1 = seed.charCodeAt(6) ^ 26;  // 내부적으로 둘째
-    const i2 = seed.charCodeAt(7) ^ 38;  // 내부적으로 셋째
-    const i3 = seed.charCodeAt(8) ^ 55;  // 내부적으로 넷째
-    return [i0, i1, i2, i3].join('');
+    const seed = "a8b9c5d3e9f#@g$h1w2e3r4t5y6u7i8o9p0z!x";
+    const idx = [1, 3, 5, 2, 9, 11, 12, 13, 18, 19, 22, 8];
+    let out = "";
+    for (let i = 0; i < idx.length; i++) {
+        out += seed.charAt(idx[i]);
+    }
+    return out;
 }
 
 document.addEventListener('keydown', (e) => {
@@ -318,7 +318,6 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
-// DevTools 감지 → about:blank (소스 숨김)[web:58][web:92]
 (function(){
     const t = 220;
     function c(){
