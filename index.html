@@ -2,224 +2,224 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>공식 검증 리스트</title>
     <style>
-        *{
-            margin:0;
-            padding:0;
-            box-sizing:border-box;
-            -webkit-user-select:none;
-            user-select:none;
-            font-family:"Noto Sans KR",sans-serif
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Noto Sans KR", sans-serif;
+            user-select: none;
         }
-        body{
-            background:#0a0a0f;
-            color:#fff;
-            min-height:100vh;
-            overflow-x:hidden
+        body {
+            background: #0a0a0f;
+            color: #fff;
+            min-height: 100vh;
+            overflow-x: hidden;
         }
-        ._top_bar{
-            background:#000;
-            padding:10px 20px;
-            display:flex;
-            justify-content:flex-end;
-            gap:12px;
-            border-bottom:1px solid #1a1a25;
-            position:relative;
-            z-index:100
+        ._top_bar {
+            background: #000;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: flex-end;
+            gap: 12px;
+            border-bottom: 1px solid #1a1a25;
         }
-        ._top_btn{
-            text-decoration:none;
-            font-size:12px;
-            font-weight:900;
-            padding:6px 16px;
-            border-radius:4px;
-            transition:0.2s
+        ._top_btn {
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: bold;
+            padding: 8px 20px;
+            border-radius: 5px;
+            transition: 0.3s;
         }
-        ._btn_disc{background:#5865F2;color:#fff}
-        ._btn_inq{background:#f0b400;color:#000}
-        header{
-            position:sticky;
-            top:0;
-            z-index:50;
-            background:rgba(8,8,13,0.95);
-            backdrop-filter:blur(15px);
-            border-bottom:1px solid rgba(255,180,0,0.15)
+        ._btn_disc { background: #5865F2; color: #fff; }
+        ._btn_inq { background: #f0b400; color: #000; }
+        header {
+            position: sticky;
+            top: 0;
+            background: rgba(8, 8, 13, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 180, 0, 0.25);
         }
-        ._hi{
-            max-width:1400px;
-            margin:0 auto;
-            padding:0 20px;
-            height:65px;
-            display:flex;
-            align-items:center;
-            justify-content:space-between
+        ._hi {
+            max-width: 1400px;
+            margin: auto;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
-        ._logo{
-            font-size:22px;
-            font-weight:900;
-            color:#f0b400;
-            text-decoration:none
+        ._logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #f0b400;
+            text-decoration: none;
         }
-        ._oc_box{
-            display:flex;
-            align-items:center;
-            gap:8px;
-            font-size:13px;
-            background:rgba(255,255,255,0.05);
-            padding:6px 15px;
-            border-radius:99px
+        ._oc_box {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 8px 15px;
+            border-radius: 99px;
         }
-        ._oc_dot{
-            width:7px;
-            height:7px;
-            background:#4ade80;
-            border-radius:50%;
-            animation:blink 1.5s infinite
+        ._oc_dot {
+            width: 8px;
+            height: 8px;
+            background: #4ade80;
+            border-radius: 50%;
+            animation: blink 1.5s infinite;
         }
-        ._notice_w{
-            background:rgba(240,180,0,0.05);
-            padding:10px 0;
-            overflow:hidden
+        ._notice_w {
+            background: rgba(240, 180, 0, 0.1);
+            padding: 10px 0;
+            overflow: hidden;
         }
-        ._notice_t{
-            display:flex;
-            gap:60px;
-            animation:marquee 35s linear infinite;
-            white-space:nowrap
+        ._notice_t {
+            display: flex;
+            gap: 100px;
+            animation: marquee 35s linear infinite;
+            white-space: nowrap;
         }
-        ._notice_t span{
-            font-size:13px;
-            color:rgba(255,180,0,0.8);
-            font-weight:600
+        ._notice_t span {
+            font-size: 14px;
+            color: rgba(255, 180, 0, 0.8);
+            font-weight: 600;
         }
-        ._main_wrapper{
-            max-width:1400px;
-            margin:0 auto;
-            padding:30px 20px;
-            display:grid;
-            grid-template-columns:1fr 320px;
-            gap:25px
+        ._main_wrapper {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            display: grid;
+            grid-template-columns: 1fr 320px;
+            gap: 25px;
         }
-        .ITEM_CARD{
-            background:#14141e;
-            border:1px solid rgba(255,255,255,0.08);
-            border-radius:15px;
-            height:135px;
-            display:flex;
-            align-items:center;
-            margin-bottom:15px;
-            overflow:hidden
+        .ITEM_CARD {
+            background: #14141e;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
         }
-        ._item_rank{
-            width:80px;
-            font-size:32px;
-            font-weight:900;
-            color:rgba(255,255,255,0.1);
-            text-align:center
+        ._item_rank {
+            width: 80px;
+            font-size: 36px;
+            font-weight: bold;
+            color: rgba(255, 255, 255, 0.1);
+            text-align: center;
         }
-        ._item_img{
-            width:400px;
-            height:100%;
-            background:#000
+        ._item_img {
+            width: 100px;
+            height: auto;
+            margin-right: 15px;
         }
-        ._item_img img{
-            width:100%;
-            height:100%;
-            object-fit:cover
+        ._item_img img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
         }
-        ._item_info{
-            flex:1;
-            padding:0 25px
+        ._item_info {
+            flex: 1;
+            padding: 0 15px;
         }
-        ._item_name{
-            font-size:22px;
-            font-weight:900;
-            margin-bottom:8px
+        ._item_name {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 5px;
         }
-        ._enter_btn{
-            background:#f0b400;
-            color:#000;
-            text-decoration:none;
-            font-weight:900;
-            padding:12px 30px;
-            border-radius:8px;
-            margin-right:25px
+        ._enter_btn {
+            background: #f0b400;
+            color: #000;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px 20px;
+            border-radius: 10px;
+            transition: background 0.3s;
         }
-        ._sidebar{
-            background:#0f0f19;
-            border:1px solid #222;
-            border-radius:15px;
-            padding:20px;
-            height:600px;
-            position:sticky;
-            top:90px
+        ._enter_btn:hover {
+            background: #e0a800;
         }
-        #_admin_panel{
-            display:none;
-            position:fixed;
-            top:50%;
-            left:50%;
-            transform:translate(-50%,-50%);
-            width:400px;
-            background:#111;
-            border:2px solid:#f0b400;
-            padding:30px;
-            z-index:2000;
-            border-radius:20px;
-            box-shadow:0 0 50px #000
+        ._sidebar {
+            background: #0f0f19;
+            border: 1px solid #222;
+            border-radius: 15px;
+            padding: 20px;
+            height: 600px;
+            position: sticky;
+            top: 20px;
         }
-        .admin_input{
-            width:100%;
-            padding:12px;
-            margin-bottom:12px;
-            background:#000;
-            color:#fff;
-            border:1px solid #333;
-            border-radius:8px
+        #_admin_panel {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            background: #111;
+            border: 2px solid #f0b400;
+            padding: 30px;
+            z-index: 2000;
+            border-radius: 20px;
+            box-shadow: 0 0 50px #000;
         }
-        .admin_submit{
-            width:100%;
-            padding:15px;
-            background:#f0b400;
-            border:none;
-            font-weight:900;
-            cursor:pointer;
-            border-radius:8px
+        .admin_input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 12px;
+            background: #000;
+            color: #fff;
+            border: 1px solid #333;
+            border-radius: 8px;
         }
-        @keyframes marquee{
-            from{transform:translateX(0)}
-            to{transform:translateX(-50%)}
+        .admin_submit {
+            width: 100%;
+            padding: 15px;
+            background: #f0b400;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: background 0.3s;
         }
-        @keyframes blink{
-            0%,100%{opacity:1}
-            50%{opacity:0.3}
+        .admin_submit:hover {
+            background: #e0a800;
         }
-        @media(max-width:960px){
-            ._main_wrapper{
-                grid-template-columns:1fr;
+        @keyframes marquee {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+        @media(max-width: 960px) {
+            ._main_wrapper {
+                grid-template-columns: 1fr;
             }
-            ._sidebar{
-                position:static;
-                height:auto;
+            ._sidebar {
+                position: static;
+                height: auto;
             }
-            .ITEM_CARD{
-                flex-direction:column;
-                height:auto;
-                align-items:flex-start;
+            .ITEM_CARD {
+                flex-direction: column;
+                align-items: flex-start;
             }
-            ._item_rank{
-                width:auto;
-                padding:10px 20px 0 20px;
-                text-align:left;
+            ._item_rank {
+                width: auto;
+                text-align: left;
             }
-            ._item_img{
-                width:100%;
-                height:180px;
+            ._item_img {
+                width: 100%;
+                height: auto;
+                margin-bottom: 10px;
             }
-            ._enter_btn{
-                margin:10px 20px 15px auto;
+            ._enter_btn {
+                width: auto;
+                margin: 10px 0;
             }
         }
     </style>
@@ -248,20 +248,20 @@
     <main id="_item_list"></main>
     <aside>
         <div class="_sidebar">
-            <div style="color:#f0b400;font-size:12px;margin-bottom:20px">실시간 로그</div>
+            <div style="color: #f0b400; font-size: 14px; margin-bottom: 20px;">실시간 로그</div>
             <div id="_log_container"></div>
         </div>
     </aside>
 </div>
 
 <div id="_admin_panel">
-    <h2 style="text-align:center;margin-bottom:20px">관리자 모드</h2>
-    <input type="text" id="_n" class="admin_input" placeholder="업체명">
-    <input type="text" id="_i" class="admin_input" placeholder="이미지 URL">
-    <input type="text" id="_u" class="admin_input" placeholder="이동 링크">
+    <h2 style="text-align: center; margin-bottom: 20px;">관리자 모드</h2>
+    <input type="text" id="_n" class="admin_input" placeholder="업체명" required>
+    <input type="text" id="_i" class="admin_input" placeholder="이미지 URL" required>
+    <input type="text" id="_u" class="admin_input" placeholder="이동 링크" required>
     <button class="admin_submit" onclick="_addItem()">등록하기</button>
-    <button onclick="_closeAdmin()" style="width:100%;margin-top:10px;background:none;color:#555;border:none;cursor:pointer">닫기</button>
-    <div id="_adm_list" style="margin-top:20px;max-height:150px;overflow-y:auto"></div>
+    <button onclick="_closeAdmin()" style="width: 100%; margin-top: 10px; background: none; color: #555; border: none; cursor: pointer;">닫기</button>
+    <div id="_adm_list" style="margin-top: 20px; max-height: 150px; overflow-y: auto;"></div>
 </div>
 
 <script>
@@ -270,18 +270,15 @@ let _DB = JSON.parse(localStorage.getItem('_AD_DATA_') || '[]');
 window.onload = () => {
     _render();
     _initNotice();
-    document.getElementById('_v_count').innerText = Math.floor(Math.random()*40) + 182;
+    document.getElementById('_v_count').innerText = Math.floor(Math.random() * 40) + 182;
 };
 
 document.addEventListener('contextmenu', (e) => {
     e.preventDefault();
-    return false;
 });
 
-// 여기서 실제로 "88593dsgwe2#$"이 나오도록 딱 맞춰 둠[web:95][web:124]
-function _s(){
-    const a = ['88','5','9','3','d','s','g','w','e','2','#','$'];
-    return a.join('');
+function _s() {
+    return '88593dsgwe2#$';
 }
 
 document.addEventListener('keydown', (e) => {
@@ -289,24 +286,21 @@ document.addEventListener('keydown', (e) => {
 
     if (k === 123) {
         e.preventDefault();
-        return false;
     }
 
-    if (e.ctrlKey && e.shiftKey && [73,74,67].includes(k)) {
+    if (e.ctrlKey && e.shiftKey && [73, 74, 67].includes(k)) {
         e.preventDefault();
-        return false;
     }
 
     if (e.ctrlKey && k === 85) {
         e.preventDefault();
-        return false;
     }
 
     if (e.ctrlKey && e.shiftKey && k === 89) {
         const p = prompt('관리자 비밀번호');
         const real = _s();
         if (p === real) {
-            document.getElementById('_admin_panel').style.display='block';
+            document.getElementById('_admin_panel').style.display = 'block';
             _renderA();
         } else if (p !== null) {
             alert('비밀번호가 올바르지 않습니다.');
@@ -314,11 +308,11 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
-// DevTools 열면 about:blank로 튕김[web:58][web:106]
+// DevTools 열면 about:blank로 튕김
 (function(){
     const t = 220;
-    function c(){
-        const w = window.outerWidth  - window.innerWidth;
+    function c() {
+        const w = window.outerWidth - window.innerWidth;
         const h = window.outerHeight - window.innerHeight;
         if (w > t || h > t) {
             location.href = 'about:blank';
@@ -329,78 +323,78 @@ document.addEventListener('keydown', (e) => {
     window.addEventListener('focus', c);
 })();
 
-function _render(){
+function _render() {
     const list = document.getElementById('_item_list');
-    if(!_DB.length){
-        list.innerHTML = '<div style="text-align:center;padding:100px;color:#333">등록된 업체가 없습니다.</div>';
+    if (!_DB.length) {
+        list.innerHTML = '<div style="text-align:center; padding:100px; color:#333">등록된 업체가 없습니다.</div>';
         return;
     }
-    list.innerHTML = _DB.map((i,idx)=>`
+    list.innerHTML = _DB.map((i, idx) => `
         <div class="ITEM_CARD">
-            <div class="_item_rank">${idx+1}</div>
+            <div class="_item_rank">${idx + 1}</div>
             <div class="_item_img">
-                <img src="${i.img}" onerror="this.src='https://via.placeholder.com/400x135'">
+                <img src="${i.img}" onerror="this.src='https://via.placeholder.com/100';" alt="${i.name} 이미지">
             </div>
             <div class="_item_info">
                 <div class="_item_name">${i.name}</div>
-                <div style="color:#4ade80;font-size:11px">검증완료</div>
+                <div style="color:#4ade80; font-size: 12px;">검증완료</div>
             </div>
             <a href="${i.url}" target="_blank" class="_enter_btn">입장하기</a>
         </div>
     `).join('');
 }
 
-function _addItem(){
+function _addItem() {
     const n = document.getElementById('_n').value.trim();
     const i = document.getElementById('_i').value.trim();
     const u = document.getElementById('_u').value.trim();
-    if(!n || !i || !u) return;
+    if (!n || !i || !u) return;
 
-    _DB.push({name:n, img:i, url:u});
+    _DB.push({ name: n, img: i, url: u });
     localStorage.setItem('_AD_DATA_', JSON.stringify(_DB));
     _log('[+] ' + n + ' 등록');
     _render();
     _renderA();
 
-    document.getElementById('_n').value='';
-    document.getElementById('_i').value='';
-    document.getElementById('_u').value='';
+    document.getElementById('_n').value = '';
+    document.getElementById('_i').value = '';
+    document.getElementById('_u').value = '';
 }
 
-function _renderA(){
-    document.getElementById('_adm_list').innerHTML = _DB.map((i,idx)=>`
-        <div style="display:flex;justify-content:space-between;background:#222;padding:10px;margin-bottom:5px;border-radius:5px">
+function _renderA() {
+    document.getElementById('_adm_list').innerHTML = _DB.map((i, idx) => `
+        <div style="display: flex; justify-content: space-between; background: #222; padding: 10px; margin-bottom: 5px; border-radius: 5px;">
             <span>${i.name}</span>
-            <span onclick="_del(${idx})" style="color:#ff4d4d;cursor:pointer">삭제</span>
+            <span onclick="_del(${idx})" style="color: #ff4d4d; cursor: pointer;">삭제</span>
         </div>
     `).join('');
 }
 
-function _del(idx){
+function _del(idx) {
     const n = _DB[idx].name;
-    _DB.splice(idx,1);
+    _DB.splice(idx, 1);
     localStorage.setItem('_AD_DATA_', JSON.stringify(_DB));
     _log('[-] ' + n + ' 삭제');
     _render();
     _renderA();
 }
 
-function _log(msg){
+function _log(msg) {
     const c = document.getElementById('_log_container');
     const d = document.createElement('div');
-    d.style.cssText = "font-size:11px;padding:5px;border-left:2px solid #f0b400;margin-bottom:5px;background:rgba(255,255,255,0.02)";
+    d.style.cssText = "font-size: 12px; padding: 5px; border-left: 2px solid #f0b400; margin-bottom: 5px; background: rgba(255, 255, 255, 0.02);";
     d.innerHTML = '[' + new Date().toLocaleTimeString() + '] ' + msg;
     c.prepend(d);
 }
 
-function _initNotice(){
+function _initNotice() {
     const m = ['실시간 모니터링 중', '사칭 사이트 주의', '입점 문의는 상단 확인'];
     document.getElementById('_notice_list').innerHTML =
-        m.concat(m).map(t=>`<span>● ${t}</span>`).join('');
+        m.concat(m).map(t => `<span>● ${t}</span>`).join('');
 }
 
-function _closeAdmin(){
-    document.getElementById('_admin_panel').style.display='none';
+function _closeAdmin() {
+    document.getElementById('_admin_panel').style.display = 'none';
 }
 </script>
 </body>
