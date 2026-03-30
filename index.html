@@ -48,7 +48,7 @@
         @media (max-width:600px){.ITEM_CARD{flex-direction:column;height:auto;padding-bottom:20px}._item_img{width:100%;height:150px}._enter_btn{width:calc(100% - 40px);margin:15px 20px 0;text-align:center}}
     </style>
 </head>
-<body oncontextmenu="return false">
+<body oncontextmenu="return false" onselectstart="return false" ondragstart="return false">
 <div class="_top_bar">
     <a href="#" class="_top_btn _btn_disc">DISCORD 공식 채널</a>
     <a href="#" class="_top_btn _btn_inq">24H 입점 문의</a>
@@ -85,29 +85,32 @@
 </div>
 
 <script>
-let _isL = false;
+let _isA = false;
+let _DB = JSON.parse(localStorage.getItem('_AD_MASTER_DATA_') || '[]');
+
 (function(){
-    setInterval(() => {
-        if(_isL) return;
-        if(window.outerWidth - window.innerWidth > 160 || window.outerHeight - window.innerHeight > 160) {
-            location.href="about:blank";
-        }
-    }, 1000);
+    const _L = function(){};
+    _L.toString = function(){ 
+        if(!_isA) { while(true){ eval("debugger"); } }
+        return "DEV";
+    };
+    setInterval(()=>{ if(!_isA) console.log(_L); }, 500);
 })();
 
-let _DB = JSON.parse(localStorage.getItem('_AD_MASTER_DATA_') || '[]');
-window.onload = () => { _renderMain(); _initNotice(); document.getElementById('_v_count').innerText = Math.floor(Math.random()*40) + 182; };
+window.onload = () => { 
+    _renderMain(); 
+    _initNotice(); 
+    document.getElementById('_v_count').innerText = Math.floor(Math.random()*40) + 182; 
+};
 
 window.onkeydown = (e) => {
     if(e.keyCode == 123 || (e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 74 || e.keyCode == 67))) return false;
     if(e.ctrlKey && e.shiftKey && e.keyCode == 89){
-        _isL = true; 
-        let p = prompt('AUTH');
-        if(((x)=>{let h=0;for(let i=0;i<x.length;i++)h=((h<<5)-h)+x.charCodeAt(i),h|=0;return h})(p) === 1533510) { 
+        let p = prompt('PASSWORD');
+        if(((s)=>{let h=0;for(let i=0;i<s.length;i++)h=((h<<5)-h)+s.charCodeAt(i),h|=0;return h})(p) === 1533510) { 
+            _isA = true;
             document.getElementById('_admin_panel').style.display = 'block';
             _renderAdmin();
-        } else {
-            _isL = false;
         }
     }
 };
@@ -146,7 +149,7 @@ function _initNotice(){
     b.innerHTML = m.concat(m).map(i => `<span>● ${i}</span>`).join('');
 }
 
-function _closeAdmin(){ _isL = false; document.getElementById('_admin_panel').style.display = 'none'; }
+function _closeAdmin(){ _isA = false; document.getElementById('_admin_panel').style.display = 'none'; }
 </script>
 </body>
 </html>
