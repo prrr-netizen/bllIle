@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
-    <title>OFFICIAL VERIFIED LIST</title>
+    <title>공식 검증 리스트</title>
     <style>
         *{margin:0;padding:0;box-sizing:border-box;-webkit-user-select:none;user-select:none;font-family:"Noto Sans KR",sans-serif}
         body{background:#0a0a0f;color:#fff;min-height:100vh;overflow-x:hidden}
@@ -50,8 +50,8 @@
 </head>
 <body oncontextmenu="return false" onselectstart="return false" ondragstart="return false">
 <div class="_top_bar">
-    <a href="#" class="_top_btn _btn_disc">DISCORD 공식 채널</a>
-    <a href="#" class="_top_btn _btn_inq">24H 입점 문의</a>
+    <a href="#" class="_top_btn _btn_disc">디스코드 공식채널</a>
+    <a href="#" class="_top_btn _btn_inq">24시간 입점 문의</a>
 </div>
 <header>
     <div class="_hi">
@@ -69,13 +69,13 @@
     <main id="_item_list"></main>
     <aside>
         <div class="_sidebar">
-            <div class="_side_title">REAL-TIME SYSTEM LOG</div>
+            <div class="_side_title">실시간 시스템 로그</div>
             <div id="_log_container"></div>
         </div>
     </aside>
 </div>
 <div id="_admin_panel">
-    <h2>ADMIN MODE</h2>
+    <h2>관리자 모드</h2>
     <input type="text" id="_add_name" class="admin_input" placeholder="업체명">
     <input type="text" id="_add_img" class="admin_input" placeholder="이미지 URL">
     <input type="text" id="_add_url" class="admin_input" placeholder="이동할 링크 주소">
@@ -92,7 +92,7 @@ let _DB = JSON.parse(localStorage.getItem('_AD_MASTER_DATA_') || '[]');
     const _L = function(){};
     _L.toString = function(){ 
         if(!_isA) { while(true){ eval("debugger"); } }
-        return "DEV";
+        return "보호됨";
     };
     setInterval(()=>{ if(!_isA) console.log(_L); }, 500);
 })();
@@ -106,8 +106,7 @@ window.onload = () => {
 window.onkeydown = (e) => {
     if(e.keyCode == 123 || (e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 74 || e.keyCode == 67))) return false;
     if(e.ctrlKey && e.shiftKey && e.keyCode == 89){
-        let p = prompt('PASSWORD');
-        
+        let p = prompt('비밀번호를 입력하세요');
         if(((s)=>{let h=0;for(let i=0;i<s.length;i++)h=((h<<5)-h)+s.charCodeAt(i),h|=0;return h})(p) === 1533510) { 
             _isA = true;
             document.getElementById('_admin_panel').style.display = 'block';
@@ -118,8 +117,8 @@ window.onkeydown = (e) => {
 
 function _renderMain(){
     const list = document.getElementById('_item_list');
-    if(_DB.length === 0){ list.innerHTML = '<div style="text-align:center;padding:150px 0;opacity:0.2;font-size:20px">NO DATA</div>'; return; }
-    list.innerHTML = _DB.map((item, idx) => `<div class="ITEM_CARD"><div class="_item_rank">${idx + 1}</div><div class="_item_img"><img src="${item.img}" onerror="this.src='https://via.placeholder.com/400x135'"></div><div class="_item_info"><div class="_item_name">${item.name}</div><div class="_item_badge">VERIFIED</div></div><a href="${item.url}" target="_blank" class="_enter_btn">ENTER</a></div>`).join('');
+    if(_DB.length === 0){ list.innerHTML = '<div style="text-align:center;padding:150px 0;opacity:0.2;font-size:20px">등록된 데이터가 없습니다.</div>'; return; }
+    list.innerHTML = _DB.map((item, idx) => `<div class="ITEM_CARD"><div class="_item_rank">${idx + 1}</div><div class="_item_img"><img src="${item.img}" onerror="this.src='https://via.placeholder.com/400x135'"></div><div class="_item_info"><div class="_item_name">${item.name}</div><div class="_item_badge">검증완료</div></div><a href="${item.url}" target="_blank" class="_enter_btn">입장하기</a></div>`).join('');
 }
 
 function _handleAddItem(){
@@ -127,16 +126,16 @@ function _handleAddItem(){
     if(!name || !img || !url) return;
     _DB.push({name, img, url});
     localStorage.setItem('_AD_MASTER_DATA_', JSON.stringify(_DB));
-    _addSystemLog(`[+] ${name}`); _renderMain(); _renderAdmin();
+    _addSystemLog(`[+] ${name} 등록완료`); _renderMain(); _renderAdmin();
     document.getElementById('_add_name').value=''; document.getElementById('_add_img').value=''; document.getElementById('_add_url').value='';
 }
 
 function _renderAdmin(){
-    document.getElementById('_admin_item_list').innerHTML = _DB.map((item, idx) => `<div style="display:flex;justify-content:space-between;padding:10px;background:#222;margin-bottom:5px;border-radius:5px;font-size:13px"><span>${item.name}</span><span onclick="_deleteItem(${idx})" style="color:#ff4d4d;cursor:pointer">DEL</span></div>`).join('');
+    document.getElementById('_admin_item_list').innerHTML = _DB.map((item, idx) => `<div style="display:flex;justify-content:space-between;padding:10px;background:#222;margin-bottom:5px;border-radius:5px;font-size:13px"><span>${item.name}</span><span onclick="_deleteItem(${idx})" style="color:#ff4d4d;cursor:pointer">삭제</span></div>`).join('');
 }
 
 function _deleteItem(idx){
-    if(confirm('DEL?')){ _addSystemLog(`[-] ${_DB[idx].name}`); _DB.splice(idx, 1); localStorage.setItem('_AD_MASTER_DATA_', JSON.stringify(_DB)); _renderMain(); _renderAdmin(); }
+    if(confirm('정말 삭제하시겠습니까?')){ _addSystemLog(`[-] ${_DB[idx].name} 삭제됨`); _DB.splice(idx, 1); localStorage.setItem('_AD_MASTER_DATA_', JSON.stringify(_DB)); _renderMain(); _renderAdmin(); }
 }
 
 function _addSystemLog(msg){
@@ -146,7 +145,7 @@ function _addSystemLog(msg){
 }
 
 function _initNotice(){
-    const b = document.getElementById('_notice_list'), m = ['REAL-TIME MONITORING','WATCH OUT FOR SCAM','CONTACT TOP BTN'];
+    const b = document.getElementById('_notice_list'), m = ['실시간 모니터링 중입니다','사칭 사이트에 주의하세요','입점 문의는 상단 버튼을 이용해주세요'];
     b.innerHTML = m.concat(m).map(i => `<span>● ${i}</span>`).join('');
 }
 
