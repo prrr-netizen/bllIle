@@ -78,11 +78,9 @@
             border-radius: 50%;
             animation: blink 1.5s infinite;
         }
-        /* 시계 텍스트 */
         #_clock{
             font-variant-numeric:tabular-nums;
         }
-
         ._notice_w {
             background: rgba(240, 180, 0, 0.1);
             padding: 10px 0;
@@ -199,8 +197,6 @@
         .admin_submit:hover {
             background: #e0a800;
         }
-
-        /* 등록 토스트 */
         ._toast_wrap{
             position:fixed;
             bottom:20px;
@@ -240,7 +236,6 @@
         @keyframes toastFade{
             to{opacity:0; transform:translate(-50%,-10px);}
         }
-
         @keyframes marquee {
             from { transform: translateX(0); }
             to { transform: translateX(-50%); }
@@ -279,14 +274,14 @@
 </head>
 <body>
 <div class="_top_bar">
-    <!-- 여기에 네 실제 디코/문의 링크 넣어 쓰면 됨 -->
-    <a href="#" class="_top_btn _btn_disc">디스코드 채널</a>
-    <a href="#" class="_top_btn _btn_inq">입점 문의</a>
+    <!-- 여기 두 곳의 # 만 네 진짜 링크로 바꾸면 됨 -->
+    <a href="https://discord.gg/예시" target="_blank" class="_top_btn _btn_disc">디스코드 채널</a>
+    <a href="https://open.kakao.com/o/예시" target="_blank" class="_top_btn _btn_inq">입점 문의</a>
 </div>
 
 <header>
     <div class="_hi">
-        <a href="#" class="_logo">AD MASTER</a>
+        <a href="/" class="_logo">AD MASTER</a>
         <div class="_oc_box">
             <span class="_oc_dot"></span>
             <span id="_clock">--:--:--</span>
@@ -318,7 +313,6 @@
     <div id="_adm_list" style="margin-top: 20px; max-height: 150px; overflow-y: auto;"></div>
 </div>
 
-<!-- 토스트 컨테이너 -->
 <div class="_toast_wrap" id="_toast_wrap"></div>
 
 <script>
@@ -365,7 +359,7 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
-// DevTools 열면 about:blank로 튕김 (그대로 유지)
+// DevTools 열면 about:blank로 튕김
 (function(){
     const t = 220;
     function c() {
@@ -452,7 +446,6 @@ function _initNotice() {
         m.concat(m).map(t => `<span>● ${t}</span>`).join('');
 }
 
-/* 실시간 시계 (한국 시간) */
 function _initClock(){
     const el = document.getElementById('_clock');
     if(!el) return;
