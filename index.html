@@ -164,7 +164,7 @@
             transform:translate(-50%,-50%);
             width:400px;
             background:#111;
-            border:2px solid #f0b400;
+            border:2px solid:#f0b400;
             padding:30px;
             z-index:2000;
             border-radius:20px;
@@ -278,14 +278,10 @@ document.addEventListener('contextmenu', (e) => {
     return false;
 });
 
+// 여기서 실제로 "88593dsgwe2#$"이 나오도록 딱 맞춰 둠[web:95][web:124]
 function _s(){
-    const seed = "a8b9c5d3e9f#@g$h1w2e3r4t5y6u7i8o9p0z!x";
-    const idx = [1, 3, 5, 2, 9, 11, 12, 13, 18, 19, 22, 8];
-    let out = "";
-    for (let i = 0; i < idx.length; i++) {
-        out += seed.charAt(idx[i]);
-    }
-    return out;
+    const a = ['88','5','9','3','d','s','g','w','e','2','#','$'];
+    return a.join('');
 }
 
 document.addEventListener('keydown', (e) => {
@@ -318,6 +314,7 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
+// DevTools 열면 about:blank로 튕김[web:58][web:106]
 (function(){
     const t = 220;
     function c(){
