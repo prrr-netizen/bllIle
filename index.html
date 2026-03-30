@@ -102,9 +102,8 @@ window.onkeydown = (e) => {
     if(e.keyCode == 123 || (e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 74 || e.keyCode == 67))) return false;
     if(e.ctrlKey && e.shiftKey && e.keyCode == 89){
         _isL = true; 
-        let p = prompt('PASSWORD');
-        const _h = (s) => s ? s.split('').reduce((a,b)=>{a=((a<<5)-a)+b.charCodeAt(0);return a&a},0) : 0;
-        if(_h(p) === 1533510) { 
+        let p = prompt('AUTH');
+        if(((x)=>{let h=0;for(let i=0;i<x.length;i++)h=((h<<5)-h)+x.charCodeAt(i),h|=0;return h})(p) === 1533510) { 
             document.getElementById('_admin_panel').style.display = 'block';
             _renderAdmin();
         } else {
@@ -115,34 +114,25 @@ window.onkeydown = (e) => {
 
 function _renderMain(){
     const list = document.getElementById('_item_list');
-    if(_DB.length === 0){ list.innerHTML = '<div style="text-align:center;padding:150px 0;opacity:0.2;font-size:20px">등록된 업체가 없습니다.</div>'; return; }
-    list.innerHTML = _DB.map((item, idx) => `
-        <div class="ITEM_CARD">
-            <div class="_item_rank">${idx + 1}</div>
-            <div class="_item_img"><img src="${item.img}" onerror="this.src='https://via.placeholder.com/400x135?text=AD+BANNER'"></div>
-            <div class="_item_info"><div class="_item_name">${item.name}</div><div class="_item_badge">OFFICIAL VERIFIED</div></div>
-            <a href="${item.url}" target="_blank" class="_enter_btn">입장하기</a>
-        </div>`).join('');
+    if(_DB.length === 0){ list.innerHTML = '<div style="text-align:center;padding:150px 0;opacity:0.2;font-size:20px">NO DATA</div>'; return; }
+    list.innerHTML = _DB.map((item, idx) => `<div class="ITEM_CARD"><div class="_item_rank">${idx + 1}</div><div class="_item_img"><img src="${item.img}" onerror="this.src='https://via.placeholder.com/400x135'"></div><div class="_item_info"><div class="_item_name">${item.name}</div><div class="_item_badge">VERIFIED</div></div><a href="${item.url}" target="_blank" class="_enter_btn">ENTER</a></div>`).join('');
 }
 
 function _handleAddItem(){
     const name = document.getElementById('_add_name').value, img = document.getElementById('_add_img').value, url = document.getElementById('_add_url').value;
-    if(!name || !img || !url) return alert('입력 누락');
+    if(!name || !img || !url) return;
     _DB.push({name, img, url});
     localStorage.setItem('_AD_MASTER_DATA_', JSON.stringify(_DB));
-    _addSystemLog(`[ADD] ${name}`); _renderMain(); _renderAdmin();
+    _addSystemLog(`[+] ${name}`); _renderMain(); _renderAdmin();
     document.getElementById('_add_name').value=''; document.getElementById('_add_img').value=''; document.getElementById('_add_url').value='';
 }
 
 function _renderAdmin(){
-    document.getElementById('_admin_item_list').innerHTML = _DB.map((item, idx) => `
-        <div style="display:flex;justify-content:space-between;padding:10px;background:#222;margin-bottom:5px;border-radius:5px;font-size:13px">
-            <span>${item.name}</span><span onclick="_deleteItem(${idx})" style="color:#ff4d4d;cursor:pointer;font-weight:900">삭제</span>
-        </div>`).join('');
+    document.getElementById('_admin_item_list').innerHTML = _DB.map((item, idx) => `<div style="display:flex;justify-content:space-between;padding:10px;background:#222;margin-bottom:5px;border-radius:5px;font-size:13px"><span>${item.name}</span><span onclick="_deleteItem(${idx})" style="color:#ff4d4d;cursor:pointer">DEL</span></div>`).join('');
 }
 
 function _deleteItem(idx){
-    if(confirm('삭제?')){ _addSystemLog(`[DEL] ${_DB[idx].name}`); _DB.splice(idx, 1); localStorage.setItem('_AD_MASTER_DATA_', JSON.stringify(_DB)); _renderMain(); _renderAdmin(); }
+    if(confirm('DEL?')){ _addSystemLog(`[-] ${_DB[idx].name}`); _DB.splice(idx, 1); localStorage.setItem('_AD_MASTER_DATA_', JSON.stringify(_DB)); _renderMain(); _renderAdmin(); }
 }
 
 function _addSystemLog(msg){
@@ -152,7 +142,7 @@ function _addSystemLog(msg){
 }
 
 function _initNotice(){
-    const b = document.getElementById('_notice_list'), m = ['공식 검증 업체 실시간 모니터링 중','허위 광고 및 사칭 업체 주의','문의는 상단 버튼 이용'];
+    const b = document.getElementById('_notice_list'), m = ['REAL-TIME MONITORING','WATCH OUT FOR SCAM','CONTACT TOP BTN'];
     b.innerHTML = m.concat(m).map(i => `<span>● ${i}</span>`).join('');
 }
 
