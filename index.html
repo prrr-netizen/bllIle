@@ -5,151 +5,433 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
     <title>공식 검증 리스트</title>
     <style>
-        *{margin:0;padding:0;box-sizing:border-box;-webkit-user-select:none;user-select:none;font-family:"Noto Sans KR",sans-serif}
-        body{background:#0a0a0f;color:#fff;min-height:100vh;overflow-x:hidden}
-        body::before{content:"";position:fixed;inset:0;background:radial-gradient(ellipse 80% 40% at 50% 0%,rgba(255,180,0,0.08),transparent 55%);pointer-events:none;z-index:0}
-        ._top_bar{background:#000;padding:10px 20px;display:flex;justify-content:flex-end;gap:12px;border-bottom:1px solid #1a1a25;position:relative;z-index:100}
-        ._top_btn{text-decoration:none;font-size:12px;font-weight:900;padding:6px 16px;border-radius:4px;transition:0.2s}
-        ._btn_disc{background:#5865F2;color:#fff}._btn_disc:hover{background:#4752c4}
-        ._btn_inq{background:#f0b400;color:#000}._btn_inq:hover{background:#d49e00}
-        header{position:sticky;top:0;z-index:50;background:rgba(8,8,13,0.95);backdrop-filter:blur(15px);border-bottom:1px solid rgba(255,180,0,0.15)}
-        ._hi{max-width:1400px;margin:0 auto;padding:0 20px;height:65px;display:flex;align-items:center;justify-content:space-between}
-        ._logo{font-size:22px;font-weight:900;color:#f0b400;text-decoration:none;letter-spacing:0.05em}
-        ._logo span{color:#fff}
-        ._oc_box{display:flex;align-items:center;gap:8px;font-size:13px;background:rgba(255,255,255,0.05);padding:6px 15px;border-radius:99px;border:1px solid rgba(255,255,255,0.1)}
-        ._oc_dot{width:7px;height:7px;background:#4ade80;border-radius:50%;animation:blink 1.5s infinite}
-        ._notice_w{background:rgba(240,180,0,0.05);border-bottom:1px solid rgba(240,180,0,0.1);padding:10px 0;overflow:hidden}
-        ._notice_t{display:flex;gap:60px;animation:marquee 35s linear infinite;white-space:nowrap;width:max-content}
-        ._notice_t span{font-size:13px;color:rgba(255,180,0,0.8);font-weight:600}
-        ._main_wrapper{max-width:1400px;margin:0 auto;padding:30px 20px;display:grid;grid-template-columns:1fr 320px;gap:25px;position:relative;z-index:1}
-        .ITEM_CARD{background:linear-gradient(135deg, rgba(20,20,30,0.9), rgba(10,10,15,0.95));border:1px solid rgba(255,255,255,0.08);border-radius:15px;height:135px;display:flex;align-items:center;margin-bottom:15px;overflow:hidden;transition:0.3s ease;animation:fadeIn 0.5s ease both}
-        .ITEM_CARD:hover{border-color:#f0b400;transform:translateY(-3px);box-shadow:0 10px 30px rgba(0,0,0,0.5)}
-        ._item_rank{width:80px;height:100%;display:flex;align-items:center;justify-content:center;font-size:32px;font-weight:900;color:rgba(255,255,255,0.1);background:rgba(255,255,255,0.02)}
-        ._item_img{width:400px;height:100%;background:#000;border-right:1px solid rgba(255,255,255,0.05)}
-        ._item_img img{width:100%;height:100%;object-fit:cover}
-        ._item_info{flex:1;padding:0 25px}
-        ._item_name{font-size:22px;font-weight:900;margin-bottom:8px;color:#fff}
-        ._item_badge{display:inline-block;font-size:11px;font-weight:800;padding:3px 10px;border-radius:4px;background:rgba(74,222,128,0.1);color:#4ade80;border:1px solid rgba(74,222,128,0.2)}
-        ._enter_btn{background:linear-gradient(to bottom, #f0b400, #d49e00);color:#000;text-decoration:none;font-weight:900;font-size:14px;padding:12px 30px;border-radius:8px;margin-right:25px;transition:0.2s}
-        ._enter_btn:hover{filter:brightness(1.1)}
-        ._sidebar{background:rgba(15,15,25,0.8);border:1px solid #222;border-radius:15px;padding:20px;height:600px;position:sticky;top:90px;display:flex;flex-direction:column}
-        ._side_title{font-size:12px;font-weight:900;color:#f0b400;margin-bottom:20px;letter-spacing:0.1em;border-bottom:1px solid #333;padding-bottom:10px}
-        #_log_container{flex:1;overflow-y:auto;font-size:11px;display:flex;flex-direction:column;gap:8px}
-        ._log_entry{padding:8px;background:rgba(0,0,0,0.2);border-radius:5px;border-left:3px solid #f0b400}
-        ._log_time{color:#777;margin-right:5px;font-family:monospace}
-        #_admin_panel{display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);width:450px;background:#111;border:2px solid #f0b400;padding:30px;z-index:2000;border-radius:20px;box-shadow:0 0 50px rgba(0,0,0,0.8)}
-        #_admin_panel h2{margin-bottom:20px;text-align:center;color:#f0b400}
-        .admin_input{width:100%;padding:12px;margin-bottom:12px;background:#000;color:#fff;border:1px solid #333;border-radius:8px}
-        .admin_submit{width:100%;padding:15px;background:#f0b400;border:none;font-weight:900;cursor:pointer;border-radius:8px;margin-bottom:10px}
-        @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-        @keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
-        @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
-        @media (max-width:1100px){._main_wrapper{grid-template-columns:1fr}._sidebar{display:none}._item_img{width:250px}}
-        @media (max-width:600px){.ITEM_CARD{flex-direction:column;height:auto;padding-bottom:20px}._item_img{width:100%;height:150px}._enter_btn{width:calc(100% - 40px);margin:15px 20px 0;text-align:center}}
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            -webkit-user-select:none;
+            user-select:none;
+            font-family:"Noto Sans KR",sans-serif
+        }
+        body{
+            background:#0a0a0f;
+            color:#fff;
+            min-height:100vh;
+            overflow-x:hidden
+        }
+        ._top_bar{
+            background:#000;
+            padding:10px 20px;
+            display:flex;
+            justify-content:flex-end;
+            gap:12px;
+            border-bottom:1px solid #1a1a25;
+            position:relative;
+            z-index:100
+        }
+        ._top_btn{
+            text-decoration:none;
+            font-size:12px;
+            font-weight:900;
+            padding:6px 16px;
+            border-radius:4px;
+            transition:0.2s
+        }
+        ._btn_disc{background:#5865F2;color:#fff}
+        ._btn_inq{background:#f0b400;color:#000}
+        header{
+            position:sticky;
+            top:0;
+            z-index:50;
+            background:rgba(8,8,13,0.95);
+            backdrop-filter:blur(15px);
+            border-bottom:1px solid rgba(255,180,0,0.15)
+        }
+        ._hi{
+            max-width:1400px;
+            margin:0 auto;
+            padding:0 20px;
+            height:65px;
+            display:flex;
+            align-items:center;
+            justify-content:space-between
+        }
+        ._logo{
+            font-size:22px;
+            font-weight:900;
+            color:#f0b400;
+            text-decoration:none
+        }
+        ._oc_box{
+            display:flex;
+            align-items:center;
+            gap:8px;
+            font-size:13px;
+            background:rgba(255,255,255,0.05);
+            padding:6px 15px;
+            border-radius:99px
+        }
+        ._oc_dot{
+            width:7px;
+            height:7px;
+            background:#4ade80;
+            border-radius:50%;
+            animation:blink 1.5s infinite
+        }
+        ._notice_w{
+            background:rgba(240,180,0,0.05);
+            padding:10px 0;
+            overflow:hidden
+        }
+        ._notice_t{
+            display:flex;
+            gap:60px;
+            animation:marquee 35s linear infinite;
+            white-space:nowrap
+        }
+        ._notice_t span{
+            font-size:13px;
+            color:rgba(255,180,0,0.8);
+            font-weight:600
+        }
+        ._main_wrapper{
+            max-width:1400px;
+            margin:0 auto;
+            padding:30px 20px;
+            display:grid;
+            grid-template-columns:1fr 320px;
+            gap:25px
+        }
+        .ITEM_CARD{
+            background:#14141e;
+            border:1px solid rgba(255,255,255,0.08);
+            border-radius:15px;
+            height:135px;
+            display:flex;
+            align-items:center;
+            margin-bottom:15px;
+            overflow:hidden
+        }
+        ._item_rank{
+            width:80px;
+            font-size:32px;
+            font-weight:900;
+            color:rgba(255,255,255,0.1);
+            text-align:center
+        }
+        ._item_img{
+            width:400px;
+            height:100%;
+            background:#000
+        }
+        ._item_img img{
+            width:100%;
+            height:100%;
+            object-fit:cover
+        }
+        ._item_info{
+            flex:1;
+            padding:0 25px
+        }
+        ._item_name{
+            font-size:22px;
+            font-weight:900;
+            margin-bottom:8px
+        }
+        ._enter_btn{
+            background:#f0b400;
+            color:#000;
+            text-decoration:none;
+            font-weight:900;
+            padding:12px 30px;
+            border-radius:8px;
+            margin-right:25px
+        }
+        ._sidebar{
+            background:#0f0f19;
+            border:1px solid #222;
+            border-radius:15px;
+            padding:20px;
+            height:600px;
+            position:sticky;
+            top:90px
+        }
+        #_admin_panel{
+            display:none;
+            position:fixed;
+            top:50%;
+            left:50%;
+            transform:translate(-50%,-50%);
+            width:400px;
+            background:#111;
+            border:2px solid #f0b400;
+            padding:30px;
+            z-index:2000;
+            border-radius:20px;
+            box-shadow:0 0 50px #000
+        }
+        .admin_input{
+            width:100%;
+            padding:12px;
+            margin-bottom:12px;
+            background:#000;
+            color:#fff;
+            border:1px solid #333;
+            border-radius:8px
+        }
+        .admin_submit{
+            width:100%;
+            padding:15px;
+            background:#f0b400;
+            border:none;
+            font-weight:900;
+            cursor:pointer;
+            border-radius:8px
+        }
+        @keyframes marquee{
+            from{transform:translateX(0)}
+            to{transform:translateX(-50%)}
+        }
+        @keyframes blink{
+            0%,100%{opacity:1}
+            50%{opacity:0.3}
+        }
+        @media(max-width:960px){
+            ._main_wrapper{
+                grid-template-columns:1fr;
+            }
+            ._sidebar{
+                position:static;
+                height:auto;
+            }
+            .ITEM_CARD{
+                flex-direction:column;
+                height:auto;
+                align-items:flex-start;
+            }
+            ._item_rank{
+                width:auto;
+                padding:10px 20px 0 20px;
+                text-align:left;
+            }
+            ._item_img{
+                width:100%;
+                height:180px;
+            }
+            ._enter_btn{
+                margin:10px 20px 15px auto;
+            }
+        }
     </style>
 </head>
-<body oncontextmenu="return false" onselectstart="return false" ondragstart="return false">
+<body>
 <div class="_top_bar">
-    <a href="#" class="_top_btn _btn_disc">디스코드 공식채널</a>
-    <a href="#" class="_top_btn _btn_inq">24시간 입점 문의</a>
+    <a href="#" class="_top_btn _btn_disc">디스코드 채널</a>
+    <a href="#" class="_top_btn _btn_inq">입점 문의</a>
 </div>
+
 <header>
     <div class="_hi">
-        <a href="#" class="_logo">AD<span>MASTER</span></a>
+        <a href="#" class="_logo">AD MASTER</a>
         <div class="_oc_box">
             <span class="_oc_dot"></span>
-            현재 <b id="_v_count" style="color:#4ade80;margin:0 3px">0</b>명 접속 중
+            현재 접속 <b id="_v_count">182</b>명
         </div>
     </div>
 </header>
+
 <div class="_notice_w">
     <div class="_notice_t" id="_notice_list"></div>
 </div>
+
 <div class="_main_wrapper">
     <main id="_item_list"></main>
     <aside>
         <div class="_sidebar">
-            <div class="_side_title">실시간 시스템 로그</div>
+            <div style="color:#f0b400;font-size:12px;margin-bottom:20px">실시간 로그</div>
             <div id="_log_container"></div>
         </div>
     </aside>
 </div>
+
 <div id="_admin_panel">
-    <h2>관리자 모드</h2>
-    <input type="text" id="_add_name" class="admin_input" placeholder="업체명">
-    <input type="text" id="_add_img" class="admin_input" placeholder="이미지 URL">
-    <input type="text" id="_add_url" class="admin_input" placeholder="이동할 링크 주소">
-    <button class="admin_submit" onclick="_handleAddItem()">신규 업체 등록</button>
-    <button class="admin_submit" style="background:#333;color:#fff" onclick="_closeAdmin()">패널 닫기</button>
-    <div id="_admin_item_list" style="margin-top:20px;max-height:200px;overflow-y:auto;border-top:1px solid #333;padding-top:15px"></div>
+    <h2 style="text-align:center;margin-bottom:20px">관리자 모드</h2>
+    <input type="text" id="_n" class="admin_input" placeholder="업체명">
+    <input type="text" id="_i" class="admin_input" placeholder="이미지 URL">
+    <input type="text" id="_u" class="admin_input" placeholder="이동 링크">
+    <button class="admin_submit" onclick="_addItem()">등록하기</button>
+    <button onclick="_closeAdmin()" style="width:100%;margin-top:10px;background:none;color:#555;border:none;cursor:pointer">닫기</button>
+    <div id="_adm_list" style="margin-top:20px;max-height:150px;overflow-y:auto"></div>
 </div>
 
+<!-- DevTools 강력 방어 라이브러리 (cdn) -->
+<script
+    disable-devtool-auto
+    src="https://cdn.jsdelivr.net/npm/disable-devtool@latest"
+    disable-menu="true"
+    clear-log="true"
+    disable-select="true"
+    disable-copy="true"
+    disable-cut="true"
+    disable-paste="true"
+></script>
+
 <script>
-let _isA = false;
-let _DB = JSON.parse(localStorage.getItem('_AD_MASTER_DATA_') || '[]');
+// ===================== 로컬 DB =====================
+let _DB = JSON.parse(localStorage.getItem('_AD_DATA_') || '[]');
 
-(function(){
-    const _L = function(){};
-    _L.toString = function(){ 
-        if(!_isA) { while(true){ eval("debugger"); } }
-        return "보호됨";
-    };
-    setInterval(()=>{ if(!_isA) console.log(_L); }, 500);
-})();
-
-window.onload = () => { 
-    _renderMain(); 
-    _initNotice(); 
-    document.getElementById('_v_count').innerText = Math.floor(Math.random()*40) + 182; 
+// ===================== 초기 로딩 =====================
+window.onload = () => {
+    _render();
+    _initNotice();
+    document.getElementById('_v_count').innerText = Math.floor(Math.random()*40) + 182;
 };
 
-window.onkeydown = (e) => {
-    if(e.keyCode == 123 || (e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 74 || e.keyCode == 67))) return false;
-    if(e.ctrlKey && e.shiftKey && e.keyCode == 89){
-        let p = prompt('비밀번호를 입력하세요');
-        if(((s)=>{let h=0;for(let i=0;i<s.length;i++)h=((h<<5)-h)+s.charCodeAt(i),h|=0;return h})(p) === 1533510) { 
-            _isA = true;
-            document.getElementById('_admin_panel').style.display = 'block';
-            _renderAdmin();
+// ===================== 우클릭 방지(추가 보강) =====================
+document.addEventListener('contextmenu', (e) => {
+    e.preventDefault();
+    return false;
+});
+
+// ===================== 관리자 비밀번호 난독화 =====================
+// 실제 비번: "8253" (숫자 쪼개서 합침)[web:45][web:52]
+function _getAdminPassword(){
+    const a = 4 * 2;   // 8
+    const b = 7 - 5;   // 2
+    const c = 15 - 10; // 5
+    const d = 9 - 6;   // 3
+    return '' + a + b + c + d;
+}
+
+// ===================== 키보드 방어 (F12 등) =====================
+// 라이브러리가 한 번 막지만, 한 번 더 직접 보강[web:58]
+window.addEventListener('keydown', (e) => {
+    // F12
+    if (e.keyCode === 123) {
+        e.preventDefault();
+        return false;
+    }
+    // Ctrl+Shift+I/J/C
+    if (e.ctrlKey && e.shiftKey && [73,74,67].includes(e.keyCode)) {
+        e.preventDefault();
+        return false;
+    }
+    // Ctrl+U (소스 보기)
+    if (e.ctrlKey && e.keyCode === 85) {
+        e.preventDefault();
+        return false;
+    }
+
+    // ================= 관리자 모드 단축키 =================
+    // Ctrl + Shift + Y → 관리자 진입
+    if (e.ctrlKey && e.shiftKey && e.keyCode === 89) {
+        const p = prompt('관리자 비밀번호');
+        const real = _getAdminPassword();
+        if (p === real) {
+            document.getElementById('_admin_panel').style.display='block';
+            _renderA();
+        } else if (p !== null) {
+            alert('비밀번호가 올바르지 않습니다.');
         }
     }
-};
+});
 
-function _renderMain(){
+// ===================== DevTools 추가 감지 =====================
+// 크기 기반 감지로, 메뉴에서 DevTools 열어도 바로 초기화 느낌[web:54][web:58]
+(function detectDevTools(){
+    const threshold = 160;
+
+    function check(){
+        const w = window.outerWidth  - window.innerWidth;
+        const h = window.outerHeight - window.innerHeight;
+        if (w > threshold || h > threshold) {
+            // 소스/패널 보려고 하면 바로 공백 페이지로 튕김
+            location.href = 'about:blank';
+        }
+    }
+
+    window.addEventListener('resize', check);
+    window.addEventListener('load', check);
+    window.addEventListener('focus', check);
+})();
+
+// ===================== 리스트 렌더링 =====================
+function _render(){
     const list = document.getElementById('_item_list');
-    if(_DB.length === 0){ list.innerHTML = '<div style="text-align:center;padding:150px 0;opacity:0.2;font-size:20px">등록된 데이터가 없습니다.</div>'; return; }
-    list.innerHTML = _DB.map((item, idx) => `<div class="ITEM_CARD"><div class="_item_rank">${idx + 1}</div><div class="_item_img"><img src="${item.img}" onerror="this.src='https://via.placeholder.com/400x135'"></div><div class="_item_info"><div class="_item_name">${item.name}</div><div class="_item_badge">검증완료</div></div><a href="${item.url}" target="_blank" class="_enter_btn">입장하기</a></div>`).join('');
+    if(!_DB.length){
+        list.innerHTML = '<div style="text-align:center;padding:100px;color:#333">등록된 업체가 없습니다.</div>';
+        return;
+    }
+    list.innerHTML = _DB.map((i,idx)=>`
+        <div class="ITEM_CARD">
+            <div class="_item_rank">${idx+1}</div>
+            <div class="_item_img">
+                <img src="${i.img}" onerror="this.src='https://via.placeholder.com/400x135'">
+            </div>
+            <div class="_item_info">
+                <div class="_item_name">${i.name}</div>
+                <div style="color:#4ade80;font-size:11px">검증완료</div>
+            </div>
+            <a href="${i.url}" target="_blank" class="_enter_btn">입장하기</a>
+        </div>
+    `).join('');
 }
 
-function _handleAddItem(){
-    const name = document.getElementById('_add_name').value, img = document.getElementById('_add_img').value, url = document.getElementById('_add_url').value;
-    if(!name || !img || !url) return;
-    _DB.push({name, img, url});
-    localStorage.setItem('_AD_MASTER_DATA_', JSON.stringify(_DB));
-    _addSystemLog(`[+] ${name} 등록완료`); _renderMain(); _renderAdmin();
-    document.getElementById('_add_name').value=''; document.getElementById('_add_img').value=''; document.getElementById('_add_url').value='';
+// ===================== 관리자 모드 =====================
+function _addItem(){
+    const n = document.getElementById('_n').value.trim();
+    const i = document.getElementById('_i').value.trim();
+    const u = document.getElementById('_u').value.trim();
+    if(!n || !i || !u) return;
+
+    _DB.push({name:n, img:i, url:u});
+    localStorage.setItem('_AD_DATA_', JSON.stringify(_DB));
+    _addLog(`[+] ${n} 등록`);
+    _render();
+    _renderA();
+
+    document.getElementById('_n').value='';
+    document.getElementById('_i').value='';
+    document.getElementById('_u').value='';
 }
 
-function _renderAdmin(){
-    document.getElementById('_admin_item_list').innerHTML = _DB.map((item, idx) => `<div style="display:flex;justify-content:space-between;padding:10px;background:#222;margin-bottom:5px;border-radius:5px;font-size:13px"><span>${item.name}</span><span onclick="_deleteItem(${idx})" style="color:#ff4d4d;cursor:pointer">삭제</span></div>`).join('');
+function _renderA(){
+    document.getElementById('_adm_list').innerHTML = _DB.map((i,idx)=>`
+        <div style="display:flex;justify-content:space-between;background:#222;padding:10px;margin-bottom:5px;border-radius:5px">
+            <span>${i.name}</span>
+            <span onclick="_del(${idx})" style="color:#ff4d4d;cursor:pointer">삭제</span>
+        </div>
+    `).join('');
 }
 
-function _deleteItem(idx){
-    if(confirm('정말 삭제하시겠습니까?')){ _addSystemLog(`[-] ${_DB[idx].name} 삭제됨`); _DB.splice(idx, 1); localStorage.setItem('_AD_MASTER_DATA_', JSON.stringify(_DB)); _renderMain(); _renderAdmin(); }
+function _del(idx){
+    const n = _DB[idx].name;
+    _DB.splice(idx,1);
+    localStorage.setItem('_AD_DATA_', JSON.stringify(_DB));
+    _addLog(`[-] ${n} 삭제`);
+    _render();
+    _renderA();
 }
 
-function _addSystemLog(msg){
-    const c = document.getElementById('_log_container'), d = document.createElement('div');
-    d.className = '_log_entry'; d.innerHTML = `<span class="_log_time">[${new Date().toLocaleTimeString()}]</span> ${msg}`;
+// ===================== 로그 / 공지 =====================
+function _addLog(msg){
+    const c = document.getElementById('_log_container');
+    const d = document.createElement('div');
+    d.style.cssText = "font-size:11px;padding:5px;border-left:2px solid #f0b400;margin-bottom:5px;background:rgba(255,255,255,0.02)";
+    d.innerHTML = `[${new Date().toLocaleTimeString()}] ${msg}`;
     c.prepend(d);
 }
 
 function _initNotice(){
-    const b = document.getElementById('_notice_list'), m = ['실시간 모니터링 중입니다','사칭 사이트에 주의하세요','입점 문의는 상단 버튼을 이용해주세요'];
-    b.innerHTML = m.concat(m).map(i => `<span>● ${i}</span>`).join('');
+    const m = ['실시간 모니터링 중', '사칭 사이트 주의', '입점 문의는 상단 확인'];
+    document.getElementById('_notice_list').innerHTML =
+        m.concat(m).map(t=>`<span>● ${t}</span>`).join('');
 }
 
-function _closeAdmin(){ _isA = false; document.getElementById('_admin_panel').style.display = 'none'; }
+// ===================== 관리자 패널 닫기 =====================
+function _closeAdmin(){
+    document.getElementById('_admin_panel').style.display='none';
+}
 </script>
 </body>
 </html>
