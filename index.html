@@ -85,54 +85,31 @@
 </div>
 
 <script>
-let _isL = false; 
-let _sec;
-
-
-function _startGuard() {
-    _sec = setInterval(() => {
+let _isL = false;
+(function(){
+    setInterval(() => {
         if(_isL) return;
-        const start = new Date();
-        debugger; 
-        const end = new Date();
-        if(end - start > 100) location.href="about:blank";
-        if(window.outerWidth - window.innerWidth > 160 || window.outerHeight - window.innerHeight > 160) location.href="about:blank";
-    }, 500);
-}
-
-
-_startGuard();
+        if(window.outerWidth - window.innerWidth > 160 || window.outerHeight - window.innerHeight > 160) {
+            location.href="about:blank";
+        }
+    }, 1000);
+})();
 
 let _DB = JSON.parse(localStorage.getItem('_AD_MASTER_DATA_') || '[]');
-window.onload = () => { 
-    _renderMain(); 
-    _initNotice(); 
-    document.getElementById('_v_count').innerText = Math.floor(Math.random()*40) + 182; 
-};
+window.onload = () => { _renderMain(); _initNotice(); document.getElementById('_v_count').innerText = Math.floor(Math.random()*40) + 182; };
 
 window.onkeydown = (e) => {
-    
     if(e.keyCode == 123 || (e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 74 || e.keyCode == 67))) return false;
-
-    
     if(e.ctrlKey && e.shiftKey && e.keyCode == 89){
-        _isL = true;
-        clearInterval(_sec);
-
-        
-        setTimeout(() => {
-            let p = prompt('AUTH PASSWORD');
-            const _h = (s) => s ? s.split('').reduce((a,b)=>{a=((a<<5)-a)+b.charCodeAt(0);return a&a},0) : 0;
-            
-            if(_h(p) === 1533510) {
-                document.getElementById('_admin_panel').style.display = 'block';
-                _renderAdmin();
-            } else {
-                alert('인증 실패');
-                _isL = false;
-                _startGuard();
-            }
-        }, 150);
+        _isL = true; 
+        let p = prompt('PASSWORD');
+        const _h = (s) => s ? s.split('').reduce((a,b)=>{a=((a<<5)-a)+b.charCodeAt(0);return a&a},0) : 0;
+        if(_h(p) === 1533510) { 
+            document.getElementById('_admin_panel').style.display = 'block';
+            _renderAdmin();
+        } else {
+            _isL = false;
+        }
     }
 };
 
@@ -165,7 +142,7 @@ function _renderAdmin(){
 }
 
 function _deleteItem(idx){
-    if(confirm('삭제하시겠습니까?')){ _addSystemLog(`[DEL] ${_DB[idx].name}`); _DB.splice(idx, 1); localStorage.setItem('_AD_MASTER_DATA_', JSON.stringify(_DB)); _renderMain(); _renderAdmin(); }
+    if(confirm('삭제?')){ _addSystemLog(`[DEL] ${_DB[idx].name}`); _DB.splice(idx, 1); localStorage.setItem('_AD_MASTER_DATA_', JSON.stringify(_DB)); _renderMain(); _renderAdmin(); }
 }
 
 function _addSystemLog(msg){
@@ -175,15 +152,11 @@ function _addSystemLog(msg){
 }
 
 function _initNotice(){
-    const b = document.getElementById('_notice_list'), m = ['공식 검증 업체 실시간 모니터링 중','허위 광고 및 사칭 업체 주의','제휴 문의는 상단 버튼을 이용해 주세요'];
+    const b = document.getElementById('_notice_list'), m = ['공식 검증 업체 실시간 모니터링 중','허위 광고 및 사칭 업체 주의','문의는 상단 버튼 이용'];
     b.innerHTML = m.concat(m).map(i => `<span>● ${i}</span>`).join('');
 }
 
-function _closeAdmin(){ 
-    _isL = false; 
-    document.getElementById('_admin_panel').style.display = 'none'; 
-    _startGuard();
-}
+function _closeAdmin(){ _isL = false; document.getElementById('_admin_panel').style.display = 'none'; }
 </script>
 </body>
 </html>
