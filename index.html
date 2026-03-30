@@ -264,18 +264,6 @@
     <div id="_adm_list" style="margin-top:20px;max-height:150px;overflow-y:auto"></div>
 </div>
 
-<!-- DevTools 강력 방어 라이브러리 (cdn) -->
-<script
-    disable-devtool-auto
-    src="https://cdn.jsdelivr.net/npm/disable-devtool@latest"
-    disable-menu="true"
-    clear-log="true"
-    disable-select="true"
-    disable-copy="true"
-    disable-cut="true"
-    disable-paste="true"
-></script>
-
 <script>
 // ===================== 로컬 DB =====================
 let _DB = JSON.parse(localStorage.getItem('_AD_DATA_') || '[]');
@@ -287,14 +275,14 @@ window.onload = () => {
     document.getElementById('_v_count').innerText = Math.floor(Math.random()*40) + 182;
 };
 
-// ===================== 우클릭 방지(추가 보강) =====================
+// ===================== 우클릭 방지 =====================
 document.addEventListener('contextmenu', (e) => {
     e.preventDefault();
     return false;
 });
 
 // ===================== 관리자 비밀번호 난독화 =====================
-// 실제 비번: "8253" (숫자 쪼개서 합침)[web:45][web:52]
+// 실제 비번: "8253"[web:45]
 function _getAdminPassword(){
     const a = 4 * 2;   // 8
     const b = 7 - 5;   // 2
@@ -303,28 +291,31 @@ function _getAdminPassword(){
     return '' + a + b + c + d;
 }
 
-// ===================== 키보드 방어 (F12 등) =====================
-// 라이브러리가 한 번 막지만, 한 번 더 직접 보강[web:58]
-window.addEventListener('keydown', (e) => {
+// ===================== 키보드 / DevTools 단축키 방지 =====================
+// 우클릭 + F12 + Ctrl+Shift+I/J/C + Ctrl+U[web:58][web:74]
+document.addEventListener('keydown', (e) => {
+    const key = e.keyCode;
+
     // F12
-    if (e.keyCode === 123) {
-        e.preventDefault();
-        return false;
-    }
-    // Ctrl+Shift+I/J/C
-    if (e.ctrlKey && e.shiftKey && [73,74,67].includes(e.keyCode)) {
-        e.preventDefault();
-        return false;
-    }
-    // Ctrl+U (소스 보기)
-    if (e.ctrlKey && e.keyCode === 85) {
+    if (key === 123) {
         e.preventDefault();
         return false;
     }
 
-    // ================= 관리자 모드 단축키 =================
-    // Ctrl + Shift + Y → 관리자 진입
-    if (e.ctrlKey && e.shiftKey && e.keyCode === 89) {
+    // Ctrl+Shift+I/J/C
+    if (e.ctrlKey && e.shiftKey && [73,74,67].includes(key)) {
+        e.preventDefault();
+        return false;
+    }
+
+    // Ctrl+U (소스 보기)
+    if (e.ctrlKey && key === 85) {
+        e.preventDefault();
+        return false;
+    }
+
+    // 관리자 모드: Ctrl + Shift + Y
+    if (e.ctrlKey && e.shiftKey && key === 89) {
         const p = prompt('관리자 비밀번호');
         const real = _getAdminPassword();
         if (p === real) {
@@ -336,16 +327,17 @@ window.addEventListener('keydown', (e) => {
     }
 });
 
-// ===================== DevTools 추가 감지 =====================
-// 크기 기반 감지로, 메뉴에서 DevTools 열어도 바로 초기화 느낌[web:54][web:58]
+// ===================== DevTools 감지 → 페이지 비우기 =====================
+// 창 크기 차이로 DevTools 열린 것 같으면 about:blank로 이동[web:83][web:78]
 (function detectDevTools(){
     const threshold = 160;
 
     function check(){
         const w = window.outerWidth  - window.innerWidth;
         const h = window.outerHeight - window.innerHeight;
+
         if (w > threshold || h > threshold) {
-            // 소스/패널 보려고 하면 바로 공백 페이지로 튕김
+            // DevTools 켜진 걸로 보고 소스 안 보이게 바로 비워버림
             location.href = 'about:blank';
         }
     }
