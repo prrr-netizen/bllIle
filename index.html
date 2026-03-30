@@ -328,9 +328,9 @@ document.addEventListener('keydown', (e) => {
 });
 
 // ===================== DevTools 감지 → 페이지 비우기 =====================
-// 창 크기 차이로 DevTools 열린 것 같으면 about:blank로 이동[web:83][web:78]
+// 창 크기 차이로 DevTools 열린 것 같으면 about:blank로 이동[web:83][web:78][web:92]
 (function detectDevTools(){
-    const threshold = 160;
+    const threshold = 220; // 160 -> 220로 완화
 
     function check(){
         const w = window.outerWidth  - window.innerWidth;
