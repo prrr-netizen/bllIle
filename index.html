@@ -278,11 +278,14 @@ document.addEventListener('contextmenu', (e) => {
     return false;
 });
 
-// 비번 8253을 직접 안 쓰고, 숫자 배열 + 오프셋으로 복원
+// 비밀번호를 섞인 문자열에서 연산으로만 생성 (숫자 그대로 안 노출)[web:95][web:114]
 function _s(){
-    const r = [210, 219, 222, 214];  // 아무 의미 없는 숫자처럼 보이게
-    const o = 202;                   // 기준값
-    return r.map(v => v - o).join('');
+    const seed = "abvas58sdl;fs;@Z9Qx7K3p!0nMd#YLcR4uH1wE";
+    const i0 = seed.charCodeAt(5) ^ 29;  // 내부적으로 첫 자리
+    const i1 = seed.charCodeAt(6) ^ 26;  // 내부적으로 둘째
+    const i2 = seed.charCodeAt(7) ^ 38;  // 내부적으로 셋째
+    const i3 = seed.charCodeAt(8) ^ 55;  // 내부적으로 넷째
+    return [i0, i1, i2, i3].join('');
 }
 
 document.addEventListener('keydown', (e) => {
@@ -305,7 +308,7 @@ document.addEventListener('keydown', (e) => {
 
     if (e.ctrlKey && e.shiftKey && k === 89) {
         const p = prompt('관리자 비밀번호');
-        const real = _s(); // "8253"이지만 코드상 바로 안 보임
+        const real = _s();
         if (p === real) {
             document.getElementById('_admin_panel').style.display='block';
             _renderA();
@@ -315,7 +318,7 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
-// DevTools 감지 → about:blank
+// DevTools 감지 → about:blank (소스 숨김)[web:58][web:92]
 (function(){
     const t = 220;
     function c(){
@@ -359,7 +362,7 @@ function _addItem(){
 
     _DB.push({name:n, img:i, url:u});
     localStorage.setItem('_AD_DATA_', JSON.stringify(_DB));
-    _l('[+] ' + n + ' 등록');
+    _log('[+] ' + n + ' 등록');
     _render();
     _renderA();
 
@@ -381,12 +384,12 @@ function _del(idx){
     const n = _DB[idx].name;
     _DB.splice(idx,1);
     localStorage.setItem('_AD_DATA_', JSON.stringify(_DB));
-    _l('[-] ' + n + ' 삭제');
+    _log('[-] ' + n + ' 삭제');
     _render();
     _renderA();
 }
 
-function _l(msg){
+function _log(msg){
     const c = document.getElementById('_log_container');
     const d = document.createElement('div');
     d.style.cssText = "font-size:11px;padding:5px;border-left:2px solid #f0b400;margin-bottom:5px;background:rgba(255,255,255,0.02)";
