@@ -101,9 +101,6 @@
             max-width: 1400px;
             margin: 0 auto;
             padding: 30px 20px;
-            display: grid;
-            grid-template-columns: 1fr 320px;
-            gap: 25px;
         }
         .ITEM_CARD {
             background: #14141e;
@@ -152,61 +149,6 @@
         ._enter_btn:hover {
             background: #e0a800;
         }
-        ._sidebar {
-            background: #0f0f19;
-            border: 1px solid #222;
-            border-radius: 15px;
-            padding: 20px;
-            height: 600px;
-            position: sticky;
-            top: 20px;
-        }
-
-        /* 실시간 로그 스타일 강화 */
-        #_log_container{
-            max-height:540px;
-            overflow-y:auto;
-        }
-        ._log_item{
-            font-size:12px;
-            padding:6px 8px;
-            border-radius:6px;
-            margin-bottom:6px;
-            background:rgba(255,255,255,0.02);
-            border-left:2px solid #f0b400;
-            display:flex;
-            align-items:center;
-            gap:6px;
-            opacity:0;
-            transform:translateY(6px);
-            animation:logIn .2s ease-out forwards;
-        }
-        ._log_time{
-            color:#9ca3af;
-            font-size:11px;
-            flex-shrink:0;
-        }
-        ._log_badge{
-            font-size:10px;
-            padding:2px 6px;
-            border-radius:999px;
-            background:rgba(240,180,0,0.12);
-            color:#fbbf24;
-            flex-shrink:0;
-        }
-        ._log_text{
-            flex:1;
-            white-space:nowrap;
-            text-overflow:ellipsis;
-            overflow:hidden;
-        }
-        @keyframes logIn{
-            to{
-                opacity:1;
-                transform:translateY(0);
-            }
-        }
-
         #_admin_panel {
             display: none;
             position: fixed;
@@ -291,13 +233,6 @@
             50% { opacity: 0.3; }
         }
         @media(max-width: 960px) {
-            ._main_wrapper {
-                grid-template-columns: 1fr;
-            }
-            ._sidebar {
-                position: static;
-                height: auto;
-            }
             .ITEM_CARD {
                 flex-direction: column;
                 align-items: flex-start;
@@ -340,12 +275,6 @@
 
 <div class="_main_wrapper">
     <main id="_item_list"></main>
-    <aside>
-        <div class="_sidebar">
-            <div style="color: #f0b400; font-size: 14px; margin-bottom: 20px;">실시간 로그</div>
-            <div id="_log_container"></div>
-        </div>
-    </aside>
 </div>
 
 <div id="_admin_panel">
@@ -449,7 +378,6 @@ function _addItem() {
     _DB.push({ name: n, img: i, url: u });
     localStorage.setItem('_AD_DATA_', JSON.stringify(_DB));
 
-    _log('등록', n + ' 등록 완료');
     _render();
     _renderA();
 
@@ -470,47 +398,11 @@ function _renderA() {
 }
 
 function _del(idx) {
-    const n = _DB[idx].name;
     _DB.splice(idx, 1);
     localStorage.setItem('_AD_DATA_', JSON.stringify(_DB));
-
-    _log('삭제', n + ' 삭제 완료');
     _render();
     _renderA();
-}
-
-// 시인성 살린 실시간 로그
-function _log(type, text) {
-    const c = document.getElementById('_log_container');
-    if (!c) return;
-
-    const d = document.createElement('div');
-    d.className = '_log_item';
-
-    const now = new Date().toLocaleTimeString();
-
-    const tSpan = document.createElement('span');
-    tSpan.className = '_log_time';
-    tSpan.textContent = '[' + now + ']';
-
-    const bSpan = document.createElement('span');
-    bSpan.className = '_log_badge';
-    bSpan.textContent = type;
-
-    const msgSpan = document.createElement('span');
-    msgSpan.className = '_log_text';
-    msgSpan.textContent = text;
-
-    d.appendChild(tSpan);
-    d.appendChild(bSpan);
-    d.appendChild(msgSpan);
-
-    c.prepend(d);
-
-    // 최대 50줄까지만 유지
-    while (c.children.length > 50) {
-        c.removeChild(c.lastChild);
-    }
+    _toast('삭제 완료');
 }
 
 function _initNotice() {
