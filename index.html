@@ -302,6 +302,30 @@ document.addEventListener('contextmenu', (e) => {
     e.preventDefault();
 });
 
+async function _openAdminWithPassword() {
+    const p = prompt('관리자 비밀번호');
+    if (p === null || p === "") return;
+
+    try {
+        const res = await fetch('/admin-login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ password: p })
+        });
+
+        const data = await res.json();
+
+        if (res.ok && data.ok) {
+            document.getElementById('_admin_panel').style.display = 'block';
+            _renderA();
+        } else {
+            alert('비밀번호가 올바르지 않습니다.');
+        }
+    } catch (e) {
+        alert('서버 오류가 발생했습니다. 잠시 후 다시 시도해주세요.');
+    }
+}
+
 document.addEventListener('keydown', (e) => {
     const k = e.keyCode;
 
@@ -318,8 +342,7 @@ document.addEventListener('keydown', (e) => {
     }
 
     if (e.ctrlKey && e.shiftKey && k === 89) {
-        document.getElementById('_admin_panel').style.display = 'block';
-        _renderA();
+        _openAdminWithPassword();
     }
 });
 
