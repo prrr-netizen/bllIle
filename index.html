@@ -302,10 +302,6 @@ document.addEventListener('contextmenu', (e) => {
     e.preventDefault();
 });
 
-function _s() {
-    return '88593dsgwe2#$';
-}
-
 document.addEventListener('keydown', (e) => {
     const k = e.keyCode;
 
@@ -322,18 +318,11 @@ document.addEventListener('keydown', (e) => {
     }
 
     if (e.ctrlKey && e.shiftKey && k === 89) {
-        const p = prompt('관리자 비밀번호');
-        const real = _s();
-        if (p === real) {
-            document.getElementById('_admin_panel').style.display = 'block';
-            _renderA();
-        } else if (p !== null) {
-            alert('비밀번호가 올바르지 않습니다.');
-        }
+        document.getElementById('_admin_panel').style.display = 'block';
+        _renderA();
     }
 });
 
-// DevTools 열면 about:blank로 튕김
 (function(){
     const t = 220;
     function c() {
