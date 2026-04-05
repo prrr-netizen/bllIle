@@ -377,10 +377,8 @@
   tabs.forEach(btn => {
     btn.addEventListener('click', () => {
       const tabId = btn.getAttribute('data-tab');
-      // 버튼 active 클래스 변경
       tabs.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-      // 콘텐츠 표시
       contents.forEach(content => content.style.display = 'none');
       const target = document.getElementById(`tab-${tabId}`);
       if (target) target.style.display = 'block';
