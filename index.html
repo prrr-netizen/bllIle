@@ -1,459 +1,458 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>공식 검증 리스트</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: "Noto Sans KR", sans-serif;
-            user-select: none;
-        }
-        body {
-            background: #0a0a0f;
-            color: #fff;
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
-        ._top_bar {
-            background: #000;
-            padding: 10px 20px;
-            display: flex;
-            justify-content: flex-end;
-            gap: 12px;
-            border-bottom: 1px solid #1a1a25;
-        }
-        ._top_btn {
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: bold;
-            padding: 8px 20px;
-            border-radius: 999px;
-            transition: 0.25s;
-        }
-        ._btn_disc { background: #5865F2; color: #fff; }
-        ._btn_inq { background: #f0b400; color: #000; }
-        ._top_btn:hover{
-            transform:translateY(-2px);
-            box-shadow:0 8px 20px rgba(0,0,0,0.5);
-        }
-        header {
-            position: sticky;
-            top: 0;
-            background: rgba(8, 8, 13, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255, 180, 0, 0.25);
-            z-index:10;
-        }
-        ._hi {
-            max-width: 1400px;
-            margin: auto;
-            padding: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-        ._logo {
-            font-size: 24px;
-            font-weight: bold;
-            color: #f0b400;
-            text-decoration: none;
-        }
-        ._oc_box {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 8px 15px;
-            border-radius: 99px;
-            font-size:13px;
-        }
-        ._oc_dot {
-            width: 8px;
-            height: 8px;
-            background: #4ade80;
-            border-radius: 50%;
-            animation: blink 1.5s infinite;
-        }
-        #_clock{
-            font-variant-numeric:tabular-nums;
-        }
-        ._notice_w {
-            background: rgba(240, 180, 0, 0.1);
-            padding: 10px 0;
-            overflow: hidden;
-        }
-        ._notice_t {
-            display: flex;
-            gap: 100px;
-            animation: marquee 35s linear infinite;
-            white-space: nowrap;
-        }
-        ._notice_t span {
-            font-size: 14px;
-            color: rgba(255, 180, 0, 0.8);
-            font-weight: 600;
-        }
-        ._main_wrapper {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 30px 20px;
-        }
-        .ITEM_CARD {
-            background: #14141e;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            padding: 10px;
-            display: flex;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-        ._item_rank {
-            width: 80px;
-            font-size: 36px;
-            font-weight: bold;
-            color: rgba(255, 255, 255, 0.1);
-            text-align: center;
-        }
-        ._item_img {
-            width: 100px;
-            height: auto;
-            margin-right: 15px;
-        }
-        ._item_img img {
-            width: 100%;
-            height: auto;
-            border-radius: 10px;
-        }
-        ._item_info {
-            flex: 1;
-            padding: 0 15px;
-        }
-        ._item_name {
-            font-size: 20px;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-        ._enter_btn {
-            background: #f0b400;
-            color: #000;
-            text-decoration: none;
-            font-weight: bold;
-            padding: 10px 20px;
-            border-radius: 10px;
-            transition: background 0.3s;
-        }
-        ._enter_btn:hover {
-            background: #e0a800;
-        }
-        #_admin_panel {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 400px;
-            background: #111;
-            border: 2px solid #f0b400;
-            padding: 30px;
-            z-index: 2000;
-            border-radius: 20px;
-            box-shadow: 0 0 50px #000;
-        }
-        .admin_input {
-            width: 100%;
-            padding: 12px;
-            margin-bottom: 12px;
-            background: #000;
-            color: #fff;
-            border: 1px solid #333;
-            border-radius: 8px;
-        }
-        .admin_submit {
-            width: 100%;
-            padding: 15px;
-            background: #f0b400;
-            border: none;
-            font-weight: bold;
-            cursor: pointer;
-            border-radius: 8px;
-            transition: background 0.3s;
-        }
-        .admin_submit:hover {
-            background: #e0a800;
-        }
-        ._toast_wrap{
-            position:fixed;
-            bottom:20px;
-            left:50%;
-            transform:translateX(-50%);
-            z-index:3000;
-            pointer-events:none;
-        }
-        ._toast_item{
-            min-width:220px;
-            max-width:260px;
-            margin-top:8px;
-            padding:10px 16px;
-            border-radius:999px;
-            background:rgba(15,15,25,0.95);
-            border:1px solid rgba(240,180,0,0.7);
-            color:#fef3c7;
-            font-size:13px;
-            box-shadow:0 8px 20px rgba(0,0,0,0.7);
-            display:flex;
-            align-items:center;
-            gap:8px;
-            animation:toastUp 0.4s ease-out, toastFade 0.4s ease-in forwards;
-            animation-delay:0s,2.2s;
-        }
-        ._toast_dot{
-            width:8px;
-            height:8px;
-            border-radius:50%;
-            background:#4ade80;
-            box-shadow:0 0 8px #4ade80;
-        }
-        @keyframes toastUp{
-            from{transform:translate(-50%,20px); opacity:0;}
-            to{transform:translate(-50%,0); opacity:1;}
-        }
-        @keyframes toastFade{
-            to{opacity:0; transform:translate(-50%,-10px);}
-        }
-        @keyframes marquee {
-            from { transform: translateX(0); }
-            to { transform: translateX(-50%); }
-        }
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.3; }
-        }
-        @media(max-width: 960px) {
-            .ITEM_CARD {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            ._item_rank {
-                width: auto;
-                text-align: left;
-            }
-            ._item_img {
-                width: 100%;
-                height: auto;
-                margin-bottom: 10px;
-            }
-            ._enter_btn {
-                width: auto;
-                margin: 10px 0;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RED KOREA — Korea's Premier Gaming Community</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background: #0a0a0a;
+    color: #f0f0f0;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 18px 60px;
+    background: rgba(10,10,10,0.92);
+    border-bottom: 1px solid rgba(220,30,30,0.3);
+    backdrop-filter: blur(12px);
+  }
+  .logo {
+    font-family: 'Black Han Sans', sans-serif;
+    font-size: 26px;
+    letter-spacing: 4px;
+    color: #fff;
+  }
+  .logo span { color: #e01c1c; }
+  .nav-links { display: flex; gap: 36px; list-style: none; }
+  .nav-links a {
+    color: #aaa; text-decoration: none; font-size: 13px;
+    letter-spacing: 2px; text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: #e01c1c; }
+  .nav-cta {
+    background: #e01c1c; color: #fff;
+    border: none; padding: 10px 24px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 12px; letter-spacing: 2px;
+    text-transform: uppercase; cursor: pointer;
+    transition: background 0.2s;
+  }
+  .nav-cta:hover { background: #ff3333; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    position: relative;
+    overflow: hidden;
+    padding: 80px 60px;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 70% 50%, rgba(180,20,20,0.18) 0%, transparent 65%),
+                radial-gradient(ellipse at 20% 80%, rgba(120,0,0,0.12) 0%, transparent 50%),
+                #0a0a0a;
+  }
+  .hero-grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(220,30,30,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(220,30,30,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  .hero-content {
+    position: relative; z-index: 2;
+    max-width: 700px;
+  }
+  .hero-tag {
+    display: inline-block;
+    border: 1px solid #e01c1c;
+    color: #e01c1c;
+    font-size: 11px; letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 6px 16px; margin-bottom: 32px;
+  }
+  .hero-title {
+    font-family: 'Black Han Sans', sans-serif;
+    font-size: clamp(52px, 8vw, 96px);
+    line-height: 1;
+    letter-spacing: -1px;
+    margin-bottom: 8px;
+  }
+  .hero-title .accent { color: #e01c1c; }
+  .hero-subtitle {
+    font-size: 18px; font-weight: 300;
+    color: #999; letter-spacing: 6px;
+    text-transform: uppercase; margin-bottom: 40px;
+  }
+  .hero-desc {
+    font-size: 16px; line-height: 1.8;
+    color: #bbb; max-width: 480px; margin-bottom: 48px;
+  }
+  .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+  .btn-primary {
+    background: #e01c1c; color: #fff;
+    border: none; padding: 16px 40px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 14px; letter-spacing: 2px;
+    text-transform: uppercase; cursor: pointer;
+    transition: all 0.2s;
+    clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+  }
+  .btn-primary:hover { background: #ff2222; transform: translateY(-2px); }
+  .btn-secondary {
+    background: transparent; color: #fff;
+    border: 1px solid rgba(255,255,255,0.3);
+    padding: 16px 40px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 14px; letter-spacing: 2px;
+    text-transform: uppercase; cursor: pointer;
+    transition: all 0.2s;
+  }
+  .btn-secondary:hover { border-color: #e01c1c; color: #e01c1c; }
+
+  .hero-stats {
+    position: absolute; right: 60px; top: 50%;
+    transform: translateY(-50%);
+    display: flex; flex-direction: column; gap: 32px;
+    z-index: 2;
+  }
+  .stat-item { text-align: right; }
+  .stat-num {
+    font-family: 'Black Han Sans', sans-serif;
+    font-size: 42px; color: #fff; line-height: 1;
+  }
+  .stat-num span { color: #e01c1c; }
+  .stat-label { font-size: 11px; color: #666; letter-spacing: 2px; text-transform: uppercase; margin-top: 4px; }
+  .stat-divider { width: 100%; height: 1px; background: rgba(220,30,30,0.3); }
+
+  /* FEATURES */
+  .section { padding: 100px 60px; }
+  .section-label {
+    font-size: 11px; letter-spacing: 4px; color: #e01c1c;
+    text-transform: uppercase; margin-bottom: 16px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .section-label::after { content: ''; flex: 0 0 40px; height: 1px; background: #e01c1c; }
+  .section-title {
+    font-family: 'Black Han Sans', sans-serif;
+    font-size: clamp(32px, 5vw, 54px);
+    line-height: 1.1; margin-bottom: 60px;
+    letter-spacing: -0.5px;
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: rgba(220,30,30,0.2);
+    border: 1px solid rgba(220,30,30,0.2);
+  }
+  .feature-card {
+    background: #0d0d0d;
+    padding: 48px 36px;
+    transition: background 0.3s;
+    position: relative; overflow: hidden;
+  }
+  .feature-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0;
+    width: 3px; height: 0;
+    background: #e01c1c;
+    transition: height 0.3s;
+  }
+  .feature-card:hover { background: #111; }
+  .feature-card:hover::before { height: 100%; }
+  .feature-icon {
+    width: 48px; height: 48px; margin-bottom: 24px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .feature-icon svg { width: 32px; height: 32px; stroke: #e01c1c; fill: none; stroke-width: 1.5; }
+  .feature-num {
+    font-family: 'Black Han Sans', sans-serif;
+    font-size: 64px; color: rgba(220,30,30,0.08);
+    position: absolute; top: 20px; right: 24px;
+    line-height: 1; pointer-events: none;
+  }
+  .feature-title { font-size: 18px; font-weight: 700; margin-bottom: 12px; }
+  .feature-desc { font-size: 14px; color: #777; line-height: 1.8; }
+
+  /* MARQUEE */
+  .marquee-section {
+    border-top: 1px solid rgba(220,30,30,0.2);
+    border-bottom: 1px solid rgba(220,30,30,0.2);
+    padding: 20px 0; overflow: hidden;
+    background: rgba(220,30,30,0.04);
+  }
+  .marquee-track {
+    display: flex; gap: 60px; width: max-content;
+    animation: scroll 20s linear infinite;
+  }
+  .marquee-track span {
+    font-family: 'Black Han Sans', sans-serif;
+    font-size: 13px; letter-spacing: 4px;
+    text-transform: uppercase; white-space: nowrap;
+    color: #444;
+  }
+  .marquee-track span.red { color: #e01c1c; }
+  @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  /* MODES */
+  .modes-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .mode-card {
+    border: 1px solid rgba(255,255,255,0.07);
+    padding: 48px 40px;
+    position: relative; overflow: hidden;
+    transition: border-color 0.3s;
+  }
+  .mode-card:hover { border-color: rgba(220,30,30,0.5); }
+  .mode-card.featured {
+    border-color: rgba(220,30,30,0.4);
+    background: rgba(220,30,30,0.05);
+  }
+  .mode-badge {
+    display: inline-block;
+    background: #e01c1c; color: #fff;
+    font-size: 10px; letter-spacing: 2px;
+    text-transform: uppercase; padding: 4px 12px;
+    margin-bottom: 24px;
+  }
+  .mode-title {
+    font-family: 'Black Han Sans', sans-serif;
+    font-size: 28px; margin-bottom: 16px;
+  }
+  .mode-desc { font-size: 14px; color: #777; line-height: 1.8; margin-bottom: 28px; }
+  .mode-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tag {
+    border: 1px solid rgba(255,255,255,0.15);
+    font-size: 11px; color: #888;
+    padding: 4px 12px; letter-spacing: 1px;
+  }
+
+  /* CTA */
+  .cta-section {
+    padding: 120px 60px;
+    text-align: center;
+    position: relative; overflow: hidden;
+  }
+  .cta-bg {
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at center, rgba(180,20,20,0.15) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .cta-section .section-label { justify-content: center; }
+  .cta-section .section-label::after { display: none; }
+  .cta-section .section-label::before { content: ''; flex: 0 0 40px; height: 1px; background: #e01c1c; }
+  .cta-title {
+    font-family: 'Black Han Sans', sans-serif;
+    font-size: clamp(40px, 7vw, 80px);
+    line-height: 1; margin-bottom: 24px;
+  }
+  .cta-desc { font-size: 16px; color: #777; max-width: 480px; margin: 0 auto 48px; line-height: 1.8; }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid rgba(255,255,255,0.07);
+    padding: 40px 60px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .footer-logo {
+    font-family: 'Black Han Sans', sans-serif;
+    font-size: 20px; letter-spacing: 4px;
+  }
+  .footer-logo span { color: #e01c1c; }
+  .footer-copy { font-size: 12px; color: #444; letter-spacing: 1px; }
+  .footer-links { display: flex; gap: 24px; }
+  .footer-links a { font-size: 12px; color: #555; text-decoration: none; letter-spacing: 1px; }
+  .footer-links a:hover { color: #e01c1c; }
+</style>
 </head>
 <body>
-<div class="_top_bar">
-    <a href="https://discord.gg/예시" target="_blank" class="_top_btn _btn_disc">디스코드 채널</a>
-    <a href="https://open.kakao.com/o/예시" target="_blank" class="_top_btn _btn_inq">입점 문의</a>
-</div>
 
-<header>
-    <div class="_hi">
-        <a href="/" class="_logo">AD MASTER</a>
-        <div class="_oc_box">
-            <span class="_oc_dot"></span>
-            <span id="_clock">--:--:--</span>
-        </div>
+<nav>
+  <div class="logo"><span>RED</span> KOREA</div>
+  <ul class="nav-links">
+    <li><a href="#">게임</a></li>
+    <li><a href="#">리그</a></li>
+    <li><a href="#">팀</a></li>
+    <li><a href="#">커뮤니티</a></li>
+  </ul>
+  <button class="nav-cta">지금 참여</button>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-tag">Korea's Premier Gaming Community</div>
+    <h1 class="hero-title">PLAY<br><span class="accent">HARD.</span><br>WIN BIG.</h1>
+    <p class="hero-subtitle">레드 코리아</p>
+    <p class="hero-desc">대한민국 최고의 게임 커뮤니티. 프로급 플레이어부터 입문자까지, 모두를 위한 전장이 열립니다.</p>
+    <div class="hero-btns">
+      <button class="btn-primary">무료로 시작하기</button>
+      <button class="btn-secondary">팀 알아보기</button>
     </div>
-</header>
+  </div>
+  <div class="hero-stats">
+    <div class="stat-item">
+      <div class="stat-num">48<span>K</span></div>
+      <div class="stat-label">활성 플레이어</div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item">
+      <div class="stat-num">2<span>,</span>300</div>
+      <div class="stat-label">진행된 매치</div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item">
+      <div class="stat-num">₩<span>5M</span></div>
+      <div class="stat-label">총 상금</div>
+    </div>
+  </div>
+</section>
 
-<div class="_notice_w">
-    <div class="_notice_t" id="_notice_list"></div>
+<div class="marquee-section">
+  <div class="marquee-track">
+    <span class="red">RED KOREA</span><span>게임 커뮤니티</span><span class="red">프로 리그</span><span>최강 팀</span>
+    <span class="red">RED KOREA</span><span>게임 커뮤니티</span><span class="red">프로 리그</span><span>최강 팀</span>
+    <span class="red">RED KOREA</span><span>게임 커뮤니티</span><span class="red">프로 리그</span><span>최강 팀</span>
+    <span class="red">RED KOREA</span><span>게임 커뮤니티</span><span class="red">프로 리그</span><span>최강 팀</span>
+  </div>
 </div>
 
-<div class="_main_wrapper">
-    <main id="_item_list"></main>
-</div>
+<section class="section">
+  <div class="section-label">Core Features</div>
+  <h2 class="section-title">왜 RED KOREA인가</h2>
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-num">01</div>
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <h3 class="feature-title">랭크 시스템</h3>
+      <p class="feature-desc">실력 기반의 정밀한 랭킹 시스템으로 실력에 맞는 상대를 만나세요. 브론즈부터 그랜드마스터까지.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-num">02</div>
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      </div>
+      <h3 class="feature-title">팀 빌딩</h3>
+      <p class="feature-desc">같은 목표를 가진 팀원을 찾고, 함께 최정상을 노리세요. 팀 전적 및 통계 분석 제공.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-num">03</div>
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+      </div>
+      <h3 class="feature-title">실시간 통계</h3>
+      <p class="feature-desc">KDA, 승률, 피해량 등 정밀 통계 대시보드로 성장 포인트를 파악하세요.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-num">04</div>
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>
+      </div>
+      <h3 class="feature-title">리그 & 토너먼트</h3>
+      <p class="feature-desc">매월 열리는 정기 토너먼트에서 상금을 획득하고 레전드 플레이어로 이름을 알리세요.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-num">05</div>
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      </div>
+      <h3 class="feature-title">커뮤니티 포럼</h3>
+      <p class="feature-desc">전략 공유, 팀원 모집, 게임 꿀팁까지. 5만 명이 넘는 활성 커뮤니티에서 교류하세요.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-num">06</div>
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+      </div>
+      <h3 class="feature-title">24/7 라이브</h3>
+      <p class="feature-desc">언제든지 매치에 참여하세요. 24시간 운영되는 서버로 끊김 없는 게임 경험을 제공합니다.</p>
+    </div>
+  </div>
+</section>
 
-<div id="_admin_panel">
-    <h2 style="text-align: center; margin-bottom: 20px;">관리자 모드</h2>
-    <input type="text" id="_n" class="admin_input" placeholder="업체명" required>
-    <input type="text" id="_i" class="admin_input" placeholder="이미지 URL" required>
-    <input type="text" id="_u" class="admin_input" placeholder="이동 링크" required>
-    <button class="admin_submit" onclick="_addItem()">등록하기</button>
-    <button onclick="_closeAdmin()" style="width: 100%; margin-top: 10px; background: none; color: #555; border: none; cursor: pointer;">닫기</button>
-    <div id="_adm_list" style="margin-top: 20px; max-height: 150px; overflow-y: auto;"></div>
-</div>
+<section class="section" style="padding-top: 0;">
+  <div class="section-label">Game Modes</div>
+  <h2 class="section-title">당신의 전장을 선택하라</h2>
+  <div class="modes-grid">
+    <div class="mode-card featured">
+      <div class="mode-badge">인기 모드</div>
+      <h3 class="mode-title">배틀로얄</h3>
+      <p class="mode-desc">최후의 1인이 될 때까지. 100명이 동시에 입장하는 압도적인 서바이벌 전투. 전략과 반사신경이 승패를 가른다.</p>
+      <div class="mode-tags">
+        <span class="tag">100인 동시</span>
+        <span class="tag">상금 리그</span>
+        <span class="tag">스쿼드 지원</span>
+      </div>
+    </div>
+    <div class="mode-card">
+      <h3 class="mode-title">팀 데스매치</h3>
+      <p class="mode-desc">5v5 팀 전략 대결. 완벽한 팀워크와 포지셔닝으로 상대를 압도하라. 랭크 포인트 획득 가능.</p>
+      <div class="mode-tags">
+        <span class="tag">5 vs 5</span>
+        <span class="tag">랭크 모드</span>
+        <span class="tag">전적 기록</span>
+      </div>
+    </div>
+    <div class="mode-card">
+      <h3 class="mode-title">거점 점령</h3>
+      <p class="mode-desc">맵 곳곳의 거점을 점령하고 유지하라. 팀 협력과 지형 활용이 승리의 핵심.</p>
+      <div class="mode-tags">
+        <span class="tag">오브젝티브</span>
+        <span class="tag">8v8</span>
+        <span class="tag">대규모전</span>
+      </div>
+    </div>
+    <div class="mode-card">
+      <h3 class="mode-title">커스텀 매치</h3>
+      <p class="mode-desc">나만의 룰로 게임을 설정하세요. 친구들과의 커스텀 방, 클랜전, 연습 경기 모두 지원.</p>
+      <div class="mode-tags">
+        <span class="tag">자유 설정</span>
+        <span class="tag">클랜전</span>
+        <span class="tag">초청 전용</span>
+      </div>
+    </div>
+  </div>
+</section>
 
-<div class="_toast_wrap" id="_toast_wrap"></div>
+<section class="cta-section">
+  <div class="cta-bg"></div>
+  <div class="section-label">Join Now</div>
+  <h2 class="cta-title">지금 바로<br><span style="color:#e01c1c">시작하라</span></h2>
+  <p class="cta-desc">무료 가입 후 즉시 매치에 참여할 수 있습니다. 대기 중인 플레이어들이 당신을 기다리고 있습니다.</p>
+  <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
+    <button class="btn-primary" style="clip-path:none; font-size:15px; padding:18px 52px;">무료 회원가입</button>
+    <button class="btn-secondary" style="font-size:15px; padding:18px 52px;">더 알아보기</button>
+  </div>
+</section>
 
-<script>
-let _DB = JSON.parse(localStorage.getItem('_AD_DATA_') || '[]');
+<footer>
+  <div class="footer-logo"><span>RED</span> KOREA</div>
+  <div class="footer-links">
+    <a href="#">이용약관</a>
+    <a href="#">개인정보처리방침</a>
+    <a href="#">고객센터</a>
+    <a href="#">파트너십</a>
+  </div>
+  <div class="footer-copy">© 2026 RED KOREA. All rights reserved.</div>
+</footer>
 
-window.onload = () => {
-    _render();
-    _initNotice();
-    _initClock();
-};
-
-document.addEventListener('contextmenu', (e) => {
-    e.preventDefault();
-});
-
-async function _openAdminWithPassword() {
-    const p = prompt('관리자 비밀번호');
-    if (p === null || p === "") return;
-
-    try {
-        const res = await fetch('/admin-login', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ password: p })
-        });
-
-        const data = await res.json();
-
-        if (res.ok && data.ok) {
-            document.getElementById('_admin_panel').style.display = 'block';
-            _renderA();
-        } else {
-            alert('비밀번호가 올바르지 않습니다.');
-        }
-    } catch (e) {
-        alert('서버 오류가 발생했습니다. 잠시 후 다시 시도해주세요.');
-    }
-}
-
-document.addEventListener('keydown', (e) => {
-    const k = e.keyCode;
-
-    if (k === 123) {
-        e.preventDefault();
-    }
-
-    if (e.ctrlKey && e.shiftKey && [73, 74, 67].includes(k)) {
-        e.preventDefault();
-    }
-
-    if (e.ctrlKey && k === 85) {
-        e.preventDefault();
-    }
-
-    if (e.ctrlKey && e.shiftKey && k === 89) {
-        _openAdminWithPassword();
-    }
-});
-
-(function(){
-    const t = 220;
-    function c() {
-        const w = window.outerWidth - window.innerWidth;
-        const h = window.outerHeight - window.innerHeight;
-        if (w > t || h > t) {
-            location.href = 'about:blank';
-        }
-    }
-    window.addEventListener('resize', c);
-    window.addEventListener('load', c);
-    window.addEventListener('focus', c);
-})();
-
-function _render() {
-    const list = document.getElementById('_item_list');
-    if (!_DB.length) {
-        list.innerHTML = '<div style="text-align:center; padding:100px; color:#333">등록된 업체가 없습니다.</div>';
-        return;
-    }
-    list.innerHTML = _DB.map((i, idx) => `
-        <div class="ITEM_CARD">
-            <div class="_item_rank">${idx + 1}</div>
-            <div class="_item_img">
-                <img src="${i.img}" onerror="this.src='https://via.placeholder.com/100';" alt="${i.name} 이미지">
-            </div>
-            <div class="_item_info">
-                <div class="_item_name">${i.name}</div>
-                <div style="color:#4ade80; font-size: 12px;">검증완료</div>
-            </div>
-            <a href="${i.url}" target="_blank" class="_enter_btn">입장하기</a>
-        </div>
-    `).join('');
-}
-
-function _addItem() {
-    const n = document.getElementById('_n').value.trim();
-    const i = document.getElementById('_i').value.trim();
-    const u = document.getElementById('_u').value.trim();
-    if (!n || !i || !u) return;
-
-    _DB.push({ name: n, img: i, url: u });
-    localStorage.setItem('_AD_DATA_', JSON.stringify(_DB));
-
-    _render();
-    _renderA();
-
-    _toast(n + ' 등록 되었습니다');
-
-    document.getElementById('_n').value = '';
-    document.getElementById('_i').value = '';
-    document.getElementById('_u').value = '';
-}
-
-function _renderA() {
-    document.getElementById('_adm_list').innerHTML = _DB.map((i, idx) => `
-        <div style="display: flex; justify-content: space-between; background: #222; padding: 10px; margin-bottom: 5px; border-radius: 5px;">
-            <span>${i.name}</span>
-            <span onclick="_del(${idx})" style="color: #ff4d4d; cursor: pointer;">삭제</span>
-        </div>
-    `).join('');
-}
-
-function _del(idx) {
-    _DB.splice(idx, 1);
-    localStorage.setItem('_AD_DATA_', JSON.stringify(_DB));
-    _render();
-    _renderA();
-    _toast('삭제 완료');
-}
-
-function _initNotice() {
-    const m = ['실시간 모니터링 중', '사칭 사이트 주의', '입점 문의는 상단 확인'];
-    document.getElementById('_notice_list').innerHTML =
-        m.concat(m).map(t => `<span>● ${t}</span>`).join('');
-}
-
-function _initClock(){
-    const el = document.getElementById('_clock');
-    if(!el) return;
-    function tick(){
-        const now = new Date();
-        const hh = String(now.getHours()).padStart(2,'0');
-        const mm = String(now.getMinutes()).padStart(2,'0');
-        const ss = String(now.getSeconds()).padStart(2,'0');
-        el.textContent = hh+':'+mm+':'+ss;
-    }
-    tick();
-    setInterval(tick,1000);
-}
-
-function _toast(msg){
-    const wrap = document.getElementById('_toast_wrap');
-    if(!wrap) return;
-
-    const el = document.createElement('div');
-    el.className = '_toast_item';
-    el.innerHTML = '<span class="_toast_dot"></span><span>'+msg+'</span>';
-    wrap.appendChild(el);
-
-    setTimeout(()=>{
-        el.remove();
-    }, 2800);
-}
-
-function _closeAdmin() {
-    document.getElementById('_admin_panel').style.display = 'none';
-}
-</script>
 </body>
 </html>
