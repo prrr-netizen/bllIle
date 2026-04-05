@@ -32,22 +32,7 @@
     color: #fff;
   }
   .logo span { color: #e01c1c; }
-  .nav-links { display: flex; gap: 36px; list-style: none; }
-  .nav-links a {
-    color: #aaa; text-decoration: none; font-size: 13px;
-    letter-spacing: 2px; text-transform: uppercase;
-    transition: color 0.2s;
-  }
-  .nav-links a:hover { color: #e01c1c; }
-  .nav-cta {
-    background: #e01c1c; color: #fff;
-    border: none; padding: 10px 24px;
-    font-family: 'Noto Sans KR', sans-serif;
-    font-size: 12px; letter-spacing: 2px;
-    text-transform: uppercase; cursor: pointer;
-    transition: background 0.2s;
-  }
-  .nav-cta:hover { background: #ff3333; }
+  /* nav-links and nav-cta removed as requested */
 
   /* HERO */
   .hero {
@@ -244,55 +229,26 @@
     padding: 4px 12px; letter-spacing: 1px;
   }
 
-  /* CTA */
-  .cta-section {
-    padding: 120px 60px;
-    text-align: center;
-    position: relative; overflow: hidden;
-  }
-  .cta-bg {
-    position: absolute; inset: 0;
-    background: radial-gradient(ellipse at center, rgba(180,20,20,0.15) 0%, transparent 65%);
-    pointer-events: none;
-  }
-  .cta-section .section-label { justify-content: center; }
-  .cta-section .section-label::after { display: none; }
-  .cta-section .section-label::before { content: ''; flex: 0 0 40px; height: 1px; background: #e01c1c; }
-  .cta-title {
-    font-family: 'Black Han Sans', sans-serif;
-    font-size: clamp(40px, 7vw, 80px);
-    line-height: 1; margin-bottom: 24px;
-  }
-  .cta-desc { font-size: 16px; color: #777; max-width: 480px; margin: 0 auto 48px; line-height: 1.8; }
-
   /* FOOTER */
   footer {
     border-top: 1px solid rgba(255,255,255,0.07);
     padding: 40px 60px;
-    display: flex; justify-content: space-between; align-items: center;
+    text-align: center;
   }
   .footer-logo {
     font-family: 'Black Han Sans', sans-serif;
     font-size: 20px; letter-spacing: 4px;
+    margin-bottom: 16px;
   }
   .footer-logo span { color: #e01c1c; }
-  .footer-copy { font-size: 12px; color: #444; letter-spacing: 1px; }
-  .footer-links { display: flex; gap: 24px; }
-  .footer-links a { font-size: 12px; color: #555; text-decoration: none; letter-spacing: 1px; }
-  .footer-links a:hover { color: #e01c1c; }
+  .footer-copy { font-size: 12px; color: #666; letter-spacing: 1px; }
 </style>
 </head>
 <body>
 
 <nav>
   <div class="logo"><span>RED</span> KOREA</div>
-  <ul class="nav-links">
-    <li><a href="#">게임</a></li>
-    <li><a href="#">리그</a></li>
-    <li><a href="#">팀</a></li>
-    <li><a href="#">커뮤니티</a></li>
-  </ul>
-  <button class="nav-cta">지금 참여</button>
+  <!-- nav-links and nav-cta removed -->
 </nav>
 
 <section class="hero">
@@ -301,7 +257,6 @@
   <div class="hero-content">
     <div class="hero-tag">Korea's Premier Cheat Community</div>
     <h1 class="hero-title">PLAY<br><span class="accent">HARD.</span><br>WIN BIG.</h1>
-    <!-- 제거된 "레드 코리아" 줄 (hero-subtitle) -->
     <p class="hero-desc">대한민국 최고의 게임 커뮤니티. 프로급 플레이어부터 입문자까지,</p>
     <div class="hero-btns">
       <a href="https://discord.gg/q6nJpYuFB8" class="btn-primary" target="_blank">디스코드 참여</a>
@@ -434,25 +389,10 @@
   </div>
 </section>
 
-<section class="cta-section">
-  <div class="cta-bg"></div>
-  <div class="section-label">Join Now</div>
-  <h2 class="cta-title">지금 바로<br><span style="color:#e01c1c">시작하라</span></h2>
-  <p class="cta-desc">무료 가입 후 즉시 매치에 참여할 수 있습니다. 대기 중인 플레이어들이 당신을 기다리고 있습니다.</p>
-  <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
-    <a href="https://discord.gg/q6nJpYuFB8" class="btn-primary" style="clip-path:none; font-size:15px; padding:18px 52px; text-decoration:none;" target="_blank">디스코드 참여</a>
-    <button class="btn-secondary" style="font-size:15px; padding:18px 52px;">제품 알아보기</button>
-  </div>
-</section>
+<!-- CTA section removed entirely as requested -->
 
 <footer>
   <div class="footer-logo"><span>RED</span> KOREA</div>
-  <div class="footer-links">
-    <a href="#">이용약관</a>
-    <a href="#">개인정보처리방침</a>
-    <a href="#">고객센터</a>
-    <a href="#">파트너십</a>
-  </div>
   <div class="footer-copy">© 2026 RED KOREA. All rights reserved.</div>
 </footer>
 
