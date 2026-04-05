@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RED KOREA Pro | 프리미엄 게임 솔루션</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #0a0c12;
+    color: #eef2ff;
+    line-height: 1.5;
+  }
+  /* Hero */
+  .hero {
+    background: linear-gradient(135deg, #0a0c12 0%, #141824 100%);
+    padding: 80px 24px;
+    text-align: center;
+    border-bottom: 1px solid rgba(255,75,75,0.2);
+  }
+  .hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeUp 0.6s forwards;
+  }
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .badge {
+    display: inline-block;
+    background: rgba(255,75,75,0.2);
+    color: #ff4d4d;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 40px;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+  }
+  .hero-title {
+    font-size: clamp(40px, 8vw, 64px);
+    font-weight: 800;
+    margin-bottom: 16px;
+    background: linear-gradient(135deg, #ffffff, #ff4d4d);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .hero-description {
+    font-size: 18px;
+    color: #94a3b8;
+    max-width: 600px;
+    margin: 0 auto 32px;
+  }
+  .stats {
+    display: flex;
+    justify-content: center;
+    gap: 48px;
+    flex-wrap: wrap;
+    margin-top: 32px;
+  }
+  .stat-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,255,255,0.05);
+    padding: 8px 20px;
+    border-radius: 60px;
+  }
+  .stat-number {
+    font-size: 24px;
+    font-weight: 800;
+    color: #ff4d4d;
+  }
+  .stat-label {
+    font-size: 14px;
+    color: #94a3b8;
+  }
+  /* Tabs */
+  .tabs-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 32px 24px;
+  }
+  .tab-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding-bottom: 16px;
+    margin-bottom: 32px;
+  }
+  .tab-btn {
+    background: transparent;
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    border-radius: 60px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #94a3b8;
+    cursor: pointer;
+    transition: 0.2s;
+  }
+  .tab-btn i {
+    font-size: 16px;
+  }
+  .tab-btn.active {
+    background: rgba(255,75,75,0.15);
+    color: #ff4d4d;
+    border: 1px solid rgba(255,75,75,0.3);
+  }
+  .tab-btn:hover:not(.active) {
+    background: rgba(255,255,255,0.05);
+    color: #e2e8f0;
+  }
+  .tab-badge {
+    background: rgba(255,75,75,0.2);
+    color: #ff4d4d;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 20px;
+    margin-left: 6px;
+  }
+  /* Category Header */
+  .category-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 32px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .category-icon {
+    width: 48px;
+    height: 48px;
+    background: rgba(255,75,75,0.15);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    color: #ff4d4d;
+  }
+  .category-title {
+    font-size: 24px;
+    font-weight: 700;
+  }
+  .category-stats {
+    font-size: 13px;
+    color: #94a3b8;
+  }
+  /* Subcategories */
+  .subcategories {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .subcategory {
+    background: rgba(15,23,42,0.6);
+    border-radius: 20px;
+    border: 1px solid rgba(71,85,105,0.4);
+    overflow: hidden;
+    transition: 0.2s;
+  }
+  .subcategory-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 24px;
+    cursor: pointer;
+    background: rgba(15,23,42,0.8);
+    transition: 0.2s;
+  }
+  .subcategory-header:hover {
+    background: rgba(30,41,59,0.8);
+  }
+  .subcategory-title {
+    font-size: 18px;
+    font-weight: 600;
+  }
+  .subcategory-count {
+    font-size: 13px;
+    color: #94a3b8;
+    margin-left: 12px;
+  }
+  .chevron {
+    transition: transform 0.2s;
+  }
+  .subcategory.open .chevron {
+    transform: rotate(90deg);
+  }
+  .feature-list {
+    display: none;
+    padding: 20px 24px;
+    background: rgba(0,0,0,0.2);
+    border-top: 1px solid rgba(71,85,105,0.3);
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .subcategory.open .feature-list {
+    display: flex;
+  }
+  .feature-tag {
+    background: rgba(30,41,59,0.8);
+    padding: 6px 14px;
+    border-radius: 40px;
+    font-size: 13px;
+    color: #cbd5e6;
+    border: 1px solid #334155;
+  }
+  .feature-tag:hover {
+    border-color: #ff4d4d;
+    color: #ff4d4d;
+  }
+  /* Footer */
+  footer {
+    text-align: center;
+    padding: 40px 24px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    font-size: 12px;
+    color: #6b7280;
+  }
+  @media (max-width: 768px) {
+    .tab-nav { justify-content: center; }
+    .stat-item { padding: 6px 16px; }
+    .stat-number { font-size: 18px; }
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-content">
+    <div class="badge">🔥 RED KOREA Pro</div>
+    <h1 class="hero-title">Escape From Tarkov<br><span style="color:#ff4d4d">프리미엄 에임 & ESP</span></h1>
+    <p class="hero-description">188+ 프리미엄 기능으로 설계된 최강의 게임 솔루션. 안정성과 성능을 검증받았습니다.</p>
+    <div class="stats">
+      <div class="stat-item"><span class="stat-number">188+</span><span class="stat-label">기능</span></div>
+      <div class="stat-item"><span class="stat-number">10K+</span><span class="stat-label">유저</span></div>
+      <div class="stat-item"><span class="stat-number">99.9%</span><span class="stat-label">가동률</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="tabs-container">
+  <div class="tab-nav" id="tabNav">
+    <button class="tab-btn active" data-tab="aimbot"><i class="fas fa-crosshairs"></i> 에이봇 & 전투 <span class="tab-badge">41</span></button>
+    <button class="tab-btn" data-tab="esp"><i class="fas fa-eye"></i> ESP & 비주얼 <span class="tab-badge">80</span></button>
+    <button class="tab-btn" data-tab="utility"><i class="fas fa-map"></i> 유틸리티 & 내비게이션 <span class="tab-badge">31</span></button>
+    <button class="tab-btn" data-tab="misc"><i class="fas fa-sliders-h"></i> 기타 기능 <span class="tab-badge">30</span></button>
+    <button class="tab-btn" data-tab="pve"><i class="fas fa-shield-alt"></i> PVE 특화 <span class="tab-badge">6</span></button>
+  </div>
+
+  <!-- 에이봇 & 전투 탭 -->
+  <div id="tab-aimbot" class="tab-content active">
+    <div class="category-header">
+      <div class="category-icon"><i class="fas fa-crosshairs"></i></div>
+      <div><div class="category-title">에이봇 & 전투</div><div class="category-stats">41개 기능</div></div>
+    </div>
+    <div class="subcategories">
+      <div class="subcategory">
+        <div class="subcategory-header"><div><span class="subcategory-title">에이봇 (Aimbot)</span><span class="subcategory-count">25개</span></div><i class="fas fa-chevron-right chevron"></i></div>
+        <div class="feature-list"><span class="feature-tag">스무딩</span><span class="feature-tag">PSL (픽셀 스무딩)</span><span class="feature-tag">인체공학</span><span class="feature-tag">자동 샷</span><span class="feature-tag">조준점 예측</span><span class="feature-tag">조준선</span><span class="feature-tag">시야 제한</span><span class="feature-tag">거리 제한</span><span class="feature-tag">우선순위 시스템</span><span class="feature-tag">스나이퍼 모드</span><span class="feature-tag">히트박스 선택</span><span class="feature-tag">사일런트 에임</span><span class="feature-tag">매그넷</span><span class="feature-tag">레이저</span><span class="feature-tag">타겟 전환 지연</span><span class="feature-tag">헤드 전용</span><span class="feature-tag">체력 우선</span><span class="feature-tag">랜덤 타겟</span><span class="feature-tag">조준 반응 시간</span><span class="feature-tag">비헤이비어</span></div>
+      </div>
+      <div class="subcategory">
+        <div class="subcategory-header"><div><span class="subcategory-title">트리거봇 (Triggerbot)</span><span class="subcategory-count">4개</span></div><i class="fas fa-chevron-right chevron"></i></div>
+        <div class="feature-list"><span class="feature-tag">지연 시간</span><span class="feature-tag">조준 시 자동 발사</span><span class="feature-tag">조준한 대상만</span><span class="feature-tag">헤드샷만</span></div>
+      </div>
+      <div class="subcategory">
+        <div class="subcategory-header"><div><span class="subcategory-title">무기 향상</span><span class="subcategory-count">12개</span></div><i class="fas fa-chevron-right chevron"></i></div>
+        <div class="feature-list"><span class="feature-tag">반동 제어</span><span class="feature-tag">산탄 조절</span><span class="feature-tag">연사 속도</span><span class="feature-tag">재장전 속도</span><span class="feature-tag">교체 속도</span><span class="feature-tag">무기 흔들림 제거</span><span class="feature-tag">조준경 떨림 제거</span><span class="feature-tag">탄속 조절</span><span class="feature-tag">명중률 향상</span><span class="feature-tag">치명타 확률</span><span class="feature-tag">무한 탄창</span><span class="feature-tag">마법 탄환</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ESP & 비주얼 탭 -->
+  <div id="tab-esp" class="tab-content" style="display:none">
+    <div class="category-header">
+      <div class="category-icon"><i class="fas fa-eye"></i></div>
+      <div><div class="category-title">ESP & 비주얼</div><div class="category-stats">80개 기능</div></div>
+    </div>
+    <div class="subcategories">
+      <div class="subcategory">
+        <div class="subcategory-header"><div><span class="subcategory-title">플레이어 ESP</span><span class="subcategory-count">32개</span></div><i class="fas fa-chevron-right chevron"></i></div>
+        <div class="feature-list"><span class="feature-tag">박스 ESP</span><span class="feature-tag">스켈레톤 ESP</span><span class="feature-tag">이름</span><span class="feature-tag">체력 바</span><span class="feature-tag">거리</span><span class="feature-tag">무기</span><span class="feature-tag">장비</span><span class="feature-tag">헬멧</span><span class="feature-tag">조끼</span><span class="feature-tag">가방</span><span class="feature-tag">레벨</span><span class="feature-tag">킬 수</span><span class="feature-tag">레이더</span><span class="feature-tag">라인</span><span class="feature-tag">헤드 라인</span><span class="feature-tag">스냅라인</span><span class="feature-tag">팀 구분</span><span class="feature-tag">스펙트럼 색상</span></div>
+      </div>
+      <div class="subcategory">
+        <div class="subcategory-header"><div><span class="subcategory-title">아이템 & 전리품 ESP</span><span class="subcategory-count">28개</span></div><i class="fas fa-chevron-right chevron"></i></div>
+        <div class="feature-list"><span class="feature-tag">아이템 필터</span><span class="feature-tag">희귀도별 색상</span><span class="feature-tag">전리품 상자</span><span class="feature-tag">무기 상자</span><span class="feature-tag">탄약 상자</span><span class="feature-tag">의료품</span><span class="feature-tag">열쇠</span><span class="feature-tag">현금</span><span class="feature-tag">보석</span><span class="feature-tag">컨테이너</span><span class="feature-tag">시체</span><span class="feature-tag">도구</span></div>
+      </div>
+      <div class="subcategory">
+        <div class="subcategory-header"><div><span class="subcategory-title">환경 & 맵 ESP</span><span class="subcategory-count">20개</span></div><i class="fas fa-chevron-right chevron"></i></div>
+        <div class="feature-list"><span class="feature-tag">탈출구</span><span class="feature-tag">스폰 위치</span><span class="feature-tag">지뢰 지대</span><span class="feature-tag">스나이퍼 경계</span><span class="feature-tag">인공지능 위치</span><span class="feature-tag">보스 위치</span><span class="feature-tag">맵 레이더</span><span class="feature-tag">풀 맵</span><span class="feature-tag">네비게이션 라인</span><span class="feature-tag">랜드마크</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 유틸리티 & 내비게이션 탭 -->
+  <div id="tab-utility" class="tab-content" style="display:none">
+    <div class="category-header">
+      <div class="category-icon"><i class="fas fa-map"></i></div>
+      <div><div class="category-title">유틸리티 & 내비게이션</div><div class="category-stats">31개 기능</div></div>
+    </div>
+    <div class="subcategories">
+      <div class="subcategory">
+        <div class="subcategory-header"><div><span class="subcategory-title">자동화 & 매크로</span><span class="subcategory-count">14개</span></div><i class="fas fa-chevron-right chevron"></i></div>
+        <div class="feature-list"><span class="feature-tag">자동 치유</span><span class="feature-tag">자동 재장전</span><span class="feature-tag">자동 수리</span><span class="feature-tag">자동 먹기/마시기</span><span class="feature-tag">자동 약물</span><span class="feature-tag">자동 수집</span><span class="feature-tag">자동 판매</span><span class="feature-tag">자동 퀘스트</span></div>
+      </div>
+      <div class="subcategory">
+        <div class="subcategory-header"><div><span class="subcategory-title">내비게이션</span><span class="subcategory-count">10개</span></div><i class="fas fa-chevron-right chevron"></i></div>
+        <div class="feature-list"><span class="feature-tag">최단 경로</span><span class="feature-tag">탈출구 가이드</span><span class="feature-tag">전리품 루트</span><span class="feature-tag">보스 위치 추적</span><span class="feature-tag">팀원 위치</span><span class="feature-tag">웨이포인트</span></div>
+      </div>
+      <div class="subcategory">
+        <div class="subcategory-header"><div><span class="subcategory-title">정보 오버레이</span><span class="subcategory-count">7개</span></div><i class="fas fa-chevron-right chevron"></i></div>
+        <div class="feature-list"><span class="feature-tag">탄약 정보</span><span class="feature-tag">방어구 상태</span><span class="feature-tag">체력/수분/에너지</span><span class="feature-tag">소리 시각화</span><span class="feature-tag">탄약 남은 수</span><span class="feature-tag">목표 거리</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 기타 기능 탭 -->
+  <div id="tab-misc" class="tab-content" style="display:none">
+    <div class="category-header">
+      <div class="category-icon"><i class="fas fa-sliders-h"></i></div>
+      <div><div class="category-title">기타 기능</div><div class="category-stats">30개 기능</div></div>
+    </div>
+    <div class="subcategories">
+      <div class="subcategory">
+        <div class="subcategory-header"><div><span class="subcategory-title">시각적 향상</span><span class="subcategory-count">15개</span></div><i class="fas fa-chevron-right chevron"></i></div>
+        <div class="feature-list"><span class="feature-tag">야간 투시</span><span class="feature-tag">열 감지</span><span class="feature-tag">적외선</span><span class="feature-tag">하이라이트</span><span class="feature-tag">크로스헤어</span><span class="feature-tag">스코프 강화</span><span class="feature-tag">안개 제거</span><span class="feature-tag">잡음 제거</span><span class="feature-tag">피 색상 변경</span></div>
+      </div>
+      <div class="subcategory">
+        <div class="subcategory-header"><div><span class="subcategory-title">게임플레이 트위크</span><span class="subcategory-count">15개</span></div><i class="fas fa-chevron-right chevron"></i></div>
+        <div class="feature-list"><span class="feature-tag">스피드 핵</span><span class="feature-tag">점프 높이</span><span class="feature-tag">공중 부양</span><span class="feature-tag">클립 비활성화</span><span class="feature-tag">플라이 모드</span><span class="feature-tag">노클립</span><span class="feature-tag">무적</span><span class="feature-tag">인피니트 스태미나</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PVE 특화 탭 -->
+  <div id="tab-pve" class="tab-content" style="display:none">
+    <div class="category-header">
+      <div class="category-icon"><i class="fas fa-shield-alt"></i></div>
+      <div><div class="category-title">PVE 특화</div><div class="category-stats">6개 기능</div></div>
+    </div>
+    <div class="subcategories">
+      <div class="subcategory">
+        <div class="subcategory-header"><div><span class="subcategory-title">인공지능 대응</span><span class="subcategory-count">6개</span></div><i class="fas fa-chevron-right chevron"></i></div>
+        <div class="feature-list"><span class="feature-tag">AI 무력화</span><span class="feature-tag">AI 위치 ESP</span><span class="feature-tag">AI 행동 예측</span><span class="feature-tag">AI 데미지 증폭</span><span class="feature-tag">AI 무기 제한</span><span class="feature-tag">AI 무시</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  © 2026 RED KOREA. All rights reserved. | 프리미엄 게임 솔루션
+</footer>
+
+<script>
+  // 탭 전환
+  const tabs = document.querySelectorAll('.tab-btn');
+  const contents = document.querySelectorAll('.tab-content');
+
+  tabs.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const tabId = btn.getAttribute('data-tab');
+      // 버튼 active 클래스 변경
+      tabs.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      // 콘텐츠 표시
+      contents.forEach(content => content.style.display = 'none');
+      const target = document.getElementById(`tab-${tabId}`);
+      if (target) target.style.display = 'block';
+    });
+  });
+
+  // 서브카테고리 토글
+  const subcategoryHeaders = document.querySelectorAll('.subcategory-header');
+  subcategoryHeaders.forEach(header => {
+    header.addEventListener('click', () => {
+      const parent = header.closest('.subcategory');
+      parent.classList.toggle('open');
+    });
+  });
+</script>
+</body>
+</html>
