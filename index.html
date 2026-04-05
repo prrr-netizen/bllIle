@@ -32,7 +32,6 @@
     color: #fff;
   }
   .logo span { color: #e01c1c; }
-  /* nav-links and nav-cta removed as requested */
 
   /* HERO */
   .hero {
@@ -75,11 +74,6 @@
     margin-bottom: 8px;
   }
   .hero-title .accent { color: #e01c1c; }
-  .hero-subtitle {
-    font-size: 18px; font-weight: 300;
-    color: #999; letter-spacing: 6px;
-    text-transform: uppercase; margin-bottom: 40px;
-  }
   .hero-desc {
     font-size: 16px; line-height: 1.8;
     color: #bbb; max-width: 480px; margin-bottom: 48px;
@@ -105,6 +99,8 @@
     font-size: 14px; letter-spacing: 2px;
     text-transform: uppercase; cursor: pointer;
     transition: all 0.2s;
+    text-decoration: none;
+    display: inline-block;
   }
   .btn-secondary:hover { border-color: #e01c1c; color: #e01c1c; }
 
@@ -248,7 +244,6 @@
 
 <nav>
   <div class="logo"><span>RED</span> KOREA</div>
-  <!-- nav-links and nav-cta removed -->
 </nav>
 
 <section class="hero">
@@ -260,7 +255,7 @@
     <p class="hero-desc">대한민국 최고의 게임 커뮤니티. 프로급 플레이어부터 입문자까지,</p>
     <div class="hero-btns">
       <a href="https://discord.gg/q6nJpYuFB8" class="btn-primary" target="_blank">디스코드 참여</a>
-      <button class="btn-secondary">제품 알아보기</button>
+      <a href="home.html" class="btn-secondary">제품 알아보기</a>
     </div>
   </div>
   <div class="hero-stats">
@@ -388,8 +383,6 @@
     </div>
   </div>
 </section>
-
-<!-- CTA section removed entirely as requested -->
 
 <footer>
   <div class="footer-logo"><span>RED</span> KOREA</div>
