@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 
 <!-- 🔥 Google Search Console -->
 <meta name="google-site-verification" content="W9yXrcFf64FI23rfFnWcG5MTk2hSEcHGSqftcVtXLo4" />
@@ -29,8 +29,9 @@
 <meta name="twitter:description" content="서든어택, 배그, 롤, 타르코프 핵 커뮤니티. 랭크 시스템과 토너먼트, 팀 빌딩까지 지원.">
 <meta name="twitter:image" content="https://redkorea.store/og-image.jpg">
 
-<!-- 🔥 Canonical URL -->
+<!-- 🔥 Canonical URL & Sitemap -->
 <link rel="canonical" href="https://redkorea.store">
+<link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@300;400;700&display=swap" rel="stylesheet">
@@ -42,6 +43,59 @@
     background: #0a0a0a;
     color: #f0f0f0;
     overflow-x: hidden;
+  }
+
+  /* 🔥🔥🔥 떠다니는 애니메이션 이미지들 (풍선 효과) 🔥🔥🔥 */
+  .floating-images {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+  }
+  
+  .float-item {
+    position: absolute;
+    opacity: 0.7;
+    filter: drop-shadow(0 10px 25px rgba(224,28,28,0.4));
+    animation: floatBubble 10s ease-in-out infinite;
+    pointer-events: none;
+  }
+  
+  .float-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  
+  .float-1 { top: 10%; right: 5%; width: 200px; height: 200px; animation-duration: 12s; animation-delay: 0s; }
+  .float-2 { top: 40%; right: 15%; width: 150px; height: 150px; animation-duration: 8s; animation-delay: 1.5s; }
+  .float-3 { bottom: 15%; right: 8%; width: 220px; height: 220px; animation-duration: 14s; animation-delay: 0.8s; }
+  .float-4 { top: 25%; left: 3%; width: 180px; height: 180px; animation-duration: 11s; animation-delay: 2s; }
+  .float-5 { bottom: 30%; left: 5%; width: 140px; height: 140px; animation-duration: 9s; animation-delay: 0.5s; }
+  .float-6 { top: 60%; left: 12%; width: 160px; height: 160px; animation-duration: 13s; animation-delay: 3s; }
+  .float-7 { top: 5%; right: 25%; width: 130px; height: 130px; animation-duration: 7s; animation-delay: 1s; }
+  .float-8 { bottom: 5%; right: 20%; width: 190px; height: 190px; animation-duration: 10s; animation-delay: 2.5s; }
+  
+  @keyframes floatBubble {
+    0% { transform: translateY(0px) rotate(0deg); }
+    25% { transform: translateY(-40px) rotate(5deg); }
+    50% { transform: translateY(-20px) rotate(-5deg); }
+    75% { transform: translateY(-50px) rotate(8deg); }
+    100% { transform: translateY(0px) rotate(0deg); }
+  }
+  
+  @media (max-width: 768px) {
+    .float-1 { width: 100px; height: 100px; }
+    .float-2 { width: 80px; height: 80px; }
+    .float-3 { width: 120px; height: 120px; }
+    .float-4 { width: 90px; height: 90px; }
+    .float-5 { width: 70px; height: 70px; }
+    .float-6 { width: 85px; height: 85px; }
+    .float-7 { width: 65px; height: 65px; }
+    .float-8 { width: 95px; height: 95px; }
   }
 
   /* NAV */
@@ -148,7 +202,7 @@
   .stat-divider { width: 100%; height: 1px; background: rgba(220,30,30,0.3); }
 
   /* FEATURES */
-  .section { padding: 100px 60px; }
+  .section { padding: 100px 60px; position: relative; z-index: 2; }
   .section-label {
     font-size: 11px; letter-spacing: 4px; color: #e01c1c;
     text-transform: uppercase; margin-bottom: 16px;
@@ -168,12 +222,14 @@
     gap: 1px;
     background: rgba(220,30,30,0.2);
     border: 1px solid rgba(220,30,30,0.2);
+    backdrop-filter: blur(5px);
   }
   .feature-card {
-    background: #0d0d0d;
+    background: rgba(13,13,13,0.8);
     padding: 48px 36px;
     transition: background 0.3s;
     position: relative; overflow: hidden;
+    backdrop-filter: blur(10px);
   }
   .feature-card::before {
     content: '';
@@ -182,7 +238,7 @@
     background: #e01c1c;
     transition: height 0.3s;
   }
-  .feature-card:hover { background: #111; }
+  .feature-card:hover { background: rgba(17,17,17,0.9); }
   .feature-card:hover::before { height: 100%; }
   .feature-icon {
     width: 48px; height: 48px; margin-bottom: 24px;
@@ -204,6 +260,8 @@
     border-bottom: 1px solid rgba(220,30,30,0.2);
     padding: 20px 0; overflow: hidden;
     background: rgba(220,30,30,0.04);
+    position: relative; z-index: 2;
+    backdrop-filter: blur(5px);
   }
   .marquee-track {
     display: flex; gap: 60px; width: max-content;
@@ -228,11 +286,14 @@
     padding: 48px 40px;
     position: relative; overflow: hidden;
     transition: border-color 0.3s;
+    background: rgba(13,13,13,0.5);
+    backdrop-filter: blur(10px);
   }
   .mode-card:hover { border-color: rgba(220,30,30,0.5); }
   .mode-card.featured {
     border-color: rgba(220,30,30,0.4);
     background: rgba(220,30,30,0.05);
+    backdrop-filter: blur(10px);
   }
   .mode-badge {
     display: inline-block;
@@ -258,6 +319,8 @@
     border-top: 1px solid rgba(255,255,255,0.07);
     padding: 40px 60px;
     text-align: center;
+    position: relative; z-index: 2;
+    background: #0a0a0a;
   }
   .footer-logo {
     font-family: 'Black Han Sans', sans-serif;
@@ -269,6 +332,34 @@
 </style>
 </head>
 <body>
+
+<!-- 🔥🔥🔥 떠다니는 풍선 애니메이션 이미지들 🔥🔥🔥 -->
+<div class="floating-images">
+  <div class="float-item float-1">
+    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23e01c1c' opacity='0.3'/%3E%3Ctext x='50' y='67' font-size='40' text-anchor='middle' fill='%23ffffff' font-weight='bold'%3E🎯%3C/text%3E%3C/svg%3E" alt="aim">
+  </div>
+  <div class="float-item float-2">
+    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23e01c1c' opacity='0.25'/%3E%3Ctext x='50' y='67' font-size='40' text-anchor='middle' fill='%23ffffff' font-weight='bold'%3E👁%3C/text%3E%3C/svg%3E" alt="esp">
+  </div>
+  <div class="float-item float-3">
+    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23e01c1c' opacity='0.2'/%3E%3Ctext x='50' y='67' font-size='40' text-anchor='middle' fill='%23ffffff' font-weight='bold'%3E🛡%3C/text%3E%3C/svg%3E" alt="shield">
+  </div>
+  <div class="float-item float-4">
+    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23e01c1c' opacity='0.2'/%3E%3Ctext x='50' y='67' font-size='40' text-anchor='middle' fill='%23ffffff' font-weight='bold'%3E⚡%3C/text%3E%3C/svg%3E" alt="power">
+  </div>
+  <div class="float-item float-5">
+    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23e01c1c' opacity='0.25'/%3E%3Ctext x='50' y='67' font-size='40' text-anchor='middle' fill='%23ffffff' font-weight='bold'%3E🔫%3C/text%3E%3C/svg%3E" alt="gun">
+  </div>
+  <div class="float-item float-6">
+    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23e01c1c' opacity='0.15'/%3E%3Ctext x='50' y='67' font-size='40' text-anchor='middle' fill='%23ffffff' font-weight='bold'%3E💀%3C/text%3E%3C/svg%3E" alt="skull">
+  </div>
+  <div class="float-item float-7">
+    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23e01c1c' opacity='0.3'/%3E%3Ctext x='50' y='67' font-size='40' text-anchor='middle' fill='%23ffffff' font-weight='bold'%3E🎮%3C/text%3E%3C/svg%3E" alt="game">
+  </div>
+  <div class="float-item float-8">
+    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23e01c1c' opacity='0.2'/%3E%3Ctext x='50' y='67' font-size='40' text-anchor='middle' fill='%23ffffff' font-weight='bold'%3E🔥%3C/text%3E%3C/svg%3E" alt="fire">
+  </div>
+</div>
 
 <!-- 🔥🔥🔥 보안 차단 스크립트 (최상단) 🔥🔥🔥 -->
 <script>
@@ -298,6 +389,7 @@
         if (e.ctrlKey && e.key === 's') { e.preventDefault(); return false; }
         if (e.ctrlKey && e.key === 'p') { e.preventDefault(); return false; }
         if (e.ctrlKey && e.key === 'h') { e.preventDefault(); return false; }
+        if (e.metaKey && e.altKey && e.key === 'i') { e.preventDefault(); return false; }
     });
     
     // 6. 콘솔 클리어 및 디버거 차단
@@ -464,7 +556,7 @@
 
 <footer>
   <div class="footer-logo"><span>RED</span> KOREA</div>
-  <div class="footer-copy">© 2026 RED KOREA. All rights reserved.</div>
+  <div class="footer-copy">© 2026 RED KOREA. All rights reserved. | 서든핵 · 배그핵 · 롤핵 · 타르코프핵</div>
 </footer>
 
 </body>
